@@ -425,6 +425,7 @@ span.song-title.highlighted {
         border-radius: 19px;
         font-size: 13px;
         padding-bottom: 20%;
+        z-index: -10000;
     }
     span.song-title.highlighted {
         color: black;
