@@ -278,6 +278,12 @@ span.song-title.highlighted {
     font-size: 19px;
     font-weight: 700;
 }
+.playing {
+    background: rgba(229, 229, 229, 0.548);
+    padding: 3px 41px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+}
 @media only screen and (max-device-width: 480px){
     .extra{
         z-index: 100000;
