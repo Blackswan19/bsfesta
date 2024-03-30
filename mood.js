@@ -51,25 +51,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function highlightCurrentSong() {
         var songItems = document.querySelectorAll('#song-list li');
-        songItems.forEach(function (item) {
+        songItems.forEach(function (item, index) {
             item.classList.remove('playing');
             var songTitle = item.querySelector('.song-title');
             if (songTitle) {
                 songTitle.classList.remove('highlighted');
                 songTitle.innerHTML = songTitle.textContent.replace('<i class="fa-solid fa-chart-simple"></i>', '<i class="fa-solid fa-music"></i>');
             }
-        });
-    
-        var currentSongItem = document.querySelector('#song-list li:nth-child(' + (currentSongIndex + 1) + ')');
-        if (currentSongItem) {
-            currentSongItem.classList.add('playing');
-            var currentSongTitle = currentSongItem.querySelector('.song-title');
-            if (currentSongTitle) {
-                currentSongTitle.classList.add('highlighted');
-                currentSongTitle.innerHTML = '<i class="fa-solid fa-chart-simple"></i> ' + currentSongTitle.textContent;
+            if (index === currentSongIndex) {
+                item.classList.add('playing');
+                var currentSongTitle = item.querySelector('.song-title');
+                if (currentSongTitle) {
+                    currentSongTitle.classList.add('highlighted');
+                    currentSongTitle.innerHTML = '<i class="fa-solid fa-chart-simple"></i> ' + currentSongTitle.textContent;
+                }
             }
-        }
-    }    
+        });
+    }
+      
 
     playPauseBtn.addEventListener('click', function () {
         if (isPlaying) {
@@ -129,3 +128,9 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('playbackPosition', playbackPosition);
     });
 });
+const timeDelay = 5000; // 5 seconds (in milliseconds)
+
+setTimeout(function() {
+  window.close();
+}, timeDelay);
+
