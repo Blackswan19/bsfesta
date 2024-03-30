@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('playbackPosition', playbackPosition);
     });
 });
-const timeDelay = 5000; // 5 seconds (in milliseconds)
+// const timeDelay = 5000; // 5 seconds (in milliseconds)
 
-setTimeout(function() {
-  window.close();
-}, timeDelay);
+// setTimeout(function() {
+//   window.close();
+// }, timeDelay);
 
