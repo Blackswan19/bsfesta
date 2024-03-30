@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function playAudio(audioSrc) {
         audioPlayer.src = audioSrc;
-        audioPlayer.currentTime = 0; // Reset playback position to start
+        audioPlayer.currentTime = 0;
         audioPlayer.play();
         isPlaying = true;
         playPauseBtn.textContent = 'Pause';
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         playbackPosition = 0;
         playAudio(nextSong);
         document.getElementById('skip-message').textContent = 'Skipped to next song: ' + playButtons[currentSongIndex].textContent;
-    }
+    }    
 
     function highlightCurrentSong() {
         var songItems = document.querySelectorAll('#song-list li');
@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('playbackPosition', playbackPosition);
     });
 });
-// const timeDelay = 5000; // 5 seconds (in milliseconds)
+const timeDelay = 5000; // 5 seconds (in milliseconds)
 
-// setTimeout(function() {
-//   window.close();
-// }, timeDelay);
+setTimeout(function() {
+  window.close();
+}, timeDelay);
 
