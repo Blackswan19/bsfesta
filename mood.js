@@ -132,10 +132,4 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('currentSongIndex', currentSongIndex);
         localStorage.setItem('playbackPosition', playbackPosition);
     });
-
-    const timeDelay = 5000; // 5 seconds (in milliseconds)
-
-    setTimeout(function () {
-        window.close();
-    }, timeDelay);
 });
