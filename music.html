@@ -46,11 +46,6 @@
             <img src="logo.png" alt=""><br>
             <a>Coming soon....</a>
         </div>
-        <div class="skip">
-         <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
-         <button class="button1" id="play-pause-btn">Play</button>
-         <button class="button4" id="next-btn">Next</button>
-      </div>
       </section>
 
       <section id="4" class="section" id="telugu">
@@ -58,7 +53,7 @@
                <img src="logo/telugu.jpg" alt="" width="100%">
             </div>
             <div class="category">
-               <a href="filter.html"><i class="fa-solid fa-bars-staggered"></i>Filter</a>
+               <a href="filter.html"><i class="fa-solid fa-bars-staggered"></i></a>
             </div>
             <ul id="song-list">
                <li data-src="https://www.pagalworld.com.cm/files/download/id/6864"><span class="song-title">Deva deva</span><i class="fa-solid fa-play play-button"></i></li>
@@ -301,13 +296,6 @@
                <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Manasantha%20Nuvve%20(2001)/01%20-%20Cheppave%20Prema%20-%20SenSongsMp3.co.mp3"><span class="song-title">Cheppave Prema - Manasantha Nuvve (2001)</span><i class="fa-solid fa-play play-button"></i></li>
                <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/all/A/Abhinandana%20(1988)/07%20-%20Premaledani%20[www.SenSongsMp3.co].mp3"><span class="song-title">Premaledani - Abhinandana (1988)</span><i class="fa-solid fa-play play-button"></i></li>
             </ul>
-            <div class="skip">
-               <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
-               <button class="button1" id="play-pause-btn">Play</button>
-               <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
-               <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
-               <button class="button4" id="next-btn">Next</button>
-            </div>
       </section>
 
 
@@ -317,11 +305,11 @@
             <div class="bglogo">
                <img src="logo/english.jpg" alt="" width="100%">
             </div>
-            <div class="category">
+            <!-- <div class="category">
                <a href=""><i class="fa-solid fa-bars-staggered"></i>Filter</a>
-            </div>
+            </div> -->
             <ul id="song-list">
-               <li data-src=""><span class="song-title"></span><i class="fa-solid fa-play play-button"></i></li>
+               <span class="song-title">Coming soon...</span>
             </ul>
          </div>
       </section>
@@ -332,7 +320,7 @@
                <img src="logo/bts.jpg" alt="" width="100%">
             </div>
             <div class="category">
-               <a href=""><i class="fa-solid fa-bars-staggered"></i>Filter</a>
+               <i class="fa-solid fa-bars-staggered"></i>Filter</a>
             </div>
             <ul id="song-list">
                <li data-src="korea\3D.mp3"><span class="song-title">3D</span><i class="fa-solid fa-play play-button"></i></li>
@@ -426,45 +414,43 @@
                   <li data-src="korea\You & Me.mp3"><span class="song-title">You & Me</span><i class="fa-solid fa-play play-button"></i></li>
                   <li data-src="korea\Zero O'Clock.mp3"><span class="song-title">Zero O'Clock</span><i class="fa-solid fa-play play-button"></i></li>
             </ul>
-
-            <div class="skip">
-               <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
-               <button class="button1" id="play-pause-btn">Play</button>
-               <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
-               <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
-               <button class="button4" id="next-btn">Next</button>
-            </div>
          </div>
       </section>
       <section id="7" class="section" id="dance">
-         
          <div class="audiosplayer">
             <div class="bglogo">
                <img src="logo/others.jpg" alt="" width="100%">
             </div>
+            <!-- <div class="category">
+               <a href=""><i class="fa-solid fa-bars-staggered"></i>Filter</a>
+            </div> -->
             <ul id="song-list" >
-               <li data-src="korea\Zero O'Clock.mp3"><span class="song-title">Zero O'Clock</span><i class="fa-solid fa-play play-button"></i></li>
+               <span class="song-title">Coming soon...</span>
             </ul>
          </div>
       </section>
+
+
+      <div class="skip">
+         <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
+         <button class="button1" id="play-pause-btn">Play</button>
+         <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
+         <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
+         <button class="button4" id="next-btn">Next</button>
+      </div>
       <div class="extra">
          <a id="donate-link" href="#">Donate</a>
          <p style="color: rgba(255, 255, 255, 0.443);">Contact us :<br> blackswan19ot7@gmail.com</p>
-         <!-- <span style="color: rgba(255, 0, 0, 0.594);">-> New song arrived -->
      </div>
      <div id="popup-container">
       <img id="popup-img" src="https://i.ibb.co/FYZB4cN/20240329-IMP-PY182723215.jpg" alt="Popup Image" width="56%">
    </div>
    <script>
       document.getElementById('donate-link').addEventListener('click', function(event) {
-         event.preventDefault(); // Prevent the default action of the link
-         
-         // Show the pop-up image container
+         event.preventDefault();
          document.getElementById('popup-container').style.display = 'block';
       });
-      
       document.getElementById('popup-container').addEventListener('click', function() {
-         // Hide the pop-up image container when clicked outside the image
          this.style.display = 'none';
       });
    </script>
