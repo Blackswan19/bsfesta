@@ -30,19 +30,20 @@
             <a style="position: fixed;left: 1%;top: 2%;z-index: 1000000;">BS FESTA</a><br>
              <div class="menu">
                <i class="fa-brands fa-medium"></i>Mood<br>
-                 <a href="#telsad" onclick="displayText(4)">Sad</a><br>
+             </div>
+             <div class="drops">
+               <a href="#telsad" onclick="displayText(4)">Sad</a><br>
                  <a href="#telhap" onclick="displayText(5)">Happy</a><br>
                  <a href="#teldan" onclick="displayText(6)">Dance</a><br>
-             
-             </div>
-             <div class="drop">
              </div>
          </div>
+         <video autoplay loop muted id="video-background">
+            <source src="logo/bg.mp4" type="video/mp4" width="100%">
+         </video>
      </div>
         <section id="4" class="section" id="telsad">
             <header>
                <h1>Telugu sad</h1>
-               <hr>
             </header>
             <ul class="songssad" id="song-list">
                <li data-src="https://www.pagalworld.com.cm/files/download/id/6864"><span class="song-title">Deva deva</span><i class="fa-solid fa-play play-button"></i></li>
@@ -88,7 +89,6 @@
         <section id="5" class="section" id="telhap">
          <header>
             <h1>Telugu happy</h1>
-            <hr>
          </header>
             <ul class="songssad" id="song-list">
                <li data-src="https://mp3teluguwap.net/mp3/2020/Sashi/Sashi%20(2021)/Okey%20Oka%20Lokam%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Okey Oka Lokam</span><i class="fa-solid fa-play play-button"></i></li>
@@ -201,7 +201,6 @@
         <section id="6" class="section" id="teldan">
          <header>
             <h1>Telugu dance</h1>
-            <hr>
          </header>
             <ul class="songssad" id="song-list">
                   <li data-src="https://mp3teluguwap.net/mp3/2019/Guna%20369%20(2019)%20-%20128KBPS/Usuremo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Usuremo</span><i class="fa-solid fa-play play-button"></i></li>
@@ -291,7 +290,7 @@
 
 
       <section id="3" class="section" id="korea">
-        <div class="mood">
+        <div class="drop">
             <a href="#korsad" onclick="displayText(10)">Sad</a>
             <a href="#korhap" onclick="displayText(11)">Happy</a>
             <a href="#kordan" onclick="displayText(12)">Dance</a>
