@@ -41,13 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        var randomIndex = Math.floor(Math.random() * playButtons.length);
-        currentSongIndex = randomIndex;
+        currentSongIndex++;
+        if (currentSongIndex >= playButtons.length) {
+            currentSongIndex = 0;
+        }
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(nextSong);
         document.getElementById('skip-message').textContent = 'Skipped to next song: ' + playButtons[currentSongIndex].textContent;
-    }    
+    }  
+        
 
     function highlightCurrentSong() {
         var songItems = document.querySelectorAll('#song-list li');
