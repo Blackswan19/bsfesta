@@ -25,6 +25,18 @@ body{
 a{
     text-decoration: none;
 }
+.category{
+    position: fixed;
+    top: 4%;
+    left: 26.5%;
+    font-size: 16px;
+    z-index: 100;
+}
+.category i{
+    position: fixed;
+    left: 25%;
+    top: 35px;
+}
 .menu {
     float: inline-start;
     padding: 72px;
@@ -283,6 +295,35 @@ span.song-title.highlighted {
     border-radius: 10px;
     color: rgb(0, 0, 0);
 }
+.mood {
+    position: fixed;
+    left: 45%;
+    top: 6%;
+}
+.mood a{
+    padding: 10px 46px;
+    background: white;
+    color: black;
+    border-radius: 32px;
+}
+header{
+    position: fixed;
+    top: 0%;
+    left: 24%;
+    font-size: 69px;
+    background-color: black;
+    z-index: 100;
+    width: 109%;
+    height: 30%;
+}
+.songssad{
+    position: absolute;
+    top: 31%;
+}
+hr{
+    margin-top: -4%;
+    margin-left: -26px;
+}
 @media screen and (max-width: 768px){
     .skip{
         position: fixed;
@@ -356,7 +397,19 @@ span.song-title.highlighted {
         left: 5%;
         float: right;
     }
-
+    .category {
+        position: fixed;
+        top: 4.5%;
+        left: 31%;
+        font-size: 16px;
+        z-index: 100;
+    }
+    .category i{
+        position: fixed;
+        left: 28%;
+        top: 40px;   
+    }
+    
 }
 @media only screen and (max-device-width: 480px){
     .extra{
@@ -513,5 +566,17 @@ span.song-title.highlighted {
         background: #0000008c;
         padding: 16em 22em;
         width: 74%;    
+    }
+    .category{
+        position: fixed;
+        top: 15.5%;
+        left: 11%;
+        font-size: 15px;
+        z-index: 100;
+    }
+    .category i{
+        position: fixed;
+        left: 5%;
+        top: 115px;    
     }
 }
