@@ -13,6 +13,7 @@ body, html {
     z-index: -1000;
     width: 110%;
     top: -0.5em;
+    filter: blur(19px);
 }
 ::-webkit-scrollbar {
     display: none;
@@ -630,6 +631,11 @@ hr{
     .category span{
         display: none;
     }
+    .drops{
+        position: fixed;
+        left: 6%;
+        top: 63px;    
+    }
     .category i{
         position: fixed;
         left: 5%;
@@ -655,7 +661,6 @@ hr{
     }
     #video-background{
         width: 143%;
-        filter: blur(19px);
     }
     .drops a{
         display: contents;
