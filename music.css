@@ -8,6 +8,12 @@ body, html {
     margin: 0;
     padding: 0;
 }
+#video-background {
+    position: fixed;
+    z-index: -1000;
+    width: 110%;
+    top: -0.5em;
+}
 ::-webkit-scrollbar {
     display: none;
 }
@@ -307,22 +313,41 @@ span.song-title.highlighted {
     border-radius: 32px;
 }
 header{
+    text-align: center;
     position: fixed;
-    top: 0%;
+    top: -7%;
     left: 24%;
     font-size: 69px;
-    background-color: black;
+    background-color: rgb(255 255 255 / 57%);
     z-index: 100;
-    width: 109%;
+    width: 61.5%;
     height: 30%;
+    border: solid 2px rgb(255 255 255 / 66%);
+    border-radius: 48px;
+    padding: 1px 79px;
+    filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.365));
 }
 .songssad{
     position: absolute;
     top: 31%;
 }
 hr{
-    margin-top: -4%;
-    margin-left: -26px;
+    margin-top: -2%;
+}
+.drops{
+    position: fixed;
+    left: 6%;
+    height: 3%;
+}
+.drops a{
+    display: block;
+    position: relative;
+    line-height: 36px;
+    left: 66%;
+    top: 97px;
+}
+.drops a:hover{
+    text-decoration: overline;
 }
 @media screen and (max-width: 768px){
     .skip{
@@ -331,6 +356,8 @@ hr{
     }
     .menu{
         border: none;
+        width: 100%;
+    
     }
     ul{
         width: 57%;
@@ -338,8 +365,13 @@ hr{
         left: 27%;    
     }
     .extra{
-        position: fixed;
-        left: 76%;
+                    position: fixed;
+            left: 78%;
+            top: 45px;
+            background: none;
+            outline: none;
+            border: none;
+            font-size: 17px;
     }
     .extra p{
         display: none;
@@ -406,11 +438,32 @@ hr{
     }
     .category i{
         position: fixed;
-        left: 28%;
-        top: 40px;   
+        left: 31%;
+        top: 58px;  
     }
-    
+    header{
+        text-align: center;
+        position: fixed;
+        top: -11%;
+        left: 27%;
+        font-size: 40px;
+        background-color: rgb(255 255 255 / 57%);
+        z-index: 100;
+        width: 61.5%;
+        height: 6%;
+        border: solid 2px rgb(255 255 255 / 66%);
+        border-radius: 48px;
+        padding: 102px 18px;
+    }
+    .songssad {
+        position: absolute;
+        top: 21%;
+    }
+    #video-background{
+        width: 232%;
+    }
 }
+
 @media only screen and (max-device-width: 480px){
     .extra{
         z-index: 100000;
@@ -571,12 +624,40 @@ hr{
         position: fixed;
         top: 15.5%;
         left: 11%;
-        font-size: 15px;
+        font-size: 19px;
         z-index: 100;
+    }
+    .category span{
+        display: none;
     }
     .category i{
         position: fixed;
         left: 5%;
         top: 115px;    
+    }
+    .songssad {
+        position: absolute;
+        top: 43%;
+    }
+    header{
+        text-align: center;
+        position: fixed;
+        top: 5%;
+        left: 11%;
+        font-size: 23px;
+        width: 73.5%;
+        height: 6%;
+        z-index: -412;
+        border: none;
+        border-radius: 48px;
+        padding: 102px 18px;
+        background: no-repeat;
+    }
+    #video-background{
+        width: 143%;
+        filter: blur(19px);
+    }
+    .drops a{
+        display: contents;
     }
 }
