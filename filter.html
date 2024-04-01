@@ -1,342 +1,1479 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>BS FESTA</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <link rel="stylesheet" href="music.css">
-      <script src="mood.js"></script>
-   </head>
-   <body>
-      <script>
-         function toggleDropdown() {
-    var dropdownContent = document.getElementById("myDropdown");
-    dropdownContent.classList.toggle("show");
-  }
-  
-  function displayText(sectionId) {
-    var sections = document.getElementsByClassName("section");
-    for (var i = 0; i < sections.length; i++) {
-      sections[i].style.display = "none"; // Hide all sections
-    }
-    document.getElementById(sectionId).style.display = "block"; // Show selected section
-}
-      </script>
-      <div class="dropdown">
-         <div class="header">
-            <a style="position: fixed;left: 1%;top: 2%;z-index: 1000000;">BS FESTA</a><br>
-             <div class="menu">
-               <a href="music.html"><i class="fa-solid fa-house"></i>Home</a><br>
-               <i class="fa-brands fa-medium"></i>Mood<br>
-             </div>
-             <div class="drops">
-               <a href="#telsad" onclick="displayText(4)">Sad</a><br>
-                 <a href="#telhap" onclick="displayText(5)">Happy</a><br>
-                 <a href="#teldan" onclick="displayText(6)">Dance</a><br>
-             </div>
-         </div>
-         <video autoplay loop muted id="video-background">
-            <source src="logo/bg.mp4" type="video/mp4" width="100%">
-         </video>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BS FESTA</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="music.css">
+        <script src="mood.js"></script>
+    </head>
+    <body>
+        <script>
+            function toggleDropdown() {
+                var dropdownContent = document.getElementById("myDropdown");
+                dropdownContent.classList.toggle("show");
+            }
+
+            function displayText(sectionId) {
+                var sections = document.getElementsByClassName("section");
+                for (var i = 0; i < sections.length; i++) {
+                    sections[i].style.display = "none";
+                    // Hide all sections
+                }
+                document.getElementById(sectionId).style.display = "block";
+                // Show selected section
+            }
+        </script>
+        <div class="dropdown">
+            <div class="header">
+                <a style="position: fixed;left: 1%;top: 2%;z-index: 1000000;">BS FESTA</a>
+                <br>
+                <div class="menu">
+                    <a href="music.html">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </a>
+                    <br>
+                    <i class="fa-brands fa-medium"></i>
+                    Mood<br>
+                </div>
+                <div class="drops">
+                    <a href="#telsad" onclick="displayText(4)">Old</a>
+                    <br>
+                    <a href="#telhap" onclick="displayText(5)">New</a>
+                    <br>
+                    <a href="#teldan" onclick="displayText(6)">Fav</a>
+                    <br>
+                </div>
+            </div>
+            <video autoplay loop muted id="video-background">
+                <source src="logo/bg.mp4" type="video/mp4" width="100%">
+            </video>
+        </div>
+        <div class="bot search">
      </div>
-        <section id="4" class="section" id="telsad">
+        <section id="4" class="section" id="telnr">
             <header>
-               <h1>Telugu sad</h1>
+                <h1>All albums</h1>
             </header>
             <ul class="songssad" id="song-list">
-               <li data-src="https://www.pagalworld.com.cm/files/download/id/6864"><span class="song-title">Deva deva</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2024/Guntur%20Karam/Guntur%20Karam/Kurchi%20Madathapetti.mp3"><span class="song-title">Kurchi Madathapetti</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2023/Ooru%20Peru%20Bhairavakona/Humma%20Humma.mp3"><span class="song-title">Humma Humma</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Manmadhudu%20(2002)/Dont%20Marry-SenSongsMp3.Co.mp3"><span class="song-title">Dont Marry</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Manmadhudu%20(2002)/Gundello%20Emundo-SenSongsMp3.Co.mp3"><span class="song-title">Gundello Emundo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Manmadhudu%20(2002)/Nenu%20Nenuga%20-SenSongsMp3.Co.mp3"><span class="song-title">Nenu Nenuga</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Atithi%20Devobhava/Baguntundi.mp3"><span class="song-title">Baguntundi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Jetty/Dooram%20Karigina.mp3"><span class="song-title">Dooram Karigina</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Tuck%20Jagadish/Tuck%20Jagadish/1%20-%20Inkosaari%20Inkosaari%20-%20SenSongsMp3.Com_94.mp3"><span class="song-title">Inkosaari Inkosaari</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/30%20Rojullo%20Preminchadam%20Ela/Neeli%20Neeli%20Aakasam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Neeli Neeli Aakasam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2022/Shikaru/Manasu%20Dhari%20Thappene.mp3"><span class="song-title">Manasu Dhari Thappene</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Miles%20of%20Love/Teliyade%20Teliyade%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Teliyade Teliyade</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Raahu%20(2019)/Emo%20Emo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Emo Emo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Jaanu%20(2020)/Jaanu%20(2020)/Oohale%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Oohale</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Jaanu%20(2020)/Jaanu%20(2020)/Pranam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Pranam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/Chalo%20(2017)/Chalo%20(2018)/Choosi%20Chudangane%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Choosi Chudangane</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Gangleader%20(2019)/GangLeader%20(2019)/Ninnu%20Chuse%20Anandamlo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ninnu Chuse Anandamlo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Guna%20369%20(2019)%20-%20128KBPS/Usuremo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Usuremo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/NGK%20(2019)%20-%20Telugu/Prema%20O%20Premaa%20%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Prema O Premaa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/Taxiwaala/Taxiwaala%20(2018)/Maate%20Vinadhuga%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Maate Vinadhuga</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Dear%20Comrade%20-%20Telugu/Dear%20Comrade%20(2019)/Kadalalle%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kadalalle</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/RX%20100%20(2018)/Pillaa%20Raa%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Pillaa Raa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Dear%20Comrade%20-%20Telugu/Dear%20Comrade%20(2019)/Yetu%20Pone%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yetu Pone</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/30%20Rojullo%20Preminchadam%20Ela/Neeli%20Neeli%20Aakasam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Neeli Neeli Aakasam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Disco%20Raja/Disco%20Raja%20(2019)/Nuvvu%20Naatho%20Emannavo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvu Naatho Emannavo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/2017/Arjun%20Reddy/Madhurame%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Madhurame</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Majili%20(2019)%20-%20128KBPS/Priyathama%20Priyathama%20-%20SenSongsmp3.Co.mp3"><span class="song-title">Priyathama Priyathama</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/2017/Arjun%20Reddy/Gundelonaa%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Gundelonaa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/2017/Arjun%20Reddy/Telisiney%20Na%20Nuvvey%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Telisiney Na Nuvvey</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/Krishnarjuna%20Yudham%20-%20(2018)/Krishnarjuna%20Yudham%20(2018)/Dhaari%20Choodu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Dhaari Choodu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Yevaipuga%20Naa%20Choopu%20Saagali%20(Sad%20Song)%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yevaipuga Naa Choopu Saagali (Sad Song)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2017/Idi%20Maa%20Prema%20Katha%20(2017)/Nuvvika%20Ravani%20(Male)%20%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvika Ravani (Male)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2017/Idi%20Maa%20Prema%20Katha%20(2017)/Nuvvika%20Ravani%20(Female)%20%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvika Ravani (Female)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/N/Nuvve%20Kavali%20%282000%29/Kallaloki%20Kallu%20%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kallaloki Kallu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/P/Premiste%20%282005%29/05%20-%20Janma%20-%20SenSongsMp3.co.mp3"><span class="song-title">Janma</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Nenu%20(2014)/Devathala%20Nenu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Devathala Nenu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/13%20-%20David%20(2013)/Kanule%20Kanele%20-%20SenSongsmp3.Co.mp3"><span class="song-title">Kanule Kanele</span><i class="fa-solid fa-play play-button"></i></li>
+<!-- Saahasame Swasaga Sagipo (2016) -->
+<hr>
+<center><h3 id ="Saahasame Swasaga Sagipo">Saahasame Swasaga Sagipo (2016)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Sahasam-Swasaga-Sagipo-2016jpeg-300x300.jpg"alt="Saahasame Swasaga Sagipo"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Chakori-SenSongsMp3.Com.mp3">
+    <span class="song-title">Chakori</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Kannula%20Munde-SenSongsMp3.Com.mp3">
+    <span class="song-title">Kannula Munde</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Shokilla-SenSongsMp3.Com.mp3">
+    <span class="song-title">Shokilla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Taanu%20Nenu-SenSongsMp3.Com.mp3">
+    <span class="song-title">Taanu Nenu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Vellipomaake-SenSongsMp3.Com.mp3">
+    <span class="song-title">Vellipomaake</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<!-- Mirchi (2013) -->
+<hr>
+<center><h3 id ="Mirchi">Mirchi (2013)</h3></center>
+<center><img src="https://upload.wikimedia.org/wikipedia/en/a/a8/Mirchi_film_poster.jpg"alt="Saahasame Swasaga Sagipo"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/1-Barbie%20Girl-SenSongsMp3.Co.mp3">
+    <span class="song-title">Barbie Girl</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/2-Darlingey-SenSongsMp3.Co.mp3">
+    <span class="song-title">Darlingey</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/3-Idhedho%20Bagundhe-SenSongsMp3.Co.mp3">
+    <span class="song-title">Idhedho Bagundhe</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/4-Mirchi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mirchi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/5-Nee%20Choopula-SenSongsMp3.Co.mp3">
+    <span class="song-title">Nee Choopula</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/6-Pandagala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Pandagala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/7-Yahoon%20Yahoon-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yahoon Yahoon</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<!-- Radha (2017) -->
+<hr>
+<center><h3 id="Radha">Radha (2017)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Radha-2017jpeg-300x300.jpg" alt=""></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2017/Radha%20(2017)/Radha%20LQ/1-Kaakki%20Chokka-SenSongsMp3.Co.mp3">
+    <span class="song-title">Kaakki Chokka</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2017/Radha%20(2017)/Radha%20LQ/2-Choopulatho-SenSongsMp3.Co.mp3">
+    <span class="song-title">Choopulatho</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2017/Radha%20(2017)/Radha%20LQ/3-Rabbit%20Rabbit%20Pilla-SenSongsMp3.Co.mp3">
+    <span class="song-title">Rabbit Rabbit Pilla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2017/Radha%20(2017)/Radha%20LQ/4-Oye%20Mera%20Krishuuu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Oye Mera Krishuuu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<!-- Current Theega (2014) -->
+<hr>
+<center><h3>Current Theega (2014)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Current-Theega-2014jpeg-300x300.jpg" alt=""></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/03%20-%20Ammay%20Nadumu.mp3">
+    <span class="song-title">Ammay Nadumu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/05%20-%20Dhada%20Puttistha.mp3">
+    <span class="song-title">Dhada Puttistha</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/06%20-%20Current%20Theega.mp3">
+    <span class="song-title">Current Theega</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/07%20-%20Padaharella%20Vayasu.mp3">
+    <span class="song-title">Padaharella Vayasu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/08%20-%20Pilla%20O%20Na%20Pilla.mp3">
+    <span class="song-title">Pilla O Na Pilla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+
+<hr>
+<center><h3 id="Raja Rani">Raja Rani (2014) – Telugu</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Raja-Rani-2014-–-Telugujpeg-300x300.jpg" alt="Raja Rani"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Hey%20Baby-SenSongsMp3.Co.mp3">
+    <span class="song-title">Hey Baby</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Ayyare-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ayyare</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Challaga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Challaga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Nee%20Valle-SenSongsMp3.Co.mp3">
+    <span class="song-title">Nee Valle</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Oday%20Oday-SenSongsMp3.Co.mp3">
+    <span class="song-title">Oday Oday</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Vinave%20Vinave-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vinave Vinave</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/A%20Love%20Life-SenSongsMp3.Co.mp3">
+    <span class="song-title">A Love Life</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="rangam">Rangam (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Rangam-2011jpeg-300x300.jpg" alt="Rangam"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/01%20-%20Enduko%20Emo%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Enduko Emo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/02%20-%20Gala%20Gala%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Gala Gala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/03%20-%20Ee%20Manchullo%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Ee Manchullo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/04%20-%20Aga%20Naga%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Aga Naga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/05%20-%20Masthishkamla%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Masthishkamla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/06%20-%20Nemali%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Nemali</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Oohalu Gusagusalade">Oohalu Gusagusalade (2014)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Oohalu-Gusagusalade-2014jpeg-300x300.jpg" alt="Oohalu Gusagusalade"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/43%20-%20Oohalu%20Gusagusalade%20(2014)/Eviti%20Hadavidi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Eviti Hadavidi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/43%20-%20Oohalu%20Gusagusalade%20(2014)/Inthakante-SenSongsMp3.Co.mp3">
+    <span class="song-title">Inthakante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/43%20-%20Oohalu%20Gusagusalade%20(2014)/Em%20Sandheham%20Ledhu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Em Sandheham Ledhu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/43%20-%20Oohalu%20Gusagusalade%20(2014)/Inthakante%20Vere-SenSongsMp3.Co.mp3">
+    <span class="song-title">Inthakante Vere</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Karthikeya">Karthikeya (2014)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Karthikeya-2014jpeg-300x300.jpg" alt="Karthikeya"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/05%20-%20Inthalo%20Ennenni%20Vinthalo%20Female.mp3">
+    <span class="song-title">Inthalo Ennenni Vinthalo Female</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/03%20-%20Inthalo%20Ennenni%20Vinthalo%20Male.mp3">
+    <span class="song-title">Inthalo Ennenni Vinthalo Male</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/01%20-%20Prasnante.mp3">
+    <span class="song-title">Prasnante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/04%20-%20Punnami%20Vennelake.mp3">
+    <span class="song-title">Punnami Vennelake</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/06%20-%20Rise%20Of%20Karthikeya.mp3">
+    <span class="song-title">Rise Of Karthikeya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Sye">Sye (2004)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/10/Sye-2004jpeg-300x300.jpg" alt="Sye"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Ganga%20A%20C%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Ganga A C</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Pantham%20Pantham%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Pantham Pantham</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Nalla%20Nallani%20Kalla%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Nalla Nallani Kalla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Chataina%20Bujjaina%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Chataina Bujjaina</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Gutlovundi%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Gutlovundi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Appudappudu%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Appudappudu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Oy">Oy! (2009)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Oy-2009jpeg-300x300.jpg" alt="Oy!"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/01%20-%20Oy%21%20Oy%21%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Oy! Oy!</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/02%20-%20Saradaga%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Saradaga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/03%20-%20Waiting%20For%20You%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Waiting For You</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/04%20-%20Anukoledenadu%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Anukoledenadu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/06%20-%20Seheri%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Seheri</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/05%20-%20Povodhe%20Prema%20-%20SenSongsMp3.co.mp3">
+    <span class="song-title">Povodhe Prema</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Kanchana">Kanchana (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Kanchana-2011jpeg-300x300.jpg" alt="Kanchana"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Jackson%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Jackson</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Kanney%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Kanney</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Nalupu%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Nalupu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Nincho%20Nincho%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Nincho Nincho</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Vilaya%20Pralaya%20Moorthy%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Vilaya Pralaya Moorthy</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Potugadu">Potugadu (2013)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Potugadu-jpeg-300x300.jpg" alt="Potugadu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Action%20-%20The%20Distraction%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Action - The Distraction</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Bindass%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Bindass</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Bujji%20Pilla%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Bujji Pilla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Bujji%20Pilla%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Bujji Pilla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Love%20Theme%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Love Theme</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Potugadu%20Mashup%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Potugadu Mashup</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Potugadu%20Theme%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Potugadu Theme</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Pyar%20Mein%20Padipoya%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Pyar Mein Padipoya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Sloka%20Theme%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Sloka Theme</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Super%20Figure%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Super Figure</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Sukumarudu">Sukumarudu (2013)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Sukumarudu-jpeg-300x300.jpg" alt="Sukumarudu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Manasuna%20Nuvvele%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Manasuna Nuvvele</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Manasuna%20Veyyi%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Manasuna Veyyi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Neelakashamlo%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Neelakashamlo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/O%20Baby%20O%20Baby%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">O Baby O Baby</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Sukumarudu%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Sukumarudu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Tongi%20Tongi%20(Club%20Mix)%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Tongi Tongi (Club Mix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Tongi%20Tongi%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Tongi Tongi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="I_Manoharudu">I (Manoharudu) (2014)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/10/I-Manoharudu-2014jpeg.jpg" alt="I (Manoharudu)"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/05%20-%20Ayila%20Ayila.mp3">
+    <span class="song-title">Ayila Ayila</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/03%20-%20Ladiyo.mp3">
+    <span class="song-title">Ladiyo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/06%20-%20Nuvvunte%20Naa%20Jathagaa%20(Reprise).mp3">
+    <span class="song-title">Nuvvunte Naa Jathagaa (Reprise)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/02%20-%20Nuvvunte%20Naa%20Jathagaa.mp3">
+    <span class="song-title">Nuvvunte Naa Jathagaa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/07%20-%20Pareshanayya%20(Remix).mp3">
+    <span class="song-title">Pareshanayya (Remix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/01%20-%20Pareshanayya.mp3">
+    <span class="song-title">Pareshanayya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/04%20-%20Poolane%20Kunukeyamantaa.mp3">
+    <span class="song-title">Poolane Kunukeyamantaa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Dj_Duvvada_Jagannadham">Dj – Duvvada Jagannadham (2017)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Dj-Duvvada-Jagannadham-2017jpeg-300x300.jpg" alt="Dj – Duvvada Jagannadham"></center>
+<li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/DJ%20Sharanam%20Bhaje%20Bhaje-SenSongsMp3.Co.mp3">
+    <span class="song-title">DJ Sharanam Bhaje Bhaje</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/Gudilo%20Badilo%20Madilo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Gudilo Badilo Madilo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/Mecchuko-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mecchuko</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/Seeti%20Maar-SenSongsMp3.Co.mp3">
+    <span class="song-title">Seeti Maar</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/Box%20Baddhalai%20Poye-SenSongsMp3.Co.mp3">
+    <span class="song-title">Box Baddhalai Poye</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Darling">Darling (2010)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Darling-jpeg-270x300.jpg" alt="Darling"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/Bulle-SenSongsMp3.Co.mp3">
+    <span class="song-title">Bulle</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/Hosahore-SenSongsMp3.Co.mp3">
+    <span class="song-title">Hosahore</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/Inka%20Edo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Inka Edo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/Neeve-SenSongsMp3.Co.mp3">
+    <span class="song-title">Neeve</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/YeYo-SenSongsMp3.Co.mp3">
+    <span class="song-title">YeYo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="1_Nenokkadine">1 Nenokkadine (2014)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/1-Nenokkadine-jpeg-300x300.jpg" alt="1 Nenokkadine"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/Aww%20Tuzo%20Mogh%20Korta-SenSongsMp3.Co.mp3">
+    <span class="song-title">Aww Tuzo Mogh Korta</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/London%20Babu%20London%20Babu-SenSongsMp3.Co.mp3">
+    <span class="song-title">London Babu London Babu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/O%20Sayonara%20Sayonara-SenSongsMp3.Co.mp3">
+    <span class="song-title">O Sayonara Sayonara</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/Who%20Are%20You-SenSongsMp3.Co.mp3">
+    <span class="song-title">Who Are You</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/You%20Are%20My%20Love-SenSongsMp3.Co.mp3">
+    <span class="song-title">You Are My Love</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Businessman">Businessman (2012)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Businessman-2012.jpg" alt="Businessman"height="300px"width="300px"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Mumbai-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mumbai</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Sir%20Osthara-SenSongsMp3.Co.mp3">
+    <span class="song-title">Sir Osthara</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Pilla%20Chao-SenSongsMp3.Co.mp3">
+    <span class="song-title">Pilla Chao</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Chandamama-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chandamama</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Bad%20Boys-SenSongsMp3.Co.mp3">
+    <span class="song-title">Bad Boys</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Businessman%20Theme-SenSongsMp3.Co.mp3">
+    <span class="song-title">Businessman Theme</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://mp3teluguwap.net/mp3/111/Bussinessman/Rage%20Of%20Surya.mp3">
+    <span class="song-title">Rage Of Surya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Chirutha">Chirutha (2007)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/chirutha-jpeg-300x300.jpg" alt="Chirutha"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Ivala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ivala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Kannethi%20(Bit)-SenSongsMp3.Co.mp3">
+    <span class="song-title">Kannethi (Bit)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Chamka%20Chamka-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chamka Chamka</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Innallu%20(Bit)-SenSongsMp3.Co.mp3">
+    <span class="song-title">Innallu (Bit)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Maro%20Maro-SenSongsMp3.Co.mp3">
+    <span class="song-title">Maro Maro</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Endhuko%20Pichi%20Pichi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Endhuko Pichi Pichi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Love%20U%20Raa-SenSongsMp3.Co.mp3">
+    <span class="song-title">Love U Raa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Yamaho%20Yama-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yamaho Yama</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Racha">Racha (2012)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Racha-2012posters-saavn-300x300.jpg" alt="Racha"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Singareniundhi-SenSongsMp3.Com.mp3">
+    <span class="song-title">Singareniundhi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Oka%20Paadam-SenSongsMp3.Com.mp3">
+    <span class="song-title">Oka Paadam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Dillaku%20Dillaku-SenSongsMp3.Com.mp3">
+    <span class="song-title">Dillaku Dillaku</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Vaana%20Vaana%20(Remix)-SenSongsMp3.Com.mp3">
+    <span class="song-title">Vaana Vaana (Remix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Racha-SenSongsMp3.Com.mp3">
+    <span class="song-title">Racha</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Magadheera">Magadheera (2009)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Magadheera-2009jpeg-300x300.jpg" alt="Magadheera"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Rolling%20Title%20Music-SenSongsMp3.Com.mp3">
+    <span class="song-title">Rolling Title Music</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Bangaru%20Kodipetta-SenSongsMp3.Com.mp3">
+    <span class="song-title">Bangaru Kodipetta</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Dheera%20Dheera%20Dheera-SenSongsMp3.Com.mp3">
+    <span class="song-title">Dheera Dheera Dheera</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Jorsey-SenSongsMp3.Com.mp3">
+    <span class="song-title">Jorsey</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Nakosam%20Nuvu-SenSongsMp3.Com.mp3">
+    <span class="song-title">Nakosam Nuvu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Panchadhara%20Bomma-SenSongsMp3.Com.mp3">
+    <span class="song-title">Panchadhara Bomma</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Orange">Orange (2010)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Orange-2010jpeg-300x300.jpg" alt="Orange"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/5-%20O%20Range-SenSongsMp3.Co.mp3">
+    <span class="song-title">O Range</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/6-Rooba%20Rooba-SenSongsMp3.Co.mp3">
+    <span class="song-title">Rooba Rooba</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/3-Nenu%20Nuvvantu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Nenu Nuvvantu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/2-Chilipiga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chilipiga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/1-Ola%20Olaala%20Ala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ola Olaala Ala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/4-Hello%20Rammante-SenSongsMp3.Co.mp3">
+    <span class="song-title">Hello Rammante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Panja">Panja (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Panja-2011jpeg-300x300.jpg" alt="Panja"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Anukoneledhugaa-SenSongsMp3.Co.mp3">
+    <span class="song-title">Anukoneledhugaa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Ela%20Ela-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ela Ela</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Kshanam%20Kshanam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Kshanam Kshanam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Panja-SenSongsMp3.Co.mp3">
+    <span class="song-title">Panja</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Paparayudu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Paparayudu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja(2011)/Veyira%20Cheyyi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Veyira Cheyyi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="KomaramPuli">Komaram Puli (2010)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Komaram-Puli-jpeg-300x300.jpg" alt="Komaram Puli"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Amma%20Thale-SenSongsMp3.Co.mp3">
+    <span class="song-title">Amma Thale</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Dochey-SenSongsMp3.Co.mp3">
+    <span class="song-title">Dochey</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Maaralente-SenSongsMp3.Co.mp3">
+    <span class="song-title">Maaralente</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Maham%20Maye-SenSongsMp3.Co.mp3">
+    <span class="song-title">Maham Maye</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Namakame-SenSongsMp3.Co.mp3">
+    <span class="song-title">Namakame</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Power%20Star-SenSongsMp3.Co.mp3">
+    <span class="song-title">Power Star</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Theenmar">Theenmar (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Theenmar-jpeg.jpg" alt="Theenmar"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Aale%20Baale-SenSongsMp3.Co.mp3">
+    <span class="song-title">Aale Baale</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Vayyarala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vayyarala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Chiguru%20Boniya-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chiguru Boniya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Sri%20Ganga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Sri Ganga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Barbie%20Bommaki-SenSongsMp3.Co.mp3">
+    <span class="song-title">Barbie Bommaki</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Gelupu%20Thalupule-SenSongsMp3.Co.mp3">
+    <span class="song-title">Gelupu Thalupule</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Kick2">Kick 2 (2015)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Kick-2-2015jpeg-300x300.jpg" alt="Kick 2"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Janda%20Pai%20Kapiraju%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Janda Pai Kapiraju</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Kick%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Kick</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Masthani%20Masthani%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Masthani Masthani</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Mummy%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Mummy</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Nuvve%20Nuvve%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Nuvve Nuvve</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Temple%20Song%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Temple Song</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="BengalTiger">Bengal Tiger (2015)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Bengal-Tiger-2015jpeg-300x300.jpg" alt="Bengal Tiger"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Bengal%20Tiger%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Bengal Tiger</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Aasia%20Khantamlo%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Aasia Khantamlo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Chupulatho%20Deepala%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Chupulatho Deepala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Hey%20Banchani%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Hey Banchani</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Raaye%20Raaye%20Chinni%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Raaye Raaye Chinni</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Oosaravelli">Oosaravelli (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Oosaravelli-jpeg-300x300.jpg" alt="Oosaravelli"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Brathakaali-SenSongsMp3.Co.mp3">
+    <span class="song-title">Brathakaali</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Dandiya%20India-SenSongsMp3.Co.mp3">
+    <span class="song-title">Dandiya India</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Love%20Ante%20Caring-SenSongsMp3.Co.mp3">
+    <span class="song-title">Love Ante Caring</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Nenante%20Naaku-SenSongsMp3.Co.mp3">
+    <span class="song-title">Nenante Naaku</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Niharika-SenSongsMp3.Co.mp3">
+    <span class="song-title">Niharika</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Oosaravelli%20%28Theme%20Song%29-SenSongsMp3.Co.mp3">
+    <span class="song-title">Oosaravelli (Theme Song)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Sri%20Anjaneyam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Sri Anjaneyam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Yelango%20Yelango-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yelango Yelango</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Baadshah">Baadshah (2013)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Baadshah-jpeg-300x300.jpg" alt="Baadshah"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Baadshah-SenSongsMp3.Co.mp3">
+    <span class="song-title">Baadshah</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Banthi%20Poola%20Janaki-SenSongsMp3.Co.mp3">
+    <span class="song-title">Banthi Poola Janaki</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Diamond%20Girl-SenSongsMp3.Co.mp3">
+    <span class="song-title">Diamond Girl</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Rangoli%20Rangoli-SenSongsMp3.Co.mp3">
+    <span class="song-title">Rangoli Rangoli</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Sairo%20Sairo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Sairo Sairo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Welcome%20Kanakam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Welcome Kanakam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Brindavanam">Brindavanam (2010)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Brindavanam-jpeg-300x300.jpg" alt="Brindavanam"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Chinnadho-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chinnadho</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Eyi%20Raja-SenSongsMp3.Co.mp3">
+    <span class="song-title">Eyi Raja</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Mojjaray-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mojjaray</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Nijamena-SenSongsMp3.Co.mp3">
+    <span class="song-title">Nijamena</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Oopirage-SenSongsMp3.Co.mp3">
+    <span class="song-title">Oopirage</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Theme%20Of%20Hero-SenSongsMp3.Co.mp3">
+    <span class="song-title">Theme Of Hero</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Vachadura-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vachadura</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Yuvakula-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yuvakula</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Rebal">Rebal (2012)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/rebal-jpeg-300x300.jpg" alt="Rebal"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Deepali-SenSongsMp3.Co.mp3">
+    <span class="song-title">Deepali</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Excellent%20Ne%20Figure%20%28Remix%29-SenSongsMp3.Co.mp3">
+    <span class="song-title">Excellent Ne Figure (Remix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Google-SenSongsMp3.Co.mp3">
+    <span class="song-title">Google</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Keka-SenSongsMp3.Co.mp3">
+    <span class="song-title">Keka</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Orinayano-SenSongsMp3.Co.mp3">
+    <span class="song-title">Orinayano</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Pataas">Pataas (2015)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Pataas-jpeg-300x300.jpg" alt="Pataas"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Arey%20O%20Samba%20(Remix)%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Arey O Samba (Remix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Dhamki%20Maaro%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Dhamki Maaro</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Osi%20Chinnadana%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Osi Chinnadana</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Power%20Unnodu%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Power Unnodu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Tappa%20Tapam%20-%20SenSongsmp3.Co.mp3">
+    <span class="song-title">Tappa Tapam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Badri">Badri (2001)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Badri-jpeg-300x300.jpg" alt="Badri"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Am%20Indian-SenSongsMp3.Co.mp3">
+    <span class="song-title">Am Indian</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Bangala%20Kathamlo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Bangala Kathamlo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Chali%20pidugullo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chali pidugullo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Varamanti%20Manase-SenSongsMp3.Co.mp3">
+    <span class="song-title">Varamanti Manase</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Vevela%20Mainala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vevela Mainala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Yey%20Chikitha-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yey Chikitha</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Balu">Balu (2005)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Balu-jpeg.jpg" alt="Balu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Inthe%20InthintheSenSongsMp3.Co.mp3">
+    <span class="song-title">Inthe Inthinthe</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Lokale%20Gelavaga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Lokale Gelavaga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Athi%20Methani-SenSongsMp3.Co.mp3">
+    <span class="song-title">Athi Methani</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Neelo%20Jarige-SenSongsMp3.Co.mp3">
+    <span class="song-title">Neelo Jarige</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Hut%20Hutja-SenSongsMp3.Co.mp3">
+    <span class="song-title">Hut Hutja</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Kannu%20Kottina-SenSongsMp3.Co.mp3">
+    <span class="song-title">Kannu Kottina</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Bangaram">Bangaram (2006)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Bangaram-jpeg-300x300.jpg" alt="Bangaram"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Jai%20Shambo%20Shambo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Jai Shambo Shambo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Yegire%20Chilakamma-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yegire Chilakamma</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ra Ra Bangaram</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Maro%20Masti%20Maro-SenSongsMp3.Co.mp3">
+    <span class="song-title">Maro Masti Maro</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram%20Mix-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ra Ra Bangaram Mix</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Chedugudante-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chedugudante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Annavaram">Annavaram (2006)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Annavaram-jpeg-300x300.jpg" alt="Annavaram"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Annayya%20Annavante-SenSongsMp3.Co.mp3">
+    <span class="song-title">Annayya Annavante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Lucia-SenSongsMp3.Co.mp3">
+    <span class="song-title">Lucia</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Mehabooba-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mehabooba</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Neevalle%20Neevalle-SenSongsMp3.Co.mp3">
+    <span class="song-title">Neevalle Neevalle</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Raakshasa%20Rajyam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Raakshasa Rajyam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Jalsa">Jalsa(2008)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Jalsa2008jpeg-300x300.jpg" alt="Jalsa"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Chalore%20Chalore%20Chal%20%28Hindi%29-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chalore Chalore Chal (Hindi)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Chalore%20Chalore%20Chal%20%28Telugu%29-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chalore Chalore Chal (Telugu)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Gaallo%20Thelinattunde-SenSongsMp3.Co.mp3">
+    <span class="song-title">Gaallo Thelinattunde</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jalsa-SenSongsMp3.Co.mp3">
+    <span class="song-title">Jalsa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jennifer%20Lopez-SenSongsMp3.Co.mp3">
+    <span class="song-title">Jennifer Lopez</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating%20%28Remix%29-SenSongsMp3.Co.mp3">
+    <span class="song-title">My Heart Is Beating (Remix)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating-SenSongsMp3.Co.mp3">
+    <span class="song-title">My Heart Is Beating</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/You%20&%20I-SenSongsMp3.Co.mp3">
+    <span class="song-title">You & I</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Lover">Lover (2018)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/lover-jpeg-1-300x300.jpg" alt="Lover"></center>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Naalo Chilipi Kala (Theme Song)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/What%20A%20Ammayi%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">What A Ammayi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Adbhutam%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Adbhutam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Ramuni%20Banamla%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Ramuni Banamla</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Anthe%20Kada%20Mari%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Anthe Kada Mari</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Yevaipuga%20Naa%20Choopu%20Saagali%20(Sad%20Song)%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Yevaipuga Naa Choopu Saagali (Sad Song)</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Shakti">Shakti (2011)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Shakti-jpeg-300x300.jpg" alt="Shakti"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Maha%20Rudra%20Shakti-SenSongsMp3.Co.mp3">
+    <span class="song-title">Maha Rudra Shakti</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Mahishasura%20Mardhini-SenSongsMp3.Con.mp3">
+    <span class="song-title">Mahishasura Mardhini</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Mathileka%20Pichiga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mathileka Pichiga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Prema%20Desham-SenSongsMp3.Co.mp3">
+    <span class="song-title">Prema Desham</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Surro%20Surra-SenSongsMp3.Co.mp3">
+    <span class="song-title">Surro Surra</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Thaliya%20Thaliya-SenSongsMp3.Co.mp3">
+    <span class="song-title">Thaliya Thaliya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Yamaga%20Unde-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yamaga Unde</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Adhurs">Adhurs (2010)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Adhurs-jpeg-300x300.jpg" alt="Adhurs"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Assalaam%20Valekhum-SenSongsMp3.Co.mp3">
+    <span class="song-title">Assalaam Valekhum</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Chandrakala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chandrakala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Chary-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chary</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Neethone-SenSongsMp3.Co.mp3">
+    <span class="song-title">Neethone</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Shiva%20Shambho-SenSongsMp3.Co.mp3">
+    <span class="song-title">Shiva Shambho</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<hr>
+<center><h3 id="Pokiri">Pokiri (2006)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Pokiri-jpeg-300x300.jpg" alt="Pokiri"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Devuda-SenSongsMp3.Co.mp3">
+    <span class="song-title">Devuda</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Dole%20Dole-SenSongsMp3.Co.mp3">
+    <span class="song-title">Dole Dole</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Gala%20Gala-SenSongsMp3.Co.mp3">
+    <span class="song-title">Gala Gala</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Ippatikinka-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ippatikinka</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Jagadame-SenSongsMp3.Co.mp3">
+    <span class="song-title">Jagadame</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Choododdu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Choododdu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Athadu">Athadu (2005)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Athadu-jpeg-300x300.jpg" alt="Athadu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Adharaku-SenSongsMp3.Co.mp3">
+    <span class="song-title">Adharaku</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Pillagali-SenSongsMp3.Co.mp3">
+    <span class="song-title">Pillagali</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Avunu%20Nizam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Avunu Nizam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Chandamama-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chandamama</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Neetho%20Cheppana-SenSongsMp3.Co.mp3">
+    <span class="song-title">Neetho Cheppana</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Pilichina-SenSongsMp3.Co.mp3">
+    <span class="song-title">Pilichina</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Seethamma_Vakitlo_Sirimalle_Chettu">Seethamma Vakitlo Sirimalle Chettu (2013)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Seethamma-Vakitlo-Sirimalle-Chettu-jpeg-300x300.jpg" alt="Seethamma Vakitlo Sirimalle Chettu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Yem%20Cheddaam-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yem Cheddaam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Aaraduguluntada-SenSongsMp3.Co.mp3">
+    <span class="song-title">Aaraduguluntada</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Seethamma%20Vakitlo%20Sirimalle%20Chettu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Seethamma Vakitlo Sirimalle Chettu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Inka%20Cheppaale-SenSongsMp3.Co.mp3">
+    <span class="song-title">Inka Cheppaale</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Mari%20Antaga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mari Antaga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Vaana%20Chinukulu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vaana Chinukulu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Thammudu">Thammudu (1999)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Thammudu-jpeg-300x300.jpg" alt="Thammudu"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Made%20In%20Andhra%20Student-SenSongsMp3.Co.mp3">
+    <span class="song-title">Made In Andhra Student</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Vayyari%20Bhama-SenSongsMp3.Co.mp3">
+    <span class="song-title">Vayyari Bhama</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Edola%20Vundi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Edola Vundi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Pedavi%20Datani%20Matokatundi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Pedavi Datani Matokatundi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Travelling%20Soldier%20-%20SenSongsMp3.Co.mp3">
+    <span class="song-title">Travelling Soldier</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/College%20Blues-SenSongsMp3.Co.mp3">
+    <span class="song-title">College Blues</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Kala%20Kala%20Lu%20Kila%20Kila%20Lu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Kala Kala Lu Kila Kila Lu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Tholi_Prema">Tholi Prema (1998)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Tholi-Prema-1998jpeg-300x300.jpg" alt="Tholi Prema"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Ee%20Manase%20Se-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ee Manase Se</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Yemaindo%20Yemo-SenSongsMp3.Co.mp3">
+    <span class="song-title">Yemaindo Yemo</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Emi%20Sodara-SenSongsMp3.Co.mp3">
+    <span class="song-title">Emi Sodara</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Gagananiki-SenSongsMp3.Co.mp3">
+    <span class="song-title">Gagananiki</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Romance%20Rythms-SenSongsMp3.Co.mp3">
+    <span class="song-title">Romance Rythms</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Gudumba_Shankar">Gudumba Shankar (2004)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Gudumba-Shankar-jpeg-300x300.jpg" alt="Gudumba Shankar"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chiguraku%20Chaatu-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chiguraku Chaatu</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chilakamma-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chilakamma</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chitti%20Nadumune-SenSongsMp3.Co.mp3">
+    <span class="song-title">Chitti Nadumune</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Emantaro-SenSongsMp3.Co.mp3">
+    <span class="song-title">Emantaro</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Killi%20Killi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Killi Killi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Le%20Le%20Le%20Le-SenSongsMp3.Co.mp3">
+    <span class="song-title">Le Le Le Le</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Kushi">Kushi (2001)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Kushi-jpeg-300x300.jpg" alt="Kushi"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Aaduvari%20Matalaku-SenSongsMp3.Co.mp3">
+    <span class="song-title">Aaduvari Matalaku</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ammaye%20Sannaga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ammaye Sannaga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Cheliya%20Cheliya-SenSongsMp3.Co.mp3">
+    <span class="song-title">Cheliya Cheliya</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Holi%20Holi-SenSongsMp3.Co.mp3">
+    <span class="song-title">Holi Holi</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Premante-SenSongsMp3.Co.mp3">
+    <span class="song-title">Premante</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ye%20Mera%20Jahan-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ye Mera Jahan</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Happy">Happy (2006)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Happy-2006jpeg-1-300x300.jpg" alt="Happy"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Chal%20Chal%20Re-SenSongsMp3.Com.mp3">
+    <span class="song-title">Chal Chal Re</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Happy-SenSongsMp3.Com.mp3">
+    <span class="song-title">Happy</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Ossa-SenSongsMp3.Com.mp3">
+    <span class="song-title">Ossa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/I%20Hate%20U-SenSongsMp3.Com.mp3">
+    <span class="song-title">I Hate U</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Yegire%20Mabbulona-SenSongsMp3.Com.mp3">
+    <span class="song-title">Yegire Mabbulona</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Nee%20Kosam-SenSongsMp3.Com.mp3">
+    <span class="song-title">Nee Kosam</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+
+<hr>
+<center><h3 id="Arya_2">Arya 2 (2009)</h3></center>
+<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/aarya-2-jpeg-300x300.jpg" alt="Arya 2"></center>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/1-%20Mr.%20Perfect-SenSongsMp3.Co.mp3">
+    <span class="song-title">Mr. Perfect</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/2-Uppenantha-SenSongsMp3.Co.mp3">
+    <span class="song-title">Uppenantha</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/3-Baby%20He%20Loves%20You-SenSongsMp3.Co.mp3">
+    <span class="song-title">Baby He Loves You</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/4-My%20Love%20Is%20Gone-SenSongsMp3.Co.mp3">
+    <span class="song-title">My Love Is Gone</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/5-Karige%20Loga-SenSongsMp3.Co.mp3">
+    <span class="song-title">Karige Loga</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+<li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/6-Ringa%20Ringa-SenSongsMp3.Co.mp3">
+    <span class="song-title">Ringa Ringa</span>
+    <i class="fa-solid fa-play play-button"></i>
+</li>
+</ul>
+
+</ul>
+
+
+
+
+
+
+                
             </ul>
         </section>
-
-        <section id="5" class="section" id="telhap">
-         <header>
-            <h1>Telugu happy</h1>
-         </header>
-            <ul class="songssad" id="song-list">
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Sashi/Sashi%20(2021)/Okey%20Oka%20Lokam%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Okey Oka Lokam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Ishq/Aanandamaanandha%20Madhike%20-%20%20SenSongsMp3.Com.mp3"><span class="song-title">Aanandamaanandha</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Nallamala/1%20-%20Yemunnave%20Pilla%20-%20SenSongsMp3.mp3"><span class="song-title">Yemunnave Pilla</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Ardhashathabdam/Ye%20Kannulu%20Choodani%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Ye Kannulu Choodani</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2022/Love%20Today/Pranam%20Pothunna.mp3"><span class="song-title">Pranam Pothunna</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/WWW/Nailu%20Nadi%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Nailu Nadi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/111/Most%20Eligible%20Bachelor/Most%20Eligible%20Bachelor/Leharaayi.mp3"><span class="song-title">Leharaayi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2021/Rowdy%20Boys/Okariki%20Okarani.mp3"><span class="song-title">Okariki Okarani</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/SR%20Kalyanamandapam/Choosale%20Kallaraa%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Choosale Kallaraa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Orey%20Bujjiga/Ee%20Maya%20Peremita%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ee Maya Peremita</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Orey%20Bujjiga/Kalalu%20Chusina%20Kannuley%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kalalu Chusina Kannuley</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2020/Most%20Eligible%20Bachelor/Most%20Eligible%20Bachelor%20(2020)/Manasa%20Manasa%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Manasa Manasa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Nishabdham/Ninne%20Ninne%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ninne Ninne</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/Lie%20(2017)/Lie%20(2017)/Bombhaat%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bombhaat</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2017/Jaya%20Janaki%20Nayaka%20(2017)/Veede%20Veede%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Veede Veede</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/Hushaaru%20(2018)/Undiporaadhey%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Undiporaadhey</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/Chal%20Mohan%20Ranga%20(2018)/Chal%20Mohan%20Ranga%20(2018)/Ardham%20Leni%20Navvu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ardham Leni Navvu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/96%20(2018)/Kaathalae%20Kaathalae%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kaathalae Kaathalae</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Naalo Chilipi Kala (Theme Song)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Padi%20Padi%20Leche%20Manasu%20(2018)/Padi%20Padi%20Leche%20-%20SenSongsmp3.Co.mp3"><span class="song-title">Padi Padi Leche</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Padi%20Padi%20Leche%20Manasu%20(2018)/Emai%20Poyave%20-%20SenSongsmp3.Co.mp3"><span class="song-title">Emai Poyave</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Padi%20Padi%20Leche%20Manasu%20(2018)/Hrudhayam%20Jaripe%20-%20SenSongsmp3.Co.mp3"><span class="song-title">Hrudhayam Jaripe</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/hq/2018/Geetha%20Govindham/Geetha%20Govindam%20(2018)/Vachindamma%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Vachindamma</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Mr%20Majnu%20(2019)/Mr%20Majnu%20(2019)/Naalo%20Neeku%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Naalo Neeku</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Mr%20Majnu%20(2019)/Mr%20Majnu%20(2019)/Yemainado%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yemainado</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2019/Seemaraja%20(2019)%20-%20Telugu/Vannelaadi%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Vannelaadi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/RX%20100%20(2018)/Pillaa%20Raa%20(Female%20Version)-%20SenSongsMp3.Co.mp3"><span class="song-title">Pillaa Raa (Female Version)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/RX%20100%20(2018)/Reppalaninda%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Reppalaninda</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://mp3teluguwap.net/mp3/2018/RX%20100%20(2018)/Manasunipatti%20Daaram%20Katti%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Manasunipatti Daaram Katti</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202012/05%20-%20Julayi%20(2012)/Pakado%20Pakado%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Pakado Pakado</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202012/05%20-%20Julayi%20(2012)/Oh%20Madhu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Oh Madhu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/05%20-%20Dookudu%20(2011)/Guruvaram%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Guruvaram</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/05%20-%20Dookudu%20(2011)/Chulbul%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Chulbul</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/03%20-%20Badrinath%20(2011)/Ambadhari%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ambadhari</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/03%20-%20Badrinath%20(2011)/Nath%20Nath%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nath Nath</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/03%20-%20Badrinath%20(2011)/Omkareswari%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Omkareswari</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202010/05%20-%20Vedam%20(2010)/Ekkada%20Ekkada%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ekkada Ekkada</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202010/05%20-%20Vedam%20(2010)/Namakame%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Namakame</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202010/03%20-%20Adhurs%20(2009)/Chari%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Chari</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/06%20-%20Kick%20(2009)/Dil%20Kho%20Gaya%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Dil Kho Gaya</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/06%20-%20Kick%20(2009)/Muddhula%20Mannava%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Muddhula Mannava</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/05%20-%20Magadheera%20(2009)/Bangaru%20Kodi%20Petta%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bangaru Kodi Petta</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/05%20-%20Magadheera%20(2009)/Jorsey%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Jorsey</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/05%20-%20Magadheera%20(2009)/Panchadara%20Bomma%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Panchadara Bomma</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202009/03%20-%20Arundhati%20(2009)/Chandamama%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Chandamama</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202008/06%20-%20Jalsa%20(2008)/My%20Heart%20is%20Beating%20-%20SenSongsMp3.Co.mp3"><span class="song-title">My Heart is Beating</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202008/06%20-%20Jalsa%20(2008)/Galileo%20Galileo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Galileo Galileo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202008/04%20-%20Parugu%20(2008)/Nammavemo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nammavemo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202008/03%20-%20Jodhaa%20Akbar%20(2008)/In%20lamhon%20-%20SenSongsMp3.Co.mp3"><span class="song-title">In lamhon</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202008/03%20-%20Jodhaa%20Akbar%20(2008)/Jashn-E-Baharaa%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Jashn-E-Baharaa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202007/05%20-%20Happy%20Days%20(2007)/O%20My%20Friend%20-%20SenSongsMp3.Co.mp3"><span class="song-title">O My Friend</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202002/07%20-%20Manmadhudu%20(2002)/Yemaindhi%20Ee%20Vela%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yemaindhi Ee Vela</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202002/05%20-%20Aadi%20(2002)/Chinuku%20Tane%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Chinuku Tane</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202002/05%20-%20Aadi%20(2002)/Nuvvante%20Naakishtam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvante Naakishtam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202001/07%20-%20Chiru%20Navvuto%20(2000)/Chiluka%20E%20Thodu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Chiluka E Thodu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202001/07%20-%20Chiru%20Navvuto%20(2000)/Kalusukovalani%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kalusukovalani</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202001/07%20-%20Chiru%20Navvuto%20(2000)/Neeku%20Nenu%20Naaku%20Nuvvu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Neeku Nenu Naaku Nuvvu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201999/07%20-%20Tholiprema%20(1998)/Yemaindho%20Teliyadu%20Naku%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yemaindho Teliyadu Naku</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201999/07%20-%20Tholiprema%20(1998)/Ee%20Manase%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ee Manase</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201999/05%20-%20Raja%20(1999)/Raja%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Raja</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201999/05%20-%20Raja%20(1999)/Rekkalu%20Vachina%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Rekkalu Vachina</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201999/02%20-%20Premante%20Idera%20(1998)/Preminchukundam%20Raa%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Preminchukundam Raa</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/10%20-%20Ninne%20Pelladatha%20(1996)/Ninne%20Pelladatha%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ninne Pelladatha</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Manasu%20Padithe%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Manasu Padithe</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Bhamane%20Satyabhamane%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bhamane Satyabhamane</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Rama%20Chilaka%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Rama Chilaka</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201988/08%20-%20Siva%20(1989)/Andamaa%20Nee%20Peremiti%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Andamaa Nee Peremiti</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aapadbandhavudu%20%281992%29/03%20-%20Kaliki%20Chilaka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Kaliki Chilaka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aapadbandhavudu%20%281992%29/01%20-%20Malliswari%20%28Bit%29%20-%20SenSongsMp3.co.mp3"><span class="song-title">Malliswari (Bit)</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aapadbandhavudu%20%281992%29/02%20-%20Sampangi%20Chilaka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sampangi Chilaka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aapadbandhavudu%20%281992%29/04%20-%20Vaana%20Chinukulu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Vaana Chinukulu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/B/Bunny%20%282005%29/01%20-%20Pravarakyudu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Pravarakyudu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Murari%20%282001%29/02%20-%20Chirunavvulatho%20Brathakali%20-%20SenSongsMp3.co.mp3"><span class="song-title">Chirunavvulatho Brathakali</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Murari%20%282001%29/04%20-%20Rara%20Venu%20Gopabala%20-%20SenSongsMp3.co.mp3"><span class="song-title">Rara Venu Gopabala</span><i class="fa-solid fa-play play-button"></i></li>
-
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Atha%20Nee%20Koduku%20Jagatham%20%282001%29/01%20-%20Chakkani%20Chukka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Chakkani Chukka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Atha%20Nee%20Koduku%20Jagatham%20%282001%29/02%20-%20Ela%20Nee%20Daya%20Raadu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Ela Nee Daya Raadu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Atha%20Nee%20Koduku%20Jagatham%20%282001%29/03%20-%20Manishi%20Parikshanincheda%20-%20SenSongsMp3.co.mp3"><span class="song-title">Manishi Parikshanincheda</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Atha%20Nee%20Koduku%20Jagatham%20%282001%29/04%20-%20Thondara%20Padake%20-%20SenSongsMp3.co.mp3"><span class="song-title">Thondara Padake</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aatma%20Bandhuvu%20%281979%29/03%20-%20Dil%20Mile%20-%20SenSongsMp3.co.mp3"><span class="song-title">Dil Mile</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aatma%20Bandhuvu%20%281979%29/02%20-%20Inti%20Korikalu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Inti Korikalu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aatma%20Bandhuvu%20%281979%29/01%20-%20Maa%20Palle%20Paduchu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Maa Palle Paduchu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aatma%20Bandhuvu%20%281979%29/04%20-%20Nuvvu%20Nenu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Nuvvu Nenu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/A/Aatma%20Bandhuvu%20%281979%29/05%20-%20Prema%20Jodi%20-%20SenSongsMp3.co.mp3"><span class="song-title">Prema Jodi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Anjaneyam%20%282004%29/01%20-%20Akasa%20Veedhilo%20-%20SenSongsMp3.co.mp3"><span class="song-title">Akasa Veedhilo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Anjaneyam%20%282004%29/02%20-%20Ayi%20Saraswathi%20-%20SenSongsMp3.co.mp3"><span class="song-title">Ayi Saraswathi</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Anjaneyam%20%282004%29/03%20-%20Kadile%20Nuvvu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Kadile Nuvvu</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Anjaneyam%20%282004%29/04%20-%20Rama%20Rama%20-%20SenSongsMp3.co.mp3"><span class="song-title">Rama Rama</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Sri%20Sri%20Maryada%20Ramanna%20%281997%29/01%20-%20Ayudalaku%20Andarilo%20-%20SenSongsMp3.co.mp3"><span class="song-title">Ayudalaku Andarilo</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Sri%20Sri%20Maryada%20Ramanna%20%281997%29/02%20-%20Maraala%20Maraala%20-%20SenSongsMp3.co.mp3"><span class="song-title">Maraala Maraala</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Sri%20Sri%20Maryada%20Ramanna%20%281997%29/03%20-%20Nee%20Peru%20Gurrala%20-%20SenSongsMp3.co.mp3"><span class="song-title">Nee Peru Gurrala</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Sri%20Sri%20Maryada%20Ramanna%20%281997%29/04%20-%20O%20Nee%20Veerula%20Doragari%20-%20SenSongsMp3.co.mp3"><span class="song-title">O Nee Veerula Doragari</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Sri%20Sri%20Maryada%20Ramanna%20%281997%29/05%20-%20O%20Ree%20Veerude%20-%20SenSongsMp3.co.mp3"><span class="song-title">O Ree Veerude</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/02%20-%20Jagadhanandha%20Karaka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Jagadhanandha Karaka</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/01%20-%20Sita%20Seemantham%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sita Seemantham</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/03%20-%20Sri%20Rama%20Lera%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sri Rama Lera</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/02%20-%20Jagadhanandha%20Karaka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Jagadhanandha Karaka</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/01%20-%20Sita%20Seemantham%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sita Seemantham</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Sri%20Ramarajyam%20%282011%29/03%20-%20Sri%20Rama%20Lera%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sri Rama Lera</span><i class="fa-solid fa-play play-button"></i></li>
-
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/13%20-%20Tholivalape%20%28Title%29%20-%20SenSongsMp3.co.mp3"><span class="song-title">Tholivalape (Title)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Tarakarama%20Rahasyam%20%281947%29/04%20-%20Dhanudhanyam%20-%20SenSongsMp3.co.mp3"><span class="song-title">Dhanudhanyam</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/M/Manasantha%20Nuvve%20(2001)/01%20-%20Cheppave%20Prema%20-%20SenSongsMp3.co.mp3"><span class="song-title">Cheppave Prema - Manasantha Nuvve (2001)</span><i class="fa-solid fa-play play-button"></i></li>
-               <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/all/A/Abhinandana%20(1988)/07%20-%20Premaledani%20[www.SenSongsMp3.co].mp3"><span class="song-title">Premaledani - Abhinandana (1988)</span><i class="fa-solid fa-play play-button"></i></li>
-         </ul>
-        </section>
-
-        <section id="6" class="section" id="teldan">
-         <header>
-            <h1>Telugu dance</h1>
-         </header>
-            <ul class="songssad" id="song-list">
-                  <li data-src="https://mp3teluguwap.net/mp3/2019/Guna%20369%20(2019)%20-%20128KBPS/Usuremo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Usuremo</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2018/Chalo%20(2017)/Chalo%20(2018)/Choosi%20Chudangane%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Choosi Chudangane</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2019/Gangleader%20(2019)/GangLeader%20(2019)/Ninnu%20Chuse%20Anandamlo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ninnu Chuse Anandamlo</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2021/Atithi%20Devobhava/Baguntundi.mp3"><span class="song-title">Baguntundi</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2021/Jetty/Dooram%20Karigina.mp3"><span class="song-title">Dooram Karigina</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2021/Tuck%20Jagadish/Tuck%20Jagadish/1%20-%20Inkosaari%20Inkosaari%20-%20SenSongsMp3.Com_94.mp3"><span class="song-title">Inkosaari Inkosaari</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2020/30%20Rojullo%20Preminchadam%20Ela/Neeli%20Neeli%20Aakasam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Neeli Neeli Aakasam</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2022/Shikaru/Manasu%20Dhari%20Thappene.mp3"><span class="song-title">Manasu Dhari Thappene</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2021/Miles%20of%20Love/Teliyade%20Teliyade%20-%20SenSongsMp3.Com.mp3"><span class="song-title">Teliyade Teliyade</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2019/Raahu%20(2019)/Emo%20Emo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Emo Emo</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/hq/2018/Chalo%20(2017)/Chalo%20(2018)/Cheppave%20Balamani%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Cheppave Balamani</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Gaali%20Vaaluga%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Gaali Vaaluga</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/mp3/2018/Amar%20Akbar%20Anthony%20(2018)/Amar%20Akbar%20Anthony%20(2018)/Kalala%20Kadhala%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Kalala Kadhala</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://mp3teluguwap.net/hq/2018/Hello%20(2017)/Hello%20(2017)%20-%20128%20Kbps/Yevevo%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Yevevo</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Thirupeeka%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Thirupeeka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Nuvvu%20Nenu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvu Nenu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Hrudayam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Hrudayam</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Bangaru%20Kodi%20Petta%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bangaru Kodi Petta</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Alanati%20Ramachandrudu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Alanati Ramachandrudu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Andala%20Chinni%20Devatha%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Andala Chinni Devatha</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201998/05%20-%20Aavida%20Maa%20Aavide%20(1998)/Cheliya%20Cheliya%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Cheliya Cheliya</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/10%20-%20Ninne%20Pelladatha%20(1996)/Ninne%20Pelladatha%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Ninne Pelladatha</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Manasu%20Padithe%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Manasu Padithe</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Bhamane%20Satyabhamane%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bhamane Satyabhamane</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%201997/06%20-%20Pelli%20(1997)/Rama%20Chilaka%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Rama Chilaka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <!-- Dance Songs -->
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Thirupeeka%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Thirupeeka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Nuvvu%20Nenu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Nuvvu Nenu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/03%20-%20Jayam%20(2000)/Hrudayam%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Hrudayam</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Bangaru%20Kodi%20Petta%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Bangaru Kodi Petta</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Alanati%20Ramachandrudu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Alanati Ramachandrudu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202000/02%20-%20Murari%20(2000)/Alanati%20Ramachandrudu%20-%20SenSongsMp3.Co.mp3"><span class="song-title">Alanati Ramachandrudu</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Swamy%20%282004%29/01%20-%20Swamy%20-%20SenSongsMp3.co.mp3"><span class="song-title">Swamy</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Swamy%20%282004%29/02%20-%20Shiva%20Poojaku%20-%20SenSongsMp3.co.mp3"><span class="song-title">Shiva Poojaku</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/04%20-%20Chakka%20Chakka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Chakka Chakka</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/B/Bunny%20%282005%29/03%20-%20Bunny%20Bunny%20-%20SenSongsMp3.co.mp3"><span class="song-title">Bunny Bunny</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/B/Bunny%20%282005%29/04%20-%20Gudilo%20Badilo%20-%20SenSongsMp3.co.mp3"><span class="song-title">Gudilo Badilo</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/B/Bunny%20%282005%29/05%20-%20Manasuna%20-%20SenSongsMp3.co.mp3"><span class="song-title">Manasuna</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/B/Bunny%20%282005%29/02%20-%20My%20Love%20-%20SenSongsMp3.co.mp3"><span class="song-title">My Love</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sivaiah%20%282003%29/01%20-%20Anandame%20-%20SenSongsMp3.co.mp3"><span class="song-title">Anandame</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sivaiah%20%282003%29/02%20-%20Kondaveeti%20Sivaiah%20-%20SenSongsMp3.co.mp3"><span class="song-title">Kondaveeti Sivaiah</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sivaiah%20%282003%29/03%20-%20Nee%20Chethilo%20-%20SenSongsMp3.co.mp3"><span class="song-title">Nee Chethilo</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sivaiah%20%282003%29/04%20-%20Neetho%20Adugu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Neetho Adugu</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Valli%20%282001%29/03%20-%20Guruvara%20Naadi%20-%20SenSongsMp3.co.mp3"><span class="song-title">Guruvara Naadi</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Valli%20%282001%29/04%20-%20Naa%20Hrudayam%20Nithin%20-%20SenSongsMp3.co.mp3"><span class="song-title">Naa Hrudayam Nithin</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Valli%20%282001%29/01%20-%20Punnami%20Naagu%20-%20SenSongsMp3.co.mp3"><span class="song-title">Punnami Naagu</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Valli%20%282001%29/02%20-%20Sarigama%20Padanisa%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sarigama Padanisa</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sri%20Valli%20%282001%29/05%20-%20Sri%20Valli%20-%20SenSongsMp3.co.mp3"><span class="song-title">Sri Valli</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Simhadri%20%282003%29/01%20-%20Chilaka%20Gorinka%20-%20SenSongsMp3.co.mp3"><span class="song-title">Chilaka Gorinka</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Suvarna%20Sundari%20%281953%29/01%20-%20Babuji%20Dheere%20Chalna%20-%20SenSongsMp3.co.mp3"><span class="song-title">Babuji Dheere Chalna</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/01%20-%20Beeja%20Malle%20-%20SenSongsMp3.co.mp3"><span class="song-title">Beeja Malle</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/03%20-%20Jhalak%20Dikhlaja%20-%20SenSongsMp3.co.mp3"><span class="song-title">Jhalak Dikhlaja</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/06%20-%20Taj%20Mahal%20Taj%20Mahal%20-%20SenSongsMp3.co.mp3"><span class="song-title">Taj Mahal Taj Mahal</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/01%20-%20Beeja%20Malle%20-%20SenSongsMp3.co.mp3"><span class="song-title">Beeja Malle</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/S/Suvarna%20Sundari%20%281953%29/01%20-%20Babuji%20Dheere%20Chalna%20-%20SenSongsMp3.co.mp3"><span class="song-title">Babuji Dheere Chalna</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/03%20-%20Jhalak%20Dikhlaja%20-%20SenSongsMp3.co.mp3"><span class="song-title">Jhalak Dikhlaja</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/06%20-%20Taj%20Mahal%20Taj%20Mahal%20-%20SenSongsMp3.co.mp3"><span class="song-title">Taj Mahal Taj Mahal</span><i class="fa-solid fa-play play-button"></i></li>
-                  <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Taj%20Mahal%20%281995%29/15%20-%20Tholivalape%20-%20SenSongsMp3.co.mp3"><span class="song-title">Tholivalape</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/old%20songs/T/Tarakarama%20Rahasyam%20%281947%29/07%20-%20Pujalona%20Pavulona%20-%20SenSongsMp3.co.mp3"><span class="song-title">Pujalona Pavulona</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Aadavari%20Matalaku%20Ardhale%20Verule%20(2007)/02%20-%20Manasa%20Mannichamma%20%20-%20SenSongsMp3.co.mp3"><span class="song-title">Manasa Mannichamma - Aadavari Matalaku Ardhale Verule (2007)</span><i class="fa-solid fa-play play-button"></i></li>
-                     <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/A/Aadavari%20Matalaku%20Ardhale%20Verule%20(2007)/05%20-%20Allantha%20Doorala%20%20-%20SenSongsMp3.co.mp3"><span class="song-title">Allantha Doorala - Aadavari Matalaku Ardhale Verule (2007)</span><i class="fa-solid fa-play play-button"></i></li>
-            </ul>
-        </section>
-      </section>
-
-      <section id="2" class="section" id="english">
-        <div class="mood">
-            <a href="#engsad" onclick="displayText(7)">Sad</a>
-            <a href="#enghap" onclick="displayText(8)">Happy</a>
-            <a href="#enddan" onclick="displayText(9)">Dance</a>
-        </div>
-        <section id="7" class="section" id="engsad">
-
-        </section>
-
-        <section id="8" class="section" id="enghap">
-
-        </section>
-
-        <section id="9" class="section" id="enddan">
-
-        </section>
-      </section>
-
-
-
-      <section id="3" class="section" id="korea">
-        <div class="drop">
-            <a href="#korsad" onclick="displayText(10)">Sad</a>
-            <a href="#korhap" onclick="displayText(11)">Happy</a>
-            <a href="#kordan" onclick="displayText(12)">Dance</a>
-        </div>
-        <section id="10" class="section" id="korsad">
-
-        </section>
-
-        <section id="11" class="section" id="korhap">
-
-        </section>
-
-        <section id="12" class="section" id="kordan">
-
-        </section>
-      </section>
-
-    <div class="skip">
-        <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
-        <button class="button1" id="play-pause-btn">Play</button>
-        <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
-        <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
-        <button class="button4" id="next-btn">Next</button>
+</section>
+<section id="2" class="section" id="english">
+    <div class="mood">
+        <a href="#engsad" onclick="displayText(7)">Sad</a>
+        <a href="#enghap" onclick="displayText(8)">Happy</a>
+        <a href="#enddan" onclick="displayText(9)">Dance</a>
     </div>
-    
-      <div class="extra">
-         <a id="donate-link" href="#">Donate</a>
-         <p style="color: rgba(255, 255, 255, 0.443);">Contact us :<br> blackswan19ot7@gmail.com</p>
-         <!-- <span style="color: rgba(255, 0, 0, 0.594);">-> New song arrived -->
-     </div>
-     <div id="popup-container">
-      <img id="popup-img" src="https://i.ibb.co/FYZB4cN/20240329-IMP-PY182723215.jpg" alt="Popup Image" width="56%">
-   </div>
-   <script>
-      document.getElementById('donate-link').addEventListener('click', function(event) {
-         event.preventDefault(); // Prevent the default action of the link
-         
-         // Show the pop-up image container
-         document.getElementById('popup-container').style.display = 'block';
-      });
-      
-      document.getElementById('popup-container').addEventListener('click', function() {
-         // Hide the pop-up image container when clicked outside the image
-         this.style.display = 'none';
-      });
-   </script>
-   </body>
-</html>
+    <section id="7" class="section" id="engsad"></section>
+    <section id="8" class="section" id="enghap"></section>
+    <section id="9" class="section" id="enddan"></section>
+</section>
+<section id="3" class="section" id="korea">
+    <div class="drop">
+        <a href="#korsad" onclick="displayText(10)">Sad</a>
+        <a href="#korhap" onclick="displayText(11)">Happy</a>
+        <a href="#kordan" onclick="displayText(12)">Dance</a>
+    </div>
+    <section id="10" class="section" id="korsad"></section>
+    <section id="11" class="section" id="korhap"></section>
+    <section id="12" class="section" id="kordan"></section>
+</section>
+<div class="skip">
+    <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
+    <button class="button1" id="play-pause-btn">Play</button>
+    <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
+    <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
+    <button class="button4" id="next-btn">Next</button>
+</div>
+<div id="popup-container">
+    <img id="popup-img" src="https://i.ibb.co/FYZB4cN/20240329-IMP-PY182723215.jpg" alt="Popup Image" width="56%">
+</div>
+</body></html>
