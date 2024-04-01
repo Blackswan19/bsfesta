@@ -333,7 +333,7 @@ header{
     top: 31%;
 }
 hr{
-    margin-top: -2%;
+    margin-top: 9%;
 }
 .drops{
     position: fixed;
@@ -645,6 +645,9 @@ hr{
     .songssad {
         position: absolute;
         top: 43%;
+    }
+    .songssad img{
+        width: 87%;
     }
     header{
         text-align: center;
