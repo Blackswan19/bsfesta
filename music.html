@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>BS FESTA</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="music.css">
-        <script src="mood.js"></script>
-    </head>
-    <body>
-        <script>
-            function toggleDropdown() {
-                var dropdownContent = document.getElementById("myDropdown");
-                dropdownContent.classList.toggle("show");
-            }
-
-            function displayText(sectionId) {
-                var sections = document.getElementsByClassName("section");
-                for (var i = 0; i < sections.length; i++) {
-                    sections[i].style.display = "none";
-                    // Hide all sections
-                }
-                document.getElementById(sectionId).style.display = "block";
-                // Show selected section
-            }
-        </script>
-        <div class="dropdown">
-            <div class="header">
-                <a style="position: fixed;left: 1%;top: 2%;z-index: 1000000;">BS FESTA</a>
-                <br>
-                <div class="menu">
-                    <a href="music.html">
-                        <i class="fa-solid fa-house"></i>
-                        Home
-                    </a>
-                    <br>
-                    <i class="fa-brands fa-medium"></i>
-                    Mood<br>
-                </div>
-                <div class="drops">
-                    <a href="#telsad" onclick="displayText(4)">Old</a>
-                    <br>
-                    <a href="#telhap" onclick="displayText(5)">New</a>
-                    <br>
-                    <a href="#teldan" onclick="displayText(6)">Fav</a>
-                    <br>
-                </div>
-            </div>
-            <video autoplay loop muted id="video-background">
-                <source src="logo/bg.mp4" type="video/mp4" width="100%">
-            </video>
-        </div>
-        <div class="bot search">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>BS FESTA</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="icon" type="image/x-icon" href="https://i.ibb.co/WBcSJPd/New-Project-A1-A7313.png">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="stylesheet" href="music.css">
+      <script src="mood.js"></script>
+      <!-- <script src="D:\Blackswan.bts\songs.js"></script> -->
+   </head>
+   <body>
+      <script>
+         function toggleDropdown() {
+    var dropdownContent = document.getElementById("myDropdown");
+    dropdownContent.classList.toggle("show");
+  }
+  
+  function displayText(sectionId) {
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = "none"; // Hide all sections
+    }
+    document.getElementById(sectionId).style.display = "block"; // Show selected section
+}
+      </script>
+      <div class="dropdown">
+         <div class="header">
+            <a style="position: fixed;left: 1%;top: 2%;z-index: 1000000;">BS FESTA</a><br>
+             <div class="menu">
+                 <a href="#home" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br>
+                 <i class="fa-brands fa-medium"></i>Language
+             </div>
+             <div class="drop">
+                <a href="#telugu" onclick="displayText(4)">Telugu</a>
+                <a href="#english" onclick="displayText(5)">English</a>
+                <a href="#korea" onclick="displayText(6)">korea</a>
+                <a href="#others" onclick="displayText(7)">Remix</a><br>
+             </div>
+         </div>
      </div>
-        <section id="4" class="section" id="telnr">
-            <header>
-                <h1>All albums</h1>
-            </header>
-            <ul class="songssad" id="song-list">
-<!-- Saahasame Swasaga Sagipo (2016) -->
-<hr>
-<center><h3 id ="Saahasame Swasaga Sagipo">Saahasame Swasaga Sagipo (2016)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Sahasam-Swasaga-Sagipo-2016jpeg-300x300.jpg"alt="Saahasame Swasaga Sagipo"></center>
+      <section id="1" class="section" id="home">
+      
+        <div class="bg">
+            <img src="logo.png" alt=""><br>
+            <a>Coming soon....</a>
+        </div>
+      </section>
+
+      <section id="4" class="section" id="telugu">
+            <div class="bglogo">
+               <img src="logo/telugu.jpg" alt="" width="100%">
+            </div>
+            <div class="category">
+               <a href="filter.html"><i class="fa-solid fa-bars-staggered"></i></a>
+            </div>
+            <ul id="song-list">
+            
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Saahasame%20swasaga%20saagipo(2016)/Chakori-SenSongsMp3.Com.mp3">
     <span class="song-title">Chakori</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -86,9 +80,6 @@
 </li>
 
 <!-- Mirchi (2013) -->
-<hr>
-<center><h3 id ="Mirchi">Mirchi (2013)</h3></center>
-<center><img src="https://upload.wikimedia.org/wikipedia/en/a/a8/Mirchi_film_poster.jpg"alt="Saahasame Swasaga Sagipo"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Mirchi(2013)/1-Barbie%20Girl-SenSongsMp3.Co.mp3">
     <span class="song-title">Barbie Girl</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -119,9 +110,6 @@
 </li>
 
 <!-- Radha (2017) -->
-<hr>
-<center><h3 id="Radha">Radha (2017)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Radha-2017jpeg-300x300.jpg" alt=""></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2017/Radha%20(2017)/Radha%20LQ/1-Kaakki%20Chokka-SenSongsMp3.Co.mp3">
     <span class="song-title">Kaakki Chokka</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -140,9 +128,6 @@
 </li>
 
 <!-- Current Theega (2014) -->
-<hr>
-<center><h3>Current Theega (2014)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Current-Theega-2014jpeg-300x300.jpg" alt=""></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/71%20-%20Current%20Theega%20(2014)/03%20-%20Ammay%20Nadumu.mp3">
     <span class="song-title">Ammay Nadumu</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -165,9 +150,6 @@
 </li>
 
 
-<hr>
-<center><h3 id="Raja Rani">Raja Rani (2014) – Telugu</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Raja-Rani-2014-–-Telugujpeg-300x300.jpg" alt="Raja Rani"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/Raja%20Rani%20(2014)/Hey%20Baby-SenSongsMp3.Co.mp3">
     <span class="song-title">Hey Baby</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -197,9 +179,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="rangam">Rangam (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Rangam-2011jpeg-300x300.jpg" alt="Rangam"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/20%20-%20Rangam%20(2011)/01%20-%20Enduko%20Emo%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Enduko Emo</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -224,9 +203,6 @@
     <span class="song-title">Nemali</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Oohalu Gusagusalade">Oohalu Gusagusalade (2014)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Oohalu-Gusagusalade-2014jpeg-300x300.jpg" alt="Oohalu Gusagusalade"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/43%20-%20Oohalu%20Gusagusalade%20(2014)/Eviti%20Hadavidi-SenSongsMp3.Co.mp3">
     <span class="song-title">Eviti Hadavidi</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -244,9 +220,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Karthikeya">Karthikeya (2014)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Karthikeya-2014jpeg-300x300.jpg" alt="Karthikeya"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/49%20-%20Karthikeya%20(2014)/05%20-%20Inthalo%20Ennenni%20Vinthalo%20Female.mp3">
     <span class="song-title">Inthalo Ennenni Vinthalo Female</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -268,9 +241,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Sye">Sye (2004)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/10/Sye-2004jpeg-300x300.jpg" alt="Sye"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/S/Sye%20%282004%29/Ganga%20A%20C%20-%20SenSongsMp3.Co.mp3">
     <span class="song-title">Ganga A C</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -296,9 +266,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Oy">Oy! (2009)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Oy-2009jpeg-300x300.jpg" alt="Oy!"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/atoz/2000to2009/O/Oy%21%20%282009%29/01%20-%20Oy%21%20Oy%21%20-%20SenSongsMp3.co.mp3">
     <span class="song-title">Oy! Oy!</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -324,9 +291,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Kanchana">Kanchana (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Kanchana-2011jpeg-300x300.jpg" alt="Kanchana"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202011/44%20-%20Kanchana%20(2011)/Jackson%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Jackson</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -347,9 +311,6 @@
     <span class="song-title">Vilaya Pralaya Moorthy</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Potugadu">Potugadu (2013)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Potugadu-jpeg-300x300.jpg" alt="Potugadu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/74%20-%20Potugadu%20(2013)/Action%20-%20The%20Distraction%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Action - The Distraction</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -391,9 +352,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Sukumarudu">Sukumarudu (2013)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/11/Sukumarudu-jpeg-300x300.jpg" alt="Sukumarudu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202013/27%20-%20Sukumarudu%20(2013)/Manasuna%20Nuvvele%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Manasuna Nuvvele</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -423,9 +381,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="I_Manoharudu">I (Manoharudu) (2014)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/10/I-Manoharudu-2014jpeg.jpg" alt="I (Manoharudu)"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202014/110%20-%20I%20(Manoharudu)%20(2014)/05%20-%20Ayila%20Ayila.mp3">
     <span class="song-title">Ayila Ayila</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -455,9 +410,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Dj_Duvvada_Jagannadham">Dj – Duvvada Jagannadham (2017)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/05/Dj-Duvvada-Jagannadham-2017jpeg-300x300.jpg" alt="Dj – Duvvada Jagannadham"></center>
 <li data-src="https://sencloud.online/mp32/mp3/2017/Dj%20-%20Duvvada%20Jagannadham%20(2017)/Dj%20128%20Kbps/DJ%20Sharanam%20Bhaje%20Bhaje-SenSongsMp3.Co.mp3">
     <span class="song-title">DJ Sharanam Bhaje Bhaje</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -479,9 +431,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Darling">Darling (2010)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Darling-jpeg-270x300.jpg" alt="Darling"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Darling%282010%29/Bulle-SenSongsMp3.Co.mp3">
     <span class="song-title">Bulle</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -503,9 +452,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="1_Nenokkadine">1 Nenokkadine (2014)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/1-Nenokkadine-jpeg-300x300.jpg" alt="1 Nenokkadine"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/1%20Nenokkadine%282014%29/Aww%20Tuzo%20Mogh%20Korta-SenSongsMp3.Co.mp3">
     <span class="song-title">Aww Tuzo Mogh Korta</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -526,9 +472,6 @@
     <span class="song-title">You Are My Love</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Businessman">Businessman (2012)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Businessman-2012.jpg" alt="Businessman"height="300px"width="300px"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Bussinessman%282012%29/Mumbai-SenSongsMp3.Co.mp3">
     <span class="song-title">Mumbai</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -558,9 +501,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Chirutha">Chirutha (2007)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/chirutha-jpeg-300x300.jpg" alt="Chirutha"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Chiutha%20(2007)/Ivala-SenSongsMp3.Co.mp3">
     <span class="song-title">Ivala</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -594,9 +534,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Racha">Racha (2012)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Racha-2012posters-saavn-300x300.jpg" alt="Racha"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Racha(2012)/Singareniundhi-SenSongsMp3.Com.mp3">
     <span class="song-title">Singareniundhi</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -617,9 +554,6 @@
     <span class="song-title">Racha</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Magadheera">Magadheera (2009)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Magadheera-2009jpeg-300x300.jpg" alt="Magadheera"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Magadheera(2009)/Rolling%20Title%20Music-SenSongsMp3.Com.mp3">
     <span class="song-title">Rolling Title Music</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -645,9 +579,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Orange">Orange (2010)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Orange-2010jpeg-300x300.jpg" alt="Orange"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Orange(2010)/5-%20O%20Range-SenSongsMp3.Co.mp3">
     <span class="song-title">O Range</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -673,9 +604,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Panja">Panja (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Panja-2011jpeg-300x300.jpg" alt="Panja"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Anukoneledhugaa-SenSongsMp3.Co.mp3">
     <span class="song-title">Anukoneledhugaa</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -701,9 +629,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="KomaramPuli">Komaram Puli (2010)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Komaram-Puli-jpeg-300x300.jpg" alt="Komaram Puli"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Amma%20Thale-SenSongsMp3.Co.mp3">
     <span class="song-title">Amma Thale</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -729,9 +654,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Theenmar">Theenmar (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Theenmar-jpeg.jpg" alt="Theenmar"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Aale%20Baale-SenSongsMp3.Co.mp3">
     <span class="song-title">Aale Baale</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -757,9 +679,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Kick2">Kick 2 (2015)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Kick-2-2015jpeg-300x300.jpg" alt="Kick 2"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/45%20-%20Kick%202%20(2015)/Janda%20Pai%20Kapiraju%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Janda Pai Kapiraju</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -785,9 +704,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="BengalTiger">Bengal Tiger (2015)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Bengal-Tiger-2015jpeg-300x300.jpg" alt="Bengal Tiger"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Ravi%20Teja/Bengal%20Tiger%20(2015)/Bengal%20Tiger%20-%20SenSongsMp3.Co.mp3">
     <span class="song-title">Bengal Tiger</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -808,9 +724,6 @@
     <span class="song-title">Raaye Raaye Chinni</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Oosaravelli">Oosaravelli (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Oosaravelli-jpeg-300x300.jpg" alt="Oosaravelli"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Oosaravelli%282011%29/Brathakaali-SenSongsMp3.Co.mp3">
     <span class="song-title">Brathakaali</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -844,9 +757,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Baadshah">Baadshah (2013)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Baadshah-jpeg-300x300.jpg" alt="Baadshah"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Baadshah%282013%29/Baadshah-SenSongsMp3.Co.mp3">
     <span class="song-title">Baadshah</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -872,9 +782,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Brindavanam">Brindavanam (2010)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Brindavanam-jpeg-300x300.jpg" alt="Brindavanam"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Brindavanam%282010%29/Chinnadho-SenSongsMp3.Co.mp3">
     <span class="song-title">Chinnadho</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -908,9 +815,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Rebal">Rebal (2012)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/rebal-jpeg-300x300.jpg" alt="Rebal"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Prabash/Rebel%282012%29/Deepali-SenSongsMp3.Co.mp3">
     <span class="song-title">Deepali</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -932,9 +836,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Pataas">Pataas (2015)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Pataas-jpeg-300x300.jpg" alt="Pataas"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/old/Telugu%202015/02%20-%20Pataas%20(2015)/Arey%20O%20Samba%20(Remix)%20-%20SenSongsmp3.Co.mp3">
     <span class="song-title">Arey O Samba (Remix)</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -956,9 +857,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Badri">Badri (2001)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Badri-jpeg-300x300.jpg" alt="Badri"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Am%20Indian-SenSongsMp3.Co.mp3">
     <span class="song-title">Am Indian</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -983,9 +881,6 @@
     <span class="song-title">Yey Chikitha</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Balu">Balu (2005)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Balu-jpeg.jpg" alt="Balu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Inthe%20InthintheSenSongsMp3.Co.mp3">
     <span class="song-title">Inthe Inthinthe</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1011,9 +906,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Bangaram">Bangaram (2006)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Bangaram-jpeg-300x300.jpg" alt="Bangaram"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Jai%20Shambo%20Shambo-SenSongsMp3.Co.mp3">
     <span class="song-title">Jai Shambo Shambo</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1039,9 +931,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Annavaram">Annavaram (2006)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Annavaram-jpeg-300x300.jpg" alt="Annavaram"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Annayya%20Annavante-SenSongsMp3.Co.mp3">
     <span class="song-title">Annayya Annavante</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1063,9 +952,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Jalsa">Jalsa(2008)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Jalsa2008jpeg-300x300.jpg" alt="Jalsa"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Chalore%20Chalore%20Chal%20%28Hindi%29-SenSongsMp3.Co.mp3">
     <span class="song-title">Chalore Chalore Chal (Hindi)</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1099,9 +985,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Lover">Lover (2018)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/lover-jpeg-1-300x300.jpg" alt="Lover"></center>
 <li data-src="https://sencloud.online/mp32/mp3/2018/Lover%20(2018)/Naalo%20Chilipi%20Kala%20(Theme%20Song)%20-%20SenSongsMp3.Co.mp3">
     <span class="song-title">Naalo Chilipi Kala (Theme Song)</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1127,9 +1010,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Shakti">Shakti (2011)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Shakti-jpeg-300x300.jpg" alt="Shakti"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Shakti%282011%29/Maha%20Rudra%20Shakti-SenSongsMp3.Co.mp3">
     <span class="song-title">Maha Rudra Shakti</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1159,9 +1039,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Adhurs">Adhurs (2010)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Adhurs-jpeg-300x300.jpg" alt="Adhurs"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Adhurs%282010%29/Assalaam%20Valekhum-SenSongsMp3.Co.mp3">
     <span class="song-title">Assalaam Valekhum</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1182,9 +1059,6 @@
     <span class="song-title">Shiva Shambho</span>
     <i class="fa-solid fa-play play-button"></i>
 </li>
-<hr>
-<center><h3 id="Pokiri">Pokiri (2006)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Pokiri-jpeg-300x300.jpg" alt="Pokiri"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Pokiri%282006%29/Devuda-SenSongsMp3.Co.mp3">
     <span class="song-title">Devuda</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1210,9 +1084,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Athadu">Athadu (2005)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Athadu-jpeg-300x300.jpg" alt="Athadu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Athadu%282005%29/Adharaku-SenSongsMp3.Co.mp3">
     <span class="song-title">Adharaku</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1238,9 +1109,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Seethamma_Vakitlo_Sirimalle_Chettu">Seethamma Vakitlo Sirimalle Chettu (2013)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Seethamma-Vakitlo-Sirimalle-Chettu-jpeg-300x300.jpg" alt="Seethamma Vakitlo Sirimalle Chettu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Seethamma%20Vakitlo%20Sirimalle%20Chettu%282013%29/Yem%20Cheddaam-SenSongsMp3.Co.mp3">
     <span class="song-title">Yem Cheddaam</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1266,9 +1134,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Thammudu">Thammudu (1999)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Thammudu-jpeg-300x300.jpg" alt="Thammudu"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Made%20In%20Andhra%20Student-SenSongsMp3.Co.mp3">
     <span class="song-title">Made In Andhra Student</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1298,9 +1163,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Tholi_Prema">Tholi Prema (1998)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Tholi-Prema-1998jpeg-300x300.jpg" alt="Tholi Prema"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Ee%20Manase%20Se-SenSongsMp3.Co.mp3">
     <span class="song-title">Ee Manase Se</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1322,9 +1184,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Gudumba_Shankar">Gudumba Shankar (2004)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Gudumba-Shankar-jpeg-300x300.jpg" alt="Gudumba Shankar"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chiguraku%20Chaatu-SenSongsMp3.Co.mp3">
     <span class="song-title">Chiguraku Chaatu</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1350,9 +1209,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Kushi">Kushi (2001)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Kushi-jpeg-300x300.jpg" alt="Kushi"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Aaduvari%20Matalaku-SenSongsMp3.Co.mp3">
     <span class="song-title">Aaduvari Matalaku</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1378,9 +1234,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Happy">Happy (2006)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/Happy-2006jpeg-1-300x300.jpg" alt="Happy"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Happy(2006)/Chal%20Chal%20Re-SenSongsMp3.Com.mp3">
     <span class="song-title">Chal Chal Re</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1406,9 +1259,6 @@
     <i class="fa-solid fa-play play-button"></i>
 </li>
 
-<hr>
-<center><h3 id="Arya_2">Arya 2 (2009)</h3></center>
-<center><img src="https://naasongs.com.co/wp-content/uploads/2018/06/aarya-2-jpeg-300x300.jpg" alt="Arya 2"></center>
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/1-%20Mr.%20Perfect-SenSongsMp3.Co.mp3">
     <span class="song-title">Mr. Perfect</span>
     <i class="fa-solid fa-play play-button"></i>
@@ -1432,48 +1282,164 @@
 <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Arya2(2009)/6-Ringa%20Ringa-SenSongsMp3.Co.mp3">
     <span class="song-title">Ringa Ringa</span>
     <i class="fa-solid fa-play play-button"></i>
-</li>
-</ul>
-
-</ul>
-
-
-
-
-
-
-                
             </ul>
-        </section>
-</section>
-<section id="2" class="section" id="english">
-    <div class="mood">
-        <a href="#engsad" onclick="displayText(7)">Sad</a>
-        <a href="#enghap" onclick="displayText(8)">Happy</a>
-        <a href="#enddan" onclick="displayText(9)">Dance</a>
-    </div>
-    <section id="7" class="section" id="engsad"></section>
-    <section id="8" class="section" id="enghap"></section>
-    <section id="9" class="section" id="enddan"></section>
-</section>
-<section id="3" class="section" id="korea">
-    <div class="drop">
-        <a href="#korsad" onclick="displayText(10)">Sad</a>
-        <a href="#korhap" onclick="displayText(11)">Happy</a>
-        <a href="#kordan" onclick="displayText(12)">Dance</a>
-    </div>
-    <section id="10" class="section" id="korsad"></section>
-    <section id="11" class="section" id="korhap"></section>
-    <section id="12" class="section" id="kordan"></section>
-</section>
-<div class="skip">
-    <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
-    <button class="button1" id="play-pause-btn">Play</button>
-    <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
-    <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
-    <button class="button4" id="next-btn">Next</button>
-</div>
-<div id="popup-container">
-    <img id="popup-img" src="https://i.ibb.co/FYZB4cN/20240329-IMP-PY182723215.jpg" alt="Popup Image" width="56%">
-</div>
-</body></html>
+      </section>
+
+
+
+      <section id="5" class="section" id="english">
+         <div class="audiosplayer">
+            <div class="bglogo">
+               <img src="logo/english.jpg" alt="" width="100%">
+            </div>
+            <!-- <div class="category">
+               <a href=""><i class="fa-solid fa-bars-staggered"></i>Filter</a>
+            </div> -->
+            <ul id="song-list">
+               <span class="song-title">Coming soon...</span>
+            </ul>
+         </div>
+      </section>
+
+
+      <section id="6" class="section" id="bts"><div class="audiosplayer">
+            <div class="bglogo">
+               <img src="logo/bts.jpg" alt="" width="100%">
+            </div>
+            <div class="category">
+               <i class="fa-solid fa-bars-staggered"></i>Filter</a>
+            </div>
+            <ul id="song-list">
+               <li data-src="korea\3D.mp3"><span class="song-title">3D</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Airplane pt.2.mp3"><span class="song-title">Airplane pt.2</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\ANPANMAN.mp3"><span class="song-title">ANPANMAN</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\ANTIFRAGILE.mp3"><span class="song-title">ANTIFRAGILE</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Attack on Bangtan.mp3"><span class="song-title">Attack on Bangtan</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\BANG BANG BANG.mp3"><span class="song-title">BANG BANG BANG</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\BATTER UP.mp3"><span class="song-title">BATTER UP</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Bad Decisions.mp3"><span class="song-title"> Bad Decisions</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Black Swan.mp3"><span class="song-title">Black Swan</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Blood Sweat & Tears.mp3"><span class="song-title">Blood Sweat & Tears</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\BOOMBAYAH.mp3"><span class="song-title">BOOMBAYAH</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Boy In Luv.mp3"><span class="song-title">Boy In Luv</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Boy With Luv.mp3"><span class="song-title">Boy With Luv</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Butterfly.mp3"><span class="song-title">Butterfly</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Butte.mp3"><span class="song-title">Butter</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Cupid.mp3"><span class="song-title">Cupid</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Danger.mp3"><span class="song-title">Danger</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\DDU-DU DDU-DU.mp3"><span class="song-title">DDU-DU DDU-DU</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dimple.mp3"><span class="song-title">Dimple</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dionysus.mp3"><span class="song-title">Dionysus</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\DNA.mp3"><span class="song-title">DNA</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dope.mp3"><span class="song-title">Dope</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dream Glow.mp3"><span class="song-title">Dream Glow</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dreamers.mp3"><span class="song-title">Dreamers</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Dynamite.mp3"><span class="song-title">Dynamite</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\EPIPHANY.mp3"><span class="song-title">EPIPHANY</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\ETA.mp3"><span class="song-title">ETA</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\FAKE LOVE.mp3"><span class="song-title">FAKE LOVE</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\FEARLESS.mp3"><span class="song-title">FEARLESS</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\FIRE.mp3"><span class="song-title">Fire</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\FLOWER.mp3"><span class="song-title">FLOWER</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\FRI (END) S.mp3"><span class="song-title">FRI(END)S</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Gangnam style.mp3"><span class="song-title">Gangnam style</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Go Go.mp3"><span class="song-title">Go Go</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Haegeum.mp3"><span class="song-title">Haegeum</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Heartbeat (BTS WORLD OST).mp3"><span class="song-title">Heartbeat</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\HOME.mp3"><span class="song-title">HOME</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\House Of Cards (full length edition).mp3"><span class="song-title">House Of Cards</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Hype Boy.mp3"><span class="song-title">Hype Boy</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\I'm Fine.mp3"><span class="song-title">I'm Fine</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\IDOL.mp3"><span class="song-title">IDOL</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Jump.mp3"><span class="song-title">Jump</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Kill This Love.mp3"><span class="song-title">Kill This Love</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\LALALALA.mp3"><span class="song-title">LALALALA</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Let Go.mp3"><span class="song-title">Let Go</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Lights.mp3"><span class="song-title">Lights</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\LIE.mp3"><span class="song-title">LIE</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Life Goes On.mp3"><span class="song-title">Life Goes On</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Love Maze.mp3"><span class="song-title">Love Maze</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Love Me Again.mp3"><span class="song-title">Love Me Again</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Love wins all.mp3"><span class="song-title">Love wins all</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Louder than bombs.mp3"><span class="song-title">Louder than bombs</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Magic Shop.mp3"><span class="song-title">Magic Shop</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Make It Right (feat. Lauv).mp3"><span class="song-title">Make It Right</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\MIC Drop.mp3"><span class="song-title">MIC Drop</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Mikrokosmos.mp3"><span class="song-title">Mikrokosmos</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Moon.mp3"><span class="song-title">Moon</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\My Time.mp3"><span class="song-title">My Time</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\My Universe.mp3"><span class="song-title">My Universe</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\New Jeans.mp3"><span class="song-title">New Jeans</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\No More Dream.mp3"><span class="song-title">No More Dream</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Not Today.mp3"><span class="song-title">Not Today</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\OMG.mp3"><span class="song-title">OMG</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Outro _ Wings.mp3"><span class="song-title">Wings</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Paradise.mp3"><span class="song-title">Paradise</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Permission to Dance.mp3"><span class="song-title">Permission to Dance</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Pied Piper.mp3"><span class="song-title">Pied Piper</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Pink Venom.mp3"><span class="song-title">Pink Venom</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\RUN.mp3"><span class="song-title">RUN</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Run bts.mp3"><span class="song-title">Run bts</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Savage Love' (Laxed – Siren Beat).mp3"><span class="song-title">Savage Love</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Seesaw.mp3"><span class="song-title">Seesaw</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Seven.mp3"><span class="song-title">Seven</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Shut Down.mp3"><span class="song-title">Shut Down</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Silver Spoon.mp3"><span class="song-title">Silver Spoon</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Singularity.mp3"><span class="song-title">Singularity</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\So What.mp3"><span class="song-title">So What</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Standing Next To You.mp3"><span class="song-title">Standing Next To You</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Stay.mp3"><span class="song-title">Stay</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Stay Alive.mp3"><span class="song-title">Stay Alive</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Super Shy.mp3"><span class="song-title">Super Shy</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Swan Song.mp3"><span class="song-title">Swan Song</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\That That.mp3"><span class="song-title">That That</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\The Feels.mp3"><span class="song-title">The Feels</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Too Sad to Dance.mp3"><span class="song-title">Too Sad to Dance</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Typa Girl.mp3"><span class="song-title">Typa Girl</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\UNFORGIVEN.mp3"><span class="song-title">UNFORGIVEN</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Wild Flower.mp3"><span class="song-title">Wild Flower</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\You & Me.mp3"><span class="song-title">You & Me</span><i class="fa-solid fa-play play-button"></i></li>
+                  <li data-src="korea\Zero O'Clock.mp3"><span class="song-title">Zero O'Clock</span><i class="fa-solid fa-play play-button"></i></li>
+            </ul>
+         </div>
+      </section>
+      <section id="7" class="section" id="dance">
+         <div class="audiosplayer">
+            <div class="bglogo">
+               <img src="logo/others.jpg" alt="" width="100%">
+            </div>
+            <!-- <div class="category">
+               <a href=""><i class="fa-solid fa-bars-staggered"></i>Filter</a>
+            </div> -->
+            <ul id="song-list" >
+               <span class="song-title">Coming soon...</span>
+            </ul>
+         </div>
+      </section>
+
+
+      <div class="skip">
+         <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.5">
+         <button class="button1" id="play-pause-btn">Play</button>
+         <button class="button2" id="back-btn"><i class="fa-solid fa-forward fa-flip-horizontal"></i></button>
+         <button class="button3" id="forward-btn"><i class="fa-solid fa-forward"></i></button>
+         <button class="button4" id="next-btn">Next</button>
+      </div>
+      <div class="extra">
+         <a id="donate-link" href="#">Donate</a>
+         <p style="color: rgba(255, 255, 255, 0.443);">Contact us :<br> blackswan19ot7@gmail.com</p>
+     </div>
+     <div id="popup-container">
+      <img id="popup-img" src="https://i.ibb.co/FYZB4cN/20240329-IMP-PY182723215.jpg" alt="Popup Image" width="56%">
+   </div>
+   <script>
+      document.getElementById('donate-link').addEventListener('click', function(event) {
+         event.preventDefault();
+         document.getElementById('popup-container').style.display = 'block';
+      });
+      document.getElementById('popup-container').addEventListener('click', function() {
+         this.style.display = 'none';
+      });
+   </script>
+   </body>
+</html>
