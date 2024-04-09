@@ -7,17 +7,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
     var isPlaying = false;
-    var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0; // Parse as integer
-    var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0; // Parse as float
+    var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0; 
+    var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0; 
     var hasInteracted = false;
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2; // 20%
     var isVolumeChanged = false;
-
-    // Pause the audio player when the page is loaded
-    audioPlayer.pause();
-
-    // Check if there are stored values for currentSongIndex and playbackPosition
+    pauseAudio();
     console.log('currentSongIndex from localStorage:', currentSongIndex);
     console.log('playbackPosition from localStorage:', playbackPosition);
 
