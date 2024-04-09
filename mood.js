@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var playbackPosition = localStorage.getItem('playbackPosition') || 0;
     var hasInteracted = false;
     var videoElement = document.getElementById('video-background');
+    
+    if (currentSongIndex !== 0 && playbackPosition !== 0) {
+        playAudioFromPosition(playButtons[currentSongIndex].parentElement.getAttribute('data-src'), playbackPosition);
+        hasInteracted = true;
+    }
 
     function playAudioFromPosition(audioSrc, position) {
         audioPlayer.src = audioSrc;
@@ -217,15 +222,16 @@ document.addEventListener('DOMContentLoaded', function () {
         videoElement.currentTime = 0;
     }
 });
+
 function toggleDropdown() {
-var dropdownContent = document.getElementById("myDropdown");
-dropdownContent.classList.toggle("show");
+    var dropdownContent = document.getElementById("myDropdown");
+    dropdownContent.classList.toggle("show");
 }
 
 function displayText(sectionId) {
-var sections = document.getElementsByClassName("section");
-for (var i = 0; i < sections.length; i++) {
-sections[i].style.display = "none"; // Hide all sections
-}
-document.getElementById(sectionId).style.display = "block"; // Show selected section
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(sectionId).style.display = "block"; 
 }
