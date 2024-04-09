@@ -7,11 +7,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
     var isPlaying = false;
-    var currentSongIndex = localStorage.getItem('currentSongIndex') || 0;
-    var playbackPosition = localStorage.getItem('playbackPosition') || 0;
+    var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0; // Parse as integer
+    var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0; // Parse as float
     var hasInteracted = false;
     var videoElement = document.getElementById('video-background');
-    
+    var initialVolume = 0.2; // 20%
+    var isVolumeChanged = false;
+
+    // Pause the audio player when the page is loaded
+    audioPlayer.pause();
+
+    // Check if there are stored values for currentSongIndex and playbackPosition
+    console.log('currentSongIndex from localStorage:', currentSongIndex);
+    console.log('playbackPosition from localStorage:', playbackPosition);
+
     if (currentSongIndex !== 0 && playbackPosition !== 0) {
         playAudioFromPosition(playButtons[currentSongIndex].parentElement.getAttribute('data-src'), playbackPosition);
         hasInteracted = true;
@@ -30,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         playAudioFromPosition(audioSrc, 0);
         highlightCurrentSong();
     }
-    
 
     function pauseAudio() {
         audioPlayer.pause();
@@ -140,7 +148,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
-        audioPlayer.volume = volumeValue / 100;
+        if (!isVolumeChanged) {
+            audioPlayer.volume = initialVolume + volumeValue / 100;
+            isVolumeChanged = true;
+        } else {
+            audioPlayer.volume = volumeValue / 100;
+        }
     });
 
     audioPlayer.addEventListener('timeupdate', function () {
@@ -209,8 +222,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.addEventListener('beforeunload', function () {
-        localStorage.setItem('currentSongIndex', currentSongIndex);
-        localStorage.setItem('playbackPosition', playbackPosition);
+        if (!isPlaying) {
+            // Clear localStorage if the audio is paused
+            localStorage.removeItem('currentSongIndex');
+            localStorage.removeItem('playbackPosition');
+        } else {
+            // Store current playback state if audio is playing
+            localStorage.setItem('currentSongIndex', currentSongIndex);
+            localStorage.setItem('playbackPosition', playbackPosition);
+        }
     });
 
     audioPlayer.addEventListener('ended', function () {
@@ -233,5 +253,10 @@ function displayText(sectionId) {
     for (var i = 0; i < sections.length; i++) {
         sections[i].style.display = "none";
     }
-    document.getElementById(sectionId).style.display = "block"; 
+    document.getElementById(sectionId).style.display = "block";
 }
+window.addEventListener('beforeunload', function (event) {
+    var confirmationMessage = "Do you want to refresh the page?";
+    event.returnValue = confirmationMessage; 
+    return confirmationMessage; 
+});
