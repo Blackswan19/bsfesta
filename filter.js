@@ -168,7 +168,27 @@ function toggleDropdown() {
   function displayText(sectionId) {
     var sections = document.getElementsByClassName("section");
     for (var i = 0; i < sections.length; i++) {
-      sections[i].style.display = "none"; 
+      sections[i].style.display = "none"; // Hide all sections
     }
-    document.getElementById(sectionId).style.display = "block"; 
+    document.getElementById(sectionId).style.display = "block"; // Show selected section
+}
+function toggleFullScreen() {
+    var elem = document.documentElement;
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
 }
