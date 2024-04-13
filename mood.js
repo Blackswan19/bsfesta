@@ -7,13 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
     var isPlaying = false;
-    var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0; 
-    var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0; 
+    var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
+    var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0;
     var hasInteracted = false;
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2; // 20%
     var isVolumeChanged = false;
     pauseAudio();
+
     console.log('currentSongIndex from localStorage:', currentSongIndex);
     console.log('playbackPosition from localStorage:', playbackPosition);
 
@@ -30,6 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
         playPauseBtn.textContent = 'Pause';
         highlightCurrentSong();
     }
+    
+    window.addEventListener('beforeunload', function () {
+        if (!isPlaying) {
+            localStorage.removeItem('currentSongIndex');
+            localStorage.removeItem('playbackPosition');
+        } else {
+            localStorage.setItem('currentSongIndex', currentSongIndex);
+            localStorage.setItem('playbackPosition', playbackPosition);
+        }
+    });
     
     function playAudio(audioSrc) {
         playAudioFromPosition(audioSrc, 0);
@@ -219,11 +230,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('beforeunload', function () {
         if (!isPlaying) {
-            // Clear localStorage if the audio is paused
             localStorage.removeItem('currentSongIndex');
             localStorage.removeItem('playbackPosition');
         } else {
-            // Store current playback state if audio is playing
             localStorage.setItem('currentSongIndex', currentSongIndex);
             localStorage.setItem('playbackPosition', playbackPosition);
         }
