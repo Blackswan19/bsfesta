@@ -13,35 +13,35 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
-
     pauseAudio();
 
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
-    });
-
-    if ('wakeLock' in navigator) {
+      });
+      if ('wakeLock' in navigator) {
         try {
-            const wakeLock = navigator.wakeLock.request('screen');
-            console.log('Screen Wake Lock is active.');
+          const wakeLock = navigator.wakeLock.request('screen');
+          console.log('Screen Wake Lock is active.');
         } catch (err) {
-            console.error(`${err.name}, ${err.message}`);
+          console.error(`${err.name}, ${err.message}`);
         }
-    }
+      }
+            
 
-    setTimeout(function () {
+
+    setTimeout(function() {
         document.querySelector('.loading-screen').style.display = 'none';
-        document.getElementById('player-interface').style.display = 'block';
+        document.getElementById('player-interface').style.display = 'block'; 
     }, 1500);
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
         });
     });
+
 
     console.log('currentSongIndex from localStorage:', currentSongIndex);
     console.log('playbackPosition from localStorage:', playbackPosition);
@@ -59,17 +59,17 @@ document.addEventListener('DOMContentLoaded', function () {
         playPauseBtn.textContent = 'Pause';
         highlightCurrentSong();
     }
-
+    
     window.addEventListener('beforeunload', function () {
         if (!isPlaying) {
             localStorage.removeItem('currentSongIndex');
             localStorage.removeItem('playbackPosition');
         } else {
             localStorage.setItem('currentSongIndex', currentSongIndex);
-            localStorage.setItem('playbackPosition', audioPlayer.currentTime);
+            localStorage.setItem('playbackPosition', playbackPosition);
         }
     });
-
+    
     function playAudio(audioSrc) {
         playAudioFromPosition(audioSrc, 0);
         highlightCurrentSong();
@@ -87,26 +87,41 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isPlaying) {
             pauseAudio();
         } else {
-            playCurrentSongFromStart();
+            if (hasInteracted && audioPlayer.src) {
+                playAudioFromPosition(audioPlayer.src, playbackPosition);
+            } else {
+                if (playbackPosition > 0 && audioPlayer.src) {
+                    playAudioFromPosition(audioPlayer.src, playbackPosition);
+                } else {
+                    playRandomSong();
+                    hasInteracted = true;
+                }
+            }
         }
     }
 
-    function playCurrentSongFromStart() {
-        playbackPosition = 0;  // Reset playback position to the start
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playAudio(randomSong);
+    }
+
+    function playCurrentSong() {
         var currentSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playAudioFromPosition(currentSong, playbackPosition);
+        playAudio(currentSong);
+        highlightCurrentSong();
     }
 
-    function playNextSong() {
-        currentSongIndex++;
-        if (currentSongIndex >= playButtons.length) {
-            currentSongIndex = 0;
-        }
-        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playbackPosition = 0;
-        playAudio(nextSong);
-        document.getElementById('skip-message').textContent = 'Skipped to next song: ' + playButtons[currentSongIndex].textContent;
-    }
+    // function playNextSong() {
+    //     currentSongIndex++;
+    //     if (currentSongIndex >= playButtons.length) {
+    //         currentSongIndex = 0;
+    //     }
+    //     var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+    //     playbackPosition = 0;
+    //     playAudio(nextSong);
+    //     document.getElementById('skip-message').textContent = 'Skipped to next song: ' + playButtons[currentSongIndex].textContent;
+    // }
 
     function playPreviousSong() {
         currentSongIndex--;
@@ -149,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 pauseAudio();
             } else {
                 currentSongIndex = index;
-                playCurrentSongFromStart();
+                playCurrentSong();
             }
         });
     });
@@ -159,12 +174,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong();
+        playRandomSong();
     });
 
-    audioPlayer.addEventListener('ended', function () {
-        playNextSong();
-    });
+
+    
+
+
+    audioPlayer.addEventListener('ended', playRandomSong);
+
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        audioPlayer.src = randomSong;
+        audioPlayer.play();
+        highlightCurrentSong() 
+    }
+    
+
+
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
@@ -239,6 +267,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     progressBar.addEventListener('touchmove', function (e) {
         e.preventDefault();
+    });
+
+    window.addEventListener('beforeunload', function () {
+        if (!isPlaying) {
+            localStorage.removeItem('currentSongIndex');
+            localStorage.removeItem('playbackPosition');
+        } else {
+            localStorage.setItem('currentSongIndex', currentSongIndex);
+            localStorage.setItem('playbackPosition', playbackPosition);
+        }
     });
 
     audioPlayer.addEventListener('ended', function () {
