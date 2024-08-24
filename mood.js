@@ -13,11 +13,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
+    var popup = document.getElementById('current-song-popup');
+    var songDetails = document.getElementById('current-song-details');
+    var closePopup = document.querySelector('.close-popup');
+
     pauseAudio();
 
+    // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
     });
+
+    // Handle screen wake lock
     if ('wakeLock' in navigator) {
         try {
             const wakeLock = navigator.wakeLock.request('screen');
@@ -27,10 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Initialize player interface after loading
     setTimeout(function () {
         document.querySelector('.loading-screen').style.display = 'none';
         document.getElementById('player-interface').style.display = 'block';
     }, 1500);
+
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -40,9 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    console.log('currentSongIndex from localStorage:', currentSongIndex);
-    console.log('playbackPosition from localStorage:', playbackPosition);
-
+    // Check local storage for saved song index and position
     if (currentSongIndex !== 0 && playbackPosition !== 0) {
         playAudioFromPosition(playButtons[currentSongIndex].parentElement.getAttribute('data-src'), playbackPosition);
         hasInteracted = true;
@@ -55,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         isPlaying = true;
 
         playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-
         highlightCurrentSong();
+        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim());
     }
 
     window.addEventListener('beforeunload', function () {
@@ -87,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function togglePlayPause() {
         if (isPlaying) {
             pauseAudio();
+            hidePopup(); // Hide the pop-up when paused
         } else {
             if (hasInteracted && audioPlayer.src) {
                 playAudioFromPosition(audioPlayer.src, playbackPosition);
@@ -107,12 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
         playAudio(randomSong);
     }
 
-    function playCurrentSong() {
-        var currentSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playAudio(currentSong);
-        highlightCurrentSong();
-    }
-
     function playPreviousSong() {
         currentSongIndex--;
         if (currentSongIndex < 0) {
@@ -121,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(previousSong);
-        document.getElementById('skip-message').textContent = 'Skipped to previous song: ' + playButtons[currentSongIndex].textContent;
+        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim()); // Show the pop-up when a new song starts
     }
 
     function highlightCurrentSong() {
@@ -144,6 +147,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function showPopup(songTitle) {
+        songDetails.textContent = "Now Playing: " + songTitle;
+        popup.style.display = "block";  // Show the pop-up
+    }
+
+    function hidePopup() {
+        popup.style.display = "none";  // Hide the pop-up
+    }
+
     playPauseBtn.addEventListener('click', function () {
         togglePlayPause();
     });
@@ -152,9 +164,11 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             if (isPlaying && currentSongIndex === index) {
                 pauseAudio();
+                hidePopup();
             } else {
                 currentSongIndex = index;
-                playCurrentSong();
+                playAudioFromPosition(button.parentElement.getAttribute('data-src'), 0);
+                highlightCurrentSong();
             }
         });
     });
@@ -240,44 +254,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchend', stopMove);
     });
 
-    progressBar.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    });
-
-    window.addEventListener('beforeunload', function (event) {
-        var confirmationMessage = "Do you want to refresh the page?";
-        event.returnValue = confirmationMessage;
-        return confirmationMessage;
-    });
-
-    audioPlayer.addEventListener('ended', function () {
-        pauseVideo();
-    });
-
-    function pauseVideo() {
-        videoElement.pause();
-        videoElement.currentTime = 0;
-    }
-});
-
-function toggleDropdown() {
-    var dropdownContent = document.getElementById("myDropdown");
-    dropdownContent.classList.toggle("show");
-}
-
-function displayText(sectionId) {
-    var sections = document.getElementsByClassName("section");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
-    }
-    document.getElementById(sectionId).style.display = "block";
-}
-window.addEventListener('beforeunload', function (event) {
-    var confirmationMessage = "Do you want to refresh the page?";
-    event.returnValue = confirmationMessage;
-    return confirmationMessage;
-});
-
+    closePopup.addEventListener('click', hidePopup);
+    
 function toggleFullScreen() {
     var elem = document.documentElement;
     if (!document.fullscreenElement) {
@@ -299,34 +277,4 @@ function toggleFullScreen() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    var audioPlayer = document.getElementById('audioPlayer');
-    var playButtons = document.querySelectorAll('.play-button');
-    var songs = document.querySelectorAll('.songssad li');
-    var nowPlaying = document.getElementById('nowPlaying');
-    var currentTrackDisplay = document.getElementById('currentTrack');
-    var currentTrackIndex = 0;
-
-    function playSong(index) {
-        var song = songs[index];
-        var songTitle = song.querySelector('.song-title').textContent;
-        var songSrc = song.getAttribute('data-src');
-
-        console.log("Playing:", songTitle); // Debug: log current song
-        currentTrackDisplay.textContent = songTitle;
-        audioPlayer.src = songSrc;
-        audioPlayer.play();
-        nowPlaying.style.display = 'block'; // Ensure this line executes
-    }
-
-    playButtons.forEach(function (btn, index) {
-        btn.addEventListener('click', function () {
-            playSong(index);
-        });
-    });
-
-    audioPlayer.addEventListener('ended', function () {
-        var nextTrackIndex = (currentTrackIndex + 1) % songs.length;
-        playSong(nextTrackIndex);
-    });
 });
