@@ -2,22 +2,23 @@
 <div id="current-song-popup" class="popup" style="display: none;"> <div class="popup-content"> <span class="close-popup">&times;</span> <p id="current-song-details"></p></div></div>
     <script>
         const colors = [
-  '#FF0000', // Bright Red
-  '#0000FF', // Bright Blue
-  '#32CD32', // Lime Green
-  '#FF1493', // Deep Pink
-  '#FFA500', // Orange
-  '#00BFFF', // Deep Sky Blue
-  '#FFFF00', // Yellow
-  '#FF4500', // Orange Red
-  '#1E90FF', // Dodger Blue
-  '#9400D3', // Dark Violet
-  '#FFD700', // Gold
-  '#FF6347', // Tomato
-  '#ADFF2F', // Green Yellow
-  '#40E0D0', // Turquoise
-  '#8A2BE2', // Blue Violet
-];
+            '#FF0000', // Bright Red
+            '#0000FF', // Bright Blue
+            '#32CD32', // Lime Green
+            '#FF1493', // Deep Pink
+            '#FFA500', // Orange
+            '#00BFFF', // Deep Sky Blue
+            '#FFFF00', // Yellow
+            '#FF4500', // Orange Red
+            '#1E90FF', // Dodger Blue
+            '#9400D3', // Dark Violet
+            '#FFD700', // Gold
+            '#FF6347', // Tomato
+            '#ADFF2F', // Green Yellow
+            '#40E0D0', // Turquoise
+            '#8A2BE2', // Blue Violet
+        ];
+    
         let intervalId;
         let colorInterval = 1000; // Starting interval of 1 second
         let speedUpClicks = 0;
@@ -30,10 +31,14 @@
         }
     
         function startColorChange() {
+            // Apply CSS transitions for smooth color change
+            document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`;
+    
             intervalId = setInterval(() => {
                 document.body.style.color = getRandomColor();
                 document.body.style.backgroundColor = getRandomColor();
             }, colorInterval);
+    
             isPlaying = true;
             document.getElementById('colorChangeButton').textContent = 'Turn off the light';
         }
@@ -84,9 +89,11 @@
     
         document.getElementById('stopAndBlackButton').addEventListener('click', () => {
             stopColorChange();
+            document.body.style.transition = ''; // Remove transitions when stopping
             document.body.style.backgroundColor = 'black'; // Set background to black
             document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
         });
     </script>
+    
 </body>
 </html>
