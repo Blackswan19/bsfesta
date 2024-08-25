@@ -6,7 +6,6 @@ var currentAlbumIndex = 0;
 var albumContainers = document.querySelectorAll('.album');
 var totalAlbums = albumContainers.length;
 
-
 function toggleDropdown() {
     var dropdownContent = document.getElementById("myDropdown");
     dropdownContent.classList.toggle("show");
@@ -99,13 +98,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 });
+
 function playSong(src) {
     var audioPlayer = document.getElementById('audioPlayer');
     audioPlayer.src = src;
-    
+
     // Ensure that play is triggered by a user interaction
     audioPlayer.play().then(() => {
-        document.getElementById('play-pause-btn').textContent = 'Pause';
+        document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
     }).catch((error) => {
         console.error('Playback failed:', error);
         // Optionally inform the user about playback issues
@@ -121,21 +121,20 @@ function playSong(src) {
     });
 }
 
-
 function pauseSong() {
     var audioPlayer = document.getElementById('audioPlayer');
     audioPlayer.pause();
-    document.getElementById('play-pause-btn').textContent = 'Play';
+    document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-play"></i>';
 }
 
 function togglePlayPause() {
     var audioPlayer = document.getElementById('audioPlayer');
     if (audioPlayer.paused) {
         audioPlayer.play();
-        document.getElementById('play-pause-btn').textContent = 'Pause';
+        document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
     } else {
         audioPlayer.pause();
-        document.getElementById('play-pause-btn').textContent = 'Play';
+        document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-play"></i>';
     }
 }
 
@@ -144,7 +143,7 @@ function previousSong() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     audioPlayer.src = songs[currentSongIndex].dataset.src;
     audioPlayer.play();
-    document.getElementById('play-pause-btn').textContent = 'Pause';
+    document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
 }
 
 function nextSong() {
@@ -152,7 +151,7 @@ function nextSong() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     audioPlayer.src = songs[currentSongIndex].dataset.src;
     audioPlayer.play();
-    document.getElementById('play-pause-btn').textContent = 'Pause';
+    document.getElementById('play-pause-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
 }
 
 function playNextAlbum() {
@@ -171,15 +170,16 @@ playSong(songs[currentSongIndex].dataset.src);
 function toggleDropdown() {
     var dropdownContent = document.getElementById("myDropdown");
     dropdownContent.classList.toggle("show");
-  }
+}
   
-  function displayText(sectionId) {
+function displayText(sectionId) {
     var sections = document.getElementsByClassName("section");
     for (var i = 0; i < sections.length; i++) {
-      sections[i].style.display = "none"; // Hide all sections
+        sections[i].style.display = "none"; // Hide all sections
     }
     document.getElementById(sectionId).style.display = "block"; // Show selected section
 }
+
 function toggleFullScreen() {
     var elem = document.documentElement;
     if (!document.fullscreenElement) {
