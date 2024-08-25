@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
     var playButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
     var volumeBar = document.getElementById('volume-bar');
@@ -16,8 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var popup = document.getElementById('current-song-popup');
     var songDetails = document.getElementById('current-song-details');
     var closePopup = document.querySelector('.close-popup');
+    var fullScreenBtn = document.getElementById('fullScreenBtn');
 
-    pauseAudio();
+    // Hide the loading screen and show the player interface after everything has loaded
+    document.querySelector('.loading-screen').style.display = 'none';
+    document.getElementById('player-interface').style.display = 'block';
 
     // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
@@ -33,12 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(`${err.name}, ${err.message}`);
         }
     }
-
-    // Initialize player interface after loading
-    setTimeout(function () {
-        document.querySelector('.loading-screen').style.display = 'none';
-        document.getElementById('player-interface').style.display = 'block';
-    }, 1500);
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -156,6 +153,27 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.display = "none";  // Hide the pop-up
     }
 
+    function toggleFullScreen() {
+        var elem = document.documentElement;
+        if (!document.fullscreenElement) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
+
     playPauseBtn.addEventListener('click', function () {
         togglePlayPause();
     });
@@ -255,26 +273,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     closePopup.addEventListener('click', hidePopup);
-    
-function toggleFullScreen() {
-    var elem = document.documentElement;
-    if (!document.fullscreenElement) {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        }
-    }
-}
-
+    fullScreenBtn.addEventListener('click', toggleFullScreen);
 });
