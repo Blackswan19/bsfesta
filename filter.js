@@ -200,3 +200,66 @@ function toggleFullScreen() {
         }
     }
 }
+
+
+
+audioPlayer.addEventListener('timeupdate', function () {
+    var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressBar.querySelector('.progress').style.width = progress + '%';
+});
+
+progressBar.addEventListener('click', function (e) {
+    var rect = this.getBoundingClientRect();
+    var offsetX = e.clientX - rect.left;
+    var width = progressBar.offsetWidth;
+    var seekTime = (offsetX / width) * audioPlayer.duration;
+    audioPlayer.currentTime = seekTime;
+});
+
+progressBar.addEventListener('mousedown', function (e) {
+    var rect = this.getBoundingClientRect();
+    var offsetX = e.clientX - rect.left;
+    var width = progressBar.offsetWidth;
+
+    function moveProgress(e) {
+        var moveX = e.clientX - rect.left;
+        var newWidth = Math.max(0, Math.min(moveX, width));
+        var seekTime = (newWidth / width) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+        progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
+    }
+
+    function stopMove() {
+        document.removeEventListener('mousemove', moveProgress);
+        document.removeEventListener('mouseup', stopMove);
+    }
+
+    document.addEventListener('mousemove', moveProgress);
+    document.addEventListener('mouseup', stopMove);
+});
+
+progressBar.addEventListener('touchstart', function (e) {
+    var touch = e.touches[0];
+    var rect = this.getBoundingClientRect();
+    var offsetX = touch.clientX - rect.left;
+    var width = progressBar.offsetWidth;
+    var seekTime = (offsetX / width) * audioPlayer.duration;
+    audioPlayer.currentTime = seekTime;
+
+    function moveProgress(e) {
+        var touch = e.touches[0];
+        var moveX = touch.clientX - rect.left;
+        var newWidth = Math.max(0, Math.min(moveX, width));
+        var seekTime = (newWidth / width) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+        progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
+    }
+
+    function stopMove() {
+        document.removeEventListener('touchmove', moveProgress);
+        document.removeEventListener('touchend', stopMove);
+    }
+
+    document.addEventListener('touchmove', moveProgress);
+    document.addEventListener('touchend', stopMove);
+});
