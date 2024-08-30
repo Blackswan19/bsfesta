@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.textContent = 'Pause';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
         highlightCurrentSong();
     }
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.textContent = 'Play';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
