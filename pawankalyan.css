@@ -131,12 +131,12 @@ top: 28px;
     background: #000000; 
 }
 ::-webkit-scrollbar-thumb {
-    background: #000000;
+    background: #6a6a6a;
     height: 5px; 
     outline: none;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff0000cf; 
+    background: #ff0000; 
 }
 .bglogo{
     position: fixed;
