@@ -71,10 +71,11 @@ body, html {
   }
   #song-list li {
       position: relative; 
+      font-size: 15px;
   }
   #song-list li .play-button {
       position: absolute; 
-      left: 93%; 
+      left: 85%; 
       top: 50%; 
       transform: translateY(-50%); 
   }
@@ -325,20 +326,21 @@ button:hover{
 }
 .fa-chart-simple{
     position: relative;
-    left: 88.5%;
+    left: -3.5%;
     color: rgb(255, 0, 0);
-    font-size: 21px;
+    font-size: 16px;
 }
 span.song-title.highlighted {
     color: rgb(255, 0, 0);
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 700;
 }
 .playing {
     background: rgb(0 0 0);
-    padding: 3px 41px;
+    padding: 0px 19px;
     border-radius: 10px;
     color: rgb(255, 0, 0);
+    font-size: 0px;
 }
 header{
     position: fixed;
@@ -448,6 +450,13 @@ img.modal-album-image {
     }
     .skip input[type="range"] {
         display: none;
+    }
+    #song-list li .play-button {
+        position: absolute;
+        left: 88%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 0;
     }
     .skip button{
         padding: 8px 51px;
