@@ -453,7 +453,7 @@ img.modal-album-image {
     }
     #song-list li .play-button {
         position: absolute;
-        left: 88%;
+        left: 82%;
         top: 50%;
         transform: translateY(-50%);
         z-index: 0;
