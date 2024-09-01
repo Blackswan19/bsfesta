@@ -263,3 +263,6 @@ progressBar.addEventListener('touchstart', function (e) {
     document.addEventListener('touchmove', moveProgress);
     document.addEventListener('touchend', stopMove);
 });
+
+
+
