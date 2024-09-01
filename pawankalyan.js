@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var nextBtn = document.getElementById('next-btn');
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
-    var randomSongBtn = document.getElementById('random-song-btn'); // Random song button
     var isPlaying = false;
     var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
     var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0;
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
         highlightCurrentSong();
     }
 
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -119,32 +118,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        // Generate a random index for the next song
-        var randomIndex = Math.floor(Math.random() * playButtons.length);
-    
-        // Check if the random index is the same as the current song index
-        while (randomIndex === currentSongIndex) {
-            randomIndex = Math.floor(Math.random() * playButtons.length);
+        currentSongIndex++;
+        if (currentSongIndex >= playButtons.length) {
+            currentSongIndex = 0;
         }
-    
-        // Update the current song index to the random index
-        currentSongIndex = randomIndex;
-        
-        // Play the randomly selected song
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(nextSong);
-    }
-    
-
-    function playRandomSong() {
-        var randomIndex = Math.floor(Math.random() * playButtons.length);
-        if (isPlaying && currentSongIndex === randomIndex) {
-            pauseAudio();
-        } else {
-            currentSongIndex = randomIndex;
-            playCurrentSong();
-        }
     }
 
     function highlightCurrentSong() {
@@ -188,10 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     nextBtn.addEventListener('click', function () {
         playNextSong();
-    });
-
-    randomSongBtn.addEventListener('click', function () { // Event listener for random song button
-        playRandomSong();
     });
 
     audioPlayer.addEventListener('ended', playNextSong);
@@ -267,41 +243,56 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchend', stopMove);
     });
 
-    document.querySelector('.fullscreen-button').addEventListener('click', function () {
-        if (document.fullscreenEnabled) {
-            document.documentElement.requestFullscreen().catch(err => {
-                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-            });
-        } else {
-            console.error("Fullscreen mode is not supported.");
-        }
+    progressBar.addEventListener('touchmove', function (e) {
+        e.preventDefault();
     });
 
-    document.querySelector('.dropdown-toggle').addEventListener('click', function () {
-        var dropdown = this.nextElementSibling;
-        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
-            dropdown.style.display = 'block';
-        } else {
-            dropdown.style.display = 'none';
-        }
+    window.addEventListener('beforeunload', function (event) {
+        var confirmationMessage = "Do you want to refresh the page?";
+        event.returnValue = confirmationMessage;
+        return confirmationMessage;
     });
 
-    document.querySelectorAll('.section-toggle').forEach(function (button) {
-        button.addEventListener('click', function () {
-            var targetSection = document.querySelector(this.getAttribute('data-target'));
-            if (targetSection) {
-                if (targetSection.style.display === 'none' || targetSection.style.display === '') {
-                    targetSection.style.display = 'block';
-                } else {
-                    targetSection.style.display = 'none';
-                }
-            }
-        });
+    audioPlayer.addEventListener('ended', function () {
+        pauseVideo();
     });
 
-    if (videoElement) {
-        videoElement.addEventListener('ended', function () {
-            pauseAudio();
-        });
+    function pauseVideo() {
+        videoElement.pause();
+        videoElement.currentTime = 0;
     }
 });
+
+function toggleDropdown() {
+    var dropdownContent = document.getElementById("myDropdown");
+    dropdownContent.classList.toggle("show");
+}
+
+function displayText(sectionId) {
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(sectionId).style.display = "block";
+}
+
+function toggleFullScreen() {
+    var elem = document.documentElement;
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
