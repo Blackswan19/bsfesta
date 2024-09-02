@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         highlightCurrentSong();
     }
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -118,10 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        currentSongIndex++;
-        if (currentSongIndex >= playButtons.length) {
-            currentSongIndex = 0;
-        }
+        // Randomly select a new song index
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(nextSong);
@@ -257,42 +255,43 @@ document.addEventListener('DOMContentLoaded', function () {
         pauseVideo();
     });
 
+    window.addEventListener('blur', function () {
+        if (isPlaying && audioPlayer) {
+            audioPlayer.volume = 0.2;
+        }
+    });
+
+    window.addEventListener('focus', function () {
+        if (isPlaying && audioPlayer) {
+            audioPlayer.volume = volumeBar.value / 100;
+        }
+    });
+
+    function playVideo() {
+        if (videoElement) {
+            videoElement.play();
+        }
+    }
+
     function pauseVideo() {
-        videoElement.pause();
-        videoElement.currentTime = 0;
+        if (videoElement) {
+            videoElement.pause();
+        }
     }
+
+    document.addEventListener('click', function () {
+        if (!hasInteracted) {
+            playVideo();
+            playCurrentSong();
+            hasInteracted = true;
+        }
+    });
+
+    document.addEventListener('touchstart', function () {
+        if (!hasInteracted) {
+            playVideo();
+            playCurrentSong();
+            hasInteracted = true;
+        }
+    });
 });
-
-function toggleDropdown() {
-    var dropdownContent = document.getElementById("myDropdown");
-    dropdownContent.classList.toggle("show");
-}
-
-function displayText(sectionId) {
-    var sections = document.getElementsByClassName("section");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
-    }
-    document.getElementById(sectionId).style.display = "block";
-}
-
-function toggleFullScreen() {
-    var elem = document.documentElement;
-    if (!document.fullscreenElement) {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        }
-    }
-}
