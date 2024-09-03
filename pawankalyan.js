@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)(); // Web Audio API context
+    var sourceNode;
 
     pauseAudio();
 
@@ -51,7 +53,15 @@ document.addEventListener('DOMContentLoaded', function () {
         hasInteracted = true;
     }
 
+    function connectAudioToContext() {
+        if (!sourceNode) {
+            sourceNode = audioContext.createMediaElementSource(audioPlayer);
+            sourceNode.connect(audioContext.destination);
+        }
+    }
+
     function playAudioFromPosition(audioSrc, position) {
+        connectAudioToContext();
         audioPlayer.src = audioSrc;
         audioPlayer.currentTime = position;
         audioPlayer.play();
@@ -118,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        // Randomly select a new song index
         currentSongIndex = Math.floor(Math.random() * playButtons.length);
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
@@ -241,68 +250,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchend', stopMove);
     });
 
-    progressBar.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    });
-
-    window.addEventListener('beforeunload', function (event) {
-        var confirmationMessage = "Do you want to refresh the page?";
-        event.returnValue = confirmationMessage;
-        return confirmationMessage;
-    });
-
-    audioPlayer.addEventListener('ended', function () {
-        pauseVideo();
-    });
-
     window.addEventListener('blur', function () {
         if (isPlaying && audioPlayer) {
-            audioPlayer.volume = 0.2;
+            audioPlayer.volume = 0.2; // Reduce volume on blur
         }
     });
 
     window.addEventListener('focus', function () {
         if (isPlaying && audioPlayer) {
-            audioPlayer.volume = volumeBar.value / 100;
+            audioPlayer.volume = volumeBar.value / 100; // Restore volume on focus
         }
     });
-
-    function playVideo() {
-        if (videoElement) {
-            videoElement.play();
-        }
-    }
-
-    function pauseVideo() {
-        if (videoElement) {
-            videoElement.pause();
-        }
-    }
-
-    document.addEventListener('click', function () {
-        if (!hasInteracted) {
-            playVideo();
-            playCurrentSong();
-            hasInteracted = true;
-        }
-    });
-
-    document.addEventListener('touchstart', function () {
-        if (!hasInteracted) {
-            playVideo();
-            playCurrentSong();
-            hasInteracted = true;
-        }
-    });
-});
-window.addEventListener('blur', function () {
-    if (isPlaying && audioPlayer) {
-        audioPlayer.volume = 0.2; // Remove or comment this line
-    }
-});
-
-window.addEventListener('focus', function () {
-    if (isPlaying && audioPlayer) {
-        audioPlayer.volume = volumeBar.value / 100; // This line can remain to restore volume
-    }
 });
