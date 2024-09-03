@@ -250,15 +250,13 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchend', stopMove);
     });
 
-    window.addEventListener('blur', function () {
-        if (isPlaying && audioPlayer) {
-            audioPlayer.volume = 0.2; // Reduce volume on blur
-        }
-    });
+    // Remove blur and focus events that adjust volume
 
-    window.addEventListener('focus', function () {
-        if (isPlaying && audioPlayer) {
-            audioPlayer.volume = volumeBar.value / 100; // Restore volume on focus
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+            // Do nothing when tab is hidden
+        } else {
+            // Do nothing when tab is visible
         }
     });
 });
