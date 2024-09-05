@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         highlightCurrentSong();
     }
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -117,14 +117,13 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('skip-message').textContent = 'Skipped to previous song: ' + playButtons[currentSongIndex].textContent;
     }
 
-    function playNextSong() {
-        currentSongIndex++;
-        if (currentSongIndex >= playButtons.length) {
-            currentSongIndex = 0;
-        }
-        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+    // Function to play a random song
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
-        playAudio(nextSong);
+        playAudio(randomSong);
+        document.getElementById('skip-message').textContent = 'Now playing: ' + playButtons[currentSongIndex].textContent;
     }
 
     function highlightCurrentSong() {
@@ -167,10 +166,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong();
+        playRandomSong();  // Change to play a random song
     });
 
-    audioPlayer.addEventListener('ended', playNextSong);
+    audioPlayer.addEventListener('ended', playRandomSong);  // Play a random song after the current one ends
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
