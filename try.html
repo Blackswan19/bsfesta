@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Style UI</title>
+    <title>BsFesta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link rel="icon" type="image/x-icon" href="logo\logo.png">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,6 +15,9 @@
 	font-family: "Red Hat Display", sans-serif;
 	list-style: none;
     letter-spacing: 0.4px;
+}
+a{
+    text-decoration: none;
 }
         body {
             margin: 0;
@@ -112,11 +115,11 @@
         }
         .card:hover{
             background: none;
-            border: solid 0.5px #003a73;
+            border: solid 0.5px #0080ff;
             opacity: 80%;
         }
         .card p:hover{
-            color: #0080ff;
+            color: #007bff;
         }
         .card img {
             width: 100%;
@@ -281,6 +284,12 @@ button:hover{
 	height: 100%;
 	background-color: #0080ff;
 }
+.repeat button{
+    position: fixed;
+    bottom: 27px;
+    background: black;
+    left: 85%;
+}
 @media (max-width: 480px) {
     .main-content {
         margin-left: 0;
@@ -386,7 +395,7 @@ button:hover{
 .skip{
     bottom: 10px;
     padding: inherit;
-    width: 150%;
+    width: 133%;
     text-align: center;
 
 }
@@ -400,6 +409,12 @@ button:hover{
     border: none;
     font-size: 18px;
     padding: 5px 20px;
+}
+.repeat button {
+    position: fixed;
+    bottom: 20px;
+    background: none;
+    right: 0px;
 }
 }
 
@@ -427,27 +442,27 @@ button:hover{
         <div class="cards">
             <div class="card">
                 <a href="oldtelugu.html"><img src="logo/oldmusic.png" alt=""></a>
-                <p>Old Music</p>
+                <a href="oldtelugu.html"><p>Old Music</p></a>
             </div>
             <div class="card">
                 <a href="korea.html"><img src="logo\korea.png" alt=""></a>
-                <p>Korean Mix</p>
+                <a href="korea.html"><p>Korean Mix</p></a>
             </div>
             <div class="card">
                 <a href="english.html"><img src="logo\english mix.png" alt=""></a>
-                <p>English Mix</p>
+                <a href="english.html"><p>English Mix</p></a>
             </div>
             <div class="card">
                 <a href="newadd.html"><img src="logo/new added.png" alt=""></a>
-                <p>Newly Added Mix</p>
+                <a href="newadd.html"><p>Newly Added Mix</p></a>
             </div>
             <div class="card">
                 <a href="filter.html"><img src="logo\telugu.png" alt=""></a>
-                <p>Telugu Mix</p>
+                <a href="filter.html"><p>Telugu Mix</p></a>
             </div>
             <div class="card">
                 <a href="pawankalyan.html"><img src="logo/powerstarmix.png" alt=""></a>
-                <p>Power Star Mix</p>
+                <a href="pawankalyan.html"><p>Power Star Mix</p></a>
             </div>
         </div>
 
@@ -484,57 +499,81 @@ button:hover{
         <div class="progress"></div>
     </div>
     <div class="skip">
-        <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></i></button>
+        <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></button>
         <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button>
         <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button>
-
         <div class="volume">
             <input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5">
         </div>
-    </div>
+        <div class="repeat">
+            <button id="repeat-btn"><i class="fa-solid fa-repeat"></i></button> <!-- Repeat button -->
+        </div>
+    </div>    
 </div>
 <script>
     const audioPlayer = document.getElementById('audio-player');
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const progressBar = document.getElementById('progress-bar');
-    const progressDiv = progressBar.querySelector('.progress');
-    const volumeControl = document.getElementById('volume-control');
-    let isPlaying = false;
+const playPauseBtn = document.getElementById('play-pause-btn');
+const progressBar = document.getElementById('progress-bar');
+const progressDiv = progressBar.querySelector('.progress');
+const volumeControl = document.getElementById('volume-control');
+const repeatBtn = document.getElementById('repeat-btn'); // New Repeat button
 
-    // Play/Pause functionality
-    function togglePlayPause() {
-        if (isPlaying) {
-            audioPlayer.pause();
-            playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-        } else {
-            audioPlayer.play();
-            playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-        }
-        isPlaying = !isPlaying;
+let isPlaying = false;
+let isRepeat = false; // New Repeat state
+
+// Play/Pause functionality
+function togglePlayPause() {
+    if (isPlaying) {
+        audioPlayer.pause();
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    } else {
+        audioPlayer.play();
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
     }
+    isPlaying = !isPlaying;
+}
 
-    // Update custom progress bar as the song plays
-    audioPlayer.addEventListener('timeupdate', () => {
-        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressDiv.style.width = progressPercent + '%';
-    });
+// Update custom progress bar as the song plays
+audioPlayer.addEventListener('timeupdate', () => {
+    const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressDiv.style.width = progressPercent + '%';
+});
 
-    // Seek song when progress bar is clicked
-    progressBar.addEventListener('click', (e) => {
-        const barWidth = progressBar.offsetWidth;
-        const clickX = e.offsetX;
-        const seekTime = (clickX / barWidth) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
-    });
+// Seek song when progress bar is clicked
+progressBar.addEventListener('click', (e) => {
+    const barWidth = progressBar.offsetWidth;
+    const clickX = e.offsetX;
+    const seekTime = (clickX / barWidth) * audioPlayer.duration;
+    audioPlayer.currentTime = seekTime;
+});
 
-    // Control volume
-    volumeControl.addEventListener('input', () => {
-        audioPlayer.volume = volumeControl.value;
-    });
+// Control volume
+volumeControl.addEventListener('input', () => {
+    audioPlayer.volume = volumeControl.value;
+});
 
-    // Play/Pause button click event
-    playPauseBtn.addEventListener('click', togglePlayPause);
-    function toggleFullScreen() {
+// Play/Pause button click event
+playPauseBtn.addEventListener('click', togglePlayPause);
+
+// Toggle repeat mode
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+    repeatBtn.classList.toggle('active', isRepeat); // Change appearance when active
+    repeatBtn.innerHTML = isRepeat ? '<i class="fa-solid fa-repeat" style="color: #0080ff;"></i>' : '<i class="fa-solid fa-repeat"></i>';
+}
+
+// When the song ends, check if repeat is on, and if so, replay the song
+audioPlayer.addEventListener('ended', () => {
+    if (isRepeat) {
+        audioPlayer.currentTime = 0;
+        audioPlayer.play();
+    }
+});
+
+// Repeat button click event
+repeatBtn.addEventListener('click', toggleRepeat);
+
+function toggleFullScreen() {
     var elem = document.documentElement;
     if (!document.fullscreenElement) {
         if (elem.requestFullscreen) {
@@ -554,6 +593,7 @@ button:hover{
         }
     }
 }
+
 </script>
 </body>
 </html>
