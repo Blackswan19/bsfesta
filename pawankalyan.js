@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
-    var audioContext = new (window.AudioContext || window.webkitAudioContext)(); // Web Audio API context
-    var sourceNode;
 
     pauseAudio();
 
@@ -53,20 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
         hasInteracted = true;
     }
 
-    function connectAudioToContext() {
-        if (!sourceNode) {
-            sourceNode = audioContext.createMediaElementSource(audioPlayer);
-            sourceNode.connect(audioContext.destination);
-        }
-    }
-
     function playAudioFromPosition(audioSrc, position) {
-        connectAudioToContext();
         audioPlayer.src = audioSrc;
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
         highlightCurrentSong();
     }
 
@@ -88,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -128,7 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        currentSongIndex++;
+        if (currentSongIndex >= playButtons.length) {
+            currentSongIndex = 0;
+        }
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(nextSong);
@@ -250,13 +243,56 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchend', stopMove);
     });
 
-    // Remove blur and focus events that adjust volume
-
-    document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-            // Do nothing when tab is hidden
-        } else {
-            // Do nothing when tab is visible
-        }
+    progressBar.addEventListener('touchmove', function (e) {
+        e.preventDefault();
     });
+
+    window.addEventListener('beforeunload', function (event) {
+        var confirmationMessage = "Do you want to refresh the page?";
+        event.returnValue = confirmationMessage;
+        return confirmationMessage;
+    });
+
+    audioPlayer.addEventListener('ended', function () {
+        pauseVideo();
+    });
+
+    function pauseVideo() {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+    }
 });
+
+function toggleDropdown() {
+    var dropdownContent = document.getElementById("myDropdown");
+    dropdownContent.classList.toggle("show");
+}
+
+function displayText(sectionId) {
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(sectionId).style.display = "block";
+}
+
+function toggleFullScreen() {
+    var elem = document.documentElement;
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
