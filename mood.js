@@ -1,4 +1,3 @@
-
 window.addEventListener('load', function () {
     var playButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
