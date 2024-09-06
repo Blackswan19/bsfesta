@@ -17,8 +17,8 @@ window.addEventListener('load', function () {
     var songDetails = document.getElementById('current-song-details');
     var closePopup = document.querySelector('.close-popup');
     var fullScreenBtn = document.getElementById('fullScreenBtn');
-    var isRepeat = false; // Initialize repeat mode as false
-    const repeatBtn = document.getElementById('repeat-btn'); // New Repeat button
+    var isRepeat = false;
+    const repeatBtn = document.getElementById('repeat-btn');
 
     // Hide the loading screen and show the player interface after everything has loaded
     document.querySelector('.loading-screen').style.display = 'none';
@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
     // Toggle repeat mode
     function toggleRepeat() {
         isRepeat = !isRepeat;
-        repeatBtn.classList.toggle('active', isRepeat); // Change appearance when active
+        repeatBtn.classList.toggle('active', isRepeat);
         repeatBtn.innerHTML = isRepeat
             ? '<i class="fa-solid fa-repeat" style="color: #004cff;"></i>'
             : '<i class="fa-solid fa-repeat"></i>';
@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
             audioPlayer.currentTime = 0;
             audioPlayer.play();
         } else {
-            playRandomSong();
+            playNextSong();
         }
     });
 
@@ -94,7 +94,7 @@ window.addEventListener('load', function () {
             localStorage.removeItem('playbackPosition');
         } else {
             localStorage.setItem('currentSongIndex', currentSongIndex);
-            localStorage.setItem('playbackPosition', playbackPosition);
+            localStorage.setItem('playbackPosition', audioPlayer.currentTime);
         }
     });
 
@@ -124,28 +124,23 @@ window.addEventListener('load', function () {
                 if (playbackPosition > 0 && audioPlayer.src) {
                     playAudioFromPosition(audioPlayer.src, playbackPosition);
                 } else {
-                    playRandomSong();
+                    playNextSong();
                     hasInteracted = true;
                 }
             }
         }
     }
 
-    function playRandomSong() {
-        currentSongIndex = Math.floor(Math.random() * playButtons.length);
-        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playAudio(randomSong);
+    function playNextSong() {
+        currentSongIndex = (currentSongIndex + 1) % playButtons.length;
+        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playAudio(nextSong);
     }
 
     function playPreviousSong() {
-        currentSongIndex--;
-        if (currentSongIndex < 0) {
-            currentSongIndex = playButtons.length - 1;
-        }
+        currentSongIndex = (currentSongIndex - 1 + playButtons.length) % playButtons.length;
         var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playbackPosition = 0;
         playAudio(previousSong);
-        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim()); // Show the pop-up when a new song starts
     }
 
     function highlightCurrentSong() {
@@ -199,13 +194,11 @@ window.addEventListener('load', function () {
     }
 
     playPauseBtn.addEventListener('click', function () {
-        console.log('Play/Pause button clicked'); // Debugging log
         togglePlayPause();
     });
 
     playButtons.forEach(function (button, index) {
         button.addEventListener('click', function () {
-            console.log('Play button clicked for index:', index); // Debugging log
             if (isPlaying && currentSongIndex === index) {
                 pauseAudio();
                 hidePopup();
@@ -218,13 +211,17 @@ window.addEventListener('load', function () {
     });
 
     previousBtn.addEventListener('click', function () {
-        console.log('Previous button clicked'); // Debugging log
         playPreviousSong();
     });
 
     nextBtn.addEventListener('click', function () {
-        console.log('Next button clicked'); // Debugging log
-        playRandomSong();
+        playNextSong();
+    });
+
+    audioPlayer.addEventListener('ended', playNextSong);
+
+    volumeBar.addEventListener('input', function () {
+        audioPlayer.volume = volumeBar.value / 100;
     });
 
     audioPlayer.addEventListener('timeupdate', function () {
@@ -232,26 +229,42 @@ window.addEventListener('load', function () {
         progressBar.querySelector('.progress').style.width = progress + '%';
     });
 
-    volumeBar.addEventListener('input', function () {
-        var volumeValue = parseInt(volumeBar.value);
-        if (!isVolumeChanged) {
-            audioPlayer.volume = initialVolume + volumeValue / 100;
-            isVolumeChanged = true;
-        } else {
-            audioPlayer.volume = volumeValue / 100;
-        }
-        console.log('Volume changed:', audioPlayer.volume); // Debugging log
-    });
-
     progressBar.addEventListener('click', function (e) {
         var rect = this.getBoundingClientRect();
         var offsetX = e.clientX - rect.left;
         var width = progressBar.offsetWidth;
-        var duration = audioPlayer.duration;
-        var currentTime = (offsetX / width) * duration;
-        audioPlayer.currentTime = currentTime;
-        progressBar.querySelector('.progress').style.width = (currentTime / duration) * 100 + '%';
+        var seekTime = (offsetX / width) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+    });
+
+    progressBar.addEventListener('mousedown', function (e) {
+        var rect = this.getBoundingClientRect();
+        var offsetX = e.clientX - rect.left;
+        var width = progressBar.offsetWidth;
+
+        function moveProgress(e) {
+            var moveX = e.clientX - rect.left;
+            var newWidth = Math.max(0, Math.min(moveX, width));
+            var seekTime = (newWidth / width) * audioPlayer.duration;
+            audioPlayer.currentTime = seekTime;
+            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
+        }
+
+        function stopMove() {
+            document.removeEventListener('mousemove', moveProgress);
+            document.removeEventListener('mouseup', stopMove);
+        }
+
+        document.addEventListener('mousemove', moveProgress);
+        document.addEventListener('mouseup', stopMove);
+    });
+
+    closePopup.addEventListener('click', function () {
+        hidePopup();
     });
 
     fullScreenBtn.addEventListener('click', toggleFullScreen);
+
+    audioPlayer.volume = initialVolume;
+    volumeBar.value = initialVolume * 100;
 });
