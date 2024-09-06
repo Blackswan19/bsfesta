@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var nextBtn = document.getElementById('next-btn');
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
+    var repeatBtn = document.getElementById('repeat-btn'); // Repeat button
     var isPlaying = false;
     var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
     var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0;
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
+    var isRepeating = false; // Single repeat mode
 
     pauseAudio();
 
@@ -148,12 +150,37 @@ document.addEventListener('DOMContentLoaded', function () {
                     playIcon.className = 'fa-solid fa-chart-simple play-button'; // Update icon for current song
                     
                     // Update the current song details in the paragraph element
-                    currentSongDetails.textContent = 'Now Playing: ' + songTitle.textContent;
+                    currentSongDetails.textContent = '' + songTitle.textContent;
                 }
             }
         });
     }
+
+    function toggleRepeat() {
+        isRepeating = !isRepeating; // Toggle repeat mode
     
+        var repeatIcon = repeatBtn.querySelector('i'); // Get the <i> element inside the repeat button
+    
+        if (isRepeating) {
+            repeatIcon.classList.add('repeat-active'); // Add class for active state
+            repeatBtn.setAttribute('title', 'Repeating this song'); // Update tooltip
+        } else {
+            repeatIcon.classList.remove('repeat-active'); // Remove class for inactive state
+            repeatBtn.setAttribute('title', 'Not repeating'); // Update tooltip
+        }
+    }
+    
+
+    function handleAudioEnd() {
+        if (isRepeating) {
+            // Repeat the current song
+            playAudioFromPosition(audioPlayer.src, 0);
+        } else {
+            // Play a random song
+            playRandomSong();
+        }
+    }
+
     playPauseBtn.addEventListener('click', function () {
         togglePlayPause();
     });
@@ -177,7 +204,11 @@ document.addEventListener('DOMContentLoaded', function () {
         playNextSong(); // Play the next song when "Next" button is clicked
     });
 
-    audioPlayer.addEventListener('ended', playRandomSong); // Play a random song when the current song ends
+    repeatBtn.addEventListener('click', function () {
+        toggleRepeat();
+    });
+
+    audioPlayer.addEventListener('ended', handleAudioEnd);
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
