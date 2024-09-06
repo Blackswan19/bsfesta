@@ -46,8 +46,6 @@ window.addEventListener('load', function () {
     // Repeat button click event
     repeatBtn.addEventListener('click', toggleRepeat);
 
-    // The rest of your code follows...
-
     // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
@@ -201,11 +199,13 @@ window.addEventListener('load', function () {
     }
 
     playPauseBtn.addEventListener('click', function () {
+        console.log('Play/Pause button clicked'); // Debugging log
         togglePlayPause();
     });
 
     playButtons.forEach(function (button, index) {
         button.addEventListener('click', function () {
+            console.log('Play button clicked for index:', index); // Debugging log
             if (isPlaying && currentSongIndex === index) {
                 pauseAudio();
                 hidePopup();
@@ -218,14 +218,19 @@ window.addEventListener('load', function () {
     });
 
     previousBtn.addEventListener('click', function () {
+        console.log('Previous button clicked'); // Debugging log
         playPreviousSong();
     });
 
     nextBtn.addEventListener('click', function () {
+        console.log('Next button clicked'); // Debugging log
         playRandomSong();
     });
 
-    audioPlayer.addEventListener('ended', playRandomSong);
+    audioPlayer.addEventListener('timeupdate', function () {
+        var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.querySelector('.progress').style.width = progress + '%';
+    });
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
@@ -235,69 +240,18 @@ window.addEventListener('load', function () {
         } else {
             audioPlayer.volume = volumeValue / 100;
         }
-    });
-
-    audioPlayer.addEventListener('timeupdate', function () {
-        var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressBar.querySelector('.progress').style.width = progress + '%';
+        console.log('Volume changed:', audioPlayer.volume); // Debugging log
     });
 
     progressBar.addEventListener('click', function (e) {
         var rect = this.getBoundingClientRect();
         var offsetX = e.clientX - rect.left;
         var width = progressBar.offsetWidth;
-        var seekTime = (offsetX / width) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
+        var duration = audioPlayer.duration;
+        var currentTime = (offsetX / width) * duration;
+        audioPlayer.currentTime = currentTime;
+        progressBar.querySelector('.progress').style.width = (currentTime / duration) * 100 + '%';
     });
 
-    progressBar.addEventListener('mousedown', function (e) {
-        var rect = this.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var width = progressBar.offsetWidth;
-
-        function moveProgress(e) {
-            var moveX = e.clientX - rect.left;
-            var newWidth = Math.max(0, Math.min(moveX, width));
-            var seekTime = (newWidth / width) * audioPlayer.duration;
-            audioPlayer.currentTime = seekTime;
-            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
-        }
-
-        function stopMove() {
-            document.removeEventListener('mousemove', moveProgress);
-            document.removeEventListener('mouseup', stopMove);
-        }
-
-        document.addEventListener('mousemove', moveProgress);
-        document.addEventListener('mouseup', stopMove);
-    });
-
-    progressBar.addEventListener('touchstart', function (e) {
-        var touch = e.touches[0];
-        var rect = this.getBoundingClientRect();
-        var offsetX = touch.clientX - rect.left;
-        var width = progressBar.offsetWidth;
-        var seekTime = (offsetX / width) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
-
-        function moveProgress(e) {
-            var touch = e.touches[0];
-            var moveX = touch.clientX - rect.left;
-            var newWidth = Math.max(0, Math.min(moveX, width));
-            var seekTime = (newWidth / width) * audioPlayer.duration;
-            audioPlayer.currentTime = seekTime;
-            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
-        }
-
-        function stopMove() {
-            document.removeEventListener('touchmove', moveProgress);
-            document.removeEventListener('touchend', stopMove);
-        }
-
-        document.addEventListener('touchmove', moveProgress);
-        document.addEventListener('touchend', stopMove);
-    });
-
-    closePopup.addEventListener('click', hidePopup);
     fullScreenBtn.addEventListener('click', toggleFullScreen);
 });
