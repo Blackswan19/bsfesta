@@ -33,13 +33,13 @@ window.addEventListener('load', function () {
             : '<i class="fa-solid fa-repeat"></i>';
     }
 
-    // When the song ends, check if repeat is on, and if so, replay the song
+    // When the song ends, check if repeat is on, and if so, replay the song, otherwise play a random song
     audioPlayer.addEventListener('ended', () => {
         if (isRepeat) {
             audioPlayer.currentTime = 0;
             audioPlayer.play();
         } else {
-            playNextSong();
+            playRandomSong();
         }
     });
 
@@ -124,17 +124,17 @@ window.addEventListener('load', function () {
                 if (playbackPosition > 0 && audioPlayer.src) {
                     playAudioFromPosition(audioPlayer.src, playbackPosition);
                 } else {
-                    playNextSong();
+                    playRandomSong();
                     hasInteracted = true;
                 }
             }
         }
     }
 
-    function playNextSong() {
-        currentSongIndex = (currentSongIndex + 1) % playButtons.length;
-        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playAudio(nextSong);
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playAudio(randomSong);
     }
 
     function playPreviousSong() {
@@ -215,10 +215,8 @@ window.addEventListener('load', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong();
+        playRandomSong();
     });
-
-    audioPlayer.addEventListener('ended', playNextSong);
 
     volumeBar.addEventListener('input', function () {
         audioPlayer.volume = volumeBar.value / 100;
