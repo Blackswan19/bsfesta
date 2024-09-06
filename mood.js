@@ -10,9 +10,7 @@ window.addEventListener('load', function () {
     var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
     var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0;
     var hasInteracted = false;
-    var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
-    var isVolumeChanged = false;
     var popup = document.getElementById('current-song-popup');
     var songDetails = document.getElementById('current-song-details');
     var closePopup = document.querySelector('.close-popup');
@@ -49,26 +47,6 @@ window.addEventListener('load', function () {
     // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
-    });
-
-    // Handle screen wake lock
-    if ('wakeLock' in navigator) {
-        try {
-            const wakeLock = navigator.wakeLock.request('screen');
-            console.log('Screen Wake Lock is active.');
-        } catch (err) {
-            console.error(`${err.name}, ${err.message}`);
-        }
-    }
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
     });
 
     // Check local storage for saved song index and position
@@ -132,17 +110,15 @@ window.addEventListener('load', function () {
     }
 
     function playNextSong() {
-        currentSongIndex = Math.floor(Math.random() * playButtons.length); // Select a random song index
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
         var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playAudio(nextSong);
-        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim()); // Display the song title
     }
 
     function playPreviousSong() {
         currentSongIndex = (currentSongIndex - 1 + playButtons.length) % playButtons.length;
         var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playAudio(previousSong);
-        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim()); // Display the song title
     }
 
     function highlightCurrentSong() {
@@ -166,7 +142,7 @@ window.addEventListener('load', function () {
     }
 
     function showPopup(songTitle) {
-        songDetails.textContent = "" + songTitle;
+        songDetails.textContent = songTitle;
         popup.style.display = "block";  // Show the pop-up
     }
 
