@@ -17,10 +17,36 @@ window.addEventListener('load', function () {
     var songDetails = document.getElementById('current-song-details');
     var closePopup = document.querySelector('.close-popup');
     var fullScreenBtn = document.getElementById('fullScreenBtn');
+    var isRepeat = false; // Initialize repeat mode as false
+    const repeatBtn = document.getElementById('repeat-btn'); // New Repeat button
 
     // Hide the loading screen and show the player interface after everything has loaded
     document.querySelector('.loading-screen').style.display = 'none';
     document.getElementById('player-interface').style.display = 'block';
+
+    // Toggle repeat mode
+    function toggleRepeat() {
+        isRepeat = !isRepeat;
+        repeatBtn.classList.toggle('active', isRepeat); // Change appearance when active
+        repeatBtn.innerHTML = isRepeat
+            ? '<i class="fa-solid fa-repeat" style="color: #004cff;"></i>'
+            : '<i class="fa-solid fa-repeat"></i>';
+    }
+
+    // When the song ends, check if repeat is on, and if so, replay the song
+    audioPlayer.addEventListener('ended', () => {
+        if (isRepeat) {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
+        } else {
+            playRandomSong();
+        }
+    });
+
+    // Repeat button click event
+    repeatBtn.addEventListener('click', toggleRepeat);
+
+    // The rest of your code follows...
 
     // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
@@ -145,7 +171,7 @@ window.addEventListener('load', function () {
     }
 
     function showPopup(songTitle) {
-        songDetails.textContent = "Now Playing: " + songTitle;
+        songDetails.textContent = "" + songTitle;
         popup.style.display = "block";  // Show the pop-up
     }
 
