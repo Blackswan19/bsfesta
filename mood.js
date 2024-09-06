@@ -1,4 +1,5 @@
-window.addEventListener('load', function () {
+
+document.addEventListener('DOMContentLoaded', function () {
     var playButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
     var volumeBar = document.getElementById('volume-bar');
@@ -13,45 +14,13 @@ window.addEventListener('load', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
-    var popup = document.getElementById('current-song-popup');
-    var songDetails = document.getElementById('current-song-details');
-    var closePopup = document.querySelector('.close-popup');
-    var fullScreenBtn = document.getElementById('fullScreenBtn');
-    var isRepeat = false;
-    const repeatBtn = document.getElementById('repeat-btn');
 
-    // Hide the loading screen and show the player interface after everything has loaded
-    document.querySelector('.loading-screen').style.display = 'none';
-    document.getElementById('player-interface').style.display = 'block';
+    pauseAudio();
 
-    // Toggle repeat mode
-    function toggleRepeat() {
-        isRepeat = !isRepeat;
-        repeatBtn.classList.toggle('active', isRepeat);
-        repeatBtn.innerHTML = isRepeat
-            ? '<i class="fa-solid fa-repeat" style="color: #004cff;"></i>'
-            : '<i class="fa-solid fa-repeat"></i>';
-    }
-
-    // When the song ends, check if repeat is on, and if so, replay the song
-    audioPlayer.addEventListener('ended', () => {
-        if (isRepeat) {
-            audioPlayer.currentTime = 0;
-            audioPlayer.play();
-        } else {
-            playNextSong();
-        }
-    });
-
-    // Repeat button click event
-    repeatBtn.addEventListener('click', toggleRepeat);
-
-    // Error handling for audio playback
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
     });
 
-    // Handle screen wake lock
     if ('wakeLock' in navigator) {
         try {
             const wakeLock = navigator.wakeLock.request('screen');
@@ -61,7 +30,11 @@ window.addEventListener('load', function () {
         }
     }
 
-    // Smooth scroll for anchor links
+    setTimeout(function () {
+        document.querySelector('.loading-screen').style.display = 'none';
+        document.getElementById('player-interface').style.display = 'block';
+    }, 1500);
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -71,7 +44,9 @@ window.addEventListener('load', function () {
         });
     });
 
-    // Check local storage for saved song index and position
+    console.log('currentSongIndex from localStorage:', currentSongIndex);
+    console.log('playbackPosition from localStorage:', playbackPosition);
+
     if (currentSongIndex !== 0 && playbackPosition !== 0) {
         playAudioFromPosition(playButtons[currentSongIndex].parentElement.getAttribute('data-src'), playbackPosition);
         hasInteracted = true;
@@ -82,10 +57,8 @@ window.addEventListener('load', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-
         playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         highlightCurrentSong();
-        showPopup(playButtons[currentSongIndex].parentElement.querySelector('.song-title').textContent.trim());
     }
 
     window.addEventListener('beforeunload', function () {
@@ -94,7 +67,7 @@ window.addEventListener('load', function () {
             localStorage.removeItem('playbackPosition');
         } else {
             localStorage.setItem('currentSongIndex', currentSongIndex);
-            localStorage.setItem('playbackPosition', audioPlayer.currentTime);
+            localStorage.setItem('playbackPosition', playbackPosition);
         }
     });
 
@@ -106,9 +79,7 @@ window.addEventListener('load', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-
         playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -116,7 +87,6 @@ window.addEventListener('load', function () {
     function togglePlayPause() {
         if (isPlaying) {
             pauseAudio();
-            hidePopup(); // Hide the pop-up when paused
         } else {
             if (hasInteracted && audioPlayer.src) {
                 playAudioFromPosition(audioPlayer.src, playbackPosition);
@@ -124,23 +94,37 @@ window.addEventListener('load', function () {
                 if (playbackPosition > 0 && audioPlayer.src) {
                     playAudioFromPosition(audioPlayer.src, playbackPosition);
                 } else {
-                    playNextSong();
+                    playCurrentSong();
                     hasInteracted = true;
                 }
             }
         }
     }
 
-    function playNextSong() {
-        currentSongIndex = (currentSongIndex + 1) % playButtons.length;
-        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playAudio(nextSong);
+    function playCurrentSong() {
+        var currentSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playAudio(currentSong);
+        highlightCurrentSong();
     }
 
     function playPreviousSong() {
-        currentSongIndex = (currentSongIndex - 1 + playButtons.length) % playButtons.length;
+        currentSongIndex--;
+        if (currentSongIndex < 0) {
+            currentSongIndex = playButtons.length - 1;
+        }
         var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playbackPosition = 0;
         playAudio(previousSong);
+        document.getElementById('skip-message').textContent = 'Skipped to previous song: ' + playButtons[currentSongIndex].textContent;
+    }
+
+    // Function to play a random song
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playbackPosition = 0;
+        playAudio(randomSong);
+        document.getElementById('skip-message').textContent = 'Now playing: ' + playButtons[currentSongIndex].textContent;
     }
 
     function highlightCurrentSong() {
@@ -163,36 +147,6 @@ window.addEventListener('load', function () {
         });
     }
 
-    function showPopup(songTitle) {
-        songDetails.textContent = "" + songTitle;
-        popup.style.display = "block";  // Show the pop-up
-    }
-
-    function hidePopup() {
-        popup.style.display = "none";  // Hide the pop-up
-    }
-
-    function toggleFullScreen() {
-        var elem = document.documentElement;
-        if (!document.fullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-    }
-
     playPauseBtn.addEventListener('click', function () {
         togglePlayPause();
     });
@@ -201,11 +155,9 @@ window.addEventListener('load', function () {
         button.addEventListener('click', function () {
             if (isPlaying && currentSongIndex === index) {
                 pauseAudio();
-                hidePopup();
             } else {
                 currentSongIndex = index;
-                playAudioFromPosition(button.parentElement.getAttribute('data-src'), 0);
-                highlightCurrentSong();
+                playCurrentSong();
             }
         });
     });
@@ -215,13 +167,19 @@ window.addEventListener('load', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong();
+        playRandomSong();  // Change to play a random song
     });
 
-    audioPlayer.addEventListener('ended', playNextSong);
+    audioPlayer.addEventListener('ended', playRandomSong);  // Play a random song after the current one ends
 
     volumeBar.addEventListener('input', function () {
-        audioPlayer.volume = volumeBar.value / 100;
+        var volumeValue = parseInt(volumeBar.value);
+        if (!isVolumeChanged) {
+            audioPlayer.volume = initialVolume + volumeValue / 100;
+            isVolumeChanged = true;
+        } else {
+            audioPlayer.volume = volumeValue / 100;
+        }
     });
 
     audioPlayer.addEventListener('timeupdate', function () {
@@ -259,12 +217,82 @@ window.addEventListener('load', function () {
         document.addEventListener('mouseup', stopMove);
     });
 
-    closePopup.addEventListener('click', function () {
-        hidePopup();
+    progressBar.addEventListener('touchstart', function (e) {
+        var touch = e.touches[0];
+        var rect = this.getBoundingClientRect();
+        var offsetX = touch.clientX - rect.left;
+        var width = progressBar.offsetWidth;
+        var seekTime = (offsetX / width) * audioPlayer.duration;
+        audioPlayer.currentTime = seekTime;
+
+        function moveProgress(e) {
+            var touch = e.touches[0];
+            var moveX = touch.clientX - rect.left;
+            var newWidth = Math.max(0, Math.min(moveX, width));
+            var seekTime = (newWidth / width) * audioPlayer.duration;
+            audioPlayer.currentTime = seekTime;
+            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
+        }
+
+        function stopMove() {
+            document.removeEventListener('touchmove', moveProgress);
+            document.removeEventListener('touchend', stopMove);
+        }
+
+        document.addEventListener('touchmove', moveProgress);
+        document.addEventListener('touchend', stopMove);
     });
 
-    fullScreenBtn.addEventListener('click', toggleFullScreen);
+    progressBar.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    });
 
-    audioPlayer.volume = initialVolume;
-    volumeBar.value = initialVolume * 100;
+    window.addEventListener('beforeunload', function (event) {
+        var confirmationMessage = "Do you want to refresh the page?";
+        event.returnValue = confirmationMessage;
+        return confirmationMessage;
+    });
+
+    audioPlayer.addEventListener('ended', function () {
+        pauseVideo();
+    });
+
+    function pauseVideo() {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+    }
 });
+
+function toggleDropdown() {
+    var dropdownContent = document.getElementById("myDropdown");
+    dropdownContent.classList.toggle("show");
+}
+
+function displayText(sectionId) {
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(sectionId).style.display = "block";
+}
+
+function toggleFullScreen() {
+    var elem = document.documentElement;
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
