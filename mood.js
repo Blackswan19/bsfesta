@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     var playButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
@@ -57,19 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
         audioPlayer.currentTime = position;
         audioPlayer.play();
         isPlaying = true;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         highlightCurrentSong();
     }
-
-    window.addEventListener('beforeunload', function () {
-        if (!isPlaying) {
-            localStorage.removeItem('currentSongIndex');
-            localStorage.removeItem('playbackPosition');
-        } else {
-            localStorage.setItem('currentSongIndex', currentSongIndex);
-            localStorage.setItem('playbackPosition', playbackPosition);
-        }
-    });
 
     function playAudio(audioSrc) {
         playAudioFromPosition(audioSrc, 0);
@@ -79,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function pauseAudio() {
         audioPlayer.pause();
         isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';  // Updated line
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         playbackPosition = audioPlayer.currentTime;
         localStorage.setItem('playbackPosition', playbackPosition);
     }
@@ -115,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         playAudio(previousSong);
-        document.getElementById('skip-message').textContent = 'Skipped to previous song: ' + playButtons[currentSongIndex].textContent;
     }
 
     function playNextSong() {
@@ -128,26 +116,44 @@ document.addEventListener('DOMContentLoaded', function () {
         playAudio(nextSong);
     }
 
+    function playRandomSong() {
+        currentSongIndex = Math.floor(Math.random() * playButtons.length);
+        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+        playbackPosition = 0;
+        playAudio(randomSong);
+    }
+
     function highlightCurrentSong() {
         var songItems = document.querySelectorAll('#song-list li');
+        var currentSongDetails = document.getElementById('current-song-details');
+        
         songItems.forEach(function (item, index) {
+            // Remove highlighting from all songs
             item.classList.remove('playing');
             var songTitle = item.querySelector('.song-title');
+            var playIcon = item.querySelector('.play-button');
+            
             if (songTitle) {
                 songTitle.classList.remove('highlighted');
-                songTitle.innerHTML = songTitle.textContent.replace('<i class="fa-solid fa-chart-simple"></i>', '<i class="fa-solid fa-music"></i>');
+                songTitle.style.color = ''; // Reset to default color
+                songTitle.style.fontWeight = ''; // Reset to default font weight
+                playIcon.className = 'fa-solid fa-play play-button'; // Reset all to play icon
             }
+            
+            // Highlight the current song
             if (index === currentSongIndex) {
                 item.classList.add('playing');
-                var currentSongTitle = item.querySelector('.song-title');
-                if (currentSongTitle) {
-                    currentSongTitle.classList.add('highlighted');
-                    currentSongTitle.innerHTML = '<i class="fa-solid fa-chart-simple"></i> ' + currentSongTitle.textContent;
+                if (songTitle) {
+                    songTitle.classList.add('highlighted');
+                    playIcon.className = 'fa-solid fa-chart-simple play-button'; // Update icon for current song
+                    
+                    // Update the current song details in the paragraph element
+                    currentSongDetails.textContent = 'Now Playing: ' + songTitle.textContent;
                 }
             }
         });
     }
-
+    
     playPauseBtn.addEventListener('click', function () {
         togglePlayPause();
     });
@@ -168,10 +174,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong();
+        playNextSong(); // Play the next song when "Next" button is clicked
     });
 
-    audioPlayer.addEventListener('ended', playNextSong);
+    audioPlayer.addEventListener('ended', playRandomSong); // Play a random song when the current song ends
 
     volumeBar.addEventListener('input', function () {
         var volumeValue = parseInt(volumeBar.value);
@@ -248,10 +254,10 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
     });
 
-    window.addEventListener('beforeunload', function (event) {
-        var confirmationMessage = "Do you want to refresh the page?";
-        event.returnValue = confirmationMessage;
-        return confirmationMessage;
+    window.addEventListener('beforeunload', function () {
+        localStorage.removeItem('currentSongIndex');
+        localStorage.removeItem('playbackPosition');
+        audioPlayer.pause();
     });
 
     audioPlayer.addEventListener('ended', function () {
@@ -265,35 +271,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function toggleDropdown() {
-    var dropdownContent = document.getElementById("myDropdown");
-    dropdownContent.classList.toggle("show");
+    var dropdownContent = document.getElementById('dropdown-content');
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 }
 
-function displayText(sectionId) {
-    var sections = document.getElementsByClassName("section");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].style.display = "none";
-    }
-    document.getElementById(sectionId).style.display = "block";
-}
-
-function toggleFullScreen() {
-    var elem = document.documentElement;
-    if (!document.fullscreenElement) {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
+window.onclick = function (event) {
+    if (!event.target.matches('.dropdown-toggle')) {
+        var dropdowns = document.getElementsByClassName('dropdown-content');
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.style.display === 'block') {
+                openDropdown.style.display = 'none';
+            }
         }
     }
-}
+};
