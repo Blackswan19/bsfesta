@@ -93,6 +93,69 @@
             document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
         });
     </script>
+    <div class="view">
+    <button onclick="showVideo()">View</button>
+</div>
+
+<!-- Modal for full-screen video -->
+<div id="fullscreenVideoModal" class="video-popup">
+    <span class="video-close" onclick="hideVideo()">&times;</span>
+    <div class="video-content">
+        <video id="popupVideoPlayer" autoplay loop muted playsinline>
+            <source src="logo/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<script>
+function showVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
     
+    // Display the modal
+    modal.style.display = "flex";
+    
+    // Play the video
+    video.play();
+
+    // Make the video go full screen without controls
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { // Firefox
+        video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // IE/Edge
+        video.msRequestFullscreen();
+    }
+
+    // Ensure controls are not shown even in full screen
+    video.controls = false;
+}
+
+function hideVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
+
+    // Hide the modal
+    modal.style.display = "none";
+
+    // Pause the video and reset time
+    video.pause();
+    video.currentTime = 0;
+    
+    // Exit full-screen mode if active
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
+</script>
 </body>
 </html>
