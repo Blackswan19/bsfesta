@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var nextBtn = document.getElementById('next-btn');
     var playPauseBtn = document.getElementById('play-pause-btn');
     var progressBar = document.getElementById('progress-bar');
-    var repeatBtn = document.getElementById('repeat-btn'); // Repeat button
+    var repeatBtn = document.getElementById('repeat-btn');
     var isPlaying = false;
     var currentSongIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
     var playbackPosition = parseFloat(localStorage.getItem('playbackPosition')) || 0;
@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var videoElement = document.getElementById('video-background');
     var initialVolume = 0.2;
     var isVolumeChanged = false;
-    var isRepeating = false; // Single repeat mode
+    var isRepeating = false;
+    var isShuffleMode = false; // Shuffle mode variable
+    var shuffleBtn = document.querySelector('.fa-shuffle'); // Shuffle button
 
     pauseAudio();
 
@@ -109,13 +111,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
-        currentSongIndex++;
-        if (currentSongIndex >= playButtons.length) {
-            currentSongIndex = 0;
+        if (isShuffleMode) {
+            playRandomSong(); // Play a random song if shuffle is active
+        } else {
+            currentSongIndex++;
+            if (currentSongIndex >= playButtons.length) {
+                currentSongIndex = 0;
+            }
+            var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            playbackPosition = 0;
+            playAudio(nextSong);
         }
-        var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playbackPosition = 0;
-        playAudio(nextSong);
     }
 
     function playRandomSong() {
@@ -128,28 +134,24 @@ document.addEventListener('DOMContentLoaded', function () {
     function highlightCurrentSong() {
         var songItems = document.querySelectorAll('#song-list li');
         var currentSongDetails = document.getElementById('current-song-details');
-        
+
         songItems.forEach(function (item, index) {
-            // Remove highlighting from all songs
             item.classList.remove('playing');
             var songTitle = item.querySelector('.song-title');
             var playIcon = item.querySelector('.play-button');
-            
+
             if (songTitle) {
                 songTitle.classList.remove('highlighted');
                 songTitle.style.color = ''; // Reset to default color
                 songTitle.style.fontWeight = ''; // Reset to default font weight
                 playIcon.className = 'fa-solid fa-play play-button'; // Reset all to play icon
             }
-            
-            // Highlight the current song
+
             if (index === currentSongIndex) {
                 item.classList.add('playing');
                 if (songTitle) {
                     songTitle.classList.add('highlighted');
-                    playIcon.className = 'fa-solid fa-chart-simple play-button'; // Update icon for current song
-                    
-                    // Update the current song details in the paragraph element
+                    playIcon.className = 'fa-solid fa-chart-simple play-button';
                     currentSongDetails.textContent = '' + songTitle.textContent;
                 }
             }
@@ -157,27 +159,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function toggleRepeat() {
-        isRepeating = !isRepeating; // Toggle repeat mode
-    
-        var repeatIcon = repeatBtn.querySelector('i'); // Get the <i> element inside the repeat button
-    
+        isRepeating = !isRepeating;
+
+        var repeatIcon = repeatBtn.querySelector('i');
+
         if (isRepeating) {
-            repeatIcon.classList.add('repeat-active'); // Add class for active state
-            repeatBtn.setAttribute('title', 'Repeating this song'); // Update tooltip
+            repeatIcon.classList.add('repeat-active');
+            repeatBtn.setAttribute('title', 'Repeating this song');
         } else {
-            repeatIcon.classList.remove('repeat-active'); // Remove class for inactive state
-            repeatBtn.setAttribute('title', 'Not repeating'); // Update tooltip
+            repeatIcon.classList.remove('repeat-active');
+            repeatBtn.setAttribute('title', 'Not repeating');
         }
     }
-    
 
     function handleAudioEnd() {
         if (isRepeating) {
-            // Repeat the current song
             playAudioFromPosition(audioPlayer.src, 0);
         } else {
-            // Play a random song
-            playRandomSong();
+            playNextSong(); // Modified to use shuffle or ordered play
         }
     }
 
@@ -201,11 +200,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     nextBtn.addEventListener('click', function () {
-        playNextSong(); // Play the next song when "Next" button is clicked
+        playNextSong();
     });
 
     repeatBtn.addEventListener('click', function () {
         toggleRepeat();
+    });
+
+    shuffleBtn.addEventListener('click', function () {
+        isShuffleMode = !isShuffleMode; // Toggle shuffle mode
+        shuffleBtn.classList.toggle('active-shuffle'); // Add visual indication for shuffle mode
+        console.log('Shuffle mode:', isShuffleMode);
     });
 
     audioPlayer.addEventListener('ended', handleAudioEnd);
@@ -260,12 +265,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var rect = this.getBoundingClientRect();
         var offsetX = touch.clientX - rect.left;
         var width = progressBar.offsetWidth;
-        var seekTime = (offsetX / width) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
 
         function moveProgress(e) {
-            var touch = e.touches[0];
-            var moveX = touch.clientX - rect.left;
+            var touchMove = e.touches[0];
+            var moveX = touchMove.clientX - rect.left;
             var newWidth = Math.max(0, Math.min(moveX, width));
             var seekTime = (newWidth / width) * audioPlayer.duration;
             audioPlayer.currentTime = seekTime;
@@ -280,40 +283,4 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('touchmove', moveProgress);
         document.addEventListener('touchend', stopMove);
     });
-
-    progressBar.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    });
-
-    window.addEventListener('beforeunload', function () {
-        localStorage.removeItem('currentSongIndex');
-        localStorage.removeItem('playbackPosition');
-        audioPlayer.pause();
-    });
-
-    audioPlayer.addEventListener('ended', function () {
-        pauseVideo();
-    });
-
-    function pauseVideo() {
-        videoElement.pause();
-        videoElement.currentTime = 0;
-    }
 });
-
-function toggleDropdown() {
-    var dropdownContent = document.getElementById('dropdown-content');
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-}
-
-window.onclick = function (event) {
-    if (!event.target.matches('.dropdown-toggle')) {
-        var dropdowns = document.getElementsByClassName('dropdown-content');
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.style.display === 'block') {
-                openDropdown.style.display = 'none';
-            }
-        }
-    }
-};
