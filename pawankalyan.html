@@ -1,99 +1,346 @@
-<!DOCTYPE html><html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - Power star mix</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo\logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="stylesheet" href="extratel.css"> <script src="pawankalyan.js"></script></head><body><div id="player-interface"> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br><div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br></div></div><div class="about"> <a target="_blank" href="festa.html">About festa</a> </div></div><div class="skip"> <input type="range" id="volume-bar" min="0" max="100" href="20"> <button class="button2" id="previous-btn"><i class="fa-solid fa-backward-step"></i></i></button> <button class="button1" id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button class="button3" id="next-btn"><i class="fa-solid fa-forward-step"></i></button> </div><div id="progress-bar" class="progress-bar"> <div class="progress"></div></div><div class="songslist"> <header style="background-color:#ff0000;"> <div class="hover-title" title="You are listening to english artist's song"> <h1>Power star mix</h1> </div></header> <ul class="songssad" id="song-list"> <li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Anukoneledhugaa-SenSongsMp3.Co.mp3"> <span class="song-title">Anukoneledhugaa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Ela%20Ela-SenSongsMp3.Co.mp3"> <span class="song-title">Ela Ela</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Kshanam%20Kshanam-SenSongsMp3.Co.mp3"> <span class="song-title">Kshanam Kshanam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Panja-SenSongsMp3.Co.mp3"> <span class="song-title">Panja</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Paparayudu-SenSongsMp3.Co.mp3"> <span class="song-title">Paparayudu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja(2011)/Veyira%20Cheyyi-SenSongsMp3.Co.mp3"> <span class="song-title">Veyira Cheyyi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Amma%20Thale-SenSongsMp3.Co.mp3"> <span class="song-title">Amma Thale</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Dochey-SenSongsMp3.Co.mp3"> <span class="song-title">Dochey</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Maham%20Maye-SenSongsMp3.Co.mp3"> <span class="song-title">Maham Maye</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Power%20Star-SenSongsMp3.Co.mp3"> <span class="song-title">Power Star</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Aale%20Baale-SenSongsMp3.Co.mp3"> <span class="song-title">Aale Baale</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Vayyarala-SenSongsMp3.Co.mp3"> <span class="song-title">Vayyarala</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Chiguru%20Boniya-SenSongsMp3.Co.mp3"> <span class="song-title">Chiguru Boniya</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Sri%20Ganga-SenSongsMp3.Co.mp3"> <span class="song-title">Sri Ganga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Barbie%20Bommaki-SenSongsMp3.Co.mp3"> <span class="song-title">Barbie Bommaki</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Gelupu%20Thalupule-SenSongsMp3.Co.mp3"> <span class="song-title">Gelupu Thalupule</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Am%20Indian-SenSongsMp3.Co.mp3"> <span class="song-title">Am Indian</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Bangala%20Kathamlo-SenSongsMp3.Co.mp3"> <span class="song-title">Bangala Kathamlo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Vevela%20Mainala-SenSongsMp3.Co.mp3"> <span class="song-title">Vevela Mainala</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Yey%20Chikitha-SenSongsMp3.Co.mp3"> <span class="song-title">Yey Chikitha</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Inthe%20InthintheSenSongsMp3.Co.mp3"> <span class="song-title">Inthe Inthinthe</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Lokale%20Gelavaga-SenSongsMp3.Co.mp3"> <span class="song-title">Lokale Gelavaga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Athi%20Methani-SenSongsMp3.Co.mp3"> <span class="song-title">Athi Methani</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Neelo%20Jarige-SenSongsMp3.Co.mp3"> <span class="song-title">Neelo Jarige</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Kannu%20Kottina-SenSongsMp3.Co.mp3"> <span class="song-title">Kannu Kottina</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Jai%20Shambo%20Shambo-SenSongsMp3.Co.mp3"> <span class="song-title">Jai Shambo Shambo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Yegire%20Chilakamma-SenSongsMp3.Co.mp3"> <span class="song-title">Yegire Chilakamma</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram-SenSongsMp3.Co.mp3"> <span class="song-title">Ra Ra Bangaram</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Maro%20Masti%20Maro-SenSongsMp3.Co.mp3"> <span class="song-title">Maro Masti Maro</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram%20Mix-SenSongsMp3.Co.mp3"> <span class="song-title">Ra Ra Bangaram Mix</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Chedugudante-SenSongsMp3.Co.mp3"> <span class="song-title">Chedugudante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Annayya%20Annavante-SenSongsMp3.Co.mp3"> <span class="song-title">Annayya Annavante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Lucia-SenSongsMp3.Co.mp3"> <span class="song-title">Lucia</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Neevalle%20Neevalle-SenSongsMp3.Co.mp3"> <span class="song-title">Neevalle Neevalle</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Chalore%20Chalore%20Chal%20%28Telugu%29-SenSongsMp3.Co.mp3"> <span class="song-title">Chalore Chalore Chal (Telugu)</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Gaallo%20Thelinattunde-SenSongsMp3.Co.mp3"> <span class="song-title">Gaallo Thelinattunde</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jalsa-SenSongsMp3.Co.mp3"> <span class="song-title">Jalsa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jennifer%20Lopez-SenSongsMp3.Co.mp3"> <span class="song-title">Jennifer Lopez</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating%20%28Remix%29-SenSongsMp3.Co.mp3"> <span class="song-title">My Heart Is Beating (Remix)</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating-SenSongsMp3.Co.mp3"> <span class="song-title">My Heart Is Beating</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/You%20&%20I-SenSongsMp3.Co.mp3"> <span class="song-title">You & I</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Made%20In%20Andhra%20Student-SenSongsMp3.Co.mp3"> <span class="song-title">Made In Andhra Student</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Vayyari%20Bhama-SenSongsMp3.Co.mp3"> <span class="song-title">Vayyari Bhama</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Edola%20Vundi-SenSongsMp3.Co.mp3"> <span class="song-title">Edola Vundi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Pedavi%20Datani%20Matokatundi-SenSongsMp3.Co.mp3"> <span class="song-title">Pedavi Datani Matokatundi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Travelling%20Soldier%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Travelling Soldier</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Ee%20Manase%20Se-SenSongsMp3.Co.mp3"> <span class="song-title">Ee Manase Se</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Yemaindo%20Yemo-SenSongsMp3.Co.mp3"> <span class="song-title">Yemaindo Yemo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Gagananiki-SenSongsMp3.Co.mp3"> <span class="song-title">Gagananiki</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chiguraku%20Chaatu-SenSongsMp3.Co.mp3"> <span class="song-title">Chiguraku Chaatu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chilakamma-SenSongsMp3.Co.mp3"> <span class="song-title">Chilakamma</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chitti%20Nadumune-SenSongsMp3.Co.mp3"> <span class="song-title">Chitti Nadumune</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Emantaro-SenSongsMp3.Co.mp3"> <span class="song-title">Emantaro</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Killi%20Killi-SenSongsMp3.Co.mp3"> <span class="song-title">Killi Killi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Le%20Le%20Le%20Le-SenSongsMp3.Co.mp3"> <span class="song-title">Le Le Le Le</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Aaduvari%20Matalaku-SenSongsMp3.Co.mp3"> <span class="song-title">Aaduvari Matalaku</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ammaye%20Sannaga-SenSongsMp3.Co.mp3"> <span class="song-title">Ammaye Sannaga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Cheliya%20Cheliya-SenSongsMp3.Co.mp3"> <span class="song-title">Cheliya Cheliya</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Holi%20Holi-SenSongsMp3.Co.mp3"> <span class="song-title">Holi Holi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Premante-SenSongsMp3.Co.mp3"> <span class="song-title">Premante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ye%20Mera%20Jahan-SenSongsMp3.Co.mp3"> <span class="song-title">Ye Mera Jahan</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Baitikochi%20Chuste%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Baitikochi Chuste</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Gaali%20Vaaluga%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Gaali Vaaluga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Dhaga%20Dhagamaney%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Dhaga Dhagamaney</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Swagatham%20Krishna%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Swagatham Krishna</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/AB%20Yevaro%20Nee%20Baby%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">AB Yevaro Nee Baby</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Kodakaa%20Koteswar%20Rao%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Kodakaa Koteswar Rao</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Mira%20Mira%20Meesam%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Mira Mira Meesam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Laage%20Laage%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Laage Laage</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Jivvu%20Jivvu%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Jivvu Jivvu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Emo%20Emo%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Emo Emo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Yelo%20Yedarilo%20Vaana%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Yelo Yedarilo Vaana</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Love%20Theme%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Love Theme</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Netha%20Cheera%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Netha Cheera</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Akasam%20Ammayaithe-SenSongsMp3.Co.mp3"> <span class="song-title">Akasam Ammayaithe</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Dekho%20Dekho%20Gabbar%20Singh-SenSongsMp3.Co.mp3"> <span class="song-title">Dekho Dekho Gabbar Singh</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Dil%20Se-SenSongsMp3.Co.mp3"> <span class="song-title">Dil Se</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Kevvu%20Keka-SenSongsMp3.Co.mp3"> <span class="song-title">Kevvu Keka</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Mandu%20Baabulam-SenSongsMp3.Co.mp3"> <span class="song-title">Mandu Baabulam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Pillaa-SenSongsMp3.Co.mp3"> <span class="song-title">Pillaa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Aaradugula%20Bullettu-SenSongsMp3.Co.mp3"> <span class="song-title">Aaradugula Bullettu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Ninnu%20Chudaganne%20-SenSongsMp3.Co.mp3"> <span class="song-title">Ninnu Chudaganne</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Deva%20Devam-SenSongsMp3.Co.mp3"> <span class="song-title">Deva Devam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Bapu%20Gari%20Bommo-SenSongsMp3.Co.mp3"> <span class="song-title">Bapu Gari Bommo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Kirraaku-SenSongsMp3.Co.mp3"> <span class="song-title">Kirraaku</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Time%20To%20Party%20-SenSongsMp3.Co.mp3"> <span class="song-title">Time To Party</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Katamarayuda%20-SenSongsMp3.Co.mp3"> <span class="song-title">Katamarayuda</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Aadevadanna%20Eedevadanna%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Aadevadanna Eedevadanna</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Khakhee%20Chokka%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Khakhee Chokka</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Nee%20Chepakallu%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Nee Chepakallu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/O%20Pilla%20Shubhanalla%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">O Pilla Shubhanalla</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Sardaar%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Sardaar</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Tauba%20Tauba%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Tauba Tauba</span> <i class="fa-solid fa-play play-button"></i> </li></ul> </div></div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    var audioPlayer = new Audio();
-    var progressBar = document.getElementById('progress-bar');
-    var skipBackwardBtn = document.getElementById('skip-backward-btn');
-    var skipForwardBtn = document.getElementById('skip-forward-btn');
-    var skipTime = 10; // Time to skip forward/backward in seconds
-
-    function updateProgressBar() {
-        if (audioPlayer.duration) {
-            var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-            progressBar.querySelector('.progress').style.width = progress + '%';
+<!DOCTYPE html><html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="extratel.css"> <script src="pawankalyan.js"></script> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div><div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div><div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br><div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br></div></div><div class="about"> <a target="_blank" href="festa.html">About festa</a> </div></div><input type="range" id="volume-bar" min="0" max="100" value="20"> <div class="skip"> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></button> <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> </div><button class="repeat" id="repeat-btn"><i class="fa-solid fa-repeat"></i></button> <div id="progress-bar"> <div class="progress"></div></div><div class="songslist"> <header > <div class="hover-title" title="You are listening to oldest songs that are added recently"> <h1><img src="logo/powerstarmix.png" alt="Logo"> Power star mix</h1> </div></header> <ul class="songssad" id="song-list"> <div class="songname"> # Song name </div><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Anukoneledhugaa-SenSongsMp3.Co.mp3"> <span class="song-title">Anukoneledhugaa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Ela%20Ela-SenSongsMp3.Co.mp3"> <span class="song-title">Ela Ela</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Kshanam%20Kshanam-SenSongsMp3.Co.mp3"> <span class="song-title">Kshanam Kshanam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Panja-SenSongsMp3.Co.mp3"> <span class="song-title">Panja</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja%282011%29/Paparayudu-SenSongsMp3.Co.mp3"> <span class="song-title">Paparayudu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/panja(2011)/Veyira%20Cheyyi-SenSongsMp3.Co.mp3"> <span class="song-title">Veyira Cheyyi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Amma%20Thale-SenSongsMp3.Co.mp3"> <span class="song-title">Amma Thale</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Dochey-SenSongsMp3.Co.mp3"> <span class="song-title">Dochey</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Maham%20Maye-SenSongsMp3.Co.mp3"> <span class="song-title">Maham Maye</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/komaram%20puli%282010%29/Power%20Star-SenSongsMp3.Co.mp3"> <span class="song-title">Power Star</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Aale%20Baale-SenSongsMp3.Co.mp3"> <span class="song-title">Aale Baale</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Vayyarala-SenSongsMp3.Co.mp3"> <span class="song-title">Vayyarala</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Chiguru%20Boniya-SenSongsMp3.Co.mp3"> <span class="song-title">Chiguru Boniya</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Sri%20Ganga-SenSongsMp3.Co.mp3"> <span class="song-title">Sri Ganga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Barbie%20Bommaki-SenSongsMp3.Co.mp3"> <span class="song-title">Barbie Bommaki</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/theenmar%282011%29/Gelupu%20Thalupule-SenSongsMp3.Co.mp3"> <span class="song-title">Gelupu Thalupule</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Am%20Indian-SenSongsMp3.Co.mp3"> <span class="song-title">Am Indian</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Bangala%20Kathamlo-SenSongsMp3.Co.mp3"> <span class="song-title">Bangala Kathamlo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Vevela%20Mainala-SenSongsMp3.Co.mp3"> <span class="song-title">Vevela Mainala</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/badri%282000%29/Yey%20Chikitha-SenSongsMp3.Co.mp3"> <span class="song-title">Yey Chikitha</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Inthe%20InthintheSenSongsMp3.Co.mp3"> <span class="song-title">Inthe Inthinthe</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Lokale%20Gelavaga-SenSongsMp3.Co.mp3"> <span class="song-title">Lokale Gelavaga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Athi%20Methani-SenSongsMp3.Co.mp3"> <span class="song-title">Athi Methani</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Neelo%20Jarige-SenSongsMp3.Co.mp3"> <span class="song-title">Neelo Jarige</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/baalu%282004%29/Kannu%20Kottina-SenSongsMp3.Co.mp3"> <span class="song-title">Kannu Kottina</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Jai%20Shambo%20Shambo-SenSongsMp3.Co.mp3"> <span class="song-title">Jai Shambo Shambo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Yegire%20Chilakamma-SenSongsMp3.Co.mp3"> <span class="song-title">Yegire Chilakamma</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram-SenSongsMp3.Co.mp3"> <span class="song-title">Ra Ra Bangaram</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Maro%20Masti%20Maro-SenSongsMp3.Co.mp3"> <span class="song-title">Maro Masti Maro</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Ra%20Ra%20Bangaram%20Mix-SenSongsMp3.Co.mp3"> <span class="song-title">Ra Ra Bangaram Mix</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/bangaram/Chedugudante-SenSongsMp3.Co.mp3"> <span class="song-title">Chedugudante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Annayya%20Annavante-SenSongsMp3.Co.mp3"> <span class="song-title">Annayya Annavante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Lucia-SenSongsMp3.Co.mp3"> <span class="song-title">Lucia</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/annavaram%282006%29/Neevalle%20Neevalle-SenSongsMp3.Co.mp3"> <span class="song-title">Neevalle Neevalle</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Chalore%20Chalore%20Chal%20%28Telugu%29-SenSongsMp3.Co.mp3"> <span class="song-title">Chalore Chalore Chal (Telugu)</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Gaallo%20Thelinattunde-SenSongsMp3.Co.mp3"> <span class="song-title">Gaallo Thelinattunde</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jalsa-SenSongsMp3.Co.mp3"> <span class="song-title">Jalsa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/Jennifer%20Lopez-SenSongsMp3.Co.mp3"> <span class="song-title">Jennifer Lopez</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating%20%28Remix%29-SenSongsMp3.Co.mp3"> <span class="song-title">My Heart Is Beating (Remix)</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/My%20Heart%20Is%20Beating-SenSongsMp3.Co.mp3"> <span class="song-title">My Heart Is Beating</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/jalsa%282008%29/You%20&%20I-SenSongsMp3.Co.mp3"> <span class="song-title">You & I</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Made%20In%20Andhra%20Student-SenSongsMp3.Co.mp3"> <span class="song-title">Made In Andhra Student</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Vayyari%20Bhama-SenSongsMp3.Co.mp3"> <span class="song-title">Vayyari Bhama</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Edola%20Vundi-SenSongsMp3.Co.mp3"> <span class="song-title">Edola Vundi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Pedavi%20Datani%20Matokatundi-SenSongsMp3.Co.mp3"> <span class="song-title">Pedavi Datani Matokatundi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/thammudu%281999%29/Travelling%20Soldier%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Travelling Soldier</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Ee%20Manase%20Se-SenSongsMp3.Co.mp3"> <span class="song-title">Ee Manase Se</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Yemaindo%20Yemo-SenSongsMp3.Co.mp3"> <span class="song-title">Yemaindo Yemo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/tholi%20prema%281998%29/Gagananiki-SenSongsMp3.Co.mp3"> <span class="song-title">Gagananiki</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chiguraku%20Chaatu-SenSongsMp3.Co.mp3"> <span class="song-title">Chiguraku Chaatu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chilakamma-SenSongsMp3.Co.mp3"> <span class="song-title">Chilakamma</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Chitti%20Nadumune-SenSongsMp3.Co.mp3"> <span class="song-title">Chitti Nadumune</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Emantaro-SenSongsMp3.Co.mp3"> <span class="song-title">Emantaro</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Killi%20Killi-SenSongsMp3.Co.mp3"> <span class="song-title">Killi Killi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gudumba%20shankar%282004%29/Le%20Le%20Le%20Le-SenSongsMp3.Co.mp3"> <span class="song-title">Le Le Le Le</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Aaduvari%20Matalaku-SenSongsMp3.Co.mp3"> <span class="song-title">Aaduvari Matalaku</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ammaye%20Sannaga-SenSongsMp3.Co.mp3"> <span class="song-title">Ammaye Sannaga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Cheliya%20Cheliya-SenSongsMp3.Co.mp3"> <span class="song-title">Cheliya Cheliya</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Holi%20Holi-SenSongsMp3.Co.mp3"> <span class="song-title">Holi Holi</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Premante-SenSongsMp3.Co.mp3"> <span class="song-title">Premante</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/kushi/Ye%20Mera%20Jahan-SenSongsMp3.Co.mp3"> <span class="song-title">Ye Mera Jahan</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Baitikochi%20Chuste%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Baitikochi Chuste</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Gaali%20Vaaluga%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Gaali Vaaluga</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Dhaga%20Dhagamaney%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Dhaga Dhagamaney</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Swagatham%20Krishna%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Swagatham Krishna</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/AB%20Yevaro%20Nee%20Baby%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">AB Yevaro Nee Baby</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://mp3teluguwap.net/mp3/2018/Agnyaathavaasi%20(2018)/Agnyaathavaasi%20(2018)/Kodakaa%20Koteswar%20Rao%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Kodakaa Koteswar Rao</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Mira%20Mira%20Meesam%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Mira Mira Meesam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Laage%20Laage%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Laage Laage</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Jivvu%20Jivvu%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Jivvu Jivvu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Emo%20Emo%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Emo Emo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Yelo%20Yedarilo%20Vaana%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Yelo Yedarilo Vaana</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Love%20Theme%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Love Theme</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp32/mp3/Katamarayudu%20(2017)/Netha%20Cheera%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Netha Cheera</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Akasam%20Ammayaithe-SenSongsMp3.Co.mp3"> <span class="song-title">Akasam Ammayaithe</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Dekho%20Dekho%20Gabbar%20Singh-SenSongsMp3.Co.mp3"> <span class="song-title">Dekho Dekho Gabbar Singh</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Dil%20Se-SenSongsMp3.Co.mp3"> <span class="song-title">Dil Se</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Kevvu%20Keka-SenSongsMp3.Co.mp3"> <span class="song-title">Kevvu Keka</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Mandu%20Baabulam-SenSongsMp3.Co.mp3"> <span class="song-title">Mandu Baabulam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/gabbar%20singh%282012%29/Pillaa-SenSongsMp3.Co.mp3"> <span class="song-title">Pillaa</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Aaradugula%20Bullettu-SenSongsMp3.Co.mp3"> <span class="song-title">Aaradugula Bullettu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Ninnu%20Chudaganne%20-SenSongsMp3.Co.mp3"> <span class="song-title">Ninnu Chudaganne</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Deva%20Devam-SenSongsMp3.Co.mp3"> <span class="song-title">Deva Devam</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Bapu%20Gari%20Bommo-SenSongsMp3.Co.mp3"> <span class="song-title">Bapu Gari Bommo</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Kirraaku-SenSongsMp3.Co.mp3"> <span class="song-title">Kirraaku</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Time%20To%20Party%20-SenSongsMp3.Co.mp3"> <span class="song-title">Time To Party</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/All/Atharintiki%20Daaredi%20(2013)/Katamarayuda%20-SenSongsMp3.Co.mp3"> <span class="song-title">Katamarayuda</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Aadevadanna%20Eedevadanna%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Aadevadanna Eedevadanna</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Khakhee%20Chokka%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Khakhee Chokka</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Nee%20Chepakallu%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Nee Chepakallu</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/O%20Pilla%20Shubhanalla%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">O Pilla Shubhanalla</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Sardaar%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Sardaar</span> <i class="fa-solid fa-play play-button"></i> </li><li data-src="https://sencloud.online/mp3/Telugu%20Mp3/2016/Sardaar%20Gabbar%20Singh%20(2016)/Tauba%20Tauba%20-%20SenSongsMp3.Co.mp3"> <span class="song-title">Tauba Tauba</span> <i class="fa-solid fa-play play-button"></i> </li></ul> </div></div><div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div>
+    <script>
+        const colors = [
+            '#FF0000', // Bright Red
+            '#0000FF', // Bright Blue
+            '#32CD32', // Lime Green
+            '#FF1493', // Deep Pink
+            '#FFA500', // Orange
+            '#00BFFF', // Deep Sky Blue
+            // '#FFFF00', // Yellow
+            '#FF4500', // Orange Red
+            '#1E90FF', // Dodger Blue
+            '#9400D3', // Dark Violet
+            // '#FFD700', // Gold
+            '#FF6347', // Tomato
+            // '#ADFF2F', // Green Yellow
+            '#40E0D0', // Turquoise
+            '#8A2BE2', // Blue Violet
+        ];
+    
+        let intervalId;
+        let colorInterval = 1000; // Starting interval of 1 second
+        let speedUpClicks = 0;
+        let slowDownClicks = 0;
+        const maxClicks = 5;
+        let isPlaying = false; // Track if the light is currently playing
+    
+        function getRandomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
         }
+    
+        function startColorChange() {
+            // Apply CSS transitions for smooth color change
+            document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`;
+    
+            intervalId = setInterval(() => {
+                document.body.style.color = getRandomColor();
+                document.body.style.backgroundColor = getRandomColor();
+            }, colorInterval);
+    
+            isPlaying = true;
+            document.getElementById('colorChangeButton').textContent = 'Turn off the light';
+        }
+    
+        function stopColorChange() {
+            clearInterval(intervalId);
+            intervalId = null;
+            isPlaying = false;
+            document.getElementById('colorChangeButton').textContent = 'Turn on the light';
+        }
+    
+        document.getElementById('colorChangeButton').addEventListener('click', () => {
+            if (isPlaying) {
+                stopColorChange();
+            } else {
+                startColorChange();
+            }
+        });
+    
+        function adjustSpeed() {
+            if (speedUpClicks > 0) {
+                colorInterval = Math.max(100, colorInterval - 200); // Decrease interval, minimum 100ms
+                speedUpClicks--;
+            }
+            if (slowDownClicks > 0) {
+                colorInterval += 200; // Increase interval
+                slowDownClicks--;
+            }
+            if (intervalId) {
+                stopColorChange();
+                startColorChange();
+            }
+        }
+    
+        document.getElementById('speedUpButton').addEventListener('click', () => {
+            if (speedUpClicks < maxClicks) {
+                speedUpClicks++;
+                adjustSpeed();
+            }
+        });
+    
+        document.getElementById('slowDownButton').addEventListener('click', () => {
+            if (slowDownClicks < maxClicks) {
+                slowDownClicks++;
+                adjustSpeed();
+            }
+        });
+    
+        document.getElementById('stopAndBlackButton').addEventListener('click', () => {
+            stopColorChange();
+            document.body.style.transition = ''; // Remove transitions when stopping
+            document.body.style.backgroundColor = 'black'; // Set background to black
+            document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
+        });
+    </script>
+   <div class="view">
+    <button id="shuffle-btn" class="control-button" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+    </div>
+
+<!-- Modal for full-screen video -->
+<div id="fullscreenVideoModal" class="video-popup">
+    <span class="video-close" onclick="hideVideo()">&times;</span>
+    <div class="video-content">
+        <video id="popupVideoPlayer" autoplay loop muted playsinline>
+            <source src="logo/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<script>
+function showVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
+    
+    // Display the modal
+    modal.style.display = "flex";
+    
+    // Play the video
+    video.play();
+
+    // Make the video go full screen without controls
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { // Firefox
+        video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // IE/Edge
+        video.msRequestFullscreen();
     }
 
-    audioPlayer.addEventListener('timeupdate', updateProgressBar);
+    // Ensure controls are not shown even in full screen
+    video.controls = false;
+}
 
-    progressBar.addEventListener('click', function (e) {
-        var rect = this.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var width = progressBar.offsetWidth;
-        var seekTime = (offsetX / width) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
-    });
+function hideVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
 
-    progressBar.addEventListener('mousedown', function (e) {
-        var rect = this.getBoundingClientRect();
-        var width = progressBar.offsetWidth;
+    // Hide the modal
+    modal.style.display = "none";
 
-        function moveProgress(e) {
-            var moveX = e.clientX - rect.left;
-            var newWidth = Math.max(0, Math.min(moveX, width));
-            var seekTime = (newWidth / width) * audioPlayer.duration;
-            audioPlayer.currentTime = seekTime;
-            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
-        }
+    // Pause the video and reset time
+    video.pause();
+    video.currentTime = 0;
+    
+    // Exit full-screen mode if active
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
+</script>
+<style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 100; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    }
 
-        function stopMove() {
-            document.removeEventListener('mousemove', moveProgress);
-            document.removeEventListener('mouseup', stopMove);
-        }
+    .modal-content {
+        background: none;
+padding: 20px;
+width: 80%;
+}
 
-        document.addEventListener('mousemove', moveProgress);
-        document.addEventListener('mouseup', stopMove);
-    });
+    .close-button {
+        color: white;
+font-size: 35px;
+font-weight: 100;
+position: fixed;
+top: 15px;
+right: 30px;
+    }
 
-    progressBar.addEventListener('touchstart', function (e) {
-        var touch = e.touches[0];
-        var rect = this.getBoundingClientRect();
-        var offsetX = touch.clientX - rect.left;
-        var width = progressBar.offsetWidth;
-        var seekTime = (offsetX / width) * audioPlayer.duration;
-        audioPlayer.currentTime = seekTime;
+p#modal-song-details {
+color: rgb(255, 255, 255);
+font-size: 100px;
+position: fixed;
+top: 25%;
+    left: 9%;
+    font-style: italic;
+    font-weight: 800;
+}
+    .close-button:hover,
+    .close-button:focus {
+        color: rgb(156, 156, 156);
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
 
-        function moveProgress(e) {
-            var touch = e.touches[0];
-            var moveX = touch.clientX - rect.left;
-            var newWidth = Math.max(0, Math.min(moveX, width));
-            var seekTime = (newWidth / width) * audioPlayer.duration;
-            audioPlayer.currentTime = seekTime;
-            progressBar.querySelector('.progress').style.width = (newWidth / width) * 100 + '%';
-        }
+<div class="song-info" id="songInfo">
+<img src="logo/playingBs.png" alt="Song Cover" style="width: 50px; height: 50px;">
+<div class="song-details">
+    <p  style="font-size: 13px; font-weight: 600;">Playing :</p>
+    <p id="current-song-details" style="color: rgb(255, 255, 255);"></p>
+    <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i>
+</div>
+</div>
 
-        function stopMove() {
-            document.removeEventListener('touchmove', moveProgress);
-            document.removeEventListener('touchend', stopMove);
-        }
+<!-- Modal Structure -->
+<div id="songModal" class="modal">
+<div class="modal-content">
+    <span class="close-button">&times;</span>
+    <img src="logo/brand.png" alt="" style="width: 3%;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    background: black;
+    padding: 10px;
+    border-radius: 6px;">
+    <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
+</div>
+</div>
 
-        document.addEventListener('touchmove', moveProgress);
-        document.addEventListener('touchend', stopMove);
-    });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const songInfo = document.getElementById('songInfo');
+const songModal = document.getElementById('songModal');
+const modalSongDetails = document.getElementById('modal-song-details');
+const closeButton = document.querySelector('.close-button');
+const currentSongDetails = document.getElementById('current-song-details');
 
-    progressBar.addEventListener('touchmove', function (e) {
-        e.preventDefault(); // Prevent scrolling while touching the progress bar
-    });
+let previousSongTitle = extractSongTitle(currentSongDetails.textContent);
 
-    // Skip backward
-    skipBackwardBtn.addEventListener('click', function () {
-        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - skipTime);
-    });
+// Array of 40 distinct colors
+const colorPalette = [
+    '#1db954', '#1ed760', '#121212', '#191414', '#535353',
+'#0d0d0d', '#232323', '#404040', '#1a1a1a', '#2d2d2d',
+'#1db954', '#1ed760', '#121212', '#191414', '#535353',
+'#0f0f0f', '#262626', '#3b3b3b', '#141414', '#282828',
+'#1db954', '#191414', '#121212', '#1ed760', '#1db954',
+'#171717', '#303030', '#484848', '#111111', '#1b1b1b',
+'#191414', '#1db954', '#535353', '#121212', '#191414',
+'#0c0c0c', '#242424', '#3c3c3c', '#131313', '#292929',
+'#1db954', '#121212', '#191414', '#1ed760', '#535353',
+'#1a1a1a', '#333333', '#4d4d4d', '#0e0e0e', '#272727'
 
-    // Skip forward
-    skipForwardBtn.addEventListener('click', function () {
-        audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + skipTime);
-    });
+];
 
-    // Touch event listeners for skip buttons
-    skipBackwardBtn.addEventListener('touchstart', function () {
-        audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - skipTime);
-    });
+// Open modal when song-info is clicked
+songInfo.addEventListener('click', function() {
+    // Extract and set only the song title in the modal content
+    const songTitle = extractSongTitle(currentSongDetails.textContent);
 
-    skipForwardBtn.addEventListener('touchstart', function () {
-        audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + skipTime);
-    });
+    // If no song is playing, show the default message
+    modalSongDetails.textContent = songTitle ? songTitle : "Welcome to BsFesta";
+
+    // Change modal background color based on the song title
+    songModal.style.backgroundColor = getBackgroundColor(songTitle);
+    
+    // Show the modal
+    songModal.style.display = "block";
+});
+
+// Close modal when the close button is clicked
+closeButton.addEventListener('click', function() {
+    songModal.style.display = "none";
+});
+
+// Close modal when clicking outside of the modal content
+window.addEventListener('click', function(event) {
+    if (event.target === songModal) {
+        songModal.style.display = "none";
+    }
+});
+
+// Function to determine background color based on the song title
+function getBackgroundColor(songTitle) {
+    if (!songTitle) {
+        return '#2c3e50'; // Default color when no song is playing
+    }
+    // Generate an index for the color palette based on the song title
+    let index = 0;
+    for (let i = 0; i < songTitle.length; i++) {
+        index += songTitle.charCodeAt(i); // Sum up character codes
+    }
+    // Limit index to the number of colors in the palette (40)
+    index = index % colorPalette.length;
+
+    return colorPalette[index]; // Return a color from the palette
+}
+
+// Function to extract only the song title from the full string
+function extractSongTitle(songDetails) {
+    if (songDetails.includes(' - ')) {
+        return songDetails.split(' - ')[0]; // Split by ' - ' and return the first part (the song title)
+    } else if (songDetails === '') {
+        return null; // No song playing
+    } else {
+        return songDetails; // If there's no ' - ', return the whole string
+    }
+}
+
+// Function to update the modal when the song changes
+function updateModalIfSongChanges() {
+    const newSongTitle = extractSongTitle(currentSongDetails.textContent);
+
+    // Check if the song title has changed
+    if (newSongTitle !== previousSongTitle) {
+        // Update modal background color if song title has changed
+        songModal.style.backgroundColor = getBackgroundColor(newSongTitle);
+
+        // Update the modal content to reflect the current song title or the welcome message
+        modalSongDetails.textContent = newSongTitle ? newSongTitle : "Welcome to BsFesta";
+
+        previousSongTitle = newSongTitle; // Update previous title
+    }
+}
+
+// Example function to stop the song and display "Welcome to BS"
+function stopSong() {
+    currentSongDetails.textContent = ''; // Clear the song details
+    updateModalIfSongChanges(); // Update modal to reflect the stopped state
+}
+
+// Check for song changes every 5 seconds
+setInterval(() => {
+    updateModalIfSongChanges(); // Check if song has changed
+}, 5000);
+
+// Simulating stopping the song after 10 seconds (for testing purposes)
+setTimeout(() => {
+    stopSong(); // Call the stop function to simulate stopping the song
+}, 10000); // 10 seconds
 });
 
 </script>
-</body></html>
+</body>
+</html> 
