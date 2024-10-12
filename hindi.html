@@ -2,20 +2,17 @@
 <script>
     const colors = [
         '#FF0000', // Bright Red
-        '#0000FF', // Bright Blue
-        '#32CD32', // Lime Green
-        '#FF1493', // Deep Pink
-        '#FFA500', // Orange
-        '#00BFFF', // Deep Sky Blue
-        // '#FFFF00', // Yellow
-        '#FF4500', // Orange Red
-        '#1E90FF', // Dodger Blue
-        '#9400D3', // Dark Violet
-        // '#FFD700', // Gold
-        '#FF6347', // Tomato
-        // '#ADFF2F', // Green Yellow
-        '#40E0D0', // Turquoise
-        '#8A2BE2', // Blue Violet
+            '#0000FF', // Bright Blue
+            '#32CD32', // Lime Green
+            '#FF1493', // Deep Pink
+            '#FFA500', // Orange
+            '#00BFFF', // Deep Sky Blue
+            '#FF4500', // Orange Red
+            '#1E90FF', // Dodger Blue
+            '#9400D3', // Dark Violet
+            '#FF6347', // Tomato
+            '#40E0D0', // Turquoise
+            '#8A2BE2', // Blue Violet
     ];
 
     let intervalId;
@@ -241,17 +238,16 @@ let previousSongTitle = extractSongTitle(currentSongDetails.textContent);
 
 // Array of 40 distinct colors
 const colorPalette = [
-'#1db954', '#1ed760', '#121212', '#191414', '#535353',
-'#0d0d0d', '#232323', '#404040', '#1a1a1a', '#2d2d2d',
-'#1db954', '#1ed760', '#121212', '#191414', '#535353',
-'#0f0f0f', '#262626', '#3b3b3b', '#141414', '#282828',
-'#1db954', '#191414', '#121212', '#1ed760', '#1db954',
-'#171717', '#303030', '#484848', '#111111', '#1b1b1b',
-'#191414', '#1db954', '#535353', '#121212', '#191414',
-'#0c0c0c', '#242424', '#3c3c3c', '#131313', '#292929',
-'#1db954', '#121212', '#191414', '#1ed760', '#535353',
-'#1a1a1a', '#333333', '#4d4d4d', '#0e0e0e', '#272727'
-
+'#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
+    '#0d0d2b', '#232332', '#404055', '#1a1a2e', '#2d2d3a',
+    '#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
+    '#0f0f27', '#26262d', '#3b3b55', '#14141e', '#282838',
+    '#00d15a', '#191414', '#0a0a23', '#00ff75', '#00d15a',
+    '#171729', '#303043', '#484862', '#11111f', '#1b1b31',
+    '#191414', '#00d15a', '#505050', '#0a0a23', '#191414',
+    '#0c0c28', '#242440', '#3c3c58', '#13131d', '#292940',
+    '#00d15a', '#0a0a23', '#191414', '#00ff75', '#505050',
+    '#1a1a2b', '#33334f', '#4d4d67', '#0e0e29', '#272746'
 ];
 
 // Open modal when song-info is clicked
