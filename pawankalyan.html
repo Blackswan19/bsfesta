@@ -238,7 +238,7 @@ let previousSongTitle = extractSongTitle(currentSongDetails.textContent);
 
 // Array of 40 distinct colors
 const colorPalette = [
-    '#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
+'#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
     '#0d0d2b', '#232332', '#404055', '#1a1a2e', '#2d2d3a',
     '#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
     '#0f0f27', '#26262d', '#3b3b55', '#14141e', '#282838',
@@ -249,6 +249,7 @@ const colorPalette = [
     '#00d15a', '#0a0a23', '#191414', '#00ff75', '#505050',
     '#1a1a2b', '#33334f', '#4d4d67', '#0e0e29', '#272746'
 ];
+
 
 // Open modal when song-info is clicked
 songInfo.addEventListener('click', function() {
@@ -343,15 +344,58 @@ setTimeout(() => {
         position: fixed;
         display: contents;
     }</style>
-    <input type="text" id="userLink" placeholder="Enter the youtube song link here...">
-    <button onclick="modifyLink()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <input type="text" id="search-bar" placeholder="Search the song here...">
+    <button><i class="fa-solid fa-magnifying-glass"></i></button>
     <a href="https://blackswan19.github.io/Educate/stoper.html"><button>BsAdstoper</button></a>
     <div id="result"></div>
     <script>function modifyLink(){const e=document.getElementById("userLink").value;let t=e;e.toLowerCase().includes("youtu.be")?t=`https://www.yout-ube.com/watch?v=${e.split("youtu.be/")[1].split("?")[0]}`:e.toLowerCase().includes("youtube.com")&&(t=e.replace(/youtube/i,"yout-ube")),t.includes("yout-ube.com/watch?v=")?(document.getElementById("result").innerHTML=`<button id="playButton" onclick="playVideo('${t}')">Play in full screen</button>`,document.getElementById("userLink").value=""):document.getElementById("result").innerHTML="Invalid URL"}function playVideo(e){window.open(e,"_self"),document.getElementById("playButton").style.display="none"}</script>
 </div>
-        <div class="gif">
+<div class="gif">
     <a href="music.html" class="logopgs"><img src="logo/brand.png" alt="" width="6%"></a><br>
     <img src="https://cdn.dribbble.com/users/1878767/screenshots/3980559/media/2fb738ad4b1bc8d9bfd30a08abd0ea70.gif" alt="">
 </div>
+<script>
+    // JavaScript for song search functionality
+    window.addEventListener('DOMContentLoaded', (event) => {
+            const searchBar = document.getElementById('search-bar');
+            const clearButton = document.getElementById('clear-button');
+            const songs = document.querySelectorAll('#song-list li');
+
+            searchBar.addEventListener('input', function() {
+                let searchTerm = this.value.toLowerCase().trim();
+                let songFound = false; // To track if we found a song
+
+                // Clear highlights if search term is empty
+                if (searchTerm === '') {
+                    songs.forEach(song => {
+                        song.style.backgroundColor = ''; // Remove all highlights
+                    });
+                    return; // Stop further execution when the search is empty
+                }
+
+                // Search and highlight songs that match the input
+                songs.forEach(song => {
+                    let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
+                    if (songTitle.includes(searchTerm)) {
+                        song.style.backgroundColor = 'Blue'; // Highlight matched song
+                        if (!songFound) { // Scroll to the first matching song
+                            song.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            songFound = true;
+                        }
+                    } else {
+                        song.style.backgroundColor = ''; // Reset if not matched
+                    }
+                });
+            });
+
+            // Clear button functionality
+            clearButton.addEventListener('click', function() {
+                searchBar.value = ''; // Clear the search bar
+                songs.forEach(song => {
+                    song.style.backgroundColor = ''; // Remove all highlights
+                });
+            });
+        });
+  </script>
 </body>
 </html> 
