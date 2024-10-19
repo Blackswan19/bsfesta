@@ -1,5 +1,5 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - Relaxing mix</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo\logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="stylesheet" href="music.css"> <script src="mood.js"></script> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"><h1>BsFesta</h1> </div> <div id="player-interface"> <!-- <div id="myModal" class="modal"> <div class="modal-content"> <span class="close" style="color: black;">&times;</span> <p style="color: black;">Website updating on 6th May, Check out the new features and improvements designed just for you</p> </div> </div> --> <div class="dropdown"> <div class="header"> <a href="filter.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu" style="position: fixed;"> <a href="music.html" ><i class="fa-solid fa-house"></i>Home</a><br> <a href="https://blackswan19.github.io/bscrop/formbs.html"><i class="fa-brands fa-medium"></i>More from Bs</a> </div> </div> <div class="about"> <a target="_blank" href="festa.html">About festa</a> </div> </div> <div class="sectionss" > <header> <h1> <img src="logo/relax.png" alt="">Relaxing Mix</h1> </header> <ul class="songssad" id="song-list"> <div class="songname"> # Song name </div> <li data-src="magicalmusic\10.mp3"><span class="song-title">Angels Above Us</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\11.mp3"><span class="song-title">Mojito</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\12.mp3"><span class="song-title">Nightfall</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\13.mp3"><span class="song-title">Trail running</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\14.mp3"><span class="song-title">We Met</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\15.mp3"><span class="song-title">Wishful</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\0.mp3"><span class="song-title">Interstellar</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\1.mp3"><span class="song-title">Ocean Waves</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\2.mp3"><span class="song-title">Sea of Time</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\3.mp3"><span class="song-title">Flying</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\4.mp3"><span class="song-title">Quiet Night</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\5.mp3"><span class="song-title">Deep Space</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\6.mp3"><span class="song-title">Frozen in Time</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\7.mp3"><span class="song-title">The Hidden Valley</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\8.mp3"><span class="song-title">High Above</span><i class="fa-solid fa-play play-button"></i></li> <li data-src="magicalmusic\9.mp3"><span class="song-title">Dreaming</span><i class="fa-solid fa-play play-button"></i></li> </ul> </div> <div class="skip"> <input type="range" id="volume-bar" min="0" max="100" href="20"> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></i></button> <button id="play-pause-btn">Play</button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> </div> <div id="progress-bar"> <div class="progress"></div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div>
-<script>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - Relaxing mix</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo\logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="stylesheet" href="music.css"> <script src="mood.js"></script> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"><h1>BsFesta</h1> </div> <div id="player-interface"> <!-- <div id="myModal" class="modal"> <div class="modal-content"> <span class="close" style="color: black;">&times;</span> <p style="color: black;">Website updating on 6th May, Check out the new features and improvements designed just for you</p> </div> </div> --> <div class="dropdown"> <div class="header"> <a href="filter.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu" style="position: fixed;"> <a href="music.html" ><i class="fa-solid fa-house"></i>Home</a><br> <a href="https://blackswan19.github.io/bscrop/formbs.html"><i class="fa-brands fa-medium"></i>More from Bs</a> </div> </div> <div class="about"> <a target="_blank" href="festa.html">About festa</a> </div> </div> <div class="sectionss" > <header> <h1> <img src="logo/relax.png" alt="">Relaxing Mix</h1> </header> <ul class="songssad" id="song-list"> <div class="songname"> # Song name </div> <li data-src="magicalmusic\10.mp3"><span class="song-title">Angels Above Us</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\11.mp3"><span class="song-title">Mojito</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\12.mp3"><span class="song-title">Nightfall</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\13.mp3"><span class="song-title">Trail running</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\14.mp3"><span class="song-title">We Met</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\15.mp3"><span class="song-title">Wishful</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\0.mp3"><span class="song-title">Interstellar</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\1.mp3"><span class="song-title">Ocean Waves</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\2.mp3"><span class="song-title">Sea of Time</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\3.mp3"><span class="song-title">Flying</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\4.mp3"><span class="song-title">Quiet Night</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\5.mp3"><span class="song-title">Deep Space</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\6.mp3"><span class="song-title">Frozen in Time</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\7.mp3"><span class="song-title">The Hidden Valley</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\8.mp3"><span class="song-title">High Above</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="magicalmusic\9.mp3"><span class="song-title">Dreaming</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> </ul> </div> <div class="skip"> <input type="range" id="volume-bar" min="0" max="100" href="20"> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></i></button> <button id="play-pause-btn">Play</button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> </div> <div id="progress-bar"> <div class="progress"></div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div>
+    <script>
         const colors = [
             '#FF0000', // Bright Red
             '#0000FF', // Bright Blue
@@ -20,7 +20,7 @@
         let speedUpClicks = 0;
         let slowDownClicks = 0;
         const maxClicks = 5;
-        let isPlaying = false; // Track if the light is currently playing
+        // let isPlaying = false; // Track if the light is currently playing
     
         function getRandomColor() {
             return colors[Math.floor(Math.random() * colors.length)];
@@ -91,12 +91,70 @@
         });
     </script>
    <div class="view">
-    <button class="repeat" id="repeat-btn"><i class="fa-solid fa-repeat"></i></button>
+    <button id="shuffle-btn" class="control-button" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
     </div>
-    <div class="view">
-        <button id="shuffle-btn" class="control-button" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+
+<!-- Modal for full-screen video -->
+<div id="fullscreenVideoModal" class="video-popup">
+    <span class="video-close" onclick="hideVideo()">&times;</span>
+    <div class="video-content">
+        <video id="popupVideoPlayer" autoplay loop muted playsinline>
+            <source src="logo/bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-    <style>
+</div>
+
+<script>
+function showVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
+    
+    // Display the modal
+    modal.style.display = "flex";
+    
+    // Play the video
+    video.play();
+
+    // Make the video go full screen without controls
+    if (video.requestFullscreen) {
+        video.requestFullscreen();
+    } else if (video.mozRequestFullScreen) { // Firefox
+        video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        video.webkitRequestFullscreen();
+    } else if (video.msRequestFullscreen) { // IE/Edge
+        video.msRequestFullscreen();
+    }
+
+    // Ensure controls are not shown even in full screen
+    video.controls = false;
+}
+
+function hideVideo() {
+    var modal = document.getElementById("fullscreenVideoModal");
+    var video = document.getElementById("popupVideoPlayer");
+
+    // Hide the modal
+    modal.style.display = "none";
+
+    // Pause the video and reset time
+    video.pause();
+    video.currentTime = 0;
+    
+    // Exit full-screen mode if active
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+}
+</script>
+<style>
     .modal {
         display: none; /* Hidden by default */
         position: fixed;
@@ -339,5 +397,172 @@ setTimeout(() => {
             });
         });
   </script>
+  <div class="playlist">
+   <h2>Liked list</h2>
+   <ul id="playlist"></ul>
+   <button id="save-playlist-btn">Save list</button>
+</div>
+<audio id="audio-player" controls></audio>
+<div class="notification" id="notification"></div>
+<script>
+   const songList = document.querySelectorAll('#song-list li');
+   const playlistElement = document.getElementById('playlist');
+   const audioPlayer = document.getElementById('audio-player'); // Access the hidden audio element
+   const savePlaylistBtn = document.getElementById('save-playlist-btn');
+   const notification = document.getElementById('notification'); // Notification element
+
+   let playlist = [];
+   let currentSongIndex = -1;
+   let isPlaying = false;
+
+   // Add click event to add songs to the playlist
+   songList.forEach(songItem => {
+       const addToPlaylistBtn = songItem.querySelector('.add-to-playlist');
+       addToPlaylistBtn.addEventListener('click', () => {
+           const songTitle = songItem.querySelector('.song-title').innerText;
+           const songSrc = songItem.getAttribute('data-src');
+
+           // Check if the song is already in the playlist
+           if (!playlist.some(song => song.src === songSrc)) {
+               playlist.push({ title: songTitle, src: songSrc });
+               updatePlaylist();
+
+               // If a song is currently playing, change the play button of that song to pause
+               if (isPlaying && currentSongIndex !== -1) {
+                   const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
+                   currentPlayBtn[currentSongIndex].classList.remove('fa-play');
+                   currentPlayBtn[currentSongIndex].classList.add('fa-pause');
+               }
+           }
+       });
+   });
+
+   function updatePlaylist() {
+       playlistElement.innerHTML = '';
+       playlist.forEach((song, index) => {
+           const li = document.createElement('li');
+           li.innerHTML = `
+               <span>${song.title}</span>
+               <div class="options">
+                   <i class="fa-solid fa-play play-song" title="Play"></i>
+                   <i class="fa-solid fa-trash delete-song" title="Delete"></i>
+               </div>
+           `;
+           playlistElement.appendChild(li);
+
+           const playBtn = li.querySelector('.play-song');
+           const deleteBtn = li.querySelector('.delete-song');
+
+           playBtn.addEventListener('click', () => togglePlayPause(index, playBtn));
+           deleteBtn.addEventListener('click', () => deleteSong(index));
+       });
+   }
+
+   function togglePlayPause(index, playBtn) {
+       // If the same song is playing, pause it
+       if (currentSongIndex === index && isPlaying) {
+           audioPlayer.pause();
+           isPlaying = false;
+           playBtn.classList.remove('fa-pause');
+           playBtn.classList.add('fa-play');
+       } else {
+           // If a different song is clicked
+           currentSongIndex = index;
+           if (isPlaying) {
+               // If currently playing, pause the previous song's play button
+               const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
+               currentPlayBtn[currentSongIndex].classList.remove('fa-pause');
+               currentPlayBtn[currentSongIndex].classList.add('fa-play');
+           }
+
+           playSong(playlist[index].src);
+           isPlaying = true;
+           updatePlayIcons(index, playBtn);
+       }
+   }
+
+   function updatePlayIcons(activeIndex, activePlayBtn) {
+       const allPlayBtns = document.querySelectorAll('.play-song');
+       allPlayBtns.forEach((btn, index) => {
+           if (index === activeIndex) {
+               btn.classList.remove('fa-play');
+               btn.classList.add('fa-pause');
+           } else {
+               btn.classList.remove('fa-pause');
+               btn.classList.add('fa-play');
+           }
+       });
+   }
+
+   function playSong(src) {
+       audioPlayer.src = src; // Set the audio source
+       audioPlayer.play(); // Play the song
+       updateProgressBar(); // Start updating the progress bar
+   }
+
+   function updateProgressBar() {
+       // const progressBar = document.querySelector('.progress');
+       audioPlayer.addEventListener('timeupdate', () => {
+           if (currentSongIndex !== -1) {
+               const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+               progressBar.style.width = `${progress}%`;
+           }
+       });
+   }
+
+   audioPlayer.addEventListener('ended', () => {
+       // Play the next song in the playlist when the current one ends
+       if (currentSongIndex < playlist.length - 1) {
+           currentSongIndex++;
+           playSong(playlist[currentSongIndex].src);
+           updatePlayIcons(currentSongIndex);
+       } else {
+           // Reset if the playlist ends
+           currentSongIndex = -1;
+           isPlaying = false;
+           const playBtns = playlistElement.querySelectorAll('.play-song');
+           playBtns.forEach(btn => {
+               btn.classList.remove('fa-pause');
+               btn.classList.add('fa-play');
+           });
+       }
+   });
+
+   savePlaylistBtn.addEventListener('click', savePlaylist);
+
+   function savePlaylist() {
+       localStorage.setItem('playlist', JSON.stringify(playlist));
+       showNotification('Liked list has Updated!'); // Show notification
+   }
+
+   function showNotification(message) {
+       notification.innerText = message; // Set the message
+       notification.style.display = 'block'; // Show the notification
+       setTimeout(() => {
+           notification.style.display = 'none'; // Hide after 3 seconds
+       }, 3000);
+   }
+
+   function deleteSong(index) {
+       playlist.splice(index, 1);
+       updatePlaylist();
+       if (currentSongIndex === index) {
+           audioPlayer.pause();
+           currentSongIndex = -1; // Reset current song index if deleted song is playing
+           isPlaying = false;
+       }
+   }
+
+   // Load saved playlist from local storage (if any)
+   window.onload = function () {
+       const savedPlaylist = JSON.parse(localStorage.getItem('playlist'));
+       if (savedPlaylist) {
+           playlist = savedPlaylist;
+           updatePlaylist();
+       }
+   };
+</script>
 </body>
 </html> 
+  </body>
+</html>
