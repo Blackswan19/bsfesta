@@ -1,5 +1,5 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="likedmix.css"> <script src="mood.js"></script> </head> <body> <!-- Button to change font colors --> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br> <a href="minifesta.html"><i class="fa-brands fa-medium"></i>Mini Festa</a><br> </div> </div> </div> <div class="logolike"> <img src="logo/myplaylist.png" alt=""> </div> <div class="skip" style="display: none;"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div> <div class="popup-overlay" id="popup-overlay"> <div class="popup"> <h3>Create a New Playlist</h3> <input type="text" id="popup-playlist-name" placeholder="Enter playlist name"> <button onclick="createPlaylist()">Save</button> <button onclick="closePopup()">Cancel</button> </div> </div> <!-- Popup for displaying playlist options to add a song --> <div class="popup-overlay" id="add-to-playlist-overlay"> <div class="popup"> <span class="close-btn" onclick="closeAddToPlaylistPopup()">X</span> <h3>Select Playlist</h3> <ul id="playlist-options"></ul> </div> </div> <!-- Popup for displaying songs in a selected playlist --> <div class="popup-overlay" id="songs-popup-overlay"> <div class="popup"> <span class="close-btn" onclick="closeSongsPopup()">X</span> <h3 id="songs-popup-title">Songs in Playlist</h3> <ul id="songs-popup-list"></ul> </div> </div> <div class="playlist-container"> <!-- <button onclick="openPopup()">Create Playlist</button> --> <ul id="playlist-list"></ul> </div> <div class="songslist"> <ul id="song-list"></ul> <!-- Progress Bar --> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <!-- Play/Pause Button --> <div class="controlss"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> </div>
-    
+
     <script>
         const playlistList = document.getElementById("playlist-list");
         const songList = document.getElementById("song-list");
@@ -127,18 +127,27 @@
             const currentPlaylist = playlists[currentPlaylistName];
             const currentIndex = currentPlaylist.findIndex(song => song.src === currentAudio.src);
     
-            // Calculate next song index and loop back to the start if at the end
-            const nextIndex = (currentIndex + 1) % currentPlaylist.length;
+            // Calculate the next song index
+            const nextIndex = currentIndex + 1;
     
-            const nextSong = currentPlaylist[nextIndex];
-            if (nextSong) {
-                // Find the corresponding list item in the popup
-                const nextSongLi = Array.from(songsPopupList.querySelectorAll(".popup-song-item"))
-                    .find(li => li.textContent.includes(nextSong.title));
-    
-                // Play the next song
-                playSong(nextSong.src, nextSongLi, currentPlaylistName);
+            // If nextIndex is out of bounds (last song), stop the playback
+            if (nextIndex >= currentPlaylist.length) {
+                // Reset the icon and clear currently playing indicators
+                togglePlayIcon(currentlyPlayingLi, false);
+                playIcon.classList.replace("fa-pause", "fa-play");
+                clearInterval(progressInterval);
+                currentAudio = null;
+                currentlyPlayingLi = null;
+                return;
             }
+    
+            // Get the next song and corresponding list item in the popup
+            const nextSong = currentPlaylist[nextIndex];
+            const nextSongLi = Array.from(songsPopupList.querySelectorAll(".popup-song-item"))
+                .find(li => li.textContent.includes(nextSong.title));
+    
+            // Play the next song
+            playSong(nextSong.src, nextSongLi, currentPlaylistName);
         }
     
         function addToPlaylist(playlistName, title, src) {
@@ -161,8 +170,6 @@
     
         loadPlaylists();
     </script>
-    
-     <script src="newapper.js"></script>
-     
+
     </body>
-    </html> 
+    </html>
