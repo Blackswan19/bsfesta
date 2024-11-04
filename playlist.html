@@ -130,16 +130,16 @@
             // Calculate the next song index
             const nextIndex = currentIndex + 1;
     
-            // If nextIndex is out of bounds (last song), stop the playback
             if (nextIndex >= currentPlaylist.length) {
-                // Reset the icon and clear currently playing indicators
-                togglePlayIcon(currentlyPlayingLi, false);
-                playIcon.classList.replace("fa-pause", "fa-play");
-                clearInterval(progressInterval);
-                currentAudio = null;
-                currentlyPlayingLi = null;
-                return;
-            }
+    // Reset the icon and clear currently playing indicators
+    togglePlayIcon(currentlyPlayingLi, false);
+    playIcon.classList.replace("fa-pause", "fa-play");
+    clearInterval(progressInterval);
+    currentAudio = null;
+    currentlyPlayingLi = null;
+    return;
+}
+
     
             // Get the next song and corresponding list item in the popup
             const nextSong = currentPlaylist[nextIndex];
@@ -172,4 +172,4 @@
     </script>
 
     </body>
-    </html>
+    </html> 
