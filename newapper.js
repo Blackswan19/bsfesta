@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if the current date is less than the expiration date
     if (currentDate <= expirationDate) {
         // Select only the specific song list items by their titles
-        const songTitles = ["CLIK CLAK","Woke Up In Tokyo","Love, Maybe","BILLIONAIRE","Drip","BATTER UP (Remix)","Pocket locket"];
+        const songTitles = ["Pocket locket","That's What I Like"];
         const songs = document.querySelectorAll("#song-list li");
         
         songs.forEach(song => {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const newTag = document.createElement("span");
                 newTag.className = "new-tag"; // Optional: Add a class for styling
                 newTag.innerText = " (New)";
-                newTag.style.color = "#007fff"; // Optional: Change text color
+                newTag.style.color = "#004cff"; // Optional: Change text color
                 newTag.style.marginLeft = "10px"; // Optional: Add some space
                 newTag.style.fontWeight = "800"; // Optional: Add some space
                 song.querySelector(".song-title").appendChild(newTag);
