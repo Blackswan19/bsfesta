@@ -1,138 +1,176 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="likedmix.css"> <script src="mood.js"></script> </head> <body> <!-- Button to change font colors --> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br> <a href="minifesta.html"><i class="fa-brands fa-medium"></i>Mini Festa</a><br> </div> </div> </div> <div class="logolike"> <img src="logo/myplaylist.png" alt=""> </div> <div class="skip" style="display: none;"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div> <div class="popup-overlay" id="popup-overlay"> <div class="popup"> <h3>Create a New Playlist</h3> <input type="text" id="popup-playlist-name" placeholder="Enter playlist name"> <button onclick="createPlaylist()">Save</button> <button onclick="closePopup()">Cancel</button> </div> </div> <!-- Popup for displaying playlist options to add a song --> <div class="popup-overlay" id="add-to-playlist-overlay"> <div class="popup"> <span class="close-btn" onclick="closeAddToPlaylistPopup()">X</span> <h3>Select Playlist</h3> <ul id="playlist-options"></ul> </div> </div> <!-- Popup for displaying songs in a selected playlist --> <div class="popup-overlay" id="songs-popup-overlay"> <div class="popup"> <span class="close-btn" onclick="closeSongsPopup()">X</span> <h3 id="songs-popup-title">Songs in Playlist</h3> <ul id="songs-popup-list"></ul> </div> </div> <div class="playlist-container"> <!-- <button onclick="openPopup()">Create Playlist</button> --> <ul id="playlist-list"></ul> </div> <div class="songslist"> <ul id="song-list"></ul> <!-- Progress Bar --> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <!-- Play/Pause Button --> <div class="controlss"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> </div>
-<script>
-         const playlistList = document.getElementById("playlist-list");
-         const songList = document.getElementById("song-list");
-         const songsPopupOverlay = document.getElementById("songs-popup-overlay");
-         const songsPopupList = document.getElementById("songs-popup-list");
-         const songsPopupTitle = document.getElementById("songs-popup-title");
-         const progressBar = document.getElementById("progress");
-         const playPauseBtn = document.getElementById("playPauseBtn");
-         const playIcon = document.getElementById("playIcon");
 
-         let playlists = JSON.parse(localStorage.getItem("playlists")) || {};
-         let currentAudio = null;
-         let currentlyPlayingLi = null;
-         let currentPlaylistName = null;
-         let progressInterval;
-
-         function openAddToPlaylistPopup(song) {
+    <script>
+        const playlistList = document.getElementById("playlist-list");
+        const songList = document.getElementById("song-list");
+        const songsPopupOverlay = document.getElementById("songs-popup-overlay");
+        const songsPopupList = document.getElementById("songs-popup-list");
+        const songsPopupTitle = document.getElementById("songs-popup-title");
+        const progressBar = document.getElementById("progress");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const playIcon = document.getElementById("playIcon");
+    
+        let playlists = JSON.parse(localStorage.getItem("playlists")) || {};
+        let currentAudio = null; 
+        let currentlyPlayingLi = null; 
+        let currentPlaylistName = null;
+        let progressInterval;
+    
+        function openAddToPlaylistPopup(song) {
             const playlistNames = Object.keys(playlists);
             let playlistOptions = playlistNames.map(
-               name => `<li onclick="addToPlaylist('${name}', '${song.title}', '${song.src}')">${name}</li>`
+                name => `<li onclick="addToPlaylist('${name}', '${song.title}', '${song.src}')">${name}</li>`
             ).join('');
             
             document.getElementById("songs-popup-list").innerHTML = playlistOptions;
             songsPopupOverlay.style.display = "flex";
-         }
-
-         function closeSongsPopup() {
+        }
+    
+        function closeSongsPopup() {
             songsPopupOverlay.style.display = "none";
-         }
-
-         function savePlaylists() {
+        }
+    
+        function savePlaylists() {
             localStorage.setItem("playlists", JSON.stringify(playlists));
             loadPlaylists();
-         }
-
-         function loadPlaylists() {
+        }
+    
+        function loadPlaylists() {
             playlistList.innerHTML = "";
             Object.keys(playlists).forEach(displayPlaylist);
-         }
-
-         function displayPlaylist(name) {
+        }
+    
+        function displayPlaylist(name) {
             const li = document.createElement("li");
             li.classList.add("playlist-item");
             li.textContent = name;
             li.addEventListener("click", () => displaySongsInPopup(name));
             playlistList.appendChild(li);
-         }
-
-         function displaySongsInPopup(playlistName) {
+        }
+    
+        function displaySongsInPopup(playlistName) {
             songsPopupTitle.textContent = `Playlist - ${playlistName}`;
             songsPopupList.innerHTML = "";
-
+    
             playlists[playlistName].forEach(song => {
-               const songLi = document.createElement("li");
-               songLi.classList.add("popup-song-item");
-               songLi.innerHTML = `<span>${song.title}</span> <i class="fa-solid fa-play play-song" title="Play"></i>`;
-               songLi.querySelector(".play-song").addEventListener("click", () => {
-                  playSong(song.src, songLi, playlistName);
-               });
-               songsPopupList.appendChild(songLi);
+                const songLi = document.createElement("li");
+                songLi.classList.add("popup-song-item");
+                songLi.innerHTML = `<span>${song.title}</span> <i class="fa-solid fa-play play-song" title="Play"></i>`;
+                songLi.querySelector(".play-song").addEventListener("click", () => {
+                    playSong(song.src, songLi, playlistName);
+                });
+                songsPopupList.appendChild(songLi);
             });
-
+    
             songsPopupOverlay.style.display = "flex";
-         }
-
-         function playSong(src, songLi, playlistName) {
+        }
+    
+        function playSong(src, songLi, playlistName) {
+            console.log("Playing song:", src);
+            
             if (currentAudio) {
-               currentAudio.pause();
-               currentAudio.currentTime = 0;
-               togglePlayIcon(currentlyPlayingLi, false);
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                togglePlayIcon(currentlyPlayingLi, false);
             }
-
+    
             currentAudio = new Audio(src);
             currentAudio.play();
             
             togglePlayIcon(songLi, true);
             playIcon.classList.replace("fa-play", "fa-pause");
-
+            
             currentlyPlayingLi = songLi;
             currentPlaylistName = playlistName;
-
+    
             currentAudio.onended = () => {
-               playNextSong();
+                console.log("Song ended:", src);
+                playNextSong();
             };
-
+    
             updateProgressBar();
-         }
-
-         function togglePlayIcon(songLi, isPlaying) {
+        }
+    
+        function togglePlayIcon(songLi, isPlaying) {
             const icon = songLi.querySelector(".play-song");
             icon.classList.toggle("fa-play", !isPlaying);
             icon.classList.toggle("fa-pause", isPlaying);
-         }
-
-         function togglePlayPause() {
+        }
+    
+        function togglePlayPause() {
             if (currentAudio) {
-               if (currentAudio.paused) {
-                  currentAudio.play();
-                  playIcon.classList.replace("fa-play", "fa-pause");
-                  updateProgressBar();
-               } else {
-                  currentAudio.pause();
-                  playIcon.classList.replace("fa-pause", "fa-play");
-                  clearInterval(progressInterval);
-               }
+                if (currentAudio.paused) {
+                    currentAudio.play();
+                    playIcon.classList.replace("fa-play", "fa-pause");
+                    updateProgressBar();
+                } else {
+                    currentAudio.pause();
+                    playIcon.classList.replace("fa-pause", "fa-play");
+                    clearInterval(progressInterval);
+                }
             }
-         }
-
-         function updateProgressBar() {
+        }
+    
+        function updateProgressBar() {
             clearInterval(progressInterval);
             progressInterval = setInterval(() => {
-               if (currentAudio) {
-                  const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
-                  progressBar.style.width = `${progress}%`;
-               }
+                if (currentAudio) {
+                    const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                }
             }, 1000);
-         }
+        }
+    
+        function playNextSong() {
+    if (!currentPlaylistName) return; // Ensure there is a playlist selected
 
-         function playNextSong() {
-            if (!currentPlaylistName) return;
+    const currentPlaylist = playlists[currentPlaylistName];
+    const currentIndex = currentPlaylist.findIndex(song => song.src === currentAudio.src);
 
-            const currentPlaylist = playlists[currentPlaylistName];
-            const currentIndex = currentPlaylist.findIndex(song => song.src === currentAudio.src);
+    // Calculate the next song index, ensuring it stops after the last song
+    const nextIndex = currentIndex + 1;
 
-            const nextIndex = (currentIndex + 1) % currentPlaylist.length;
-            const nextSong = currentPlaylist[nextIndex];
-            const nextSongLi = Array.from(songsPopupList.querySelectorAll(".popup-song-item"))
-               .find(li => li.textContent.includes(nextSong.title));
+    // If we've reached the end of the playlist, stop playback
+    if (nextIndex >= currentPlaylist.length) {
+        togglePlayIcon(currentlyPlayingLi, false); // Reset the icon for the last song
+        playIcon.classList.replace("fa-pause", "fa-play"); // Set the main play/pause button to play
+        clearInterval(progressInterval); // Stop the progress bar update
+        currentAudio = null;
+        currentlyPlayingLi = null;
+        currentPlaylistName = null;
+        return; // Stop playback after the last song
+    }
 
-            playSong(nextSong.src, nextSongLi, currentPlaylistName);
-         }
+    // Get the next song and corresponding list item in the popup
+    const nextSong = currentPlaylist[nextIndex];
+    const nextSongLi = Array.from(songsPopupList.querySelectorAll(".popup-song-item"))
+        .find(li => li.textContent.includes(nextSong.title));
 
-         loadPlaylists();
-      </script>
+    // Play the next song
+    playSong(nextSong.src, nextSongLi, currentPlaylistName);
+}
+
+    
+        function addToPlaylist(playlistName, title, src) {
+            const song = { title, src };
+            playlists[playlistName].push(song);
+            savePlaylists();
+            closeSongsPopup();
+        }
+    
+        songList.addEventListener("click", e => {
+            if (e.target.classList.contains("add-to-playlist")) {
+                const songElement = e.target.parentNode;
+                const song = {
+                    title: songElement.querySelector(".song-title").textContent,
+                    src: songElement.getAttribute("data-src")
+                };
+                openAddToPlaylistPopup(song);
+            }
+        });
+    
+        loadPlaylists();
+    </script>
 
     </body>
     </html> 
