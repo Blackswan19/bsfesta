@@ -17,10 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Append "(New)" to the song title
                 const newTag = document.createElement("span");
                 newTag.className = "new-tag"; // Optional: Add a class for styling
-                newTag.innerText = " (New)";
-                newTag.style.color = "#004cff"; // Optional: Change text color
-                newTag.style.marginLeft = "10px"; // Optional: Add some space
-                newTag.style.fontWeight = "800"; // Optional: Add some space
+                newTag.innerText = "New";
                 song.querySelector(".song-title").appendChild(newTag);
             }
         });
