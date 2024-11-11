@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if the current date is less than the expiration date
     if (currentDate <= expirationDate) {
         // Select only the specific song list items by their titles
-        const songTitles = ["The Machine","1-800-hot-n-fun"];
+        const songTitles = ["The Machine","1-800-hot-n-fun","Hero"];
         const songs = document.querySelectorAll("#song-list li");
         
         songs.forEach(song => {
