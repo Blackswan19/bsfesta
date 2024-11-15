@@ -1,4 +1,265 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="likeed.css"> <script src="mood.js"></script> </head> <body> <!-- Button to change font colors --> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br> <a href="minifesta.html"><i class="fa-brands fa-medium"></i>Mini Festa</a><br> </div> </div> </div> <div class="logolike"> <img src="logo/liked.png" alt=""> </div> <div class="skip"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> <div id="progress-bar"> <div class="progress"></div> </div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div> <script> const colors = [ '#FF0000', // Bright Red '#0000FF', // Bright Blue '#32CD32', // Lime Green '#FF1493', // Deep Pink '#FFA500', // Orange '#00BFFF', // Deep Sky Blue '#FF4500', // Orange Red '#1E90FF', // Dodger Blue '#9400D3', // Dark Violet '#FF6347', // Tomato '#40E0D0', // Turquoise '#8A2BE2', // Blue Violet ]; let intervalId; let colorInterval = 1000; // Starting interval of 1 second let speedUpClicks = 0; let slowDownClicks = 0; const maxClicks = 5; // let isPlaying = false; // Track if the light is currently playing function getRandomColor() { return colors[Math.floor(Math.random() * colors.length)]; } function startColorChange() { // Apply CSS transitions for smooth color change document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`; intervalId = setInterval(() => { document.body.style.color = getRandomColor(); document.body.style.backgroundColor = getRandomColor(); }, colorInterval); isPlaying = true; document.getElementById('colorChangeButton').textContent = 'Turn off the light'; } function stopColorChange() { clearInterval(intervalId); intervalId = null; isPlaying = false; document.getElementById('colorChangeButton').textContent = 'Turn on the light'; } document.getElementById('colorChangeButton').addEventListener('click', () => { if (isPlaying) { stopColorChange(); } else { startColorChange(); } }); function adjustSpeed() { if (speedUpClicks > 0) { colorInterval = Math.max(100, colorInterval - 200); // Decrease interval, minimum 100ms speedUpClicks--; } if (slowDownClicks > 0) { colorInterval += 200; // Increase interval slowDownClicks--; } if (intervalId) { stopColorChange(); startColorChange(); } } document.getElementById('speedUpButton').addEventListener('click', () => { if (speedUpClicks < maxClicks) { speedUpClicks++; adjustSpeed(); } }); document.getElementById('slowDownButton').addEventListener('click', () => { if (slowDownClicks < maxClicks) { slowDownClicks++; adjustSpeed(); } }); document.getElementById('stopAndBlackButton').addEventListener('click', () => { stopColorChange(); document.body.style.transition = ''; // Remove transitions when stopping document.body.style.backgroundColor = 'black'; // Set background to black document.body.style.color = 'white'; // Optional: Set text color to white for better visibility }); </script> <!-- Modal for full-screen video --> <div id="fullscreenVideoModal" class="video-popup"> <span class="video-close" onclick="hideVideo()">&times;</span> <div class="video-content"> <video id="popupVideoPlayer" autoplay loop muted playsinline> <source src="logo/bg.mp4" type="video/mp4"> Your browser does not support the video tag. </video> </div> </div> <script> function showVideo() { var modal = document.getElementById("fullscreenVideoModal"); var video = document.getElementById("popupVideoPlayer"); // Display the modal modal.style.display = "flex"; // Play the video video.play(); // Make the video go full screen without controls if (video.requestFullscreen) { video.requestFullscreen(); } else if (video.mozRequestFullScreen) { // Firefox video.mozRequestFullScreen(); } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera video.webkitRequestFullscreen(); } else if (video.msRequestFullscreen) { // IE/Edge video.msRequestFullscreen(); } // Ensure controls are not shown even in full screen video.controls = false; } function hideVideo() { var modal = document.getElementById("fullscreenVideoModal"); var video = document.getElementById("popupVideoPlayer"); // Hide the modal modal.style.display = "none"; // Pause the video and reset time video.pause(); video.currentTime = 0; // Exit full-screen mode if active if (document.exitFullscreen) { document.exitFullscreen(); } else if (document.mozCancelFullScreen) { // Firefox document.mozCancelFullScreen(); } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera document.webkitExitFullscreen(); } else if (document.msExitFullscreen) { // IE/Edge document.msExitFullscreen(); } } </script> <style> .modal { display: none; /* Hidden by default */ position: fixed; z-index: 999; /* Sit on top */ left: 0; top: 0; width: 100%; /* Full width */ height: 100%; /* Full height */ overflow: auto; /* Enable scroll if needed */ background-color: rgb(0,0,0); /* Fallback color */ background-color: rgba(0,0,0,0.8); /* Black w/ opacity */ } .modal-content { background: none; padding: 20px; width: 80%; } .close-button { color: white; font-size: 35px; font-weight: 100; position: fixed; top: 15px; right: 30px; } p#modal-song-details { color: rgb(255, 255, 255); font-size: 100px; position: fixed; top: 25%; left: 9%; font-style: italic; font-weight: 800; } .close-button:hover, .close-button:focus { color: rgb(156, 156, 156); text-decoration: none; cursor: pointer; } </style> </head> <body> <div class="song-info" id="songInfo"> <img src="logo/playingBs.png" alt="Song Cover" style="width: 50px; height: 50px;"> <div class="song-details"> <p style="font-size: 13px; font-weight: 600;">Playing :</p> <p id="current-song-details" style="color: rgb(255, 255, 255);"></p> <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i> </div> </div> <!-- Modal Structure --> <div id="songModal" class="modal"> <div class="modal-content"> <span class="close-button">&times;</span> <img src="logo/brand.png" alt="" style="width: 3%; position: fixed; top: 5px; left: 5px; background: black; padding: 10px; border-radius: 6px;"> <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p> </div> </div><div class="custom-menu"> <style> a{ text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/playlist"><button id="option1">Explore Playlists</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="likeed.css"> <script src="mood.js"></script> </head> <body> <!-- Button to change font colors --> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br> <a href="minifesta.html"><i class="fa-brands fa-medium"></i>Mini Festa</a><br> </div> </div> </div> <div class="logolike"> <img src="logo/liked.png" alt=""> </div> <div class="skip"> <button id="previous-btn" style="opacity: 20%;"><i class="fa-solid fa-backward-step"></i></button> <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button id="next-btn"style="opacity: 20%;"><i class="fa-solid fa-forward-step"></i></button> </div> <div id="progress-bar"> <div class="progress"></div> </div> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div>
+<script>
+            const colors = [
+                '#FF0000', // Bright Red
+                '#0000FF', // Bright Blue
+                '#32CD32', // Lime Green
+                '#FF1493', // Deep Pink
+                '#FFA500', // Orange
+                '#00BFFF', // Deep Sky Blue
+                '#FF4500', // Orange Red
+                '#1E90FF', // Dodger Blue
+                '#9400D3', // Dark Violet
+                '#FF6347', // Tomato
+                '#40E0D0', // Turquoise
+                '#8A2BE2', // Blue Violet
+            ];
+        
+            let intervalId;
+            let colorInterval = 1000; // Starting interval of 1 second
+            let speedUpClicks = 0;
+            let slowDownClicks = 0;
+            const maxClicks = 5;
+            // let isPlaying = false; // Track if the light is currently playing
+        
+            function getRandomColor() {
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+        
+            function startColorChange() {
+                // Apply CSS transitions for smooth color change
+                document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`;
+        
+                intervalId = setInterval(() => {
+                    document.body.style.color = getRandomColor();
+                    document.body.style.backgroundColor = getRandomColor();
+                }, colorInterval);
+        
+                isPlaying = true;
+                document.getElementById('colorChangeButton').textContent = 'Turn off the light';
+            }
+        
+            function stopColorChange() {
+                clearInterval(intervalId);
+                intervalId = null;
+                isPlaying = false;
+                document.getElementById('colorChangeButton').textContent = 'Turn on the light';
+            }
+        
+            document.getElementById('colorChangeButton').addEventListener('click', () => {
+                if (isPlaying) {
+                    stopColorChange();
+                } else {
+                    startColorChange();
+                }
+            });
+        
+            function adjustSpeed() {
+                if (speedUpClicks > 0) {
+                    colorInterval = Math.max(100, colorInterval - 200); // Decrease interval, minimum 100ms
+                    speedUpClicks--;
+                }
+                if (slowDownClicks > 0) {
+                    colorInterval += 200; // Increase interval
+                    slowDownClicks--;
+                }
+                if (intervalId) {
+                    stopColorChange();
+                    startColorChange();
+                }
+            }
+        
+            document.getElementById('speedUpButton').addEventListener('click', () => {
+                if (speedUpClicks < maxClicks) {
+                    speedUpClicks++;
+                    adjustSpeed();
+                }
+            });
+        
+            document.getElementById('slowDownButton').addEventListener('click', () => {
+                if (slowDownClicks < maxClicks) {
+                    slowDownClicks++;
+                    adjustSpeed();
+                }
+            });
+        
+            document.getElementById('stopAndBlackButton').addEventListener('click', () => {
+                stopColorChange();
+                document.body.style.transition = ''; // Remove transitions when stopping
+                document.body.style.backgroundColor = 'black'; // Set background to black
+                document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
+            });
+        </script>
+        
+        
+        <!-- Modal for full-screen video -->
+        <div id="fullscreenVideoModal" class="video-popup">
+        <span class="video-close" onclick="hideVideo()">&times;</span>
+        <div class="video-content">
+            <video id="popupVideoPlayer" autoplay loop muted playsinline>
+                <source src="logo/bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        </div>
+        <div class="custom-menu">
+            <style>
+                a{
+                    text-decoration: none;
+                }
+                .custom-menu {
+                    display: none;
+                    position: fixed;
+                    background-color: #262626;
+                    border: 1px solid #242424;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    z-index: 1000;
+                    padding: 10px;
+                    border-radius: 5px;
+                    z-index: 1000;
+                    filter: drop-shadow(11px 12px 22px black);
+                }
+                .custom-menu button {
+                    display: block;
+                    width: 100%;
+                    border: none;
+                    background: none;
+                    text-align: left;
+                    padding: 12px;
+                    cursor: pointer;
+                    font-size: 18px;
+                }
+                .custom-menu button:hover {
+                    background-color: #404040;
+                }
+            </style>
+            <a href="https://blackswan19.github.io/bsfesta/playlist"><button id="option1">Explore Playlists</button></a>
+            <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a>
+            <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a>
+            <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a>
+            <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a>
+        </div>
+        <script>
+        function showVideo() {
+        var modal = document.getElementById("fullscreenVideoModal");
+        var video = document.getElementById("popupVideoPlayer");
+        
+        // Display the modal
+        modal.style.display = "flex";
+        
+        // Play the video
+        video.play();
+        
+        // Make the video go full screen without controls
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { // Firefox
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { // IE/Edge
+            video.msRequestFullscreen();
+        }
+        
+        // Ensure controls are not shown even in full screen
+        video.controls = false;
+        }
+        
+        function hideVideo() {
+        var modal = document.getElementById("fullscreenVideoModal");
+        var video = document.getElementById("popupVideoPlayer");
+        
+        // Hide the modal
+        modal.style.display = "none";
+        
+        // Pause the video and reset time
+        video.pause();
+        video.currentTime = 0;
+        
+        // Exit full-screen mode if active
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
+        }
+        </script>
+        <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+        }
+        
+        .modal-content {
+            background: none;
+        padding: 20px;
+        width: 80%;
+        }
+        
+        .close-button {
+            color: white;
+        font-size: 35px;
+        font-weight: 100;
+        position: fixed;
+        top: 15px;
+        right: 30px;
+        }
+        
+        p#modal-song-details {
+        color: rgb(255, 255, 255);
+        font-size: 100px;
+        position: fixed;
+        top: 25%;
+        left: 9%;
+        font-style: italic;
+        font-weight: 800;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: rgb(156, 156, 156);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        </style>
+        </head>
+        <body>
+        
+        <div class="song-info" id="songInfo">
+        <img src="logo/playingBs.png" alt="Song Cover" style="width: 50px; height: 50px;">
+        <div class="song-details">
+        <p  style="font-size: 13px; font-weight: 600;">Playing :</p>
+        <p id="current-song-details" style="color: rgb(255, 255, 255);"></p>
+        <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i>
+        </div>
+        </div>
+        
+        <!-- Modal Structure -->
+        <div id="songModal" class="modal">
+        <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img src="logo/brand.png" alt="" style="width: 3%;
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        background: black;
+        padding: 10px;
+        border-radius: 6px;">
+        <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
+        </div>
+        </div>
+        
         <script>
         document.addEventListener('DOMContentLoaded', function() {
         const songInfo = document.getElementById('songInfo');
@@ -157,14 +418,7 @@
             });
         </script>
         <div class="playlist">
-            <h1 style="position: fixed;
-            left: 0;
-            color: #0021ff;
-            font-size: 40px;
-            background: #000000;
-            width: 100%;
-            z-index: 10;
-            padding: 10px 415px;">Liked One</h1><br>
+            <h1>Liked One</h1><br>
         <ul id="playlist"></ul>
         <button id="save-playlist-btn"></button>
         </div>
