@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mini Festa</title> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap'); * { color: rgb(255, 255, 255); font-family: "Red Hat Display", sans-serif; } body { font-family: Arial, sans-serif; padding: 50px; background-color: #0f0f0f; color: white; position: relative; margin: 0; overflow: hidden; } ::-webkit-scrollbar { display: none; } .video-background, .image-background, .iframe-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(50%); } .image-background, .iframe-background { display: none; /* Hidden initially */ } .iframe-background { border: none; } .music-player { margin: 20px auto; padding: 20px; border: 1px solid #565656; border-radius: 10px; width: 300px; display: contents; } input[type="file"] { margin-top: 10px; color: #ffffff00; height: 20px; text-align: center; width: 8%; } audio { margin-top: 20px; width: 100%; } input { height: 2px; } .playlist { list-style-type: none; padding: 0; margin-top: 20px; background: #2828288a; border-radius: 50px; overflow-y: scroll; height: 325px; border: solid 1px #414141; text-align: center; } .playlist li { padding: 10px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; line-height: 25px; } .playlist li.active { color: #0048ff; border-radius: 5px; } .controls { margin-top: 20px; text-align: center; } button { background-color: #282828; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; margin: 0 10px; } button:hover { background-color: #666; } button i { margin-right: 5px; } .equalizer-container { margin-top: 20px; } .equalizer-container label { display: block; margin: 10px 0; } #progressBar { width: 100%; margin-top: 10px; height: 2px; } #volumeRange { margin-top: 10px; } /* Modal Styles */ .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.874); justify-content: center; align-items: center; } .modal-content { background-color: #333; padding: 20px; border-radius: 10px; text-align: center; width: 400px; margin: auto; } .modal-content input { width: 80%; padding: 10px; border-radius: 5px; border: 1px solid #565656; margin-bottom: 20px; } .modal-content button { background-color: #0068ff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; } .close { float: right; font-size: 28px; color: white; cursor: pointer; } .close:hover { color: red; } @media (max-width: 480px) { body { display: none; } } </style> </head> <body> <img id="backgroundImage" class="image-background"> <iframe id="backgroundIframe" class="iframe-background"></iframe> <h1 style="font-weight: 500; text-align: center; color: #0068ff;">Mini Festa</h1> <!-- Button to trigger modal --> <div class="music-player"> <audio id="audioPlayer" controls> Your browser does not support the audio element. </audio> <div class="controls"> <button id="prevBtn"><i class="fa-solid fa-backward-step"></i>Previous</button> <button id="playPauseBtn"><i class="fa-regular fa-circle-play"></i>Play</button> <button id="nextBtn"><i class="fa-solid fa-forward-step"></i>Next</button> </div> <div class="equalizer-container"> <label for="bassRange">Bass Boost: <span id="bassValue">15</span></label> <input type="range" id="bassRange" min="-30" max="30" value="15"> <label for="volumeRange">Volume: <span id="volumeValue">20</span>%</label> <input type="range" id="volumeRange" min="0" max="100" value="20"> </div> <div class="playlist"> <label for="fileInput">Upload songs here:</label><br> <input type="file" id="fileInput" accept="audio/*" multiple> <ul id="playlist" class="playlist"></ul> </div> </div> <div class="equalizer-container" style="display: none;"> <input type="range" id="progressBar" value="0" step="1" max="100"> </div> <div style="text-align: center; margin-top: 20px;"> <button id="openModalBtn">How to use Mini</button> </div> <!-- The Modal --> <div id="myModal" class="modal" style="display: none;"> <div class="modal-content"> <p>Just upload your song file and enjoy great sound quality with a bass booster. Feel every beat and enjoy your music!</p> <button id="saveBgBtn">Close</button> </div> </div>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mini Festa</title> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap'); * { color: rgb(255, 255, 255); font-family: "Red Hat Display", sans-serif; } body { font-family: Arial, sans-serif; padding: 50px; background-color: #0f0f0f; color: white; position: relative; margin: 0; overflow: hidden; width: 60%; left: 17%; background-image: url("https://i.pinimg.com/originals/19/09/f9/1909f9e57aca7d81ab5cbb50b9a7a069.gif"); background-repeat: no-repeat; background-size: 100%; background-position-y: center; background-blend-mode: color; } ::-webkit-scrollbar { display: none; } .video-background, .image-background, .iframe-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(50%); } .image-background, .iframe-background { display: none; /* Hidden initially */ } .iframe-background { border: none; } .music-player { margin: 20px auto; padding: 20px; border: 1px solid #565656; border-radius: 10px; width: 300px; display: contents; } input[type="file"] { margin-top: 10px; color: #ffffff00; height: 20px; text-align: center; width: 8%; } audio { margin-top: 80px; width: 100%; } input { height: 2px; } .playlist { list-style-type: none; padding: 0; margin-top: 20px; background: #2828288a; border-radius: 50px; overflow-y: scroll; height: 325px; border: solid 1px #414141; text-align: center; } .playlist li { padding: 10px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; line-height: 25px; } .playlist li.active { color: #0084ff; font-weight: 600; font-size: 18px; background: #0f0f0f9e; } .controls { margin-top: 20px; text-align: center; } button { background-color: #282828; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; margin: 0 10px; } button:hover { background-color: #666; } button i { margin-right: 5px; } .equalizer-container { margin-top: 20px; } .equalizer-container label { display: block; margin: 10px 0; } #progressBar { width: 100%; margin-top: 10px; height: 2px; } #volumeRange { margin-top: 10px; } /* Modal Styles */ .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.874); justify-content: center; align-items: center; } .modal-content { background-color: #333; padding: 20px; border-radius: 10px; text-align: center; width: 400px; margin: 20% auto; } .modal-content input { width: 80%; padding: 10px; border-radius: 5px; border: 1px solid #565656; margin-bottom: 20px; } .modal-content button { background-color: #0068ff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; } .close { float: right; font-size: 28px; color: white; cursor: pointer; } .close:hover { color: red; } @media (max-width: 480px) { body { display: none; } } </style> </head> <body> <img id="backgroundImage" class="image-background"> <iframe id="backgroundIframe" class="iframe-background"></iframe> <h1 style="font-weight: 500; text-align: center; color: #0068ff; font-size: 55px; position: fixed; left: 10px; top: 0px;">Mini Festa</h1> <!-- Button to trigger modal --> <div class="music-player"> <audio id="audioPlayer" controls> Your browser does not support the audio element. </audio> <div class="controls"> <button id="prevBtn"><i class="fa-solid fa-backward-step"></i>Previous</button> <button id="playPauseBtn"><i class="fa-regular fa-circle-play"></i>Play</button> <button id="nextBtn"><i class="fa-solid fa-forward-step"></i>Next</button> </div> <div class="equalizer-container"> <label for="bassRange">Bass Boost: <span id="bassValue">15</span></label> <input type="range" id="bassRange" min="-30" max="30" value="15"> <label for="volumeRange">Volume: <span id="volumeValue">20</span>%</label> <input type="range" id="volumeRange" min="0" max="100" value="20"> </div> <div class="playlist"> <label for="fileInput">Upload songs here:</label><br> <input type="file" id="fileInput" accept="audio/*" multiple> <ul id="playlist" class="playlist"></ul> </div> </div> <div class="equalizer-container" style="display: none;"> <input type="range" id="progressBar" value="0" step="1" max="100"> </div> <div style="text-align: center; margin-top: 20px;"> <button id="openModalBtn">How to use Mini</button> </div> <!-- The Modal --> <div id="myModal" class="modal" style="display: none;"> <div class="modal-content"> <p>Just upload your song file and enjoy great sound quality with a bass booster. Feel every beat and enjoy your music!</p> <button id="saveBgBtn">Close</button> </div> </div>
     <script>
         const modal = document.getElementById("myModal");
         const openModalBtn = document.getElementById("openModalBtn");
@@ -18,10 +18,7 @@
             }
         }
     </script>
-    
-    <style>
-        .modal { position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.847); } .modal-content { margin: 26% auto; padding: 20px; width: 33%; }
-    </style>
+
     <script>
         const fileInput = document.getElementById('fileInput');
         const audioPlayer = document.getElementById('audioPlayer');
@@ -34,163 +31,101 @@
         const volumeRange = document.getElementById('volumeRange');
         const volumeValue = document.getElementById('volumeValue');
         const progressBar = document.getElementById('progressBar');
-    
-        let currentSongIndex = -1; // -1 indicates no song is playing
-        let songFiles = [];
-        let isPlaying = false;
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const bassFilter = audioContext.createBiquadFilter();
+        
+        let currentIndex = -1;
+        let playlist = JSON.parse(localStorage.getItem('playlist')) || [];
 
-        bassFilter.type = 'lowshelf';
-        bassFilter.frequency.value = 200;  // Boosts low frequencies
-        bassFilter.gain.value = 15;  // Initial gain value
+        function updatePlaylist() {
+            playlistElement.innerHTML = '';
+            playlist.forEach((song, index) => {
+                const li = document.createElement('li');
+                li.textContent = song.name;
+                li.onclick = () => playSong(index);
+                li.classList.toggle('active', index === currentIndex);
 
-        // Update the bass value from the range slider
-        bassRange.addEventListener('input', function() {
-            bassFilter.gain.value = this.value;
-            bassValue.textContent = this.value;
-        });
+                // Add delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = (event) => {
+                    event.stopPropagation();
+                    removeSong(index);
+                };
 
-        // Handle file input change and add songs to the existing playlist
-        fileInput.addEventListener('change', function() {
-            const newFiles = Array.from(this.files);
-            songFiles.push(...newFiles); // Add new files to the existing list
-            displayPlaylist();
-            if (currentSongIndex === -1 && songFiles.length > 0) {
-                playSong(0); // Play the first song if no song is currently playing
-            }
-        });
-
-        // Display the playlist of songs
-        function displayPlaylist() {
-            playlistElement.innerHTML = ''; // Clear previous playlist
-            songFiles.forEach((file, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = file.name.length > 20 ? file.name.substring(0, 17) + '...' : file.name; // Truncate long names
-                listItem.title = file.name; // Show full name on hover
-                listItem.addEventListener('click', () => playSong(index)); // Play on click
-                playlistElement.appendChild(listItem);
+                li.appendChild(deleteButton);
+                playlistElement.appendChild(li);
             });
-            highlightCurrentSong();
+            localStorage.setItem('playlist', JSON.stringify(playlist));
         }
 
-        // Highlight the currently playing song in the playlist
-        function highlightCurrentSong() {
-            const listItems = playlistElement.querySelectorAll('li');
-            listItems.forEach((item, index) => {
-                item.classList.toggle('active', index === currentSongIndex);
-            });
-        }
-
-        // Play the selected song based on index
         function playSong(index) {
-            currentSongIndex = index; // Update the current song index
-            const file = songFiles[currentSongIndex];
-            const fileURL = URL.createObjectURL(file);
-
-            // Stop any existing audio source if it exists
-            if (audioPlayer.src) {
-                audioPlayer.pause();
-            }
-
-            // Set up the audio player
-            audioPlayer.src = fileURL;
-            audioPlayer.volume = volumeRange.value / 100; // Set initial volume
-            
-            // Connect the audio element to the audio context and filter
-            const audioSource = audioContext.createMediaElementSource(audioPlayer);
-            audioSource.connect(bassFilter);
-            bassFilter.connect(audioContext.destination);
-
-            audioPlayer.play()
-                .then(() => {
-                    isPlaying = true;
-                    playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-pause"></i>Pause'; // Change button to Pause
-                    
-                    // Update the progress bar and song highlight
-                    updateProgressBar();
-                    highlightCurrentSong();
-                })
-                .catch(error => {
-                    console.error('Error playing audio:', error);
-                });
+            currentIndex = index;
+            const song = playlist[index];
+            audioPlayer.src = song.url;
+            audioPlayer.play();
+            playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
+            updatePlaylist();
         }
 
-        // Update progress bar as audio plays
-        audioPlayer.addEventListener('timeupdate', function() {
-            if (audioPlayer.duration > 0) {
-                const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                progressBar.value = progress;
-            }
-        });
-
-        // Seek functionality for progress bar
-        progressBar.addEventListener('input', function() {
-            const newTime = (this.value / 100) * audioPlayer.duration;
-            audioPlayer.currentTime = newTime;
-        });
-
-        // Handle Previous button click
-        prevBtn.addEventListener('click', function() {
-            if (currentSongIndex > 0) {
-                playSong(currentSongIndex - 1); // Play the previous song
-            }
-        });
-
-        // Handle Next button click
-        nextBtn.addEventListener('click', function() {
-            if (currentSongIndex < songFiles.length - 1) {
-                playSong(currentSongIndex + 1); // Play the next song
-            }
-        });
-
-        // Play/Pause functionality
-        playPauseBtn.addEventListener('click', togglePlayPause);
-
-        function togglePlayPause() {
-            if (isPlaying) {
-                audioPlayer.pause();
-                playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-play"></i>Play'; // Change button to Play
-            } else {
-                audioPlayer.play()
-                    .then(() => {
-                        playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-pause"></i>Pause'; // Change button to Pause
-                    })
-                    .catch(error => {
-                        console.error('Error playing audio:', error);
-                    });
-            }
-            isPlaying = !isPlaying;
+        function removeSong(index) {
+            playlist.splice(index, 1);
+            updatePlaylist();
+            if (currentIndex >= playlist.length) currentIndex = playlist.length - 1;
+            if (currentIndex >= 0) playSong(currentIndex);
+            else audioPlayer.pause();
         }
 
-        // Handle volume change
-        volumeRange.addEventListener('input', function() {
-            audioPlayer.volume = this.value / 100; // Update audio volume
-            volumeValue.textContent = this.value; // Display current volume value
+        fileInput.addEventListener('change', (event) => {
+            const files = event.target.files;
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const song = {
+                        name: file.name,
+                        url: e.target.result
+                    };
+                    playlist.push(song);
+                    updatePlaylist();
+                };
+                reader.readAsDataURL(file);
+            });
         });
 
-        // Automatically play the next song when the current one ends
-        audioPlayer.addEventListener('ended', function() {
-            if (currentSongIndex < songFiles.length - 1) {
-                playSong(currentSongIndex + 1); // Play the next song
+        playPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
             } else {
-                currentSongIndex = -1; // Reset to no song
-                playPauseBtn.innerHTML = '<i class="fa-regular fa-circle-play"></i>Play'; // Reset button
-                progressBar.value = 0; // Reset progress bar
-                isPlaying = false; // Update play state
+                audioPlayer.pause();
+                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-play"></i>Play`;
             }
         });
 
-        // Resume audio context after user interaction
-        document.body.addEventListener('click', function() {
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) playSong(currentIndex - 1);
         });
 
-        // Update the bass value from the range slider on page load
-        bassRange.dispatchEvent(new Event('input'));
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < playlist.length - 1) playSong(currentIndex + 1);
+        });
+
+        bassRange.addEventListener('input', () => {
+            bassValue.textContent = bassRange.value;
+        });
+
+        volumeRange.addEventListener('input', () => {
+            audioPlayer.volume = volumeRange.value / 100;
+            volumeValue.textContent = volumeRange.value;
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        });
+
+        progressBar.addEventListener('input', () => {
+            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+        });
+
+        updatePlaylist(); // Initial call to populate playlist
     </script>
-
 </body>
 </html>
