@@ -19,166 +19,177 @@
         }
     </script>
     <script>
-        const fileInput = document.getElementById('fileInput');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const playlistElement = document.getElementById('playlist');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const bassRange = document.getElementById('bassRange');
-        const bassValue = document.getElementById('bassValue');
-        const volumeRange = document.getElementById('volumeRange');
-        const volumeValue = document.getElementById('volumeValue');
-        const progressBar = document.getElementById('progressBar');
-        
-        let currentIndex = -1;
-        let playlist = [];
-    
-        // Open IndexedDB
-        const request = indexedDB.open('audioFilesDB', 1);
-        request.onupgradeneeded = function(event) {
+       const fileInput = document.getElementById('fileInput');
+const audioPlayer = document.getElementById('audioPlayer');
+const playlistElement = document.getElementById('playlist');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const bassRange = document.getElementById('bassRange');
+const bassValue = document.getElementById('bassValue');
+const volumeRange = document.getElementById('volumeRange');
+const volumeValue = document.getElementById('volumeValue');
+const progressBar = document.getElementById('progressBar');
+
+let currentIndex = -1;
+let playlist = [];
+
+// Open IndexedDB
+const request = indexedDB.open('audioFilesDB', 1);
+request.onupgradeneeded = function (event) {
+    const db = event.target.result;
+    if (!db.objectStoreNames.contains('audioFiles')) {
+        db.createObjectStore('audioFiles', { keyPath: 'id', autoIncrement: true });
+    }
+};
+
+const saveAudioFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const dbRequest = indexedDB.open('audioFilesDB', 1);
+        dbRequest.onsuccess = function (event) {
             const db = event.target.result;
-            if (!db.objectStoreNames.contains('audioFiles')) {
-                db.createObjectStore('audioFiles', { keyPath: 'id', autoIncrement: true });
-            }
-        };
-        
-        const saveAudioFile = (file) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const dbRequest = indexedDB.open('audioFilesDB', 1);
-                dbRequest.onsuccess = function(event) {
-                    const db = event.target.result;
-                    const transaction = db.transaction('audioFiles', 'readwrite');
-                    const store = transaction.objectStore('audioFiles');
-                    const audioFile = {
-                        name: file.name,
-                        url: e.target.result
-                    };
-                    store.add(audioFile);
-                    transaction.oncomplete = function() {
-                        updatePlaylist();
-                    };
-                };
+            const transaction = db.transaction('audioFiles', 'readwrite');
+            const store = transaction.objectStore('audioFiles');
+            const audioFile = {
+                name: file.name,
+                url: e.target.result,
             };
-            reader.readAsDataURL(file);
-        };
-    
-        fileInput.addEventListener('change', (event) => {
-            const files = event.target.files;
-            Array.from(files).forEach(file => {
-                saveAudioFile(file);
-            });
-        });
-    
-        const updatePlaylist = () => {
-            const dbRequest = indexedDB.open('audioFilesDB', 1);
-            dbRequest.onsuccess = function(event) {
-                const db = event.target.result;
-                const transaction = db.transaction('audioFiles', 'readonly');
-                const store = transaction.objectStore('audioFiles');
-                const request = store.getAll();
-                
-                request.onsuccess = function() {
-                    playlist = request.result;
-                    renderPlaylist();
-                };
+            store.add(audioFile);
+            transaction.oncomplete = function () {
+                updatePlaylist();
             };
         };
-    
-        const renderPlaylist = () => {
-            playlistElement.innerHTML = '';
-            playlist.forEach((song, index) => {
-                const li = document.createElement('li');
-                li.textContent = song.name;
-                li.onclick = () => playSong(index);
-                li.classList.toggle('active', index === currentIndex);
-    
-                // Add delete button
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.onclick = (event) => {
-                    event.stopPropagation();
-                    removeSong(index);
-                };
-    
-                li.appendChild(deleteButton);
-                playlistElement.appendChild(li);
-            });
+    };
+    reader.readAsDataURL(file);
+};
+
+fileInput.addEventListener('change', (event) => {
+    const files = event.target.files;
+    Array.from(files).forEach(file => {
+        saveAudioFile(file);
+    });
+});
+
+const updatePlaylist = () => {
+    const dbRequest = indexedDB.open('audioFilesDB', 1);
+    dbRequest.onsuccess = function (event) {
+        const db = event.target.result;
+        const transaction = db.transaction('audioFiles', 'readonly');
+        const store = transaction.objectStore('audioFiles');
+        const request = store.getAll();
+
+        request.onsuccess = function () {
+            playlist = request.result;
+            renderPlaylist();
         };
-    
-        function playSong(index) {
-            currentIndex = index;
-            const song = playlist[index];
-            audioPlayer.src = song.url;
-            audioPlayer.play();
-            playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
-            updatePlaylist();
-        }
-    
-        function removeSong(index) {
-            const dbRequest = indexedDB.open('audioFilesDB', 1);
-            dbRequest.onsuccess = function(event) {
-                const db = event.target.result;
-                const transaction = db.transaction('audioFiles', 'readwrite');
-                const store = transaction.objectStore('audioFiles');
-                store.delete(playlist[index].id);
-                transaction.oncomplete = function() {
-                    playlist.splice(index, 1);
-                    renderPlaylist();
-                    if (currentIndex >= playlist.length) currentIndex = playlist.length - 1;
-                    if (currentIndex >= 0) playSong(currentIndex);
-                    else audioPlayer.pause();
-                };
-            };
-        }
-    
-        // Play/Pause Button
-        playPauseBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-play"></i>Play`;
-            }
-        });
-    
-        // Previous Button
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                playSong(currentIndex - 1);
-            }
-        });
-    
-        // Next Button
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < playlist.length - 1) {
-                playSong(currentIndex + 1);
-            }
-        });
-    
-        // Bass and Volume Controls
-        bassRange.addEventListener('input', () => {
-            bassValue.textContent = bassRange.value;
-        });
-    
-        volumeRange.addEventListener('input', () => {
-            audioPlayer.volume = volumeRange.value / 100;
-            volumeValue.textContent = volumeRange.value;
-        });
-    
-        // Progress Bar
-        audioPlayer.addEventListener('timeupdate', () => {
-            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        });
-    
-        progressBar.addEventListener('input', () => {
-            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
-        });
-    
-        // Initialize the playlist on page load
-        updatePlaylist();
+    };
+};
+
+const renderPlaylist = () => {
+    playlistElement.innerHTML = '';
+    playlist.forEach((song, index) => {
+        const li = document.createElement('li');
+        li.textContent = song.name;
+        li.onclick = () => playSong(index);
+        li.classList.toggle('active', index === currentIndex);
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = (event) => {
+            event.stopPropagation();
+            removeSong(index);
+        };
+
+        li.appendChild(deleteButton);
+        playlistElement.appendChild(li);
+    });
+};
+
+function playSong(index) {
+    currentIndex = index;
+    const song = playlist[index];
+    audioPlayer.src = song.url;
+    audioPlayer.play();
+    playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
+    updatePlaylist();
+}
+
+function removeSong(index) {
+    const dbRequest = indexedDB.open('audioFilesDB', 1);
+    dbRequest.onsuccess = function (event) {
+        const db = event.target.result;
+        const transaction = db.transaction('audioFiles', 'readwrite');
+        const store = transaction.objectStore('audioFiles');
+        store.delete(playlist[index].id);
+        transaction.oncomplete = function () {
+            playlist.splice(index, 1);
+            renderPlaylist();
+            if (currentIndex >= playlist.length) currentIndex = playlist.length - 1;
+            if (currentIndex >= 0) playSong(currentIndex);
+            else audioPlayer.pause();
+        };
+    };
+}
+
+// Play/Pause Button
+playPauseBtn.addEventListener('click', () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>Pause`;
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-play"></i>Play`;
+    }
+});
+
+// Previous Button
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        playSong(currentIndex - 1);
+    }
+});
+
+// Next Button
+nextBtn.addEventListener('click', () => {
+    if (currentIndex < playlist.length - 1) {
+        playSong(currentIndex + 1);
+    }
+});
+
+// Bass and Volume Controls
+bassRange.addEventListener('input', () => {
+    bassValue.textContent = bassRange.value;
+});
+
+volumeRange.addEventListener('input', () => {
+    audioPlayer.volume = volumeRange.value / 100;
+    volumeValue.textContent = volumeRange.value;
+});
+
+// Progress Bar
+audioPlayer.addEventListener('timeupdate', () => {
+    progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+});
+
+progressBar.addEventListener('input', () => {
+    audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+});
+
+// Automatically play the next song when the current song ends
+audioPlayer.addEventListener('ended', () => {
+    if (currentIndex < playlist.length - 1) {
+        playSong(currentIndex + 1); // Play the next song
+    } else {
+        currentIndex = 0; // Restart the playlist from the beginning
+        playSong(currentIndex);
+    }
+});
+
+// Initialize the playlist on page load
+updatePlaylist();
+
     </script>
     
 </body>
