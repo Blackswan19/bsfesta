@@ -93,6 +93,67 @@
         document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
     });
 </script>
+    
+<script>
+    const musicPlayer = document.getElementById('musicPlayer');
+    const currentSongTitle = document.getElementById('currentSongTitle');
+    const pages = document.querySelectorAll('.page');
+    // let isPlaying = false;
+    let shuffleMode = false;
+    let history = ['all']; // Initialize with 'all' to make it the default active section
+
+    // Function to show selected language page with a delay
+    function showPage(pageId) {
+        // Disable navigation buttons while switching pages
+        document.querySelectorAll('nav button').forEach(button => {
+            button.disabled = true;
+        });
+
+        setTimeout(() => {
+            // Hide all pages and show the selected page
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+
+            // Highlight the active button
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('active'); // Remove active class from all buttons
+            });
+            document.querySelector(`nav button[onclick="showPage('${pageId}')"]`).classList.add('active'); // Add active class to the clicked button
+
+            // Add the current page to history if it's not already the last entry
+            if (history[history.length - 1] !== pageId) {
+                history.push(pageId);
+            }
+
+            // Show or hide the back button based on the selected page
+            const backButton = document.querySelector('.back-button');
+            backButton.style.display = history.length > 1 ? 'inline-block' : 'none'; // Show back button only if there is history
+
+            // Re-enable navigation buttons after the delay
+            document.querySelectorAll('nav button').forEach(button => {
+                button.disabled = false;
+            });
+        }, 100); // 100 milliseconds delay
+    }
+
+    // Function to go back to the previous page or default to "All" section
+    function goBack() {
+        if (history.length > 1) { // Only go back if there's history
+            history.pop(); // Remove current page from history
+            const previousPage = history[history.length - 1]; // Get the last visited page
+            showPage(previousPage); // Show the previous page
+        } else {
+            showPage('all'); // Default back to "All" if history is empty
+        }
+    }
+
+   
+    function loadPlaylist() {
+        showPage('all'); // Default to "All" songs section on load
+    }
+</script>
 <style>
     .modal {
         display: none; /* Hidden by default */
