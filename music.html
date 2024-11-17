@@ -93,7 +93,49 @@
         document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
     });
 </script>
-
+<script>
+            // JavaScript for song search functionality
+            window.addEventListener('DOMContentLoaded', (event) => {
+                    const searchBar = document.getElementById('search-bar');
+                    const clearButton = document.getElementById('clear-button');
+                    const songs = document.querySelectorAll('#song-list li');
+            
+                    searchBar.addEventListener('input', function() {
+                        let searchTerm = this.value.toLowerCase().trim();
+                        let songFound = false; // To track if we found a song
+            
+                        // Clear highlights if search term is empty
+                        if (searchTerm === '') {
+                            songs.forEach(song => {
+                                song.style.backgroundColor = ''; // Remove all highlights
+                            });
+                            return; // Stop further execution when the search is empty
+                        }
+            
+                        // Search and highlight songs that match the input
+                        songs.forEach(song => {
+                            let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
+                            if (songTitle.includes(searchTerm)) {
+                                song.style.backgroundColor = '#004cff'; // Highlight matched song
+                                if (!songFound) { // Scroll to the first matching song
+                                    song.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    songFound = true;
+                                }
+                            } else {
+                                song.style.backgroundColor = ''; // Reset if not matched
+                            }
+                        });
+                    });
+            
+                    // Clear button functionality
+                    clearButton.addEventListener('click', function() {
+                        searchBar.value = ''; // Clear the search bar
+                        songs.forEach(song => {
+                            song.style.backgroundColor = ''; // Remove all highlights
+                        });
+                    });
+                });
+         </script>
 <script>
     const musicPlayer = document.getElementById('musicPlayer');
     const currentSongTitle = document.getElementById('currentSongTitle');
