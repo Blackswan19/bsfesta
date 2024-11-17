@@ -1,567 +1,551 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - Korean mix</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo\logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="stylesheet" href="music.css"> <script src="mood.js"></script> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> <img src="logo/brand.png" class="img" alt="" width="5%"><h1>BsFesta</h1> </div> <div id="player-interface"> <div class="promotion"> <a href="telnewarri.html"><img src="logo/telnewarr.png" alt=""></a> </div> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> <div class="menu"> <a href="music.html" onclick="displayText(1)"><i class="fa-solid fa-house"></i>Home</a><br> <a href="minifesta.html"><i class="fa-brands fa-medium"></i>Mini Festa </a> </div> </div> <div class="about"> <a target="_blank" href="festa.html">About festa</a> </div> </div> <div class="skip"> <button class="button2" id="previous-btn"><i class="fa-solid fa-backward-step"></i></i></button> <button class="button1" id="play-pause-btn"><i class="fa-solid fa-play"></i></button> <button class="button3" id="next-btn"><i class="fa-solid fa-forward-step"></i></button> </div> <div class="view"> <button id="shuffle-btn" class="control-button" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button> <button class="repeat" id="repeat-btn"><i class="fa-solid fa-repeat"></i></button> <input type="range" id="volume-bar" min="0" max="100" value="20"> </div> <div id="progress-bar"> <div class="progress"></div> </div> <div class="songslist"> <header > <div class="hover-title" title="You are listening to korean artist's song"> <h1><img src="logo/korea.png" alt="Logo"> Korean mix</h1> </div> </header> <ul class="songssad" id="song-list"> <div class="songname"> # Song name </div> <li data-src="https://s5.uupload.ir/files/foxlyrics/mp3/2024-8/1-800-hot-n-fun%20-%20LE%20SSERAFIM%20(320).mp3"><span class="song-title">1-800-hot-n-fun</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-plus add-to-playlist"></i></li></li> <li data-src="korea\ELEVEN.mp3"><span class="song-title">ELEVEN</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> <li data-src="korea\Wave to you.mp3"><span class="song-title">Wave to you</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Jimin (지민) Who Lyrics (Color Coded Lyrics).mp3"><span class="song-title">Who - Jimin</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\TXT Jonas Brothers Do It Like That Official Audio.mp3"><span class="song-title">Do It Like That</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Be Mine.mp3"><span class="song-title">Be Mine</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="english\BOLO.mp3"><span class="song-title">BOLO</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\Angel Pt. 2 - JVKE, Jimin of BTS, Charlie Puth, Muni Long (FAST X Official Lyric Video).mp3"><span class="song-title">Angel Pt. 2</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\B.I, Soulja Boy BTBT Lyrics (feat. DeVita) (HanRomEng가사) Color Coded Lyrics.mp3"><span class="song-title">BTBT</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\Charlie Puth - Left And Right (Lyrics) ft. Jungkook of BTS.mp3"><span class="song-title">Left And Right</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\BIBI Vengeance (Color Coded Lyrics).mp3"><span class="song-title">BIBI Vengeance</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\Dua Lipa, BLACKPINK - Kiss and Make Up (Lyrics).mp3"><span class="song-title">Kiss and Make Up</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Bite me.mp3"><span class="song-title">Bite Me</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\friends.mp3"><span class="song-title">Friends</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\go hard.mp3"><span class="song-title">GO HARD</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\you and me.mp3"><span class="song-title">You Me</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\like crazy.mp3"><span class="song-title">Like Crazy</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\Jung Kook (정국) Never Let Go Lyrics.mp3"><span class="song-title">Never Let Go</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\JUNGKOOK (정국) Euphoria (Color Coded Lyrics HanRomEng가사).mp3"><span class="song-title">Euphoria</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\LE SSERAFIM - Smart (lyrics).mp3"><span class="song-title">Smart</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\LE SSERAFIM (르세라핌) YOU AS A MEMBER Perfect Night 완벽한 밤 Karaoke 6 member version.mp3"><span class="song-title">Perfect Night</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\LE SSERAFIM Crazy (르세라핌) (Color Coded Lyrics).mp3"><span class="song-title">Crazy </span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\APT.mp3"><span class="song-title"> APT.</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> <li data-src="newadd\NewJeans Attention Lyrics (뉴진스 Attention 가사) (Color Coded Lyrics).mp3"><span class="song-title">Attention</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd\SEVENTEEN Super Lyrics (세븐틴 손오공 가사) (Color Coded Lyrics).mp3"><span class="song-title">Super</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Go Go.mp3"><span class="song-title">Go Go</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\HIP.mp3"><span class="song-title">HIP</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Holssi.mp3"><span class="song-title">Holssi</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Haegeum.mp3"><span class="song-title">Haegeum</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Heartbeat (BTS WORLD OST).mp3"><span class="song-title">Heartbeat</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\HOME.mp3"><span class="song-title">HOME</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\House Of Cards (full length edition).mp3"><span class="song-title">House Of Cards</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Hype Boy.mp3"><span class="song-title">Hype Boy</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Hate You.mp3"><span class="song-title">Hate You</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\I AM.mp3"><span class="song-title">I AM</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\I'm Fine.mp3"><span class="song-title">I'm Fine</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\IDOL.mp3"><span class="song-title">IDOL</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Jump.mp3"><span class="song-title">Jump</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Kill This Love.mp3"><span class="song-title">Kill This Love</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\LALISA.mp3"><span class="song-title">LALISA</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Like OOH-AHH.mp3"><span class="song-title">Like OOH-AHH</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\LOVE SHOT.mp3"><span class="song-title">LOVE SHOT</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\MEOW.mp3"><span class="song-title">MEOW</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\LIKE THAT.mp3"><span class="song-title">LIKE THAT</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\LALALALA.mp3"><span class="song-title">LALALALA</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Let Go.mp3"><span class="song-title">Let Go</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Lights.mp3"><span class="song-title">Lights</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\LIE.mp3"><span class="song-title">LIE</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Life Goes On.mp3"><span class="song-title">Life Goes On</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Love Maze.mp3"><span class="song-title">Love Maze</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Love Me Again.mp3"><span class="song-title">Love Me Again</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Love wins all.mp3"><span class="song-title">Love wins all</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Louder than bombs.mp3"><span class="song-title">Louder than bombs</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Magic Shop.mp3"><span class="song-title">Magic Shop</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\MEOW.mp3"><span class="song-title">MEOW</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="english\LISA - NEW WOMAN (Lyrics) ft. Rosalía.mp3"><span class="song-title">NEW WOMAN</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> <li data-src="korea\Magnetic.mp3"><span class="song-title">Magnetic</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Make It Right (feat. Lauv).mp3"><span class="song-title">Make It Right</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\MIC Drop.mp3"><span class="song-title">MIC Drop</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Mikrokosmos.mp3"><span class="song-title">Mikrokosmos</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Moon.mp3"><span class="song-title">Moon</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\My Time.mp3"><span class="song-title">My Time</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\My Universe.mp3"><span class="song-title">My Universe</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/FOREVER.mp3"><span class="song-title">Forever</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\MANIAC.mp3"><span class="song-title">MANIAC</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Maria.mp3"><span class="song-title">Maria</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\MORE & MORE.mp3"><span class="song-title">MORE & MORE</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Next Level.mp3"><span class="song-title">Next Level</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\New Jeans.mp3"><span class="song-title">New Jeans</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\No More Dream.mp3"><span class="song-title">No More Dream</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Not Today.mp3"><span class="song-title">Not Today</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Outro _ Tear.mp3"><span class="song-title">Outro _ Tear</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\OMG.mp3"><span class="song-title">OMG</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Outro _ Wings.mp3"><span class="song-title">Wings</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Paradise.mp3"><span class="song-title">Paradise</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Permission to Dance.mp3"><span class="song-title">Permission to Dance</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Pied Piper.mp3"><span class="song-title">Pied Piper</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Pink Venom.mp3"><span class="song-title">Pink Venom</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/LISA - ROCKSTAR .mp3"><span class="song-title">Rockstar</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Rover.mp3"><span class="song-title">Rover</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\RUN.mp3"><span class="song-title">RUN</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Run bts.mp3"><span class="song-title">Run bts</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Somebody.mp3"><span class="song-title">Somebody</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Shot Glass of Tears.mp3"><span class="song-title">Shot Glass of Tears</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Savage Love' (Laxed – Siren Beat).mp3"><span class="song-title">Savage Love</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\SHEESH.mp3"><span class="song-title">SHEESH</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Seesaw.mp3"><span class="song-title">Seesaw</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Seven.mp3"><span class="song-title">Seven</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Shut Down.mp3"><span class="song-title">Shut Down</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Silver Spoon.mp3"><span class="song-title">Silver Spoon</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Singularity.mp3"><span class="song-title">Singularity</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\So What.mp3"><span class="song-title">So What</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Standing Next To You.mp3"><span class="song-title">Standing Next To You</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Stay.mp3"><span class="song-title">Stay</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Stay Alive.mp3"><span class="song-title">Stay Alive</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Super Shy.mp3"><span class="song-title">Super Shy</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Swan Song.mp3"><span class="song-title">Swan Song</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Stay With Me.mp3"><span class="song-title">Stay With Me</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\The Astronaut.mp3"><span class="song-title">The Astronaut</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\TOMBOY.mp3"><span class="song-title">TOMBOY</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\TT.mp3"><span class="song-title">TT</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\That That.mp3"><span class="song-title">That That</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\The Feels.mp3"><span class="song-title">The Feels</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\BANG BANG BANG.mp3"><span class="song-title">BANG BANG BANG</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\BATTER UP.mp3"><span class="song-title">BATTER UP</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Bad Decisions.mp3"><span class="song-title"> Bad Decisions</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Black Swan.mp3"><span class="song-title">Black Swan</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Blood Sweat & Tears.mp3"><span class="song-title">Blood Sweat & Tears</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\BOOMBAYAH.mp3"><span class="song-title">BOOMBAYAH</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Boy In Luv.mp3"><span class="song-title">Boy In Luv</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Boy With Luv.mp3"><span class="song-title">Boy With Luv</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Butterfly.mp3"><span class="song-title">Butterfly</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Too Sad to Dance.mp3"><span class="song-title">Too Sad to Dance</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Typa Girl.mp3"><span class="song-title">Typa Girl</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\UNFORGIVEN.mp3"><span class="song-title">UNFORGIVEN</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\BORN TO BE.mp3"><span class="song-title">BORN TO BE</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Butte.mp3"><span class="song-title">Butter</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Closer to You.mp3"><span class="song-title">Closer to You</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Cupid.mp3"><span class="song-title">Cupid</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\DANCE THE NIGHT AWAY.mp3"><span class="song-title">Dance the night away</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Ditto.mp3"><span class="song-title">Ditto</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Danger.mp3"><span class="song-title">Danger</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\DDU-DU DDU-DU.mp3"><span class="song-title">DDU-DU DDU-DU</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dimple.mp3"><span class="song-title">Dimple</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dionysus.mp3"><span class="song-title">Dionysus</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\DNA.mp3"><span class="song-title">DNA</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dope.mp3"><span class="song-title">Dope</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dream Glow.mp3"><span class="song-title">Dream Glow</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dreamers.mp3"><span class="song-title">Dreamers</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Dynamite.mp3"><span class="song-title">Dynamite</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\EPIPHANY.mp3"><span class="song-title">EPIPHANY</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\EASY.mp3"><span class="song-title">EASY</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\ETA.mp3"><span class="song-title">ETA</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\FANCY.mp3"><span class="song-title">FANCY</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\FAKE LOVE.mp3"><span class="song-title">FAKE LOVE</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\FEARLESS.mp3"><span class="song-title">FEARLESS</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Fire.mp3"><span class="song-title">Fire</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\FLOWER.mp3"><span class="song-title">FLOWER</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\FRI (END) S.mp3"><span class="song-title">FRI(END)S</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Gangnam style.mp3"><span class="song-title">Gangnam style</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\You & Me.mp3"><span class="song-title">You & Me</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Zero O'Clock.mp3"><span class="song-title">Zero O'Clock</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Wild Flower.mp3"><span class="song-title">Wild Flower</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\What is Love.mp3"><span class="song-title">What is Love</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Jimin (지민) Who Lyrics (Color Coded Lyrics).mp3"><span class="song-title">Who - Jimin</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\YES OR YES.mp3"><span class="song-title">YES OR YES</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Airplane pt.2.mp3"><span class="song-title">Airplane pt.2</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="https://ilkpop.c1e72c0a41a77d3cfeb09b99b8910193.r2.cloudflarestorage.com/files/NTkxOTA3MTM.mp3?response-content-disposition=attachment%3B%20filename%3DB.I%2520%2526%2520Soulja%2520Boy%2520-%2520BTBT%2520%2528Feat.%2520DeVita%2529.mp3&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=af07321763e22875921525750eb56dc8%2F20241019%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20241019T162801Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Signature=7bf2b50424986140773e2d52f589251c440366d6563a21dbaab0dae1a67c3c5b"><span class="song-title">BTBT</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\3D.mp3"><span class="song-title">3D</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\After LIKE.mp3"><span class="song-title">After like</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\ANPANMAN.mp3"><span class="song-title">ANPANMAN</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\ANTIFRAGILE.mp3"><span class="song-title">ANTIFRAGILE</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Attack on Bangtan.mp3"><span class="song-title">Attack on Bangtan</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="korea\Bboom Bboom.mp3"><span class="song-title">Bboom bboom</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> <li data-src="newadd/Be Mine.mp3"><span class="song-title">Be Mine</span><i class="fa-solid fa-play play-button"></i><i class="fa-solid fa-heart-circle-plus add-to-playlist"></i></li> </li> </ul> </div> <div class="controls"> <button class="btn2" id="fullScreenBtn" onclick="toggleFullScreen()"><i class="fa-solid fa-compress"></i></button> <button id="colorChangeButton">Turn on the light</button> <button id="speedUpButton" title="Speed up"><i class="fa-solid fa-plus"></i></button> <button id="slowDownButton" title="Speed down"><i class="fa-solid fa-minus"></i></button> <button id="stopAndBlackButton" title="Stop the lights"><i class="fa-solid fa-ban"></i></button> </div> </div><div class="custom-menu"> <style> a{ text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/playlist"><button id="option1">Explore Playlists</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div>
-<script src="newapper.js"></script>
-    <script>
-    const colors = [
-        '#FF0000', // Bright Red
-        '#0000FF', // Bright Blue
-        '#32CD32', // Lime Green
-        '#FF1493', // Deep Pink
-        '#FFA500', // Orange
-        '#00BFFF', // Deep Sky Blue
-        '#FF4500', // Orange Red
-        '#1E90FF', // Dodger Blue
-        '#9400D3', // Dark Violet
-        '#FF6347', // Tomato
-        '#40E0D0', // Turquoise
-        '#8A2BE2', // Blue Violet
-    ];
-
-    let intervalId;
-    let colorInterval = 1000; // Starting interval of 1 second
-    let speedUpClicks = 0;
-    let slowDownClicks = 0;
-    const maxClicks = 5;
-    // let isPlaying = false; // Track if the light is currently playing
-
-    function getRandomColor() {
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function startColorChange() {
-        // Apply CSS transitions for smooth color change
-        document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`;
-
-        intervalId = setInterval(() => {
-            document.body.style.color = getRandomColor();
-            document.body.style.backgroundColor = getRandomColor();
-        }, colorInterval);
-
-        isPlaying = true;
-        document.getElementById('colorChangeButton').textContent = 'Turn off the light';
-    }
-
-    function stopColorChange() {
-        clearInterval(intervalId);
-        intervalId = null;
-        isPlaying = false;
-        document.getElementById('colorChangeButton').textContent = 'Turn on the light';
-    }
-
-    document.getElementById('colorChangeButton').addEventListener('click', () => {
-        if (isPlaying) {
-            stopColorChange();
-        } else {
-            startColorChange();
-        }
-    });
-
-    function adjustSpeed() {
-        if (speedUpClicks > 0) {
-            colorInterval = Math.max(100, colorInterval - 200); // Decrease interval, minimum 100ms
-            speedUpClicks--;
-        }
-        if (slowDownClicks > 0) {
-            colorInterval += 200; // Increase interval
-            slowDownClicks--;
-        }
-        if (intervalId) {
-            stopColorChange();
-            startColorChange();
-        }
-    }
-
-    document.getElementById('speedUpButton').addEventListener('click', () => {
-        if (speedUpClicks < maxClicks) {
-            speedUpClicks++;
-            adjustSpeed();
-        }
-    });
-
-    document.getElementById('slowDownButton').addEventListener('click', () => {
-        if (slowDownClicks < maxClicks) {
-            slowDownClicks++;
-            adjustSpeed();
-        }
-    });
-
-    document.getElementById('stopAndBlackButton').addEventListener('click', () => {
-        stopColorChange();
-        document.body.style.transition = ''; // Remove transitions when stopping
-        document.body.style.backgroundColor = 'black'; // Set background to black
-        document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
-    });
-</script>
-
-
-<!-- Modal for full-screen video -->
-<div id="fullscreenVideoModal" class="video-popup">
-<span class="video-close" onclick="hideVideo()">&times;</span>
-<div class="video-content">
-    <video id="popupVideoPlayer" autoplay loop muted playsinline>
-        <source src="logo/bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-</div>
-
 <script>
-function showVideo() {
-var modal = document.getElementById("fullscreenVideoModal");
-var video = document.getElementById("popupVideoPlayer");
-
-// Display the modal
-modal.style.display = "flex";
-
-// Play the video
-video.play();
-
-// Make the video go full screen without controls
-if (video.requestFullscreen) {
-    video.requestFullscreen();
-} else if (video.mozRequestFullScreen) { // Firefox
-    video.mozRequestFullScreen();
-} else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
-    video.webkitRequestFullscreen();
-} else if (video.msRequestFullscreen) { // IE/Edge
-    video.msRequestFullscreen();
-}
-
-// Ensure controls are not shown even in full screen
-video.controls = false;
-}
-
-function hideVideo() {
-var modal = document.getElementById("fullscreenVideoModal");
-var video = document.getElementById("popupVideoPlayer");
-
-// Hide the modal
-modal.style.display = "none";
-
-// Pause the video and reset time
-video.pause();
-video.currentTime = 0;
-
-// Exit full-screen mode if active
-if (document.exitFullscreen) {
-    document.exitFullscreen();
-} else if (document.mozCancelFullScreen) { // Firefox
-    document.mozCancelFullScreen();
-} else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
-    document.webkitExitFullscreen();
-} else if (document.msExitFullscreen) { // IE/Edge
-    document.msExitFullscreen();
-}
-}
-</script>
-<style>
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 999; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-}
-
-.modal-content {
-    background: none;
-padding: 20px;
-width: 80%;
-}
-
-.close-button {
-    color: white;
-font-size: 35px;
-font-weight: 100;
-position: fixed;
-top: 15px;
-right: 30px;
-}
-
-p#modal-song-details {
-color: rgb(255, 255, 255);
-font-size: 100px;
-position: fixed;
-top: 25%;
-left: 9%;
-font-style: italic;
-font-weight: 800;
-}
-.close-button:hover,
-.close-button:focus {
-    color: rgb(156, 156, 156);
-    text-decoration: none;
-    cursor: pointer;
-}
-</style>
-</head>
-<body>
-
-<div class="song-info" id="songInfo">
-<img src="logo/playingBs.png" alt="Song Cover" style="width: 50px; height: 50px;">
-<div class="song-details">
-<p  style="font-size: 13px; font-weight: 600;">Playing :</p>
-<p id="current-song-details" style="color: rgb(255, 255, 255);"></p>
-<i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i>
-</div>
-</div>
-
-<!-- Modal Structure -->
-<div id="songModal" class="modal">
-<div class="modal-content">
-<span class="close-button">&times;</span>
-<img src="logo/brand.png" alt="" style="width: 3%;
-position: fixed;
-top: 5px;
-left: 5px;
-background: black;
-padding: 10px;
-border-radius: 6px;">
-<p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
-</div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-const songInfo = document.getElementById('songInfo');
-const songModal = document.getElementById('songModal');
-const modalSongDetails = document.getElementById('modal-song-details');
-const closeButton = document.querySelector('.close-button');
-const currentSongDetails = document.getElementById('current-song-details');
-
-let previousSongTitle = extractSongTitle(currentSongDetails.textContent);
-
-// Array of 40 distinct colors
-const colorPalette = [
-'#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
-'#0d0d2b', '#232332', '#404055', '#1a1a2e', '#2d2d3a',
-'#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
-'#0f0f27', '#26262d', '#3b3b55', '#14141e', '#282838',
-'#00d15a', '#191414', '#0a0a23', '#00ff75', '#00d15a',
-'#171729', '#303043', '#484862', '#11111f', '#1b1b31',
-'#191414', '#00d15a', '#505050', '#0a0a23', '#191414',
-'#0c0c28', '#242440', '#3c3c58', '#13131d', '#292940',
-'#00d15a', '#0a0a23', '#191414', '#00ff75', '#505050',
-'#1a1a2b', '#33334f', '#4d4d67', '#0e0e29', '#272746'
-];
-
-
-// Open modal when song-info is clicked
-songInfo.addEventListener('click', function() {
-// Extract and set only the song title in the modal content
-const songTitle = extractSongTitle(currentSongDetails.textContent);
-
-// If no song is playing, show the default message
-modalSongDetails.textContent = songTitle ? songTitle : "Welcome to BsFesta";
-
-// Change modal background color based on the song title
-songModal.style.backgroundColor = getBackgroundColor(songTitle);
-
-// Show the modal
-songModal.style.display = "block";
-});
-
-// Close modal when the close button is clicked
-closeButton.addEventListener('click', function() {
-songModal.style.display = "none";
-});
-
-// Close modal when clicking outside of the modal content
-window.addEventListener('click', function(event) {
-if (event.target === songModal) {
-    songModal.style.display = "none";
-}
-});
-
-// Function to determine background color based on the song title
-function getBackgroundColor(songTitle) {
-if (!songTitle) {
-    return '#2c3e50'; // Default color when no song is playing
-}
-// Generate an index for the color palette based on the song title
-let index = 0;
-for (let i = 0; i < songTitle.length; i++) {
-    index += songTitle.charCodeAt(i); // Sum up character codes
-}
-// Limit index to the number of colors in the palette (40)
-index = index % colorPalette.length;
-
-return colorPalette[index]; // Return a color from the palette
-}
-
-// Function to extract only the song title from the full string
-function extractSongTitle(songDetails) {
-if (songDetails.includes(' - ')) {
-    return songDetails.split(' - ')[0]; // Split by ' - ' and return the first part (the song title)
-} else if (songDetails === '') {
-    return null; // No song playing
-} else {
-    return songDetails; // If there's no ' - ', return the whole string
-}
-}
-
-// Function to update the modal when the song changes
-function updateModalIfSongChanges() {
-const newSongTitle = extractSongTitle(currentSongDetails.textContent);
-
-// Check if the song title has changed
-if (newSongTitle !== previousSongTitle) {
-    // Update modal background color if song title has changed
-    songModal.style.backgroundColor = getBackgroundColor(newSongTitle);
-
-    // Update the modal content to reflect the current song title or the welcome message
-    modalSongDetails.textContent = newSongTitle ? newSongTitle : "Welcome to BsFesta";
-
-    previousSongTitle = newSongTitle; // Update previous title
-}
-}
-
-// Example function to stop the song and display "Welcome to BS"
-function stopSong() {
-currentSongDetails.textContent = ''; // Clear the song details
-updateModalIfSongChanges(); // Update modal to reflect the stopped state
-}
-
-// Check for song changes every 5 seconds
-setInterval(() => {
-updateModalIfSongChanges(); // Check if song has changed
-}, 5000);
-
-// Simulating stopping the song after 10 seconds (for testing purposes)
-setTimeout(() => {
-stopSong(); // Call the stop function to simulate stopping the song
-}, 10000); // 10 seconds
-});
-
-</script>
-<div class="headers">
-<style> #result {
-    position: fixed;
-    display: contents;
-}</style>
-<input type="text" id="search-bar" placeholder="Search the song here...">
-<button><i class="fa-solid fa-magnifying-glass"></i></button>
-<a href="https://blackswan19.github.io/Educate/stoper.html"><button>BsAdstoper</button></a>
-<div id="result"></div>
-<script>function modifyLink(){const e=document.getElementById("userLink").value;let t=e;e.toLowerCase().includes("youtu.be")?t=`https://www.yout-ube.com/watch?v=${e.split("youtu.be/")[1].split("?")[0]}`:e.toLowerCase().includes("youtube.com")&&(t=e.replace(/youtube/i,"yout-ube")),t.includes("yout-ube.com/watch?v=")?(document.getElementById("result").innerHTML=`<button id="playButton" onclick="playVideo('${t}')">Play in full screen</button>`,document.getElementById("userLink").value=""):document.getElementById("result").innerHTML="Invalid URL"}function playVideo(e){window.open(e,"_self"),document.getElementById("playButton").style.display="none"}</script>
-</div>
-<div class="gif">
-<a href="music.html" class="logopgs"><img src="logo/brand.png" alt="" width="6%"></a><br>
-<img src="https://i.pinimg.com/originals/a1/33/b0/a133b046e1c1f8b9d849099d451b0b2c.gif" alt="">
-</div>
-<script>
-// JavaScript for song search functionality
-window.addEventListener('DOMContentLoaded', (event) => {
-        const searchBar = document.getElementById('search-bar');
-        const clearButton = document.getElementById('clear-button');
-        const songs = document.querySelectorAll('#song-list li');
-
-        searchBar.addEventListener('input', function() {
-            let searchTerm = this.value.toLowerCase().trim();
-            let songFound = false; // To track if we found a song
-
-            // Clear highlights if search term is empty
-            if (searchTerm === '') {
-                songs.forEach(song => {
-                    song.style.backgroundColor = ''; // Remove all highlights
-                });
-                return; // Stop further execution when the search is empty
+         const colors = [
+             '#FF0000', // Bright Red
+             '#0000FF', // Bright Blue
+             '#32CD32', // Lime Green
+             '#FF1493', // Deep Pink
+             '#FFA500', // Orange
+             '#00BFFF', // Deep Sky Blue
+             '#FF4500', // Orange Red
+             '#1E90FF', // Dodger Blue
+             '#9400D3', // Dark Violet
+             '#FF6347', // Tomato
+             '#40E0D0', // Turquoise
+             '#8A2BE2', // Blue Violet
+         ];
+         
+         let intervalId;
+         let colorInterval = 1000; // Starting interval of 1 second
+         let speedUpClicks = 0;
+         let slowDownClicks = 0;
+         const maxClicks = 5;
+         // let isPlaying = false; // Track if the light is currently playing
+         
+         function getRandomColor() {
+             return colors[Math.floor(Math.random() * colors.length)];
+         }
+         
+         function startColorChange() {
+             // Apply CSS transitions for smooth color change
+             document.body.style.transition = `background-color ${colorInterval / 1000}s, color ${colorInterval / 1000}s`;
+         
+             intervalId = setInterval(() => {
+                 document.body.style.color = getRandomColor();
+                 document.body.style.backgroundColor = getRandomColor();
+             }, colorInterval);
+         
+             isPlaying = true;
+             document.getElementById('colorChangeButton').textContent = 'Turn off the light';
+         }
+         
+         function stopColorChange() {
+             clearInterval(intervalId);
+             intervalId = null;
+             isPlaying = false;
+             document.getElementById('colorChangeButton').textContent = 'Turn on the light';
+         }
+         
+         document.getElementById('colorChangeButton').addEventListener('click', () => {
+             if (isPlaying) {
+                 stopColorChange();
+             } else {
+                 startColorChange();
+             }
+         });
+         
+         function adjustSpeed() {
+             if (speedUpClicks > 0) {
+                 colorInterval = Math.max(100, colorInterval - 200); // Decrease interval, minimum 100ms
+                 speedUpClicks--;
+             }
+             if (slowDownClicks > 0) {
+                 colorInterval += 200; // Increase interval
+                 slowDownClicks--;
+             }
+             if (intervalId) {
+                 stopColorChange();
+                 startColorChange();
+             }
+         }
+         
+         document.getElementById('speedUpButton').addEventListener('click', () => {
+             if (speedUpClicks < maxClicks) {
+                 speedUpClicks++;
+                 adjustSpeed();
+             }
+         });
+         
+         document.getElementById('slowDownButton').addEventListener('click', () => {
+             if (slowDownClicks < maxClicks) {
+                 slowDownClicks++;
+                 adjustSpeed();
+             }
+         });
+         
+         document.getElementById('stopAndBlackButton').addEventListener('click', () => {
+             stopColorChange();
+             document.body.style.transition = ''; // Remove transitions when stopping
+             document.body.style.backgroundColor = 'black'; // Set background to black
+             document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
+         });
+      </script>
+      <!-- Modal for full-screen video -->
+      <div id="fullscreenVideoModal" class="video-popup">
+         <span class="video-close" onclick="hideVideo()">&times;</span>
+         <div class="video-content">
+            <video id="popupVideoPlayer" autoplay loop muted playsinline>
+               <source src="logo/bg.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+            </video>
+         </div>
+      </div>
+      <script>
+         function showVideo() {
+         var modal = document.getElementById("fullscreenVideoModal");
+         var video = document.getElementById("popupVideoPlayer");
+         
+         // Display the modal
+         modal.style.display = "flex";
+         
+         // Play the video
+         video.play();
+         
+         // Make the video go full screen without controls
+         if (video.requestFullscreen) {
+             video.requestFullscreen();
+         } else if (video.mozRequestFullScreen) { // Firefox
+             video.mozRequestFullScreen();
+         } else if (video.webkitRequestFullscreen) { // Chrome, Safari, Opera
+             video.webkitRequestFullscreen();
+         } else if (video.msRequestFullscreen) { // IE/Edge
+             video.msRequestFullscreen();
+         }
+         
+         // Ensure controls are not shown even in full screen
+         video.controls = false;
+         }
+         
+         function hideVideo() {
+         var modal = document.getElementById("fullscreenVideoModal");
+         var video = document.getElementById("popupVideoPlayer");
+         
+         // Hide the modal
+         modal.style.display = "none";
+         
+         // Pause the video and reset time
+         video.pause();
+         video.currentTime = 0;
+         
+         // Exit full-screen mode if active
+         if (document.exitFullscreen) {
+             document.exitFullscreen();
+         } else if (document.mozCancelFullScreen) { // Firefox
+             document.mozCancelFullScreen();
+         } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+             document.webkitExitFullscreen();
+         } else if (document.msExitFullscreen) { // IE/Edge
+             document.msExitFullscreen();
+         }
+         }
+      </script>
+      <style>
+         .modal {
+         display: none; /* Hidden by default */
+         position: fixed;
+         z-index: 999; /* Sit on top */
+         left: 0;
+         top: 0;
+         width: 100%; /* Full width */
+         height: 100%; /* Full height */
+         overflow: auto; /* Enable scroll if needed */
+         background-color: rgb(0,0,0); /* Fallback color */
+         background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+         }
+         .modal-content {
+         background: none;
+         padding: 20px;
+         width: 80%;
+         }
+         .close-button {
+         color: white;
+         font-size: 35px;
+         font-weight: 100;
+         position: fixed;
+         top: 15px;
+         right: 30px;
+         }
+         
+         .close-button:hover,
+         .close-button:focus {
+         color: rgb(156, 156, 156);
+         text-decoration: none;
+         cursor: pointer;
+         }
+      </style>
+      </head>
+      <body>
+         <div class="song-info" id="songInfo">
+            <img src="https://i.pinimg.com/736x/6b/77/9e/6b779e212633e1dc47cd9cf1ddc1b2bc.jpg" alt="Song Cover" style="width: 50px; height: 50px;">
+            <div class="song-details">
+               <p  style="font-size: 13px; font-weight: 600;">Playing :</p>
+               <p id="current-song-details" style="color: rgb(255, 255, 255);"></p>
+               <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i>
+            </div>
+         </div>
+         <!-- Modal Structure -->
+         <div id="songModal" class="modal">
+            <div class="modal-content">
+               <span class="close-button">&times;</span>
+               <img src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt="" style="width: 35%;
+                  position: fixed;
+                  top: 15%;
+                  left: 5px;
+                  background: black;
+                  padding: 10px;
+                  border-radius: 6px;
+                  filter: drop-shadow(12px 14px 36px blue);">
+               <h1 style="position: fixed;
+                  left: 43%;
+                  top: 35%;color: #0000ff;">Currently playing</h1>
+               <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
+            </div>
+         </div>
+         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const songInfo = document.getElementById('songInfo');
+            const songModal = document.getElementById('songModal');
+            const modalSongDetails = document.getElementById('modal-song-details');
+            const closeButton = document.querySelector('.close-button');
+            const currentSongDetails = document.getElementById('current-song-details');
+            
+            let previousSongTitle = extractSongTitle(currentSongDetails.textContent);
+            const colorPalette = [
+            'black'
+            // , '#00ff75', '#0a0a23', '#191414', '#505050',
+            //     '#0d0d2b', '#232332', '#404055', '#1a1a2e', '#2d2d3a',
+            //     '#00d15a', '#00ff75', '#0a0a23', '#191414', '#505050',
+            //     '#0f0f27', '#26262d', '#3b3b55', '#14141e', '#282838',
+            //     '#00d15a', '#191414', '#0a0a23', '#00ff75', '#00d15a',
+            //     '#171729', '#303043', '#484862', '#11111f', '#1b1b31',
+            //     '#191414', '#00d15a', '#505050', '#0a0a23', '#191414',
+            //     '#0c0c28', '#242440', '#3c3c58', '#13131d', '#292940',
+            //     '#00d15a', '#0a0a23', '#191414', '#00ff75', '#505050',
+            //     '#1a1a2b', '#33334f', '#4d4d67', '#0e0e29', '#272746'
+            ];
+            
+            
+            
+            // Open modal when song-info is clicked
+            songInfo.addEventListener('click', function() {
+            // Extract and set only the song title in the modal content
+            const songTitle = extractSongTitle(currentSongDetails.textContent);
+            
+            // If no song is playing, show the default message
+            modalSongDetails.textContent = songTitle ? songTitle : "Welcome to BsFesta";
+            
+            // Change modal background color based on the song title
+            songModal.style.backgroundColor = getBackgroundColor(songTitle);
+            
+            // Show the modal
+            songModal.style.display = "block";
+            });
+            
+            // Close modal when the close button is clicked
+            closeButton.addEventListener('click', function() {
+            songModal.style.display = "none";
+            });
+            
+            // Close modal when clicking outside of the modal content
+            window.addEventListener('click', function(event) {
+            if (event.target === songModal) {
+                songModal.style.display = "none";
             }
-
-            // Search and highlight songs that match the input
-            songs.forEach(song => {
-                let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
-                if (songTitle.includes(searchTerm)) {
-                    song.style.backgroundColor = '#004cff'; // Highlight matched song
-                    if (!songFound) { // Scroll to the first matching song
-                        song.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        songFound = true;
-                    }
-                } else {
-                    song.style.backgroundColor = ''; // Reset if not matched
-                }
             });
-        });
-
-        // Clear button functionality
-        clearButton.addEventListener('click', function() {
-            searchBar.value = ''; // Clear the search bar
-            songs.forEach(song => {
-                song.style.backgroundColor = ''; // Remove all highlights
+            
+            // Function to determine background color based on the song title
+            function getBackgroundColor(songTitle) {
+            if (!songTitle) {
+                return 'blue'; // Default color when no song is playing
+            }
+            // Generate an index for the color palette based on the song title
+            let index = 0;
+            for (let i = 0; i < songTitle.length; i++) {
+                index += songTitle.charCodeAt(i); // Sum up character codes
+            }
+            // Limit index to the number of colors in the palette (40)
+            index = index % colorPalette.length;
+            
+            return colorPalette[index]; // Return a color from the palette
+            }
+            
+            // Function to extract only the song title from the full string
+            function extractSongTitle(songDetails) {
+            if (songDetails.includes(' - ')) {
+                return songDetails.split(' - ')[0]; // Split by ' - ' and return the first part (the song title)
+            } else if (songDetails === '') {
+                return null; // No song playing
+            } else {
+                return songDetails; // If there's no ' - ', return the whole string
+            }
+            }
+            
+            // Function to update the modal when the song changes
+            function updateModalIfSongChanges() {
+            const newSongTitle = extractSongTitle(currentSongDetails.textContent);
+            
+            // Check if the song title has changed
+            if (newSongTitle !== previousSongTitle) {
+                // Update modal background color if song title has changed
+                songModal.style.backgroundColor = getBackgroundColor(newSongTitle);
+            
+                // Update the modal content to reflect the current song title or the welcome message
+                modalSongDetails.textContent = newSongTitle ? newSongTitle : "Welcome to BsFesta";
+            
+                previousSongTitle = newSongTitle; // Update previous title
+            }
+            }
+            
+            // Example function to stop the song and display "Welcome to BS"
+            function stopSong() {
+            currentSongDetails.textContent = ''; // Clear the song details
+            updateModalIfSongChanges(); // Update modal to reflect the stopped state
+            }
+            
+            // Check for song changes every 5 seconds
+            setInterval(() => {
+            updateModalIfSongChanges(); // Check if song has changed
+            }, 5000);
+            
+            // Simulating stopping the song after 10 seconds (for testing purposes)
+            setTimeout(() => {
+            stopSong(); // Call the stop function to simulate stopping the song
+            }, 10000); // 10 seconds
             });
-        });
-    });
-</script>
-<div class="playlist">
-<h2>Liked list</h2>
-<ul id="playlist"></ul>
-<button id="save-playlist-btn">Save list</button>
-</div>
-<audio id="audio-player" controls></audio>
-<div class="notification" id="notification"></div>
-<script>
-const songList = document.querySelectorAll('#song-list li');
-const playlistElement = document.getElementById('playlist');
-const audioPlayer = document.getElementById('audio-player'); // Access the hidden audio element
-const savePlaylistBtn = document.getElementById('save-playlist-btn');
-const notification = document.getElementById('notification'); // Notification element
-
-let playlist = [];
-let currentSongIndex = -1;
-let isPlaying = false;
-
-// Add click event to add songs to the playlist
-songList.forEach(songItem => {
-   const addToPlaylistBtn = songItem.querySelector('.add-to-playlist');
-   addToPlaylistBtn.addEventListener('click', () => {
-       const songTitle = songItem.querySelector('.song-title').innerText;
-       const songSrc = songItem.getAttribute('data-src');
-
-       // Check if the song is already in the playlist
-       if (!playlist.some(song => song.src === songSrc)) {
-           playlist.push({ title: songTitle, src: songSrc });
-           updatePlaylist();
-
-           // If a song is currently playing, change the play button of that song to pause
-           if (isPlaying && currentSongIndex !== -1) {
-               const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
-               currentPlayBtn[currentSongIndex].classList.remove('fa-play');
-               currentPlayBtn[currentSongIndex].classList.add('fa-pause');
-           }
-       }
-   });
-});
-
-function updatePlaylist() {
-   playlistElement.innerHTML = '';
-   playlist.forEach((song, index) => {
-       const li = document.createElement('li');
-       li.innerHTML = `
-           <span>${song.title}</span>
-           <div class="options">
-               <i class="fa-solid fa-play play-song" title="Play"></i>
-               <i class="fa-solid fa-trash delete-song" title="Delete"></i>
-           </div>
-       `;
-       playlistElement.appendChild(li);
-
-       const playBtn = li.querySelector('.play-song');
-       const deleteBtn = li.querySelector('.delete-song');
-
-       playBtn.addEventListener('click', () => togglePlayPause(index, playBtn));
-       deleteBtn.addEventListener('click', () => deleteSong(index));
-   });
-}
-
-function togglePlayPause(index, playBtn) {
-   // If the same song is playing, pause it
-   if (currentSongIndex === index && isPlaying) {
-       audioPlayer.pause();
-       isPlaying = false;
-       playBtn.classList.remove('fa-pause');
-       playBtn.classList.add('fa-play');
-   } else {
-       // If a different song is clicked
-       currentSongIndex = index;
-       if (isPlaying) {
-           // If currently playing, pause the previous song's play button
-           const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
-           currentPlayBtn[currentSongIndex].classList.remove('fa-pause');
-           currentPlayBtn[currentSongIndex].classList.add('fa-play');
-       }
-
-       playSong(playlist[index].src);
-       isPlaying = true;
-       updatePlayIcons(index, playBtn);
-   }
-}
-
-function updatePlayIcons(activeIndex, activePlayBtn) {
-   const allPlayBtns = document.querySelectorAll('.play-song');
-   allPlayBtns.forEach((btn, index) => {
-       if (index === activeIndex) {
-           btn.classList.remove('fa-play');
-           btn.classList.add('fa-pause');
-       } else {
-           btn.classList.remove('fa-pause');
-           btn.classList.add('fa-play');
-       }
-   });
-}
-
-function playSong(src) {
-   audioPlayer.src = src; // Set the audio source
-   audioPlayer.play(); // Play the song
-   updateProgressBar(); // Start updating the progress bar
-}
-
-function updateProgressBar() {
-   // const progressBar = document.querySelector('.progress');
-   audioPlayer.addEventListener('timeupdate', () => {
-       if (currentSongIndex !== -1) {
-           const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-           progressBar.style.width = `${progress}%`;
-       }
-   });
-}
-
-audioPlayer.addEventListener('ended', () => {
-   // Play the next song in the playlist when the current one ends
-   if (currentSongIndex < playlist.length - 1) {
-       currentSongIndex++;
-       playSong(playlist[currentSongIndex].src);
-       updatePlayIcons(currentSongIndex);
-   } else {
-       // Reset if the playlist ends
-       currentSongIndex = -1;
-       isPlaying = false;
-       const playBtns = playlistElement.querySelectorAll('.play-song');
-       playBtns.forEach(btn => {
-           btn.classList.remove('fa-pause');
-           btn.classList.add('fa-play');
-       });
-   }
-});
-
-savePlaylistBtn.addEventListener('click', savePlaylist);
-
-function savePlaylist() {
-   localStorage.setItem('playlist', JSON.stringify(playlist));
-   showNotification('Liked list has Updated!'); // Show notification
-}
-
-function showNotification(message) {
-   notification.innerText = message; // Set the message
-   notification.style.display = 'block'; // Show the notification
-   setTimeout(() => {
-       notification.style.display = 'none'; // Hide after 3 seconds
-   }, 3000);
-}
-
-function deleteSong(index) {
-   playlist.splice(index, 1);
-   updatePlaylist();
-   if (currentSongIndex === index) {
-       audioPlayer.pause();
-       currentSongIndex = -1; // Reset current song index if deleted song is playing
-       isPlaying = false;
-   }
-}
-
-// Load saved playlist from local storage (if any)
-window.onload = function () {
-   const savedPlaylist = JSON.parse(localStorage.getItem('playlist'));
-   if (savedPlaylist) {
-       playlist = savedPlaylist;
-       updatePlaylist();
-   }
-};
-</script>
-</body>
-</html> 
+            
+         </script>
+         <div class="headers">
+            <input type="text" id="search-bar" placeholder="Search the song here...">
+            <div id="result">
+                <a href="https://blackswan19.github.io/bscrop/formbs" style="display: contents;"><button><i class="fa-brands fa-slack"></i></button></a>
+                <a href="https://blackswan19.github.io/bsfesta/category.html#oldver/divascate" style="display: contents;"><button>Categories</button></a>
+                <a href="https://blackswan19.github.io/bsfesta/playlist.html"><button>Playlists</button></a>
+            </div>
+            
+         </div>
+         <div class="gif">
+            <a href="music.html" class="logopgs"><img src="logo/brand.png" alt="" width="6%"></a><br>
+            <img src="https://i.pinimg.com/originals/a1/33/b0/a133b046e1c1f8b9d849099d451b0b2c.gif" alt="">
+         </div>
+         <script>
+            // JavaScript for song search functionality
+            window.addEventListener('DOMContentLoaded', (event) => {
+                    const searchBar = document.getElementById('search-bar');
+                    const clearButton = document.getElementById('clear-button');
+                    const songs = document.querySelectorAll('#song-list li');
+            
+                    searchBar.addEventListener('input', function() {
+                        let searchTerm = this.value.toLowerCase().trim();
+                        let songFound = false; // To track if we found a song
+            
+                        // Clear highlights if search term is empty
+                        if (searchTerm === '') {
+                            songs.forEach(song => {
+                                song.style.backgroundColor = ''; // Remove all highlights
+                            });
+                            return; // Stop further execution when the search is empty
+                        }
+            
+                        // Search and highlight songs that match the input
+                        songs.forEach(song => {
+                            let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
+                            if (songTitle.includes(searchTerm)) {
+                                song.style.backgroundColor = '#004cff'; // Highlight matched song
+                                if (!songFound) { // Scroll to the first matching song
+                                    song.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    songFound = true;
+                                }
+                            } else {
+                                song.style.backgroundColor = ''; // Reset if not matched
+                            }
+                        });
+                    });
+            
+                    // Clear button functionality
+                    clearButton.addEventListener('click', function() {
+                        searchBar.value = ''; // Clear the search bar
+                        songs.forEach(song => {
+                            song.style.backgroundColor = ''; // Remove all highlights
+                        });
+                    });
+                });
+         </script>
+         <div class="playlist">
+            <h2>Liked list</h2>
+            <ul id="playlist"></ul>
+            <button id="save-playlist-btn">Save list</button>
+         </div>
+         <audio id="audio-player" controls></audio>
+         <div class="notification" id="notification"></div>
+         <script>
+            const songList = document.querySelectorAll('#song-list li');
+            const playlistElement = document.getElementById('playlist');
+            const audioPlayer = document.getElementById('audio-player'); // Access the hidden audio element
+            const savePlaylistBtn = document.getElementById('save-playlist-btn');
+            const notification = document.getElementById('notification'); // Notification element
+            
+            let playlist = [];
+            let currentSongIndex = -1;
+            let isPlaying = false;
+            
+            // Add click event to add songs to the playlist
+            songList.forEach(songItem => {
+               const addToPlaylistBtn = songItem.querySelector('.add-to-playlist');
+               addToPlaylistBtn.addEventListener('click', () => {
+                   const songTitle = songItem.querySelector('.song-title').innerText;
+                   const songSrc = songItem.getAttribute('data-src');
+            
+                   // Check if the song is already in the playlist
+                   if (!playlist.some(song => song.src === songSrc)) {
+                       playlist.push({ title: songTitle, src: songSrc });
+                       updatePlaylist();
+            
+                       // If a song is currently playing, change the play button of that song to pause
+                       if (isPlaying && currentSongIndex !== -1) {
+                           const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
+                           currentPlayBtn[currentSongIndex].classList.remove('fa-play');
+                           currentPlayBtn[currentSongIndex].classList.add('fa-pause');
+                       }
+                   }
+               });
+            });
+            
+            function updatePlaylist() {
+               playlistElement.innerHTML = '';
+               playlist.forEach((song, index) => {
+                   const li = document.createElement('li');
+                   li.innerHTML = `
+                       <span>${song.title}</span>
+                       <div class="options">
+                           <i class="fa-solid fa-play play-song" title="Play"></i>
+                           <i class="fa-solid fa-trash delete-song" title="Delete"></i>
+                       </div>
+                   `;
+                   playlistElement.appendChild(li);
+            
+                   const playBtn = li.querySelector('.play-song');
+                   const deleteBtn = li.querySelector('.delete-song');
+            
+                   playBtn.addEventListener('click', () => togglePlayPause(index, playBtn));
+                   deleteBtn.addEventListener('click', () => deleteSong(index));
+               });
+            }
+            
+            function togglePlayPause(index, playBtn) {
+               // If the same song is playing, pause it
+               if (currentSongIndex === index && isPlaying) {
+                   audioPlayer.pause();
+                   isPlaying = false;
+                   playBtn.classList.remove('fa-pause');
+                   playBtn.classList.add('fa-play');
+               } else {
+                   // If a different song is clicked
+                   currentSongIndex = index;
+                   if (isPlaying) {
+                       // If currently playing, pause the previous song's play button
+                       const currentPlayBtn = playlistElement.querySelectorAll('.play-song');
+                       currentPlayBtn[currentSongIndex].classList.remove('fa-pause');
+                       currentPlayBtn[currentSongIndex].classList.add('fa-play');
+                   }
+            
+                   playSong(playlist[index].src);
+                   isPlaying = true;
+                   updatePlayIcons(index, playBtn);
+               }
+            }
+            
+            function updatePlayIcons(activeIndex, activePlayBtn) {
+               const allPlayBtns = document.querySelectorAll('.play-song');
+               allPlayBtns.forEach((btn, index) => {
+                   if (index === activeIndex) {
+                       btn.classList.remove('fa-play');
+                       btn.classList.add('fa-pause');
+                   } else {
+                       btn.classList.remove('fa-pause');
+                       btn.classList.add('fa-play');
+                   }
+               });
+            }
+            
+            function playSong(src) {
+               audioPlayer.src = src; // Set the audio source
+               audioPlayer.play(); // Play the song
+               updateProgressBar(); // Start updating the progress bar
+            }
+            
+            function updateProgressBar() {
+               // const progressBar = document.querySelector('.progress');
+               audioPlayer.addEventListener('timeupdate', () => {
+                   if (currentSongIndex !== -1) {
+                       const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                       progressBar.style.width = `${progress}%`;
+                   }
+               });
+            }
+            
+            audioPlayer.addEventListener('ended', () => {
+               // Play the next song in the playlist when the current one ends
+               if (currentSongIndex < playlist.length - 1) {
+                   currentSongIndex++;
+                   playSong(playlist[currentSongIndex].src);
+                   updatePlayIcons(currentSongIndex);
+               } else {
+                   // Reset if the playlist ends
+                   currentSongIndex = -1;
+                   isPlaying = false;
+                   const playBtns = playlistElement.querySelectorAll('.play-song');
+                   playBtns.forEach(btn => {
+                       btn.classList.remove('fa-pause');
+                       btn.classList.add('fa-play');
+                   });
+               }
+            });
+            
+            savePlaylistBtn.addEventListener('click', savePlaylist);
+            
+            function savePlaylist() {
+               localStorage.setItem('playlist', JSON.stringify(playlist));
+               showNotification('Liked list has Updated!'); // Show notification
+            }
+            
+            function showNotification(message) {
+               notification.innerText = message; // Set the message
+               notification.style.display = 'block'; // Show the notification
+               setTimeout(() => {
+                   notification.style.display = 'none'; // Hide after 3 seconds
+               }, 3000);
+            }
+            
+            function deleteSong(index) {
+               playlist.splice(index, 1);
+               updatePlaylist();
+               if (currentSongIndex === index) {
+                   audioPlayer.pause();
+                   currentSongIndex = -1; // Reset current song index if deleted song is playing
+                   isPlaying = false;
+               }
+            }
+            
+            // Load saved playlist from local storage (if any)
+            window.onload = function () {
+               const savedPlaylist = JSON.parse(localStorage.getItem('playlist'));
+               if (savedPlaylist) {
+                   playlist = savedPlaylist;
+                   updatePlaylist();
+               }
+            };
+         </script>
+   </body>
+</html>
 </body>
 </html>
