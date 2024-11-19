@@ -93,49 +93,7 @@
         document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
     });
 </script>
-<script>
-            // JavaScript for song search functionality
-            window.addEventListener('DOMContentLoaded', (event) => {
-                    const searchBar = document.getElementById('search-bar');
-                    const clearButton = document.getElementById('clear-button');
-                    const songs = document.querySelectorAll('#song-list li');
-            
-                    searchBar.addEventListener('input', function() {
-                        let searchTerm = this.value.toLowerCase().trim();
-                        let songFound = false; // To track if we found a song
-            
-                        // Clear highlights if search term is empty
-                        if (searchTerm === '') {
-                            songs.forEach(song => {
-                                song.style.backgroundColor = ''; // Remove all highlights
-                            });
-                            return; // Stop further execution when the search is empty
-                        }
-            
-                        // Search and highlight songs that match the input
-                        songs.forEach(song => {
-                            let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
-                            if (songTitle.includes(searchTerm)) {
-                                song.style.backgroundColor = '#004cff'; // Highlight matched song
-                                if (!songFound) { // Scroll to the first matching song
-                                    song.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                    songFound = true;
-                                }
-                            } else {
-                                song.style.backgroundColor = ''; // Reset if not matched
-                            }
-                        });
-                    });
-            
-                    // Clear button functionality
-                    clearButton.addEventListener('click', function() {
-                        searchBar.value = ''; // Clear the search bar
-                        songs.forEach(song => {
-                            song.style.backgroundColor = ''; // Remove all highlights
-                        });
-                    });
-                });
-         </script>
+
 <script>
     const musicPlayer = document.getElementById('musicPlayer');
     const currentSongTitle = document.getElementById('currentSongTitle');
@@ -196,7 +154,74 @@
         showPage('all'); // Default to "All" songs section on load
     }
 </script>
-<style> .modal { display: none; /* Hidden by default */ position: fixed; z-index: 999; /* Sit on top */ left: 0; top: 0; width: 100%; /* Full width */ height: 100%; /* Full height */ overflow: auto; /* Enable scroll if needed */ background-color: rgb(0,0,0); /* Fallback color */ background-color: rgba(0,0,0,0.8); /* Black w/ opacity */ } .modal-content { background: none; padding: 20px; width: 80%; } .close-button { color: white; font-size: 35px; font-weight: 100; position: fixed; top: 15px; right: 30px; } .close-button:hover, .close-button:focus { color: rgb(156, 156, 156); text-decoration: none; cursor: pointer; } </style> </head> <body> <div class="song-info" id="songInfo"> <img src="https://i.pinimg.com/736x/6b/77/9e/6b779e212633e1dc47cd9cf1ddc1b2bc.jpg" alt="Song Cover" style="width: 50px; height: 50px;"> <div class="song-details"> <p style="font-size: 13px; font-weight: 600;">Playing :</p> <p id="current-song-details" style="color: rgb(255, 255, 255);"></p> <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i> </div> </div> <!-- Modal Structure --> <div id="songModal" class="modal"> <div class="modal-content"> <span class="close-button">&times;</span> <img src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt="" style="width: 35%; position: fixed; top: 15%; left: 5px; background: black; padding: 10px; border-radius: 6px; filter: drop-shadow(12px 14px 36px blue);"> <h1 style="position: fixed; left: 43%; top: 35%;color: #0000ff;">Currently playing</h1> <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p> </div> </div>
+<style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 999; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    }
+
+    .modal-content {
+        background: none;
+padding: 20px;
+width: 80%;
+}
+
+    .close-button {
+        color: white;
+font-size: 35px;
+font-weight: 100;
+position: fixed;
+top: 15px;
+right: 30px;
+    }
+
+
+    .close-button:hover,
+    .close-button:focus {
+        color: rgb(156, 156, 156);
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="song-info" id="songInfo">
+<img src="https://i.pinimg.com/736x/6b/77/9e/6b779e212633e1dc47cd9cf1ddc1b2bc.jpg" alt="Song Cover" style="width: 50px; height: 50px;">
+<div class="song-details">
+    <p  style="font-size: 13px; font-weight: 600;">Playing :</p>
+    <p id="current-song-details" style="color: rgb(255, 255, 255);"></p>
+    <i class="fa-solid fa-up-right-and-down-left-from-center" id="infoIcon"></i>
+</div>
+</div>
+
+<!-- Modal Structure -->
+<div id="songModal" class="modal">
+<div class="modal-content">
+    <span class="close-button">&times;</span>
+    <img src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt="" style="width: 35%;
+    position: fixed;
+    top: 15%;
+    left: 5px;
+    background: black;
+    padding: 10px;
+    border-radius: 6px;
+    filter: drop-shadow(12px 14px 36px blue);">
+    <h1 style="position: fixed;
+    left: 43%;
+    top: 35%;color: #0000ff;">Currently playing</h1>
+    <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
+</div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 const songInfo = document.getElementById('songInfo');
@@ -327,6 +352,49 @@ setTimeout(() => {
     <a href="" class="logopgs"><img src="logo/brand.png" alt="" width="6%"></a><br>
     <img src="https://i.pinimg.com/originals/a1/33/b0/a133b046e1c1f8b9d849099d451b0b2c.gif" alt="">
 </div>
+<script>
+    // JavaScript for song search functionality
+    window.addEventListener('DOMContentLoaded', (event) => {
+            const searchBar = document.getElementById('search-bar');
+            const clearButton = document.getElementById('clear-button');
+            const songs = document.querySelectorAll('#song-list li');
+    
+            searchBar.addEventListener('input', function() {
+                let searchTerm = this.value.toLowerCase().trim();
+                let songFound = false; // To track if we found a song
+    
+                // Clear highlights if search term is empty
+                if (searchTerm === '') {
+                    songs.forEach(song => {
+                        song.style.backgroundColor = ''; // Remove all highlights
+                    });
+                    return; // Stop further execution when the search is empty
+                }
+    
+                // Search and highlight songs that match the input
+                songs.forEach(song => {
+                    let songTitle = song.querySelector('.song-title').innerText.toLowerCase();
+                    if (songTitle.includes(searchTerm)) {
+                        song.style.backgroundColor = '#004cff'; // Highlight matched song
+                        if (!songFound) { // Scroll to the first matching song
+                            song.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            songFound = true;
+                        }
+                    } else {
+                        song.style.backgroundColor = ''; // Reset if not matched
+                    }
+                });
+            });
+    
+            // Clear button functionality
+            clearButton.addEventListener('click', function() {
+                searchBar.value = ''; // Clear the search bar
+                songs.forEach(song => {
+                    song.style.backgroundColor = ''; // Remove all highlights
+                });
+            });
+        });
+ </script>
 <script>
     const songList = document.querySelectorAll('#song-list li');
     const playlistElement = document.getElementById('playlist');
@@ -485,7 +553,186 @@ setTimeout(() => {
        }
     };
     </script>
-    </body>
-    </html> 
-    </body>
-    </html>
+    
+<script>
+    const playlistList = document.getElementById("playlist-list");
+    const popupOverlay = document.getElementById("popup-overlay");
+    const addToPlaylistOverlay = document.getElementById("add-to-playlist-overlay");
+    const playlistOptions = document.getElementById("playlist-options");
+    const popupPlaylistName = document.getElementById("popup-playlist-name");
+    const songsPopupOverlay = document.getElementById("songs-popup-overlay");
+    const songsPopupList = document.getElementById("songs-popup-list");
+    const songsPopupTitle = document.getElementById("songs-popup-title");
+
+    let playlists = JSON.parse(localStorage.getItem("playlists")) || {};
+    let currentSong = null; // To keep track of the song to be added to a playlist
+    let audio = new Audio(); // For playing and pausing songs
+    let currentlyPlayingIndex = null; // Track the currently playing song index
+
+    // Load playlists on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        loadPlaylists();
+    });
+
+    // Open popup for creating a new playlist
+    function openPopup() {
+        popupPlaylistName.value = "";
+        popupOverlay.style.display = "flex";
+    }
+
+    // Close the create playlist popup
+    function closePopup() {
+        popupOverlay.style.display = "none";
+    }
+
+    // Close the add-to-playlist popup
+    function closeAddToPlaylistPopup() {
+        addToPlaylistOverlay.style.display = "none";
+    }
+
+    // Close the songs popup
+    function closeSongsPopup() {
+        songsPopupOverlay.style.display = "none";
+        audio.pause();
+        isPlaying = false;
+        updatePlayIcons(null); // Reset play icons when closing
+    }
+
+    // Save playlists to localStorage
+    function savePlaylists() {
+        localStorage.setItem("playlists", JSON.stringify(playlists));
+        loadPlaylists();
+    }
+
+    // Create a new playlist
+    function createPlaylist() {
+        const name = popupPlaylistName.value.trim();
+        if (name && !playlists[name]) {
+            playlists[name] = []; // Initialize an empty array for the new playlist
+            savePlaylists();
+            closePopup();
+        }
+    }
+
+    // Load playlists from localStorage
+    function loadPlaylists() {
+        playlistList.innerHTML = ""; // Clear current list
+        Object.keys(playlists).forEach(displayPlaylist);
+    }
+
+    // Display each playlist with delete icon
+    function displayPlaylist(name) {
+        const li = document.createElement("li");
+        li.classList.add("playlist-item");
+        li.innerHTML = `
+            <span style="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</span>
+            <i class="fa-solid fa-trash delete-playlist" title="Delete Playlist"></i>
+        `;
+
+        li.querySelector(".delete-playlist").addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent click event on li
+            delete playlists[name];
+            savePlaylists();
+        });
+
+        li.addEventListener("click", () => {
+            displaySongsInPopup(name);
+        });
+
+        playlistList.appendChild(li);
+    }
+
+    // Display songs in the selected playlist in a popup
+    function displaySongsInPopup(playlistName) {
+        songsPopupTitle.textContent = `Playlist - ${playlistName}`;
+        songsPopupList.innerHTML = ""; // Clear previous songs
+        playlists[playlistName].forEach((song, index) => {
+            const songLi = document.createElement("li");
+            songLi.classList.add("popup-song-item");
+            songLi.innerHTML = `
+                <span>${song.title}</span>
+                <i class="fa-solid fa-play play-song" title="Play"></i>
+                <i class="fa-solid fa-trash delete-song" title="Delete"></i>
+            `;
+
+            // Play/Pause functionality
+            songLi.querySelector(".play-song").addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevent click event on li
+                if (isPlaying && currentlyPlayingIndex === index) {
+                    audio.pause();
+                    isPlaying = false;
+                    updatePlayIcons(playlistName); // Update icons on pause
+                } else {
+                    audio.src = song.src; // Set the audio source
+                    audio.play();
+                    isPlaying = true;
+                    currentlyPlayingIndex = index;
+                    updatePlayIcons(playlistName, index); // Update icons on play
+                }
+            });
+
+            // Delete song functionality
+            songLi.querySelector(".delete-song").addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevent click event on li
+                playlists[playlistName].splice(index, 1); // Remove song from playlist
+                savePlaylists();
+                displaySongsInPopup(playlistName); // Refresh song list in popup
+            });
+
+            songsPopupList.appendChild(songLi);
+        });
+
+        songsPopupOverlay.style.display = "flex"; // Show the songs popup
+    }
+
+    // Update play icons when a song is played
+    function updatePlayIcons(playlistName, playingIndex = null) {
+        const songItems = songsPopupList.querySelectorAll('.popup-song-item');
+        songItems.forEach((item, index) => {
+            const playIcon = item.querySelector('.play-song');
+            if (index === playingIndex) {
+                playIcon.classList.replace('fa-play', 'fa-pause'); // Change to pause icon
+            } else {
+                playIcon.classList.replace('fa-pause', 'fa-play'); // Change back to play icon
+            }
+        });
+    }
+
+    // Function to open the add-to-playlist popup
+    function openAddToPlaylistPopup(song) {
+        currentSong = song; // Store the song to be added
+        playlistOptions.innerHTML = ""; // Clear previous options
+        Object.keys(playlists).forEach(name => {
+            const li = document.createElement("li");
+            li.textContent = name;
+            li.classList.add("playlist-option");
+            li.addEventListener("click", () => addToPlaylist(name));
+            playlistOptions.appendChild(li);
+        });
+        addToPlaylistOverlay.style.display = "flex";
+    }
+
+    // Add selected song to the chosen playlist
+    function addToPlaylist(playlistName) {
+        if (currentSong && !playlists[playlistName].some(s => s.title === currentSong.title)) {
+            playlists[playlistName].push(currentSong);
+            savePlaylists();
+        }
+        closeAddToPlaylistPopup();
+    }
+
+    // Event listener for adding song to playlist
+    document.addEventListener("click", e => {
+        if (e.target.classList.contains("add-to-playlist")) {
+            const songElement = e.target.parentNode;
+            const song = {
+                title: songElement.querySelector(".song-title").textContent,
+                src: songElement.getAttribute("data-src")
+            };
+
+            openAddToPlaylistPopup(song);
+        }
+    });
+</script>
+</body>
+</html> 
