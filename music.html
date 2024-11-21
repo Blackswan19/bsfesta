@@ -79,6 +79,9 @@
                 reader.readAsDataURL(file);
             }
         }
+    </script>
+    
+<script>
     const colors = [
         '#FF0000', // Bright Red
         '#0000FF', // Bright Blue
@@ -171,6 +174,9 @@
         document.body.style.backgroundColor = 'black'; // Set background to black
         document.body.style.color = 'white'; // Optional: Set text color to white for better visibility
     });
+</script>
+
+<script>
     const musicPlayer = document.getElementById('musicPlayer');
     const currentSongTitle = document.getElementById('currentSongTitle');
     const pages = document.querySelectorAll('.page');
@@ -292,7 +298,7 @@ right: 30px;
     border-radius: 6px;
     filter: drop-shadow(12px 14px 36px blue);">
     <h1 style="position: fixed;
-    left: 43%;
+    left: 41%;
     top: 35%;color: #0000ff;">Currently playing</h1>
     <p id="modal-song-details" style="color: rgb(255, 255, 255);"></p>
 </div>
@@ -424,7 +430,7 @@ setTimeout(() => {
         <a href="https://blackswan19.github.io/bsfesta/likedlist.html" style="display: contents;"><button>Liked one</button></a>
         <div class="profile-container">
             <!-- Set default image if no image is stored in local storage -->
-            <img id="profilePic" src="https://i.pinimg.com/736x/b5/0b/82/b50b827c29e5f3a8e45dc2a144edd050.jpg" alt="Profile Picture" onclick="showPopup()">
+            <img id="profilePic" src="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg" alt="Profile Picture" onclick="showPopup()">
             
     </div>
     </div>
@@ -516,7 +522,7 @@ setTimeout(() => {
                <span>${song.title}</span>
                <div class="options">
                    <i class="fa-solid fa-play play-song" title="Play"></i>
-                   <i class="fa-solid fa-trash delete-song" title="Delete"></i>
+                   <i class="fa-solid fa-delete-left" title="Delete"></i>
                </div>
            `;
            playlistElement.appendChild(li);
@@ -705,7 +711,13 @@ setTimeout(() => {
         const li = document.createElement("li");
         li.classList.add("playlist-item");
         li.innerHTML = `
-            <span style="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${name}</span>
+        <img src="logo/playlist.png" alt="" style="width: 17%;margin: 6px;border-radius: 5px;">
+            <span style="flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 18px;">${name}</span>
             <i class="fa-regular fa-trash-can delete-playlist" title="Delete Playlist"></i>
         `;
 
@@ -732,7 +744,7 @@ setTimeout(() => {
             songLi.innerHTML = `
                 <span>${song.title}</span>
                 <i class="fa-solid fa-play play-song" title="Play"></i>
-                <i class="fa-solid fa-trash delete-song" title="Delete"></i>
+                <i class="fa-solid fa-delete-left delete-song" title="Delete"></i>
             `;
 
             // Play/Pause functionality
