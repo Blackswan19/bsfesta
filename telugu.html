@@ -284,8 +284,9 @@
             display: contents;
         }</style>
         <input type="text" id="search-bar" placeholder="Search the song here...">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        <a href="https://blackswan19.github.io/Educate/stoper.html"><button>BsAdstoper</button></a>
+        <a href="https://blackswan19.github.io/bscrop/formbs" style="display: contents;"><button><i class="fa-brands fa-slack"></i></button></a>
+                <a href="https://blackswan19.github.io/bsfesta/category.html#oldver/divascate" style="display: contents;"><button>Categories</button></a>
+                <a href="https://blackswan19.github.io/bsfesta/playlist.html"><button>Playlists</button></a>
         <div id="result"></div>
         <script>function modifyLink(){const e=document.getElementById("userLink").value;let t=e;e.toLowerCase().includes("youtu.be")?t=`https://www.yout-ube.com/watch?v=${e.split("youtu.be/")[1].split("?")[0]}`:e.toLowerCase().includes("youtube.com")&&(t=e.replace(/youtube/i,"yout-ube")),t.includes("yout-ube.com/watch?v=")?(document.getElementById("result").innerHTML=`<button id="playButton" onclick="playVideo('${t}')">Play in full screen</button>`,document.getElementById("userLink").value=""):document.getElementById("result").innerHTML="Invalid URL"}function playVideo(e){window.open(e,"_self"),document.getElementById("playButton").style.display="none"}</script>
     </div>
