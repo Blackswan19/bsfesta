@@ -1,5 +1,177 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Mini Festa</title> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap'); * { color: rgb(255, 255, 255); font-family: "Red Hat Display", sans-serif; } body { font-family: Arial, sans-serif; padding: 50px; background-color: #0f0f0f; color: white; position: relative; margin: 0; overflow: hidden; width: 60%; left: 17%; background-image: url("https://i.pinimg.com/originals/19/09/f9/1909f9e57aca7d81ab5cbb50b9a7a069.gif"); background-repeat: no-repeat; background-size: 100%; background-position-y: center; background-blend-mode: color; } ::-webkit-scrollbar { display: none; } .video-background, .image-background, .iframe-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(50%); } .image-background, .iframe-background { display: none; /* Hidden initially */ } .iframe-background { border: none; } .music-player { margin: 20px auto; padding: 20px; border: 1px solid #565656; border-radius: 10px; width: 300px; display: contents; } input[type="file"] { margin-top: 30px; color: #ffffff00; height: 30px; text-align: center; width: 11%; } audio { margin-top: 80px; width: 100%; } input { height: 2px; } label { position: relative; top: 15px; } .playlist { list-style-type: none; padding: 0; margin-top: 20px; background: #0000004a; border-radius: 40px; overflow-y: scroll; height: 325px; border: solid 1px #242424; text-align: center; } .playlist li { padding: 3px 45px; cursor: pointer; white-space: nowrap; text-align: center; line-height: 50px; display: flex ; align-items: center; justify-content: space-around; gap: 80px; overflow-x: scroll; } .playlist li:hover{ background: #5d5d5d2b; } .playlist li.active { color: #0070ff; font-weight: 600; font-size: 16px; background: #282828; border: solid 1px #353535; } .controls { margin-top: 20px; text-align: center; } button { background-color: #282828; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; margin: 0 10px; } button:hover { background-color: #666; } button i { margin-right: 5px; } .equalizer-container label { display: block; margin: 10px 0; } #progressBar { width: 100%; margin-top: 10px; height: 2px; } #volumeRange { margin-top: 10px; } /* Modal Styles */ .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.874); justify-content: center; align-items: center; } .modal-content { background-color: #1d1d1d; padding: 20px; border-radius: 10px; text-align: center; width: 400px; margin: 20% auto; } .modal-content input { width: 80%; padding: 10px; border-radius: 5px; border: 1px solid #565656; margin-bottom: 20px; } .modal-content button { background-color: #0068ff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; } .close { float: right; font-size: 28px; color: white; cursor: pointer; } .close:hover { color: red; } h1{ font-weight: 500; text-align: center; color: #0068ff; font-size: 40px; position: fixed; left: 30px; top: 0px; } .optionsplay button{ font-size: 30px; background: transparent; } .optionsplay{ text-align: center; margin-top: 20px; } @media (max-width: 480px) { body { width: 95%; left: -40px; position: fixed; background-size: 200%; } input#fileInput { width: 100%; left: 40px; position: relative; top: 6px; } audio { margin-bottom: -33px; width: 100%; position: fixed; bottom: 50px; } h1{ font-weight: 500; text-align: center; color: #0068ff; position: fixed; top: 10px; font-size: 30px; left: 10%; } .controls{ margin-top: 20px; text-align: center; bottom: 0px; position: absolute; width: 80%; } .equalizer-container { text-align: end; top: -20px; position: relative; } .playlist li.active { color: #ffd100; font-weight: 600; font-size: 10px; background: #0f0f0f9e; } .playlist li{ font-size: 12px; } } </style> </head> <body> <img id="backgroundImage" class="image-background"> <iframe id="backgroundIframe" class="iframe-background"></iframe> <h1>Mini Festa</h1> <!-- Button to trigger modal --> <div class="music-player"> <audio id="audioPlayer" controls> Your browser does not support the audio element. </audio> <div class="controls"> <button id="openModalBtn">How to use Mini</button> </div> <div class="equalizer-container"> <label for="bassRange">Bass Boost: <span id="bassValue">15</span></label> <input type="range" id="bassRange" min="-30" max="30" value="15"> <label for="volumeRange">Volume: <span id="volumeValue">20</span>%</label> <input type="range" id="volumeRange" min="0" max="100" value="20"> <button id="repeatBtn" style="font-size: 15px;">Repeat: Off</button> </div> </div> <div class="equalizer-container" style="display: none;"> <input type="range" id="progressBar" value="0" step="1" max="100"> </div> <div class="playlist"> <label for="fileInput">Upload songs here:</label><br> <input type="file" id="fileInput" accept="audio/*" multiple> <ul id="playlist" class="playlist"></ul> </div> <div class="optionsplay"> <button id="prevBtn"><i class="fa-solid fa-backward-step"></i></button> <button id="playPauseBtn"><i class="fa-regular fa-circle-play"></i></button> <button id="nextBtn"><i class="fa-solid fa-forward-step"></i></button><br> </div> <!-- The Modal --> <div id="myModal" class="modal" style="display: none;"> <div class="modal-content"> <p>Just upload your song file and enjoy great sound quality with a bass booster. Feel every beat and enjoy your music!</p> <button id="saveBgBtn">Close</button> </div> </div> <div class="custom-menu"> <style> a{ text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; border: none; background: none; text-align: center; padding: 10px; cursor: pointer; font-size: 18px; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option2">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/playlist"><button id="option1">Explore Playlists</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div>
-<script>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta | MiniFesta</title> <link rel="icon" type="image/x-icon" href="https://blackswan19.github.io/bsfesta/logo/logo.png"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Orbitron:wght@400..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Strait&display=swap'); * { color: rgb(255, 255, 255); font-family: "Red Hat Display", sans-serif; } body { margin: 0; /* font-family: 'Segoe UI', Arial, sans-serif; */ display: flex; flex-direction: column; min-height: 100vh; background: #000000; color: #e0e0e0; } #content-wrapper { display: flex; flex: 1; } #playlist-container { width: 280px; background: rgb(166 166 166 / 11%); border-right: 1px solid #333; padding: 20px; box-shadow: 2px 0 10px rgba(0,0,0,0.3); } #playlist-container h3 { margin: 0 0 20px; color: #fff; font-weight: 500; } #player-container { flex: 1; padding: 25px; display: flex; flex-direction: column; background: #000000; } #top-bar { background: rgb(166 166 166 / 11%); padding: 0px 20px; border-bottom: 1px solid #333; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; } #searchBar { width: 220px; padding: 10px 30px; border: none; border-radius: 20px; background: #333; color: #fff; outline: none; transition: all 0.3s ease; } #searchBar:focus { border: solid 1px; } ul { list-style-type: none; padding: 0; margin: 0; } li { cursor: pointer; padding: 12px 15px; border-bottom: 1px solid #333; transition: all 0.3s ease; background: #2a2a2a; } li:hover { background: #404040; padding-left: 20px; color: #fff; } #controls-container { margin-top: auto; background: rgb(166 166 166 / 11%); padding: 15px; border-top: 1px solid #333; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); display: flex ; align-items: center; gap: 20px; justify-content: center; border-radius: 16px; width: 60%; left: 30%; position: fixed; bottom: 30px; } button { padding: 10px; border: none; background: none; cursor: pointer; font-size: 18px; color: #a0a0a0; transition: all 0.3s ease; border-radius: 1%; } button:hover { color: #fff; background: #404040; } input[type="range"] { width: 150px; margin: 0 10px; -webkit-appearance: none; background: #333; height: 5px; border-radius: 5px; outline: none; } input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 15px; height: 15px; background: #1e90ff; border-radius: 50%; cursor: pointer; } #popup-container { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #000000; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.4); z-index: 1000; width: 300px; } #popup-container h3 { color: #fff; margin: 0 0 20px; } #popup-container input { width: 100%; margin: 10px 0; padding: 10px; border: none; border-radius: 5px; background: #333; color: #fff; outline: none; box-sizing: border-box; } #player-header { margin-bottom: 25px; display: flex; flex-direction: column; align-items: center; } #player-header h2 { margin: 0 0 15px; color: #fff; font-weight: 500; } #player { transition: all 0.3s ease; } i { font-size: 16px; } .control-section { display: flex; align-items: center; gap: 10px; } </style> </head> <body> <div id="top-bar"> <h2>MiniFesta</h2> <input type="text" id="searchBar" placeholder="Search the song here..." onkeyup="searchPlaylist()"> <button onclick="showPopup()" title="Add Song"><i class="fas fa-plus"></i></button> </div> <div id="content-wrapper"> <div id="playlist-container"> <h3>Playlist</h3> <ul id="playlist"></ul> </div> <div id="player-container"> <div id="player-header"> <h2>Mini Festa</h2> <div id="player" style="width: 0; height: 0; overflow: hidden;"></div> </div> <div id="controls-container"> <button onclick="togglePlayPause()" title="Play/Pause"><i class="fas fa-play" id="playPauseIcon"></i></button> <button onclick="toggleVideo()" title="Show/Hide Video"><i class="fas fa-video" id="videoIcon"></i></button> <button onclick="toggleRepeat()" title="Repeat"><i class="fas fa-redo" id="repeatIcon"></i></button> <button onclick="playRandom()" title="Shuffle"><i class="fas fa-random"></i></button> <div class="control-section"> <input type="range" id="progressBar" value="0" step="1" min="0" max="100" onchange="seekAudio()"> </div> <div class="control-section"> <i class="fas fa-volume-up"></i> <input type="range" id="volumeControl" value="100" step="1" min="0" max="100" onchange="adjustVolume()"> <button onclick="toggleMute()" title="Mute/Unmute"><i class="fas fa-volume-mute" id="muteIcon"></i></button> </div> </div> </div> </div> <div id="popup-container"> <h3>Add YouTube Song</h3> <input type="text" id="songName" placeholder="Enter Song Name"> <input type="text" id="popup-ytLink" placeholder="Enter YouTube link"> <div class="control-group"> <button onclick="saveSong()" title="Save"><i class="fas fa-save"></i></button> <button onclick="closePopup()" title="Cancel"><i class="fas fa-times"></i></button> </div> </div> <div class="custom-menu"> <style> a{ text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; border: none; background: none; text-align: center; padding: 10px; cursor: pointer; font-size: 18px; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option2">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/playlist"><button id="option1">Explore Playlists</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div>
+    <script>
+        let player;
+        let isPlaying = false;
+        let videoVisible = false;
+        let repeat = false;
+        let progressInterval;
+        let isMuted = false;
+        let playlist = JSON.parse(localStorage.getItem("playlist")) || [];
+
+        function showPopup() {
+            document.getElementById("popup-container").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-container").style.display = "none";
+        }
+
+        function saveSong() {
+            const name = document.getElementById("songName").value;
+            const link = document.getElementById("popup-ytLink").value;
+            addToPlaylist(name, link);
+            closePopup();
+        }
+
+        function addToPlaylist(name, link) {
+            const videoId = extractVideoId(link);
+            if (!videoId) {
+                alert("Invalid YouTube Link");
+                return;
+            }
+            if (!playlist.some(item => item.videoId === videoId)) {
+                playlist.push({ name, videoId });
+                localStorage.setItem("playlist", JSON.stringify(playlist));
+                renderPlaylist();
+            }
+        }
+
+        function renderPlaylist() {
+            const listElement = document.getElementById("playlist");
+            listElement.innerHTML = "";
+            playlist.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item.name;
+                listItem.onclick = () => playAudio(item.videoId);
+                listElement.appendChild(listItem);
+            });
+        }
+
+        function searchPlaylist() {
+            const query = document.getElementById("searchBar").value.toLowerCase();
+            const listElement = document.getElementById("playlist");
+            listElement.innerHTML = "";
+            playlist.filter(item => item.name.toLowerCase().includes(query)).forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item.name;
+                listItem.onclick = () => playAudio(item.videoId);
+                listElement.appendChild(listItem);
+            });
+        }
+
+        function playAudio(videoId) {
+            if (player) {
+                player.loadVideoById(videoId);
+            } else {
+                player = new YT.Player('player', {
+                    height: '0',
+                    width: '0',
+                    videoId: videoId,
+                    playerVars: { autoplay: 1 },
+                    events: {
+                        onReady: (event) => {
+                            updateProgressBar();
+                            adjustVolume();
+                        },
+                        onStateChange: (event) => {
+                            if (event.data === YT.PlayerState.PLAYING) {
+                                document.getElementById("playPauseIcon").className = "fas fa-pause";
+                                updateProgressBar();
+                            } else if (event.data === YT.PlayerState.PAUSED) {
+                                document.getElementById("playPauseIcon").className = "fas fa-play";
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function togglePlayPause() {
+            if (player) {
+                const state = player.getPlayerState();
+                if (state === 1) {
+                    player.pauseVideo();
+                } else {
+                    player.playVideo();
+                }
+            }
+        }
+
+        function toggleVideo() {
+            const playerDiv = document.getElementById("player");
+            playerDiv.style.width = videoVisible ? "0" : "854px";
+            playerDiv.style.height = videoVisible ? "0" : "480px";
+            videoVisible = !videoVisible;
+            document.getElementById("videoIcon").className = videoVisible ? "fas fa-video-slash" : "fas fa-video";
+        }
+
+        function playRandom() {
+            if (playlist.length > 0) {
+                const randomIndex = Math.floor(Math.random() * playlist.length);
+                playAudio(playlist[randomIndex].videoId);
+            }
+        }
+
+        function updateProgressBar() {
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                if (player && player.getCurrentTime) {
+                    const currentTime = player.getCurrentTime();
+                    const duration = player.getDuration();
+                    const progress = (currentTime / duration) * 100;
+                    document.getElementById("progressBar").value = progress;
+                }
+            }, 1000);
+        }
+
+        function seekAudio() {
+            if (player) {
+                const progress = document.getElementById("progressBar").value;
+                const duration = player.getDuration();
+                const seekTime = (progress / 100) * duration;
+                player.seekTo(seekTime, true);
+            }
+        }
+
+        function adjustVolume() {
+            if (player) {
+                const volume = document.getElementById("volumeControl").value;
+                player.setVolume(volume);
+                updateMuteIcon(volume);
+            }
+        }
+
+        function toggleMute() {
+            if (player) {
+                isMuted = !isMuted;
+                player.setVolume(isMuted ? 0 : document.getElementById("volumeControl").value);
+                updateMuteIcon(document.getElementById("volumeControl").value);
+            }
+        }
+
+        function updateMuteIcon(volume) {
+            const muteIcon = document.getElementById("muteIcon");
+            if (isMuted || volume == 0) {
+                muteIcon.className = "fas fa-volume-mute";
+            } else {
+                muteIcon.className = "fas fa-volume-up";
+            }
+        }
+
+        function toggleRepeat() {
+            repeat = !repeat;
+            document.getElementById("repeatIcon").style.opacity = repeat ? "1" : "0.5";
+        }
+
+        function extractVideoId(url) {
+            const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|v\/|e\/|.*\?v=))([\w-]{11})/);
+            return match ? match[1] : null;
+        }
+
+        document.addEventListener("DOMContentLoaded", renderPlaylist);
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
     
         document.addEventListener("DOMContentLoaded", () => {
             const customMenu = document.querySelector(".custom-menu");
@@ -20,240 +192,5 @@
     
     
     </script>
-    <script>
-        const modal = document.getElementById("myModal");
-        const openModalBtn = document.getElementById("openModalBtn");
-        const saveBgBtn = document.getElementById("saveBgBtn");
-    
-        openModalBtn.onclick = function() {
-            modal.style.display = "block";
-        }
-    
-        saveBgBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-    
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-    <script>
-        const fileInput = document.getElementById('fileInput');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const playlistElement = document.getElementById('playlist');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const bassRange = document.getElementById('bassRange');
-        const bassValue = document.getElementById('bassValue');
-        const volumeRange = document.getElementById('volumeRange');
-        const volumeValue = document.getElementById('volumeValue');
-        const progressBar = document.getElementById('progressBar');
-        
-        let currentIndex = -1;
-        let playlist = [];
-    
-       
-        
-// Create an AudioContext and connect it to the audio player
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const audioSource = audioCtx.createMediaElementSource(audioPlayer);
-const bassFilter = audioCtx.createBiquadFilter();
-bassFilter.type = "lowshelf"; // Low shelf filter for bass adjustment
-bassFilter.frequency.value = 200; // Target low frequencies for bass
-
-// Connect the filter to the audio context
-audioSource.connect(bassFilter);
-bassFilter.connect(audioCtx.destination);
-
-// Adjust bass when the range slider is moved
-bassRange.addEventListener('input', () => {
-    bassFilter.gain.value = bassRange.value; // Gain value in decibels
-    bassValue.textContent = bassRange.value; // Update UI
-});
-
-// Start AudioContext when the audio starts playing
-audioPlayer.addEventListener('play', () => {
-    if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-    }
-});
-
-        const request = indexedDB.open('audioFilesDB', 1);
-        request.onupgradeneeded = function(event) {
-            const db = event.target.result;
-            if (!db.objectStoreNames.contains('audioFiles')) {
-                db.createObjectStore('audioFiles', { keyPath: 'id', autoIncrement: true });
-            }
-        };
-        
-        const saveAudioFile = (file) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const dbRequest = indexedDB.open('audioFilesDB', 1);
-                dbRequest.onsuccess = function(event) {
-                    const db = event.target.result;
-                    const transaction = db.transaction('audioFiles', 'readwrite');
-                    const store = transaction.objectStore('audioFiles');
-                    const audioFile = {
-                        name: file.name,
-                        url: e.target.result
-                    };
-                    store.add(audioFile);
-                    transaction.oncomplete = function() {
-                        updatePlaylist();
-                    };
-                };
-            };
-            reader.readAsDataURL(file);
-        };
-    
-        fileInput.addEventListener('change', (event) => {
-            const files = event.target.files;
-            Array.from(files).forEach(file => {
-                saveAudioFile(file);
-            });
-        });
-    
-        const updatePlaylist = () => {
-            const dbRequest = indexedDB.open('audioFilesDB', 1);
-            dbRequest.onsuccess = function(event) {
-                const db = event.target.result;
-                const transaction = db.transaction('audioFiles', 'readonly');
-                const store = transaction.objectStore('audioFiles');
-                const request = store.getAll();
-                
-                request.onsuccess = function() {
-                    playlist = request.result;
-                    renderPlaylist();
-                };
-            };
-        };
-        const repeatBtn = document.getElementById('repeatBtn');
-let repeatMode = 'off'; // Options: 'off', 'one', 'all'
-
-// Toggle Repeat Mode
-repeatBtn.addEventListener('click', () => {
-    if (repeatMode === 'off') {
-        repeatMode = 'one';
-        repeatBtn.innerHTML = `Repeat: One`;
-    } else {
-        repeatMode = 'off';
-        repeatBtn.innerHTML = `Repeat: Off`;
-    }
-});
-
-// Automatically play the next song when the current one ends
-audioPlayer.addEventListener('ended', () => {
-    if (repeatMode === 'one') {
-        // Replay the current song
-        playSong(currentIndex);
-    } else if (repeatMode === 'all') {
-        // Play the next song, or start from the beginning
-        if (currentIndex < playlist.length - 1) {
-            playSong(currentIndex + 1);
-        } else {
-            playSong(0);
-        }
-    } else {
-        // Default behavior: play the next song if available
-        if (currentIndex < playlist.length - 1) {
-            playSong(currentIndex + 1);
-        }
-    }
-});
-
-        const renderPlaylist = () => {
-            playlistElement.innerHTML = '';
-            playlist.forEach((song, index) => {
-                const li = document.createElement('li');
-                li.textContent = song.name;
-                li.onclick = () => playSong(index);
-                li.classList.toggle('active', index === currentIndex);
-    
-                // Add delete button
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.onclick = (event) => {
-                    event.stopPropagation();
-                    removeSong(index);
-                };
-    
-                li.appendChild(deleteButton);
-                playlistElement.appendChild(li);
-            });
-        };
-    
-        function playSong(index) {
-            currentIndex = index;
-            const song = playlist[index];
-            audioPlayer.src = song.url;
-            audioPlayer.play();
-            playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`;
-            updatePlaylist();
-        }
-    
-        function removeSong(index) {
-            const dbRequest = indexedDB.open('audioFilesDB', 1);
-            dbRequest.onsuccess = function(event) {
-                const db = event.target.result;
-                const transaction = db.transaction('audioFiles', 'readwrite');
-                const store = transaction.objectStore('audioFiles');
-                store.delete(playlist[index].id);
-                transaction.oncomplete = function() {
-                    playlist.splice(index, 1);
-                    renderPlaylist();
-                    if (currentIndex >= playlist.length) currentIndex = playlist.length - 1;
-                    if (currentIndex >= 0) playSong(currentIndex);
-                    else audioPlayer.pause();
-                };
-            };
-        }
-    
-        // Play/Pause Button
-        playPauseBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-pause"></i>`;
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.innerHTML = `<i class="fa-regular fa-circle-play"></i>`;
-            }
-        });
-    
-        // Previous Button
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                playSong(currentIndex - 1);
-            }
-        });
-    
-        // Next Button
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < playlist.length - 1) {
-                playSong(currentIndex + 1);
-            }
-        });
-
-
-        // Bass and Volume Controls
-        bassRange.addEventListener('input', () => {
-            bassValue.textContent = bassRange.value;
-        });
-    
-        volumeRange.addEventListener('input', () => {
-            audioPlayer.volume = volumeRange.value / 100;
-            volumeValue.textContent = volumeRange.value;
-        });
-        progressBar.addEventListener('input', () => {
-            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
-        });
-    
-        // Initialize the playlist on page load
-        updatePlaylist();
-    </script>
-    
 </body>
 </html>
