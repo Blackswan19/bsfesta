@@ -22,12 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var currentSectionButtons = [];
     var shuffleQueue = [];
     var playedSongs = new Set();
+    var shuffleHistory = [];
     var lastPlayedSong = localStorage.getItem('lastPlayedSong') || null;
 
     pauseAudio();
 
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
+        skipToNextPlayableSong(); // Skip immediately on error
     });
 
     if ('wakeLock' in navigator) {
@@ -53,20 +55,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    console.log('currentSongIndex from localStorage:', currentSongIndex);
+    console.log('playbackPosition from localStorage:', playbackPosition);
+    console.log('lastPlayedSong from localStorage:', lastPlayedSong);
+    console.log('currentSection from localStorage:', currentSection);
+
     function updateSectionButtons(sectionId) {
-        currentSection = sectionId;
-        currentSectionButtons = document.querySelectorAll(`#${sectionId} .play-button`);
-        console.log(`Section changed to ${sectionId} with ${currentSectionButtons.length} songs`);
-        localStorage.setItem('currentSection', currentSection);
-        resetShuffleQueue();
+        if (currentSection !== sectionId) {
+            currentSection = sectionId;
+            currentSectionButtons = Array.from(document.querySelectorAll(`#${sectionId} .play-button`));
+            console.log(`Section changed to ${sectionId} with ${currentSectionButtons.length} songs`);
+            localStorage.setItem('currentSection', currentSection);
+            if (isShuffleMode) {
+                resetShuffleQueue(); // Only reset shuffle queue if shuffle mode is active
+            }
+        }
     }
 
     function resetShuffleQueue() {
-        shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i)
-            .filter(i => !attemptedSongs.has(i) || playedSongs.has(i));
+        shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i);
+        playedSongs.clear();
+        shuffleHistory = [];
         if (isShuffleMode) {
             shuffleArray(shuffleQueue);
-            playedSongs.clear(); // Clear played songs when resetting shuffle
         }
         console.log('Shuffle queue reset:', shuffleQueue);
     }
@@ -81,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial setup
     updateSectionButtons(currentSection);
 
-    if (lastPlayedSong && playbackPosition >= 0) {
+    // Restore last played song if available
+    if (lastPlayedSong && playbackPosition > 0) {
         const songIndex = Array.from(currentSectionButtons).findIndex(button => 
             button.parentElement.getAttribute('data-src') === lastPlayedSong
         );
@@ -89,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             currentSongIndex = songIndex;
             audioPlayer.src = lastPlayedSong;
             audioPlayer.currentTime = playbackPosition;
+            highlightCurrentSong();
         }
     }
 
@@ -111,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function playAudioFromPosition(audioSrc, position) {
         console.log(`Playing song at index ${currentSongIndex}: ${audioSrc}`);
+        attemptedSongs.add(currentSongIndex);
         audioPlayer.src = audioSrc;
         audioPlayer.currentTime = position;
         lastPlayedSong = audioSrc;
@@ -124,14 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('currentSongIndex', currentSongIndex);
             localStorage.setItem('playbackPosition', audioPlayer.currentTime);
             console.log(`Song at index ${currentSongIndex} started playing`);
-            attemptedSongs.delete(currentSongIndex);
-            playedSongs.add(currentSongIndex);
-        } catch (error) {
-            console.error(`Error for song at index ${currentSongIndex}:`, error);
-            attemptedSongs.add(currentSongIndex);
+            attemptedSongs.clear();
             if (isShuffleMode) {
-                shuffleQueue = shuffleQueue.filter(i => i !== currentSongIndex);
+                playedSongs.add(currentSongIndex);
             }
+        } catch (error) {
+            console.error(`Error playing song at index ${currentSongIndex}:`, error);
+            showMessage('Song skipped');
             skipToNextPlayableSong();
         }
     }
@@ -150,33 +163,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function togglePlayPause() {
+        console.log(`Toggle play/pause. Current state: isPlaying=${isPlaying}, src=${audioPlayer.src}`);
         if (isPlaying) {
             pauseAudio();
-        } else if (audioPlayer.src) {
-            audioPlayer.play()
-                .then(() => {
-                    isPlaying = true;
-                    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-                    console.log('Playback started');
-                })
-                .catch(error => {
-                    console.error('Error starting playback:', error);
-                    showMessage('Error playing song');
-                });
-        } else if (lastPlayedSong) {
-            const songIndex = Array.from(currentSectionButtons).findIndex(button => 
-                button.parentElement.getAttribute('data-src') === lastPlayedSong
-            );
-            if (songIndex !== -1) {
-                currentSongIndex = songIndex;
-                playAudioFromPosition(lastPlayedSong, playbackPosition);
+        } else {
+            if (audioPlayer.src) {
+                audioPlayer.play()
+                    .then(() => {
+                        isPlaying = true;
+                        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                        console.log('Playback resumed');
+                    })
+                    .catch(error => {
+                        console.error('Error resuming playback:', error);
+                        showMessage('Error resuming song');
+                    });
+            } else if (lastPlayedSong) {
+                const songIndex = Array.from(currentSectionButtons).findIndex(button => 
+                    button.parentElement.getAttribute('data-src') === lastPlayedSong
+                );
+                if (songIndex !== -1) {
+                    currentSongIndex = songIndex;
+                    playAudioFromPosition(lastPlayedSong, playbackPosition);
+                } else {
+                    playCurrentSong();
+                }
+                hasInteracted = true;
+                console.log('Resuming last played song');
             } else {
                 playCurrentSong();
+                hasInteracted = true;
+                console.log('Starting new song');
             }
-            hasInteracted = true;
-        } else {
-            playCurrentSong();
-            hasInteracted = true;
         }
     }
 
@@ -190,7 +208,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function playPreviousSong() {
         if (isShuffleMode) {
-            playRandomSong();
+            if (shuffleHistory.length > 0) {
+                currentSongIndex = shuffleHistory.pop();
+                var previousSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
+                playbackPosition = 0;
+                console.log(`Playing previous shuffled song at index ${currentSongIndex}: ${previousSong}`);
+                playAudio(previousSong);
+                shuffleQueue.unshift(currentSongIndex);
+            } else {
+                console.log('No previous song in shuffle history');
+                playbackPosition = 0;
+                playAudio(currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src'));
+            }
         } else {
             currentSongIndex--;
             if (currentSongIndex < 0) {
@@ -203,8 +232,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function playNextSong() {
+        console.log(`Next button clicked. Current index: ${currentSongIndex}`);
         if (isShuffleMode) {
-            playRandomSong();
+            if (shuffleQueue.length === 0) {
+                if (playedSongs.size >= currentSectionButtons.length) {
+                    console.log('All songs played, resetting shuffle queue');
+                    resetShuffleQueue();
+                } else {
+                    console.log('No more songs in shuffle queue');
+                    pauseAudio();
+                    return;
+                }
+            }
+            if (currentSongIndex !== -1) {
+                shuffleHistory.push(currentSongIndex);
+            }
+            currentSongIndex = shuffleQueue.shift();
+            var nextSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            playbackPosition = 0;
+            console.log(`Playing next shuffled song at index ${currentSongIndex}: ${nextSong}`);
+            playAudio(nextSong);
+            playedSongs.add(currentSongIndex);
         } else {
             currentSongIndex++;
             if (currentSongIndex >= currentSectionButtons.length) {
@@ -218,26 +266,42 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             var nextSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
             playbackPosition = 0;
+            console.log(`Attempting next song at index ${currentSongIndex}: ${nextSong}`);
             playAudio(nextSong);
         }
     }
 
-    function playRandomSongriceSong() {
+    function playRandomSong() {
         if (currentSectionButtons.length === 0) return;
+
+        if (playedSongs.size >= currentSectionButtons.length) {
+            console.log('All songs played, resetting shuffle queue');
+            resetShuffleQueue();
+        }
+
+        while (shuffleQueue.length > 0 && playedSongs.has(shuffleQueue[0])) {
+            shuffleQueue.shift();
+        }
 
         if (shuffleQueue.length === 0) {
             resetShuffleQueue();
         }
 
+        if (currentSongIndex !== -1) {
+            shuffleHistory.push(currentSongIndex);
+        }
         currentSongIndex = shuffleQueue.shift();
         var randomSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
         console.log(`Playing shuffled song at index ${currentSongIndex}: ${randomSong}`);
         playAudio(randomSong);
+        playedSongs.add(currentSongIndex);
     }
 
     function skipToNextPlayableSong() {
+        console.log(`Skipping to next playable song. Attempted: ${attemptedSongs.size}/${currentSectionButtons.length}`);
         if (attemptedSongs.size >= currentSectionButtons.length) {
+            console.log('No playable songs found in current section.');
             pauseAudio();
             attemptedSongs.clear();
             showMessage('No more playable songs in this section');
@@ -245,17 +309,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (isShuffleMode) {
-            playRandomSong();
+            playNextSong();
         } else {
             currentSongIndex++;
             if (currentSongIndex >= currentSectionButtons.length) {
                 currentSongIndex = 0;
             }
-            while (attemptedSongs.has(currentSongIndex)) {
-                currentSongIndex = (currentSongIndex + 1) % currentSectionButtons.length;
-            }
             var nextSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
             playbackPosition = 0;
+            console.log(`Skipping to song at index ${currentSongIndex}: ${nextSong}`);
             playAudio(nextSong);
         }
     }
@@ -303,6 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleAudioEnd() {
+        console.log(`Song at index ${currentSongIndex} ended`);
         if (isRepeating) {
             playAudioFromPosition(audioPlayer.src, 0);
         } else {
@@ -310,7 +373,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    playPauseBtn.addEventListener('click', togglePlayPause);
+    playPauseBtn.addEventListener('click', function () {
+        togglePlayPause();
+    });
 
     allPlayButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -318,13 +383,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!sectionElement) return;
             const newSectionId = sectionElement.id;
 
-            if (newSectionId !== currentSection) {
-                updateSectionButtons(newSectionId);
-            }
+            updateSectionButtons(newSectionId); // Update section only if needed
 
-            const sectionIndex = Array.from(currentSectionButtons).indexOf(button);
+            const sectionIndex = currentSectionButtons.indexOf(button);
             if (sectionIndex === -1) return;
 
+            console.log(`Clicked song in section ${newSectionId} at index ${sectionIndex}`);
             if (isPlaying && currentSongIndex === sectionIndex && newSectionId === currentSection) {
                 pauseAudio();
             } else {
@@ -338,14 +402,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     shuffleQueue.unshift(sectionIndex);
                 }
                 const songSrc = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
+                console.log(`Selected song at index ${currentSongIndex}: ${songSrc}`);
                 playAudio(songSrc);
             }
         });
     });
 
-    previousBtn.addEventListener('click', playPreviousSong);
-    nextBtn.addEventListener('click', playNextSong);
-    repeatBtn.addEventListener('click', toggleRepeat);
+    previousBtn.addEventListener('click', function () {
+        playPreviousSong();
+    });
+
+    nextBtn.addEventListener('click', function () {
+        playNextSong();
+    });
+
+    repeatBtn.addEventListener('click', function () {
+        toggleRepeat();
+    });
 
     shuffleBtn.addEventListener('click', function () {
         isShuffleMode = !isShuffleMode;
@@ -353,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Shuffle mode:', isShuffleMode);
         if (isShuffleMode) {
             resetShuffleQueue();
+            shuffleQueue = shuffleQueue.filter(i => i !== currentSongIndex);
+            shuffleQueue.unshift(currentSongIndex);
         }
     });
 
@@ -451,14 +526,11 @@ window.showPage = function(pageId) {
 };
 
 document.addEventListener('updateSectionButtons', function(e) {
-    var allPlayButtons = document.querySelectorAll('.play-button');
     var scope = document.querySelector('script').getAttribute('data-scope');
     if (scope) {
         eval(scope + '.updateSectionButtons')(e.detail);
     }
 }, false);
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
