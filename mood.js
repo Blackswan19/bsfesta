@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     audioPlayer.addEventListener('error', (e) => {
         console.error('Error with audio playback:', e);
-        skipToNextPlayableSong(); // Skip immediately on error
+        skipToNextPlayableSong();
     });
 
     if ('wakeLock' in navigator) {
@@ -66,8 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
             currentSectionButtons = Array.from(document.querySelectorAll(`#${sectionId} .play-button`));
             console.log(`Section changed to ${sectionId} with ${currentSectionButtons.length} songs`);
             localStorage.setItem('currentSection', currentSection);
-            if (isShuffleMode) {
-                resetShuffleQueue(); // Only reset shuffle queue if shuffle mode is active
+            resetShuffleQueue();
+            currentSongIndex = 0;
+            if (isPlaying) {
+                pauseAudio();
+                playCurrentSong();
             }
         }
     }
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isShuffleMode) {
             shuffleArray(shuffleQueue);
         }
-        console.log('Shuffle queue reset:', shuffleQueue);
+        console.log('Shuffle queue reset for section', currentSection, ':', shuffleQueue);
     }
 
     function shuffleArray(array) {
@@ -92,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial setup
     updateSectionButtons(currentSection);
 
-    // Restore last played song if available
     if (lastPlayedSong && playbackPosition > 0) {
         const songIndex = Array.from(currentSectionButtons).findIndex(button => 
             button.parentElement.getAttribute('data-src') === lastPlayedSong
@@ -236,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isShuffleMode) {
             if (shuffleQueue.length === 0) {
                 if (playedSongs.size >= currentSectionButtons.length) {
-                    console.log('All songs played, resetting shuffle queue');
+                    console.log('All songs in section played, resetting shuffle queue');
                     resetShuffleQueue();
                 } else {
                     console.log('No more songs in shuffle queue');
@@ -383,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!sectionElement) return;
             const newSectionId = sectionElement.id;
 
-            updateSectionButtons(newSectionId); // Update section only if needed
+            updateSectionButtons(newSectionId);
 
             const sectionIndex = currentSectionButtons.indexOf(button);
             if (sectionIndex === -1) return;
@@ -428,6 +430,8 @@ document.addEventListener('DOMContentLoaded', function () {
             resetShuffleQueue();
             shuffleQueue = shuffleQueue.filter(i => i !== currentSongIndex);
             shuffleQueue.unshift(currentSongIndex);
+            playedSongs.clear();
+            shuffleHistory = [];
         }
     });
 
@@ -535,7 +539,6 @@ document.addEventListener('updateSectionButtons', function(e) {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
@@ -543,7 +546,6 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.left = `${event.pageX}px`;
     });
 
-    // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
