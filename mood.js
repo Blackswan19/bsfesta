@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var playButtons = document.querySelectorAll('.play-button');
+    var allPlayButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
     var volumeBar = document.getElementById('volume-bar');
     var previousBtn = document.getElementById('previous-btn');
@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var isRepeating = false;
     var isShuffleMode = false;
     var attemptedSongs = new Set();
+    var currentSection = localStorage.getItem('currentSection') || 'allin';
+    var currentSectionButtons = [];
+    var shuffleQueue = [];
+    var playedSongs = new Set();
+    var lastPlayedSong = localStorage.getItem('lastPlayedSong') || null;
 
     pauseAudio();
 
@@ -48,12 +53,43 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    console.log('currentSongIndex from localStorage:', currentSongIndex);
-    console.log('playbackPosition from localStorage:', playbackPosition);
+    function updateSectionButtons(sectionId) {
+        currentSection = sectionId;
+        currentSectionButtons = document.querySelectorAll(`#${sectionId} .play-button`);
+        console.log(`Section changed to ${sectionId} with ${currentSectionButtons.length} songs`);
+        localStorage.setItem('currentSection', currentSection);
+        resetShuffleQueue();
+    }
 
-    if (currentSongIndex !== 0 && playbackPosition !== 0) {
-        playAudioFromPosition(playButtons[currentSongIndex].parentElement.getAttribute('data-src'), playbackPosition);
-        hasInteracted = true;
+    function resetShuffleQueue() {
+        shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i)
+            .filter(i => !attemptedSongs.has(i) || playedSongs.has(i));
+        if (isShuffleMode) {
+            shuffleArray(shuffleQueue);
+            playedSongs.clear(); // Clear played songs when resetting shuffle
+        }
+        console.log('Shuffle queue reset:', shuffleQueue);
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Initial setup
+    updateSectionButtons(currentSection);
+
+    if (lastPlayedSong && playbackPosition >= 0) {
+        const songIndex = Array.from(currentSectionButtons).findIndex(button => 
+            button.parentElement.getAttribute('data-src') === lastPlayedSong
+        );
+        if (songIndex !== -1) {
+            currentSongIndex = songIndex;
+            audioPlayer.src = lastPlayedSong;
+            audioPlayer.currentTime = playbackPosition;
+        }
     }
 
     function showMessage(text) {
@@ -63,63 +99,39 @@ document.addEventListener('DOMContentLoaded', function () {
         message.className = 'skip-message';
         document.body.appendChild(message);
         
-        // Force a reflow to enable the transition
         message.offsetHeight;
-        
-        // Add the show class to trigger the fade-in
         message.classList.add('show');
         
         setTimeout(() => {
             console.log('Removing message:', text);
-            // Fade out before removing
             message.classList.remove('show');
-            setTimeout(() => message.remove(), 300); // Match this to transition duration
+            setTimeout(() => message.remove(), 300);
         }, 2000);
     }
 
     async function playAudioFromPosition(audioSrc, position) {
         console.log(`Playing song at index ${currentSongIndex}: ${audioSrc}`);
-        attemptedSongs.add(currentSongIndex);
         audioPlayer.src = audioSrc;
         audioPlayer.currentTime = position;
+        lastPlayedSong = audioSrc;
+        localStorage.setItem('lastPlayedSong', lastPlayedSong);
 
-        let hasStartedPlaying = false;
-
-        const onPlaying = () => {
-            hasStartedPlaying = true;
+        try {
+            await audioPlayer.play();
             isPlaying = true;
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             highlightCurrentSong();
             localStorage.setItem('currentSongIndex', currentSongIndex);
             localStorage.setItem('playbackPosition', audioPlayer.currentTime);
             console.log(`Song at index ${currentSongIndex} started playing`);
-            attemptedSongs.clear();
-        };
-
-        audioPlayer.addEventListener('playing', onPlaying, { once: true });
-
-        try {
-            const playPromise = audioPlayer.play();
-            await Promise.race([
-                playPromise,
-                new Promise((_, reject) => setTimeout(() => reject(new Error('Initial timeout')), 500))
-            ]);
-
-            await new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    if (hasStartedPlaying) {
-                        resolve();
-                    } else {
-                        console.log(`Song at index ${currentSongIndex} did not start within 1 second`);
-                        showMessage('Song skipped');
-                        reject(new Error('Playback timeout'));
-                    }
-                }, 1000);
-            });
+            attemptedSongs.delete(currentSongIndex);
+            playedSongs.add(currentSongIndex);
         } catch (error) {
             console.error(`Error for song at index ${currentSongIndex}:`, error);
-            audioPlayer.removeEventListener('playing', onPlaying);
-            showMessage('Song skipped');
+            attemptedSongs.add(currentSongIndex);
+            if (isShuffleMode) {
+                shuffleQueue = shuffleQueue.filter(i => i !== currentSongIndex);
+            }
             skipToNextPlayableSong();
         }
     }
@@ -138,81 +150,97 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function togglePlayPause() {
-        console.log(`Toggle play/pause. Current state: isPlaying=${isPlaying}, src=${audioPlayer.src}`);
         if (isPlaying) {
             pauseAudio();
-        } else {
-            if (audioPlayer.src) {
-                audioPlayer.play()
-                    .then(() => {
-                        isPlaying = true;
-                        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-                        console.log('Playback resumed');
-                    })
-                    .catch(error => {
-                        console.error('Error resuming playback:', error);
-                        showMessage('Error resuming song');
-                    });
+        } else if (audioPlayer.src) {
+            audioPlayer.play()
+                .then(() => {
+                    isPlaying = true;
+                    playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                    console.log('Playback started');
+                })
+                .catch(error => {
+                    console.error('Error starting playback:', error);
+                    showMessage('Error playing song');
+                });
+        } else if (lastPlayedSong) {
+            const songIndex = Array.from(currentSectionButtons).findIndex(button => 
+                button.parentElement.getAttribute('data-src') === lastPlayedSong
+            );
+            if (songIndex !== -1) {
+                currentSongIndex = songIndex;
+                playAudioFromPosition(lastPlayedSong, playbackPosition);
             } else {
                 playCurrentSong();
-                hasInteracted = true;
-                console.log('Starting new song');
             }
+            hasInteracted = true;
+        } else {
+            playCurrentSong();
+            hasInteracted = true;
         }
     }
 
     function playCurrentSong() {
-        var currentSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        console.log(`Playing current song at index ${currentSongIndex}: ${currentSong}`);
-        playAudio(currentSong);
+        if (currentSectionButtons.length > 0) {
+            var currentSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            console.log(`Playing current song at index ${currentSongIndex}: ${currentSong}`);
+            playAudio(currentSong);
+        }
     }
 
     function playPreviousSong() {
-        currentSongIndex--;
-        if (currentSongIndex < 0) {
-            currentSongIndex = playButtons.length - 1;
+        if (isShuffleMode) {
+            playRandomSong();
+        } else {
+            currentSongIndex--;
+            if (currentSongIndex < 0) {
+                currentSongIndex = currentSectionButtons.length - 1;
+            }
+            var previousSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            playbackPosition = 0;
+            playAudio(previousSong);
         }
-        var previousSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-        playbackPosition = 0;
-        playAudio(previousSong);
     }
 
     function playNextSong() {
-        console.log(`Next button clicked. Current index: ${currentSongIndex}`);
         if (isShuffleMode) {
             playRandomSong();
         } else {
             currentSongIndex++;
-            if (currentSongIndex >= playButtons.length) {
+            if (currentSongIndex >= currentSectionButtons.length) {
                 currentSongIndex = 0;
                 if (!isRepeating) {
                     pauseAudio();
                     attemptedSongs.clear();
-                    console.log('Playlist ended, no repeat');
+                    console.log('Section playlist ended, no repeat');
                     return;
                 }
             }
-            var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            var nextSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
             playbackPosition = 0;
-            console.log(`Attempting next song at index ${currentSongIndex}: ${nextSong}`);
             playAudio(nextSong);
         }
     }
 
-    function playRandomSong() {
-        currentSongIndex = Math.floor(Math.random() * playButtons.length);
-        var randomSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+    function playRandomSongriceSong() {
+        if (currentSectionButtons.length === 0) return;
+
+        if (shuffleQueue.length === 0) {
+            resetShuffleQueue();
+        }
+
+        currentSongIndex = shuffleQueue.shift();
+        var randomSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
         playbackPosition = 0;
+        console.log(`Playing shuffled song at index ${currentSongIndex}: ${randomSong}`);
         playAudio(randomSong);
     }
 
     function skipToNextPlayableSong() {
-        console.log(`Skipping to next playable song. Attempted: ${attemptedSongs.size}/${playButtons.length}`);
-        if (attemptedSongs.size >= playButtons.length) {
-            console.log('No playable songs found in the playlist.');
+        if (attemptedSongs.size >= currentSectionButtons.length) {
             pauseAudio();
             attemptedSongs.clear();
-            showMessage('No more playable songs');
+            showMessage('No more playable songs in this section');
             return;
         }
 
@@ -220,18 +248,20 @@ document.addEventListener('DOMContentLoaded', function () {
             playRandomSong();
         } else {
             currentSongIndex++;
-            if (currentSongIndex >= playButtons.length) {
+            if (currentSongIndex >= currentSectionButtons.length) {
                 currentSongIndex = 0;
             }
-            var nextSong = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
+            while (attemptedSongs.has(currentSongIndex)) {
+                currentSongIndex = (currentSongIndex + 1) % currentSectionButtons.length;
+            }
+            var nextSong = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
             playbackPosition = 0;
-            console.log(`Skipping to song at index ${currentSongIndex}: ${nextSong}`);
-            playAudio(nextSong); // Immediately try the next song
+            playAudio(nextSong);
         }
     }
 
     function highlightCurrentSong() {
-        var songItems = document.querySelectorAll('#song-list li');
+        var songItems = document.querySelectorAll(`#${currentSection} #song-list li`);
         var currentSongDetails = document.getElementById('current-song-details');
 
         songItems.forEach(function (item, index) {
@@ -246,12 +276,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 playIcon.className = 'fa-solid fa-play play-button';
             }
 
-            if (index === currentSongIndex) {
+            if (index === currentSongIndex && index < currentSectionButtons.length) {
                 item.classList.add('playing');
                 if (songTitle) {
                     songTitle.classList.add('highlighted');
                     playIcon.className = 'fa-solid fa-chart-simple play-button';
-                    currentSongDetails.textContent = '' + songTitle.textContent;
+                    if (currentSongDetails) {
+                        currentSongDetails.textContent = songTitle.textContent;
+                    }
                 }
             }
         });
@@ -271,7 +303,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleAudioEnd() {
-        console.log(`Song at index ${currentSongIndex} ended`);
         if (isRepeating) {
             playAudioFromPosition(audioPlayer.src, 0);
         } else {
@@ -279,44 +310,50 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    playPauseBtn.addEventListener('click', function () {
-        togglePlayPause();
-    });
+    playPauseBtn.addEventListener('click', togglePlayPause);
 
-    playButtons.forEach(function (button, index) {
+    allPlayButtons.forEach(function (button) {
         button.addEventListener('click', function () {
-            console.log(`Clicked song at index ${index}`);
-            if (isPlaying && currentSongIndex === index) {
+            const sectionElement = button.closest('.page');
+            if (!sectionElement) return;
+            const newSectionId = sectionElement.id;
+
+            if (newSectionId !== currentSection) {
+                updateSectionButtons(newSectionId);
+            }
+
+            const sectionIndex = Array.from(currentSectionButtons).indexOf(button);
+            if (sectionIndex === -1) return;
+
+            if (isPlaying && currentSongIndex === sectionIndex && newSectionId === currentSection) {
                 pauseAudio();
             } else {
                 if (isPlaying) {
                     audioPlayer.pause();
                     isPlaying = false;
                 }
-                currentSongIndex = index;
-                const songSrc = playButtons[currentSongIndex].parentElement.getAttribute('data-src');
-                console.log(`Selected song at index ${currentSongIndex}: ${songSrc}`);
+                currentSongIndex = sectionIndex;
+                if (isShuffleMode) {
+                    shuffleQueue = shuffleQueue.filter(i => i !== sectionIndex);
+                    shuffleQueue.unshift(sectionIndex);
+                }
+                const songSrc = currentSectionButtons[currentSongIndex].parentElement.getAttribute('data-src');
                 playAudio(songSrc);
             }
         });
     });
 
-    previousBtn.addEventListener('click', function () {
-        playPreviousSong();
-    });
-
-    nextBtn.addEventListener('click', function () {
-        playNextSong();
-    });
-
-    repeatBtn.addEventListener('click', function () {
-        toggleRepeat();
-    });
+    previousBtn.addEventListener('click', playPreviousSong);
+    nextBtn.addEventListener('click', playNextSong);
+    repeatBtn.addEventListener('click', toggleRepeat);
 
     shuffleBtn.addEventListener('click', function () {
         isShuffleMode = !isShuffleMode;
         shuffleBtn.classList.toggle('active-shuffle');
         console.log('Shuffle mode:', isShuffleMode);
+        if (isShuffleMode) {
+            resetShuffleQueue();
+        }
     });
 
     audioPlayer.addEventListener('ended', handleAudioEnd);
@@ -398,3 +435,25 @@ function displayText(sectionId) {
     }
     document.getElementById(sectionId).style.display = "block";
 }
+
+window.showPage = function(pageId) {
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    document.getElementById(pageId).classList.add('active');
+    document.querySelector(`button[onclick="showPage('${pageId}')"]`).classList.add('active');
+    
+    document.dispatchEvent(new CustomEvent('updateSectionButtons', { detail: pageId }));
+};
+
+document.addEventListener('updateSectionButtons', function(e) {
+    var allPlayButtons = document.querySelectorAll('.play-button');
+    var scope = document.querySelector('script').getAttribute('data-scope');
+    if (scope) {
+        eval(scope + '.updateSectionButtons')(e.detail);
+    }
+}, false);
