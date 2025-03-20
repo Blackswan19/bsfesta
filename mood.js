@@ -435,18 +435,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    audioPlayer.addEventListener('ended', handleAudioEnd);
-
-    volumeBar.addEventListener('input', function () {
-        var volumeValue = parseInt(volumeBar.value);
-        if (!isVolumeChanged) {
-            audioPlayer.volume = initialVolume + volumeValue / 100;
-            isVolumeChanged = true;
-        } else {
-            audioPlayer.volume = volumeValue / 100;
-        }
-    });
-
     audioPlayer.addEventListener('timeupdate', function () {
         var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         progressBar.querySelector('.progress').style.width = progress + '%';
@@ -535,6 +523,20 @@ document.addEventListener('updateSectionButtons', function(e) {
         eval(scope + '.updateSectionButtons')(e.detail);
     }
 }, false);
+// Get elements
+const infoIcon = document.getElementById("infoIcon");
+const songModal = document.getElementById("songModal");
+const closeButton = document.querySelector(".close-button");
+
+// Show modal when infoIcon is clicked
+infoIcon.addEventListener("click", () => {
+    songModal.style.display = "block";
+});
+
+// Hide modal when close button is clicked
+closeButton.addEventListener("click", () => {
+    songModal.style.display = "none";
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
