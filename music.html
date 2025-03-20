@@ -277,7 +277,7 @@ right: 30px;
 <body>
 
 <div class="song-info" id="songInfo">
-<img src="https://i.pinimg.com/736x/6b/77/9e/6b779e212633e1dc47cd9cf1ddc1b2bc.jpg" alt="Song Cover" style="width: 50px; height: 50px;">
+<img src="logo/playing.jpg" alt="Song Cover" style="width: 50px; height: 50px;">
 <div class="song-details">
     <p  style="font-size: 14px;
     font-weight: 800;">Playing :</p>
@@ -290,7 +290,7 @@ right: 30px;
 <div id="songModal" class="modal">
 <div class="modal-content">
     <span class="close-button">&times;</span>
-    <img src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt="" style="width: 25%;
+    <img src="logo/playrefer.jpg" alt="" style="width: 25%;
     position: fixed;
     top: 25%;
     left: 8%;
@@ -428,20 +428,511 @@ setTimeout(() => {
 
 </script>
 <div class="headers">
-    <style> #result {
-        position: fixed;
-        display: contents;
-    }</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+		/* Popup container */
+		.search-popup {
+			position: fixed;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffffff, #f0f0f5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px 100em rgb(0 0 0 / 86%);
+    z-index: 900;
+    display: none;
+    max-width: 510px;
+    width: 95%;
+    transition: all 0.3s ease;
+    background: #191919;
+    overflow-y: scroll;
+    height: 550px;
+		}
+	.search-popup::-webkit-scrollbar {
+	height: 5px; 
+}
+
+.search-popup::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track for nav, as you wanted */
+}
+
+.search-popup::-webkit-scrollbar-thumb {
+	background: #c9c9c950; /* Semi-transparent white thumb for nav */
+	border-radius: 0px; /* Rounded thumb */
+}
+
+.search-popup::-webkit-scrollbar-thumb:hover {
+    background: #dcdcdc; /* Fully white on hover for nav */
+}
+
+		.search-popup.active {
+			display: block;
+		}
+	
+		/* Song items (both popup and song list) */
+		/* Song items (both popup and song list) */
+.popup-song {
+	display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 20px;
+    padding: 0px;
+    background: transparent;
+    transition: background 0.2s ease, transform 0.1s ease;
+    line-height: 55px;
+	border-bottom: solid 1px gray;
+	cursor: pointer;
+}
+		.popup-song:hover{
+			text-decoration: underline 2px rgb(188, 188, 188);
+		}
+		
+		/* Song title styling */
+		.song-title {
+			flex: 1;
+    font-size: 16px;
+    color: #ffffffdc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+		} .popup-song span {
+			flex: 1;
+    font-size: 16px;
+    color: #848484;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 800;
+		}
+		.popup-song.playing{
+			color: #0059ff;
+    padding-left: 10px;
+    border-bottom: solid 4px;
+    border-radius: 51px;
+		}
+		/* Button container */
+		.button-group {
+			display: flex;
+			gap: 10px; /* Space between play and plus buttons */
+		}
+	
+		
+		
+		.play-button, .add-to-playlist {
+			cursor: pointer;
+			padding: 8px;
+			font-size: 16px;
+			color: #ffffff;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	
+	</style>
     <input type="text" id="search-bar" placeholder="Search the song here...">
     <div class="result">
-        <!-- <a href="https://blackswan19.github.io/bsfesta/minifesta.html" style="display: contents;"><button><i class="fa-solid fa-music"></i></button></a> -->
-        <a href="https://blackswan19.github.io/bsfesta/minifesta" style="display: contents;"><button style="background: white;
-            color: black;
-            font-weight: 800;
-            font-size: 15px;" >MiniFesta</button></a>
-        <a href="https://blackswan19.github.io/bsfesta/likedlist" style="display: contents;"><button style="
-            font-weight: 800;
-            font-size: 15px;">Liked one</button></a>
+        <div id="search-popup" class="search-popup"></div>
+    </div>
+    
+    <script>
+		window.addEventListener('DOMContentLoaded', (event) => {
+    const searchBar = document.getElementById('search-bar');
+    const popup = document.getElementById('search-popup');
+    const progressBarContainer = document.getElementById('progress-bar');
+    const progressBar = document.querySelector('#progress-bar .progress');
+    const previousBtn = document.getElementById('previous-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const currentSongDetails = document.getElementById('current-song-details');
+
+    const audio = new Audio();
+    let currentSong = null;
+    let isPlaying = false;
+    let songList = [];
+
+    const getAllSongs = () => Array.from(document.querySelectorAll('#song-list li'))
+        .map(li => ({
+            title: li.querySelector('.song-title').innerText,
+            src: li.getAttribute('data-src')
+        }));
+
+    function updateProgress() {
+        if (audio.duration && progressBar) {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+    }
+
+    function seekToPosition(event) {
+        if (!audio.duration || !progressBarContainer) return;
+        
+        const rect = progressBarContainer.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const width = rect.width;
+        const percentage = (clickX / width);
+        audio.currentTime = percentage * audio.duration;
+        updateProgress();
+    }
+
+    function playSong(songSrc, songTitle) {
+        // Prevent playing if already playing the same song
+        if (currentSong === songTitle && isPlaying) {
+            return;
+        }
+
+        if (audio.src !== songSrc) {
+            audio.src = songSrc;
+            audio.load();
+        }
+
+        audio.play()
+            .then(() => {
+                isPlaying = true;
+                currentSong = songTitle;
+                if (currentSongDetails) {
+                    currentSongDetails.textContent = songTitle;
+                }
+                updateAllPlayButtons();
+                highlightPlayingSong();
+            })
+            .catch(error => {
+                console.error('Error playing audio:', error);
+                isPlaying = false;
+                updateAllPlayButtons();
+            });
+    }
+
+    function pauseSong() {
+        audio.pause();
+        isPlaying = false;
+        updateAllPlayButtons();
+        highlightPlayingSong();
+    }
+
+    function updateAllPlayButtons() {
+        popup.querySelectorAll('.play-button').forEach(btn => {
+            const songTitle = btn.parentElement.querySelector('span').textContent;
+            btn.classList.toggle('fa-play', songTitle !== currentSong || !isPlaying);
+            btn.classList.toggle('fa-pause', songTitle === currentSong && isPlaying);
+        });
+        document.querySelectorAll('#song-list .play-button').forEach(btn => {
+            const songTitle = btn.parentElement.querySelector('.song-title').innerText;
+            btn.classList.toggle('fa-play', songTitle !== currentSong || !isPlaying);
+            btn.classList.toggle('fa-pause', songTitle === currentSong && isPlaying);
+        });
+        if (playPauseBtn) {
+            const icon = playPauseBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-play', !isPlaying);
+                icon.classList.toggle('fa-pause', isPlaying);
+            }
+        }
+    }
+
+    function highlightPlayingSong() {
+        popup.querySelectorAll('.popup-song').forEach(songDiv => {
+            const songTitle = songDiv.querySelector('span').textContent;
+            songDiv.classList.toggle('playing', songTitle === currentSong && isPlaying);
+        });
+        document.querySelectorAll('#song-list li').forEach(li => {
+            const songTitle = li.querySelector('.song-title').innerText;
+            li.classList.toggle('playing', songTitle === currentSong && isPlaying);
+        });
+    }
+
+    function playNextSong() {
+        if (!songList.length) songList = getAllSongs();
+        const currentIndex = songList.findIndex(song => song.title === currentSong);
+        const nextIndex = (currentIndex + 1) % songList.length;
+        const nextSong = songList[nextIndex];
+        playSong(nextSong.src, nextSong.title);
+    }
+
+    function playPreviousSong() {
+        if (!songList.length) songList = getAllSongs();
+        const currentIndex = songList.findIndex(song => song.title === currentSong);
+        const prevIndex = (currentIndex - 1 + songList.length) % songList.length;
+        const prevSong = songList[prevIndex];
+        playSong(prevSong.src, prevSong.title);
+    }
+
+    function initializeSongListPlayButtons() {
+        document.querySelectorAll('#song-list .play-button').forEach(btn => {
+            btn.removeEventListener('click', handleSongListPlay); // Remove existing listeners to prevent duplicates
+            btn.addEventListener('click', handleSongListPlay);
+        });
+    }
+
+    function handleSongListPlay(event) {
+        const li = event.currentTarget.parentElement;
+        const songTitle = li.querySelector('.song-title').innerText;
+        const songSrc = li.getAttribute('data-src');
+
+        if (currentSong === songTitle && isPlaying) {
+            pauseSong();
+        } else {
+            playSong(songSrc, songTitle);
+        }
+    }
+
+    function performSearch() {
+        const searchTerm = searchBar.value.toLowerCase().trim();
+        songList = getAllSongs();
+        popup.innerHTML = '';
+
+        if (searchTerm === '') {
+            popup.classList.remove('active');
+            return;
+        }
+
+        const matches = songList.filter(song => 
+            song.title.toLowerCase().includes(searchTerm)
+        );
+        
+        const uniqueTitles = new Set();
+        const uniqueMatches = [];
+        
+        matches.forEach(song => {
+            if (!uniqueTitles.has(song.title)) {
+                uniqueTitles.add(song.title);
+                uniqueMatches.push(song);
+            }
+        });
+
+        if (uniqueMatches.length > 0) {
+            uniqueMatches.forEach(song => {
+                const songDiv = document.createElement('div');
+                songDiv.className = 'popup-song';
+                songDiv.innerHTML = `
+                    <span>${song.title}</span>
+                    <i class="fa-solid fa-play play-button"></i>
+                    <i class="fa-solid fa-plus add-to-playlist"></i>
+                `;
+                popup.appendChild(songDiv);
+
+                const playButton = songDiv.querySelector('.play-button');
+                playButton.removeEventListener('click', handlePopupPlay); // Prevent duplicate listeners
+                playButton.addEventListener('click', handlePopupPlay);
+
+                songDiv.querySelector('.add-to-playlist').addEventListener('click', () => {
+                    console.log(`Added "${song.title}" to playlist`);
+                });
+            });
+            popup.classList.add('active');
+            updateAllPlayButtons();
+            highlightPlayingSong();
+        } else {
+            popup.classList.remove('active');
+        }
+    }
+
+    function handlePopupPlay(event) {
+        const songDiv = event.currentTarget.parentElement;
+        const songTitle = songDiv.querySelector('span').textContent;
+        const song = songList.find(s => s.title === songTitle);
+        if (song) {
+            if (currentSong === songTitle && isPlaying) {
+                pauseSong();
+            } else {
+                playSong(song.src, songTitle);
+            }
+        }
+    }
+
+    // Initialize song list play buttons
+    initializeSongListPlayButtons();
+
+    // Search functionality
+    searchBar.addEventListener('input', performSearch);
+
+    // Close popup when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!popup.contains(e.target) && e.target !== searchBar) {
+            popup.classList.remove('active');
+        }
+    });
+
+    // Main play/pause button
+    if (playPauseBtn) {
+        playPauseBtn.removeEventListener('click', handleMainPlayPause); // Prevent duplicate listeners
+        playPauseBtn.addEventListener('click', handleMainPlayPause);
+    }
+
+    function handleMainPlayPause() {
+        if (isPlaying) {
+            pauseSong();
+        } else if (currentSong) {
+            audio.play()
+                .then(() => {
+                    isPlaying = true;
+                    updateAllPlayButtons();
+                    highlightPlayingSong();
+                })
+                .catch(error => console.error('Error resuming audio:', error));
+        }
+    }
+
+    if (previousBtn) {
+        previousBtn.addEventListener('click', playPreviousSong);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', playNextSong);
+    }
+
+    // Progress bar interaction
+    if (progressBarContainer) {
+        progressBarContainer.addEventListener('click', seekToPosition);
+
+        let isDragging = false;
+
+        progressBarContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            seekToPosition(e);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                seekToPosition(e);
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    }
+
+    // Audio events
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('play', () => {
+        isPlaying = true;
+        updateAllPlayButtons();
+        highlightPlayingSong();
+    });
+    audio.addEventListener('pause', () => {
+        isPlaying = false;
+        updateAllPlayButtons();
+        highlightPlayingSong();
+    });
+    audio.addEventListener('ended', playNextSong);
+});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<div class="outoptn">
+	<a href="https://blackswan19.github.io/bsfesta/minifesta" style="display: contents;"><button style="background: white;
+		color: black;
+		font-weight: 800;
+		font-size: 15px;" >MiniFesta</button></a>
+	<a href="https://blackswan19.github.io/bsfesta/likedlist" style="display: contents;"><button style="
+		font-weight: 800;
+		font-size: 15px;">Liked one</button></a>
+</div>
         <div class="profile-container">
             <!-- Set default image if no image is stored in local storage -->
             <img id="profilePic" src="https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg" alt="Profile Picture" onclick="showPopup()">
@@ -452,74 +943,7 @@ setTimeout(() => {
     <a href="" class="logopgs"><img src="logo/brand.png" alt="" width="6%"></a><br>
     <img src="https://i.pinimg.com/originals/a1/33/b0/a133b046e1c1f8b9d849099d451b0b2c.gif" alt="">
 </div>
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-    const searchBar = document.getElementById('search-bar');
 
-    // Function to get songs from the currently active page
-    function getActiveSongList() {
-        const activePage = document.querySelector('.page.active');
-        if (activePage) {
-            return activePage.querySelectorAll('#song-list li');
-        }
-        return []; // Return empty array if no active page is found
-    }
-
-    // Main search functionality
-    function performSearch() {
-        const searchTerm = searchBar.value.toLowerCase().trim();
-        const songs = getActiveSongList();
-        let songFound = false;
-
-        // Clear highlights and reset styles if search term is empty
-        if (searchTerm === '') {
-            songs.forEach(song => {
-                song.style.backgroundColor = '';
-                const songTitle = song.querySelector('.song-title');
-                if (songTitle) songTitle.style.fontWeight = '';
-            });
-            return;
-        }
-
-        // Highlight and scroll to matching songs
-        songs.forEach(song => {
-            const songTitle = song.querySelector('.song-title');
-            if (songTitle && songTitle.innerText.toLowerCase().includes(searchTerm)) {
-                song.style.backgroundColor = '#004cff'; // Highlight matching song
-                songTitle.style.fontWeight = '800';     // Bold the title
-                if (!songFound) {
-                    song.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    songFound = true; // Scroll to the first match only
-                }
-            } else {
-                song.style.backgroundColor = '';        // Reset background
-                if (songTitle) songTitle.style.fontWeight = ''; // Reset font weight
-            }
-        });
-    }
-
-    // Event listener for search input
-    searchBar.addEventListener('input', performSearch);
-
-    // Update search when switching pages
-    document.querySelectorAll('nav button').forEach(button => {
-        button.addEventListener('click', () => {
-            setTimeout(() => {
-                performSearch(); // Re-run search after page switch
-            }, 150); // Delay to allow page transition to complete
-        });
-    });
-
-    // Optional: Clear search bar and reset highlights with a clear button
-    const clearButton = document.getElementById('clear-button'); // If you have a clear button
-    if (clearButton) {
-        clearButton.addEventListener('click', () => {
-            searchBar.value = '';
-            performSearch(); // Reset highlights
-        });
-    }
-});
- </script>
 <script>
 
     
