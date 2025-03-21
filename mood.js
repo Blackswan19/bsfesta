@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var allPlayButtons = document.querySelectorAll('.play-button');
     var audioPlayer = new Audio();
-    var volumeBar = document.getElementById('volume-bar');
     var previousBtn = document.getElementById('previous-btn');
     var nextBtn = document.getElementById('next-btn');
     var playPauseBtn = document.getElementById('play-pause-btn');
@@ -437,15 +436,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     audioPlayer.addEventListener('ended', handleAudioEnd);
 
-    volumeBar.addEventListener('input', function () {
-        var volumeValue = parseInt(volumeBar.value);
-        if (!isVolumeChanged) {
-            audioPlayer.volume = initialVolume + volumeValue / 100;
-            isVolumeChanged = true;
-        } else {
-            audioPlayer.volume = volumeValue / 100;
-        }
-    });
 
     audioPlayer.addEventListener('timeupdate', function () {
         var progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
