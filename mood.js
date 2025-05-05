@@ -750,8 +750,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         .skip-message { 
             position: fixed; 
-            bottom: 50px; 
-            right: 50px; 
+            bottom: 130px; 
+            right: 10px; 
             background: rgba(0, 0, 0, 0.8); 
             color: #fff; 
             padding: 10px 20px; 
@@ -780,8 +780,6 @@ document.addEventListener('DOMContentLoaded', function () {
         #repeat-btn.active i {
             color: #007bff; 
         }
-        
-       
         .divert {
             text-align: center;
             margin-top: 20px;
@@ -798,12 +796,14 @@ document.addEventListener('DOMContentLoaded', function () {
             background: #0056b3;
         }
         #song-list li.highlight {
-            border: 1.5px solid white; /* Changed to white border */
-            transition: border 0.5s ease; /* Smooth transition for border */
+            border: none;
+            transition: border 0.5s ease;
         }
     `;
     document.head.appendChild(style);
 });
+
+
         document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
