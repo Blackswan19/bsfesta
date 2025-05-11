@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function highlightCurrentSong() {
-        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
+        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '<span class="material-symbols-outlined"></span>';
         console.log('Highlighting - Current playing src:', currentSrc);
 
         const allSongItems = document.querySelectorAll('.page #song-list li');
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         allSongItems.forEach(item => {
             const songSrc = item.getAttribute('data-src');
-            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '';
+            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '<span class="material-symbols-outlined"></span>';
             const songTitle = item.querySelector('.song-title');
             const playIcon = item.querySelector('.play-button');
             const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
@@ -946,22 +946,3 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 });
-
-        document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
-});
-
-
