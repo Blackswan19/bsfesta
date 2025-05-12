@@ -1,157 +1,172 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - Playlist</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="playlistmix.css"> </head> <body> <style> ::-webkit-scrollbar { width: 10px; position: fixed; left: -3%; } ::-webkit-scrollbar-track { background: #00000000; } ::-webkit-scrollbar-thumb { background: #484848; height: 15%; outline: none; } ::-webkit-scrollbar-thumb:hover { background: #9b9b9b; } </style> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> My Playlist <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div class="menu" style="position: fixed; top: 10px; z-index: 100;"> <div class="gif"> <a href="music.html" class="logopgs"><img style=" position: fixed; width: 25px; left: 10px; background: black; padding: 6px; border-radius: 5px; " src="logo/brand.png" alt="" width="6%"></a><br> </div> </div> <div id="player-interface" style="display: none;"> <div class="dropdown"> <div class="header"> <a href="music.html" class="logopg"><img src="logo/brand.png" alt="" width="6%"></a><br> </div> </div> </div> <div class="playlist-container" id="playlist-container"> <button class="back-btn" id="back-btn"><i class="fa-solid fa-arrow-left"></i></button> <h3 id="current-playlist-name">Playlists</h3> <ul id="playlist-list"></ul> <ul id="song-list"></ul> </div> <div class="songslist"> <div class="album-art"> <div class="logolike"> <img style="width: 100%; border-radius: 5px;" src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt=""> </div> </div> <div class="song-info"> <p class="title"></p> <p class="artist">My Playlist</p> <p class="album">BsFetsa</p> </div> <div class="red-base"></div> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <div class="controlss"> <button id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></button> <button class="play-pause-btn" id="playPauseBtn"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> <button id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button> <button id="list-btn" title="Show Playlists"><i class="fa-solid fa-list"></i></button> <div class="volume-control"> <i class="fa-solid fa-volume-high"></i> <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"> </div> </div> <button style="position: fixed; background: none; outline: none; border: none; font-size: 25px; top: 15px; right: 10px;" id="lights-btn" title="Toggle Lights">🌙</button> </div> <div class="custom-menu"> <style> a{ text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; color: white; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option1">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div> </div>
-<script>
-         setTimeout(function () {
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - My Playlist</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="playlistmix.css"> <style> /* Scrollbar Styles */ ::-webkit-scrollbar { width: 10px; position: fixed; left: -3%; } ::-webkit-scrollbar-track { background: #00000000; } ::-webkit-scrollbar-thumb { background: #484848; height: 15%; outline: none; } ::-webkit-scrollbar-thumb:hover { background: #9b9b9b; } .image-container { text-align: center; margin-bottom: 10px; } .image-container img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; } .popup-song-item { display: flex; align-items: center; padding: 5px; } #playlist-options li { padding: 10px; cursor: pointer; } #playlist-options li:hover { background: #333; } /* Custom Menu */ .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; color: white; } .custom-menu button:hover { background-color: #404040; } a { text-decoration: none; } </style> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> My Playlist <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div class="playlist-container" id="playlist-container"> <button class="back-btn" id="back-btn" style="position: fixed;"><i class="fa-solid fa-arrow-left"></i></button> <h3 id="current-playlist-name">Playlists</h3> <ul id="playlist-list"></ul> <ul id="song-list"></ul> </div> <div class="songslist"> <div class="album-art"> <div class="logolike"> <img style="width: 100%; border-radius: 5px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);" src="https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg" alt=""> </div> </div> <div class="song-info"> <p class="title"></p> <p class="artist">My Playlist</p> <p class="album">BsFesta</p> </div> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <div class="controlss"> <button id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></button> <button class="play-pause-btn" id="playPauseBtn"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> <button id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button> <button id="list-btn" title="Show Playlists"><i class="fa-solid fa-list"></i></button> <div class="volume-control"> <i class="fa-solid fa-volume-high"></i> <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"> </div> </div> <button id="lights-btn" style=" position: fixed; top: 25px; right: 30px; background: transparent; border: none; font-size: 20px;" title="Toggle Lights">🌙</button> </div> <div class="custom-menu"> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option1">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div> <!-- Popups -->
+    <script>
+        // Initialize variables
+        const playlistList = document.getElementById("playlist-list");
+        const songList = document.getElementById("song-list");
+        const currentPlaylistName = document.getElementById("current-playlist-name");
+        const backBtn = document.getElementById("back-btn");
+        const progressBar = document.getElementById("progress");
+        const progressContainer = document.querySelector(".progress-container");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+        const playIcon = document.getElementById("playIcon");
+        const previousBtn = document.getElementById("previous-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const shuffleBtn = document.getElementById("shuffle-btn");
+        const repeatBtn = document.getElementById("repeat-btn");
+        const listBtn = document.getElementById("list-btn");
+        const lightsBtn = document.getElementById("lights-btn");
+        const playlistContainer = document.getElementById("playlist-container");
+        const volumeSlider = document.getElementById("volume-slider");
+        const songslist = document.querySelector(".songslist");
+        const popupOverlay = document.getElementById("popup-overlay");
+        const addToPlaylistOverlay = document.getElementById("add-to-playlist-overlay");
+        const playlistOptions = document.getElementById("playlist-options");
+        const popupPlaylistName = document.getElementById("popup-playlist-name");
+        const songsPopupOverlay = document.getElementById("songs-popup-overlay");
+        const songsPopupList = document.getElementById("songs-popup-list");
+        const songsPopupTitle = document.getElementById("songs-popup-title");
+
+        let playlists = JSON.parse(localStorage.getItem("playlists")) || {};
+        let playlistImages = JSON.parse(localStorage.getItem("playlistImages")) || {};
+        let songImages = JSON.parse(localStorage.getItem("songImages")) || {};
+        let currentAudio = null;
+        let audio = new Audio(); // For popup playback
+        let currentlyPlayingLi = null;
+        let currentPlaylistNameValue = null;
+        let currentSongIndex = -1;
+        let progressInterval;
+        let isShuffling = false;
+        let playedIndices = [];
+        let repeatMode = 0;
+        let showingSongs = false;
+        let isLightsOn = false;
+        let currentSong = null;
+        let currentlyPlayingIndex = null;
+        let isPlaying = false;
+        const lightColors = ['#FF0000', '#0000FF', '#32CD32', '#FF1493', '#FFA500', '#00BFFF', '#FF4500', '#1E90FF', '#9400D3', '#FF6347', '#40E0D0', '#8A2BE2'];
+        let colorIndex = 0;
+
+        // Loading screen
+        setTimeout(() => {
             document.querySelector('.loading-screen').style.display = 'none';
             document.getElementById('player-interface').style.display = 'block';
             initializePlaylists();
-         }, 1500);
+        }, 1500);
 
-         const playlistList = document.getElementById("playlist-list");
-         const songList = document.getElementById("song-list");
-         const currentPlaylistName = document.getElementById("current-playlist-name");
-         const backBtn = document.getElementById("back-btn");
-         const progressBar = document.getElementById("progress");
-         const progressContainer = document.querySelector(".progress-container");
-         const playPauseBtn = document.getElementById("playPauseBtn");
-         const playIcon = document.getElementById("playIcon");
-         const previousBtn = document.getElementById("previous-btn");
-         const nextBtn = document.getElementById("next-btn");
-         const shuffleBtn = document.getElementById("shuffle-btn");
-         const repeatBtn = document.getElementById("repeat-btn");
-         const listBtn = document.getElementById("list-btn");
-         const lightsBtn = document.getElementById("lights-btn");
-         const playlistContainer = document.getElementById("playlist-container");
-         const volumeSlider = document.getElementById("volume-slider");
-         const songslist = document.querySelector(".songslist");
-
-         let playlists = JSON.parse(localStorage.getItem("playlists")) || {};
-         let currentAudio = null;
-         let currentlyPlayingLi = null;
-         let currentPlaylistNameValue = null;
-         let currentSongIndex = -1;
-         let progressInterval;
-         let isShuffling = false;
-         let playedIndices = [];
-         let repeatMode = 0;
-         let showingSongs = false;
-         let isLightsOn = false;
-         const lightColors = [
-            '#FF0000', '#0000FF', '#32CD32', '#FF1493', '#FFA500', '#00BFFF',
-            '#FF4500', '#1E90FF', '#9400D3', '#FF6347', '#40E0D0', '#8A2BE2'
-         ];
-         let colorIndex = 0;
-
-         function initializePlaylists() {
-            console.log("Initializing playlists...");
+        // Initialize playlists and song images
+        function initializePlaylists() {
             if (Object.keys(playlists).length === 0) {
-               console.log("No playlists found in localStorage. Setting default playlists.");
-               playlists = {
-                  "MyPlaylist": [
-                     { title: "like JENNIE", src: "path/to/song1.mp3", artist: "JENNIE", album: "Ruby" },
-                     { title: "Song 2", src: "path/to/song2.mp3", artist: "Artist 2", album: "Album 2" },
-                     { title: "Song 3", src: "path/to/song3.mp3", artist: "Artist 3", album: "Album 3" }
-                  ],
-                  "Favorites": [
-                     { title: "Song A", src: "path/to/songA.mp3", artist: "Artist A", album: "Album A" }
-                  ]
-               };
-               localStorage.setItem("playlists", JSON.stringify(playlists));
+                playlists = {
+                    "MyPlaylist": [
+                        { title: "like JENNIE", src: "path/to/song1.mp3", artist: "JENNIE", album: "Ruby" },
+                        { title: "Song 2", src: "path/to/song2.mp3", artist: "Artist 2", album: "Album 2" },
+                        { title: "Song 3", src: "path/to/song3.mp3", artist: "Artist 3", album: "Album 3" }
+                    ],
+                    "Favorites": [
+                        { title: "Song A", src: "path/to/songA.mp3", artist: "Artist A", album: "Album A" }
+                    ]
+                };
+                songImages = {
+                    "like JENNIE": "logo/song.png",
+                    "Song 2": "logo/song.png",
+                    "Song 3": "logo/song.png",
+                    "Song A": "logo/song.png"
+                };
+                localStorage.setItem("playlists", JSON.stringify(playlists));
+                localStorage.setItem("songImages", JSON.stringify(songImages));
             }
-            console.log("Playlists after initialization:", playlists);
-         }
+            loadPlaylists();
+            updateAllSongIcons();
+        }
 
-         function updateSongInfo(title, artist, album) {
-            document.querySelector('.song-info .title').textContent = title;
-            document.querySelector('.song-info .artist').textContent = artist;
-            document.querySelector('.song-info .album').textContent = album ? `PLAYING FROM ALBUM ${album}` : '';
-         }
+        // Playlist management
+        function openPopup() {
+            popupPlaylistName.value = "";
+            popupOverlay.style.display = "flex";
+        }
 
-         function toggleLights() {
-            console.log("Toggling lights...");
-            isLightsOn = !isLightsOn;
-            lightsBtn.textContent = isLightsOn ? '💡' : '🌙';
-            lightsBtn.style.color = isLightsOn ? '#ffd700' : '#b3b3b3';
-            if (!isLightsOn) {
-               songslist.style.backgroundColor = '';
-               songslist.style.backgroundImage = `url('https://i.scdn.co/image/ab67616d0000b273e8c0e8b2f1a2f1a2f1a2f1a2')`;
-               songslist.style.opacity = '0.8';
-            } else {
-               changeLights();
+        function closePopup() {
+            popupOverlay.style.display = "none";
+        }
+
+        function createPlaylist() {
+            const name = popupPlaylistName.value.trim();
+            if (name && !playlists[name]) {
+                playlists[name] = [];
+                playlistImages[name] = null;
+                savePlaylists();
+                closePopup();
             }
-         }
+        }
 
-         function changeLights() {
-            if (isLightsOn) {
-               colorIndex = (colorIndex + 1) % lightColors.length;
-               songslist.style.backgroundImage = 'none';
-               songslist.style.backgroundColor = lightColors[colorIndex];
-               songslist.style.opacity = '1';
-               songslist.style.transition = 'background-color 0.5s ease';
-            }
-         }
+        function savePlaylists() {
+            localStorage.setItem("playlists", JSON.stringify(playlists));
+            localStorage.setItem("playlistImages", JSON.stringify(playlistImages));
+            localStorage.setItem("songImages", JSON.stringify(songImages));
+            loadPlaylists();
+            updateAllSongIcons();
+        }
 
-         function togglePlaylistList() {
-            console.log("Toggling playlist list...");
-            if (playlistContainer.classList.contains("active")) {
-               console.log("Closing sidebar...");
-               playlistContainer.classList.remove("active");
-               songslist.classList.remove("sidebar-open");
-            } else {
-               console.log("Opening sidebar...");
-               loadPlaylists();
-               showingSongs = false;
-               currentPlaylistName.textContent = "Playlists";
-               playlistList.style.display = "block";
-               songList.classList.remove("active");
-               songList.style.display = "none";
-               backBtn.style.display = "none";
-               playlistContainer.classList.add("active");
-               songslist.classList.add("sidebar-open");
-            }
-         }
-
-         function loadPlaylists() {
-            console.log("Loading playlists...");
+        function loadPlaylists() {
             playlistList.innerHTML = "";
             if (Object.keys(playlists).length === 0) {
-               console.log("No playlists available.");
-               playlistList.innerHTML = "<li>No playlists available</li>";
-               return;
+                playlistList.innerHTML = "<li>No playlists available</li>";
+                return;
             }
-            Object.keys(playlists).forEach(playlistName => {
-               console.log(`Adding playlist: ${playlistName}`);
-               const li = document.createElement("li");
-               li.textContent = playlistName;
-               li.addEventListener("click", () => {
-                  console.log(`Playlist clicked: ${playlistName}`);
-                  displaySongsInList(playlistName);
-               });
-               playlistList.appendChild(li);
-            });
-         }
+            Object.keys(playlists).forEach(displayPlaylist);
+        }
 
-         function displaySongsInList(playlistName) {
-            console.log(`Displaying songs for playlist: ${playlistName}`);
+        function displayPlaylist(name) {
+            const li = document.createElement("li");
+            li.classList.add("playlist-item");
+            li.innerHTML = `
+                <img src="${playlistImages[name] || 'logo/playlist.png'}" alt="" style="width: 10%;
+    margin: 5px 20px;
+    border-radius: 5px;
+    background: #ffffff61;
+    opacity: 80%;">
+                <span style="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; font-size: 18px;">${name}</span>
+                <i class="fa-regular fa-square-minus delete-playlist" title="Delete Playlist"></i>
+            `;
+            const deleteBtn = li.querySelector(".delete-playlist");
+            deleteBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                delete playlists[name];
+                delete playlistImages[name];
+                savePlaylists();
+            });
+            li.addEventListener("click", () => {
+                displaySongsInList(name);
+                displaySongsInPopup(name);
+            });
+            playlistList.appendChild(li);
+        }
+
+        // Song display and playback
+        function displaySongsInList(playlistName) {
             songList.innerHTML = "";
             if (!playlists[playlistName]) {
-               console.log(`Playlist ${playlistName} not found.`);
-               songList.innerHTML = "<li>Playlist not found</li>";
-               return;
+                songList.innerHTML = "<li>Playlist not found</li>";
+                return;
             }
             playlists[playlistName].forEach((song, index) => {
-               const songLi = document.createElement("li");
-               songLi.innerHTML = `<span>${song.title}</span> <i class="fa-solid fa-play play-song" title="Play"></i>`;
-               songLi.addEventListener("click", () => {
-                  console.log(`Song clicked: ${song.title}`);
-                  currentSongIndex = index;
-                  playedIndices = [index];
-                  updateSongInfo(song.title, song.artist || playlistName, song.album || '');
-                  playSong(song.src, songLi, playlistName);
-               });
-               if (currentSongIndex === index && currentPlaylistNameValue === playlistName) {
-                  songLi.classList.add("playing");
-               }
-               songList.appendChild(songLi);
+                const songLi = document.createElement("li");
+                songLi.setAttribute("data-src", song.src);
+                songLi.innerHTML = `
+                    <span class="song-title">${song.title}</span>
+                    <i class="fa-solid fa-play play-song" title="Play"></i>
+                    
+                `;
+                songLi.addEventListener("click", () => {
+                    currentSongIndex = index;
+                    playedIndices = [index];
+                    updateSongInfo(song.title, song.artist || playlistName, song.album || '');
+                    playSong(song.src, songLi, playlistName);
+                });
+                if (currentSongIndex === index && currentPlaylistNameValue === playlistName) {
+                    songLi.classList.add("playing");
+                }
+                songList.appendChild(songLi);
             });
             showingSongs = true;
             currentPlaylistName.textContent = `Playlist: ${playlistName}`;
@@ -159,175 +174,401 @@
             songList.classList.add("active");
             songList.style.display = "block";
             backBtn.style.display = "block";
-         }
+        }
 
-         function playSong(src, songLi, playlistName) {
-            console.log(`Playing song: ${src}`);
+        function playSong(src, songLi, playlistName) {
             if (currentAudio) {
-               currentAudio.pause();
-               currentAudio.currentTime = 0;
-               if (currentlyPlayingLi) {
-                  currentlyPlayingLi.classList.remove("playing");
-                  togglePlayIcon(currentlyPlayingLi, false);
-               }
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentlyPlayingLi) {
+                    currentlyPlayingLi.classList.remove("playing");
+                    togglePlayIcon(currentlyPlayingLi, false);
+                }
             }
-
+            if (audio) {
+                audio.pause();
+                isPlaying = false;
+            }
             currentAudio = new Audio(src);
             currentAudio.volume = volumeSlider.value;
             currentAudio.play().catch(error => console.log("Audio play error:", error));
-
             togglePlayIcon(songLi, true);
             songLi.classList.add("playing");
             playIcon.classList.replace("fa-play", "fa-pause");
-
             currentlyPlayingLi = songLi;
             currentPlaylistNameValue = playlistName;
-
             changeLights();
             currentAudio.onended = playNextSong;
             updateProgressBar();
-
             previousBtn.style.opacity = "1";
             nextBtn.style.opacity = "1";
-
             if (showingSongs && playlistContainer.classList.contains("active")) {
-               displaySongsInList(playlistName);
+                displaySongsInList(playlistName);
             }
-         }
+        }
 
-         function playNextSong() {
-            if (!currentPlaylistNameValue) return;
+        function updateSongInfo(title, artist, album) {
+            document.querySelector('.song-info .title').textContent = title;
+            document.querySelector('.song-info .artist').textContent = artist;
+            document.querySelector('.song-info .album').textContent = album ? `PLAYING FROM ALBUM ${album}` : '';
+            const albumArtImg = document.querySelector('.album-art .logolike img');
+            albumArtImg.src = songImages[title] || 'https://i.pinimg.com/736x/95/ab/0b/95ab0b625663f22b093d2dcc55f32734.jpg';
+        }
 
-            const currentPlaylist = playlists[currentPlaylistNameValue];
+        // Popup song display
+        function displaySongsInPopup(playlistName) {
+            songsPopupTitle.textContent = `Playlist - ${playlistName}`;
+            songsPopupList.innerHTML = "";
+            const existingImageContainer = document.querySelector(".popup .image-container");
+            if (existingImageContainer) existingImageContainer.remove();
+            const imageContainer = document.createElement("div");
+            imageContainer.className = "image-container";
+            const img = document.createElement("img");
+            img.src = playlistImages[playlistName] || "logo/playlist.png";
+            imageContainer.appendChild(img);
+            const changeImageBtn = document.createElement("button");
+            changeImageBtn.textContent = "Change Playlist Image";
+            changeImageBtn.addEventListener("click", () => {
+                const input = document.createElement("input");
+                input.type = "file";
+                input.accept = "image/*";
+                input.onchange = (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        cropImageToSquare(file, (dataUrl) => {
+                            playlistImages[playlistName] = dataUrl;
+                            savePlaylists();
+                            displaySongsInPopup(playlistName);
+                        });
+                    }
+                };
+                input.click();
+            });
+            const deleteImageBtn = document.createElement("button");
+            deleteImageBtn.textContent = "Delete Playlist Image";
+            deleteImageBtn.addEventListener("click", () => {
+                playlistImages[playlistName] = null;
+                savePlaylists();
+                displaySongsInPopup(playlistName);
+            });
+            imageContainer.appendChild(changeImageBtn);
+            imageContainer.appendChild(deleteImageBtn);
+            const popup = songsPopupOverlay.querySelector(".popup");
+            popup.insertBefore(imageContainer, songsPopupTitle.nextSibling);
+            playlists[playlistName].forEach((song, index) => {
+                const songLi = document.createElement("li");
+                songLi.classList.add("popup-song-item");
+                songLi.innerHTML = `
+                    <img src="${songImages[song.title] || 'logo/song.png'}" alt="" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px; margin-right: 10px;">
+                    <span style="flex-grow: 1;">${song.title}</span>
+                    <i class="fa-solid fa-play play-song" title="Play"></i>
+                    <i class="fa-solid fa-image change-song-image" title="Change Image"></i>
+                    <i class="fa-solid fa-trash delete-song-image" title="Delete Image"></i>
+                    <i class="fa-solid fa-delete-left delete-song" title="Delete"></i>
+                `;
+                const playBtn = songLi.querySelector(".play-song");
+                const changeImageBtn = songLi.querySelector(".change-song-image");
+                const deleteImageBtn = songLi.querySelector(".delete-song-image");
+                const deleteBtn = songLi.querySelector(".delete-song");
+                if (playBtn) {
+                    playBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        if (isPlaying && currentlyPlayingIndex === index) {
+                            audio.pause();
+                            isPlaying = false;
+                            updatePopupPlayIcons(playlistName);
+                        } else {
+                            if (currentAudio) {
+                                currentAudio.pause();
+                                if (currentlyPlayingLi) {
+                                    currentlyPlayingLi.classList.remove("playing");
+                                    togglePlayIcon(currentlyPlayingLi, false);
+                                }
+                            }
+                            audio.src = song.src;
+                            audio.play().catch(error => console.error('Error playing audio:', error));
+                            isPlaying = true;
+                            currentlyPlayingIndex = index;
+                            updatePopupPlayIcons(playlistName, index);
+                        }
+                    });
+                }
+                if (changeImageBtn) {
+                    changeImageBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        const input = document.createElement("input");
+                        input.type = "file";
+                        input.accept = "image/*";
+                        input.onchange = (e) => {
+                            const file = e.target.files[0];
+                            if (file) {
+                                cropImageToSquare(file, (dataUrl) => {
+                                    songImages[song.title] = dataUrl;
+                                    savePlaylists();
+                                    displaySongsInPopup(playlistName);
+                                    displaySongsInList(playlistName);
+                                });
+                            }
+                        };
+                        input.click();
+                    });
+                }
+                if (deleteImageBtn) {
+                    deleteImageBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        delete songImages[song.title];
+                        savePlaylists();
+                        displaySongsInPopup(playlistName);
+                        displaySongsInList(playlistName);
+                    });
+                }
+                if (deleteBtn) {
+                    deleteBtn.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        playlists[playlistName].splice(index, 1);
+                        savePlaylists();
+                        displaySongsInPopup(playlistName);
+                        displaySongsInList(playlistName);
+                    });
+                }
+                songsPopupList.appendChild(songLi);
+            });
+            songsPopupOverlay.style.display = "flex";
+        }
 
-            if (repeatMode === 2) {
-               currentAudio.currentTime = 0;
-               currentAudio.play();
-               return;
+        function updatePopupPlayIcons(playlistName, playingIndex = null) {
+            const songItems = songsPopupList.querySelectorAll('.popup-song-item');
+            songItems.forEach((item, index) => {
+                const playIcon = item.querySelector('.play-song');
+                if (playIcon) {
+                    if (index === playingIndex) {
+                        playIcon.classList.replace('fa-play', 'fa-pause');
+                    } else {
+                        playIcon.classList.replace('fa-pause', 'fa-play');
+                    }
+                }
+            });
+        }
+
+        function closeSongsPopup() {
+            songsPopupOverlay.style.display = "none";
+            audio.pause();
+            isPlaying = false;
+            updatePopupPlayIcons(null);
+        }
+
+        // Add to playlist
+        function openAddToPlaylistPopup(song) {
+            currentSong = song;
+            playlistOptions.innerHTML = "";
+            Object.keys(playlists).forEach(name => {
+                const li = document.createElement("li");
+                li.textContent = name;
+                li.classList.add("playlist-option");
+                li.addEventListener("click", () => addToPlaylist(name));
+                playlistOptions.appendChild(li);
+            });
+            addToPlaylistOverlay.style.display = "flex";
+        }
+
+        function closeAddToPlaylistPopup() {
+            addToPlaylistOverlay.style.display = "none";
+        }
+
+        function addToPlaylist(playlistName) {
+            if (currentSong && !playlists[playlistName].some(s => s.title === currentSong.title)) {
+                currentSong.image = songImages[currentSong.title] || null;
+                playlists[playlistName].push(currentSong);
+                savePlaylists();
+                const songElements = document.querySelectorAll('#song-list li');
+                songElements.forEach(songElement => {
+                    const songTitleElement = songElement.querySelector('.song-title');
+                    const songTitle = songTitleElement ? songTitleElement.textContent : '';
+                    if (songTitle === currentSong.title) {
+                        updateSongIcon(songElement, true);
+                    }
+                });
             }
+            closeAddToPlaylistPopup();
+        }
 
-            if (isShuffling) {
-               if (playedIndices.length >= currentPlaylist.length && repeatMode === 1) {
-                  playedIndices = [];
-               } else if (playedIndices.length >= currentPlaylist.length) {
-                  resetPlayer();
-                  return;
-               }
-               let nextIndex;
-               do {
-                  nextIndex = Math.floor(Math.random() * currentPlaylist.length);
-               } while (playedIndices.includes(nextIndex));
-               playedIndices.push(nextIndex);
-               currentSongIndex = nextIndex;
-            } else {
-               currentSongIndex++;
-               if (currentSongIndex >= currentPlaylist.length && repeatMode === 1) {
-                  currentSongIndex = 0;
-               }
+        function updateSongIcon(songElement, isAdded) {
+            const addBtn = songElement.querySelector('.add-to-playlist');
+            if (addBtn) {
+                if (isAdded) {
+                    addBtn.classList.remove('fa-plus');
+                    addBtn.classList.add('fa-circle-check');
+                } else {
+                    addBtn.classList.remove('fa-circle-check');
+                    addBtn.classList.add('fa-plus');
+                }
             }
+        }
 
-            if (currentSongIndex < currentPlaylist.length && currentSongIndex >= 0) {
-               const nextSong = currentPlaylist[currentSongIndex];
-               const nextSongLi = Array.from(songList.querySelectorAll("li"))[currentSongIndex];
-               updateSongInfo(nextSong.title, nextSong.artist || currentPlaylistNameValue, nextSong.album || '');
-               playSong(nextSong.src, nextSongLi, currentPlaylistNameValue);
-            } else {
-               resetPlayer();
-            }
-         }
+        function updateAllSongIcons() {
+            const songElements = document.querySelectorAll('#song-list li');
+            songElements.forEach(songElement => {
+                const songTitleElement = songElement.querySelector('.song-title');
+                const songTitle = songTitleElement ? songTitleElement.textContent : '';
+                let isInPlaylist = false;
+                Object.values(playlists).forEach(playlist => {
+                    if (playlist.some(song => song.title === songTitle)) {
+                        isInPlaylist = true;
+                    }
+                });
+                updateSongIcon(songElement, isInPlaylist);
+            });
+        }
 
-         function playPreviousSong() {
-            if (!currentPlaylistNameValue) return;
+        // Image cropping
+        function cropImageToSquare(file, callback) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+                    const size = Math.min(img.width, img.height);
+                    canvas.width = 150;
+                    canvas.height = 150;
+                    const srcX = (img.width - size) / 2;
+                    const srcY = (img.height - size) / 2;
+                    ctx.drawImage(img, srcX, srcY, size, size, 0, 0, 150, 150);
+                    const dataUrl = canvas.toDataURL("image/jpeg", 0.8);
+                    callback(dataUrl);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
 
-            const currentPlaylist = playlists[currentPlaylistNameValue];
-
-            if (isShuffling && playedIndices.length > 1) {
-               playedIndices.pop();
-               currentSongIndex = playedIndices[playedIndices.length - 1];
-            } else {
-               currentSongIndex--;
-               if (currentSongIndex < 0 && repeatMode === 1) {
-                  currentSongIndex = currentPlaylist.length - 1;
-               }
-            }
-
-            if (currentSongIndex >= 0) {
-               const prevSong = currentPlaylist[currentSongIndex];
-               const prevSongLi = Array.from(songList.querySelectorAll("li"))[currentSongIndex];
-               updateSongInfo(prevSong.title, prevSong.artist || currentPlaylistNameValue, prevSong.album || '');
-               playSong(prevSong.src, prevSongLi, currentPlaylistNameValue);
-            }
-         }
-
-         function resetPlayer() {
+        // Player controls
+        function togglePlayPause() {
             if (currentAudio) {
-               currentAudio.pause();
-               if (currentlyPlayingLi) {
-                  currentlyPlayingLi.classList.remove("playing");
-                  togglePlayIcon(currentlyPlayingLi, false);
-               }
-               playIcon.classList.replace("fa-pause", "fa-play");
-               clearInterval(progressInterval);
-               currentAudio = null;
-               currentlyPlayingLi = null;
-               currentSongIndex = -1;
-               playedIndices = [];
-               progressBar.style.width = "0%";
-               previousBtn.style.opacity = "0.2";
-               nextBtn.style.opacity = "0.2";
-               shuffleBtn.classList.remove("active");
-               isShuffling = false;
-               repeatBtn.classList.remove("repeat-all", "repeat-one");
-               repeatBtn.querySelector("i").classList.remove("fa-repeat-1");
-               repeatBtn.querySelector("i").classList.add("fa-repeat");
-               repeatMode = 0;
-               updateSongInfo("", "", "");
-               playlistContainer.classList.remove("active");
-               playlistList.style.display = "block";
-               songList.classList.remove("active");
-               songList.style.display = "none";
-               backBtn.style.display = "none";
-               showingSongs = false;
-               currentPlaylistName.textContent = "Playlists";
-               songslist.classList.remove("sidebar-open");
-               if (isLightsOn) {
-                  songslist.style.backgroundImage = `url('https://i.scdn.co/image/ab67616d0000b273e8c0e8b2f1a2f1a2f1a2f1a2')`;
-                  songslist.style.opacity = '0.8';
-               }
+                if (currentAudio.paused) {
+                    currentAudio.play().catch(error => console.log("Audio play error:", error));
+                    playIcon.classList.replace("fa-play", "fa-pause");
+                    updateProgressBar();
+                } else {
+                    currentAudio.pause();
+                    playIcon.classList.replace("fa-pause", "fa-play");
+                    clearInterval(progressInterval);
+                }
             }
-         }
+        }
 
-         function togglePlayIcon(songLi, isPlaying) {
+        function playNextSong() {
+            if (!currentPlaylistNameValue) return;
+            const currentPlaylist = playlists[currentPlaylistNameValue];
+            if (repeatMode === 2) {
+                currentAudio.currentTime = 0;
+                currentAudio.play();
+                return;
+            }
+            if (isShuffling) {
+                if (playedIndices.length >= currentPlaylist.length && repeatMode === 1) {
+                    playedIndices = [];
+                } else if (playedIndices.length >= currentPlaylist.length) {
+                    resetPlayer();
+                    return;
+                }
+                let nextIndex;
+                do {
+                    nextIndex = Math.floor(Math.random() * currentPlaylist.length);
+                } while (playedIndices.includes(nextIndex));
+                playedIndices.push(nextIndex);
+                currentSongIndex = nextIndex;
+            } else {
+                currentSongIndex++;
+                if (currentSongIndex >= currentPlaylist.length && repeatMode === 1) {
+                    currentSongIndex = 0;
+                }
+            }
+            if (currentSongIndex < currentPlaylist.length && currentSongIndex >= 0) {
+                const nextSong = currentPlaylist[currentSongIndex];
+                const nextSongLi = Array.from(songList.querySelectorAll("li"))[currentSongIndex];
+                updateSongInfo(nextSong.title, nextSong.artist || currentPlaylistNameValue, nextSong.album || '');
+                playSong(nextSong.src, nextSongLi, currentPlaylistNameValue);
+            } else {
+                resetPlayer();
+            }
+        }
+
+        function playPreviousSong() {
+            if (!currentPlaylistNameValue) return;
+            const currentPlaylist = playlists[currentPlaylistNameValue];
+            if (isShuffling && playedIndices.length > 1) {
+                playedIndices.pop();
+                currentSongIndex = playedIndices[playedIndices.length - 1];
+            } else {
+                currentSongIndex--;
+                if (currentSongIndex < 0 && repeatMode === 1) {
+                    currentSongIndex = currentPlaylist.length - 1;
+                }
+            }
+            if (currentSongIndex >= 0) {
+                const prevSong = currentPlaylist[currentSongIndex];
+                const prevSongLi = Array.from(songList.querySelectorAll("li"))[currentSongIndex];
+                updateSongInfo(prevSong.title, prevSong.artist || currentPlaylistNameValue, prevSong.album || '');
+                playSong(prevSong.src, prevSongLi, currentPlaylistNameValue);
+            }
+        }
+
+        function resetPlayer() {
+            if (currentAudio) {
+                currentAudio.pause();
+                if (currentlyPlayingLi) {
+                    currentlyPlayingLi.classList.remove("playing");
+                    togglePlayIcon(currentlyPlayingLi, false);
+                }
+                playIcon.classList.replace("fa-pause", "fa-play");
+                clearInterval(progressInterval);
+                currentAudio = null;
+                currentlyPlayingLi = null;
+                currentSongIndex = -1;
+                playedIndices = [];
+                progressBar.style.width = "0%";
+                previousBtn.style.opacity = "0.2";
+                nextBtn.style.opacity = "0.2";
+                shuffleBtn.classList.remove("active");
+                isShuffling = false;
+                repeatBtn.classList.remove("repeat-all", "repeat-one");
+                repeatBtn.querySelector("i").classList.remove("fa-repeat-1");
+                repeatBtn.querySelector("i").classList.add("fa-repeat");
+                repeatMode = 0;
+                updateSongInfo("", "", "");
+                playlistContainer.classList.remove("active");
+                playlistList.style.display = "block";
+                songList.classList.remove("active");
+                songList.style.display = "none";
+                backBtn.style.display = "none";
+                showingSongs = false;
+                currentPlaylistName.textContent = "Playlists";
+                songslist.classList.remove("sidebar-open");
+                if (isLightsOn) {
+                    songslist.style.backgroundImage = `url('https://i.scdn.co/image/ab67616d0000b273e8c0e8b2f1a2f1a2f1a2f1a2')`;
+                    songslist.style.opacity = '0.8';
+                }
+            }
+        }
+
+        function togglePlayIcon(songLi, isPlaying) {
             const icon = songLi.querySelector(".play-song");
             icon.classList.toggle("fa-play", !isPlaying);
             icon.classList.toggle("fa-pause", isPlaying);
-         }
+        }
 
-         function togglePlayPause() {
-            if (currentAudio) {
-               if (currentAudio.paused) {
-                  currentAudio.play().catch(error => console.log("Audio play error:", error));
-                  playIcon.classList.replace("fa-play", "fa-pause");
-                  updateProgressBar();
-               } else {
-                  currentAudio.pause();
-                  playIcon.classList.replace("fa-pause", "fa-play");
-                  clearInterval(progressInterval);
-               }
-            }
-         }
-
-         function updateProgressBar() {
+        function updateProgressBar() {
             clearInterval(progressInterval);
             progressInterval = setInterval(() => {
-               if (currentAudio) {
-                  const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
-                  progressBar.style.width = `${progress}%`;
-               }
+                if (currentAudio) {
+                    const progress = (currentAudio.currentTime / currentAudio.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                }
             }, 1000);
-         }
+        }
 
-         function seek(event) {
+        function seek(event) {
             if (!currentAudio) return;
             const rect = progressContainer.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
@@ -336,36 +577,47 @@
             currentAudio.currentTime = seekTo;
             const progress = (seekTo / currentAudio.duration) * 100;
             progressBar.style.width = `${progress}%`;
-         }
+        }
 
-         function toggleShuffle() {
+        function toggleShuffle() {
             isShuffling = !isShuffling;
             shuffleBtn.classList.toggle("active");
             if (isShuffling && currentSongIndex >= 0) {
-               playedIndices = [currentSongIndex];
+                playedIndices = [currentSongIndex];
             }
-         }
+        }
 
-         function toggleRepeat() {
-            repeatMode = (repeatMode + 1) % 3;
+        function toggleRepeat() {
+            repeatMode = (repeatMode + 1) % 2;
             const repeatIcon = repeatBtn.querySelector("i");
-
             repeatBtn.classList.remove("repeat-all", "repeat-one");
             repeatIcon.classList.remove("fa-repeat", "fa-repeat-1");
-
             if (repeatMode === 0) {
-               repeatIcon.classList.add("fa-repeat");
+                repeatIcon.classList.add("fa-repeat");
             } else if (repeatMode === 1) {
-               repeatBtn.classList.add("repeat-all");
-               repeatIcon.classList.add("fa-repeat");
-            } else if (repeatMode === 2) {
-               repeatBtn.classList.add("repeat-one");
-               repeatIcon.classList.add("fa-repeat-1");
+                repeatBtn.classList.add("repeat-all");
+                repeatIcon.classList.add("fa-repeat");
             }
-         }
+        }
 
-         function goBack() {
-            console.log("Going back to playlist list...");
+        function togglePlaylistList() {
+            if (playlistContainer.classList.contains("active")) {
+                playlistContainer.classList.remove("active");
+                songslist.classList.remove("sidebar-open");
+            } else {
+                loadPlaylists();
+                showingSongs = false;
+                currentPlaylistName.textContent = "Playlists";
+                playlistList.style.display = "block";
+                songList.classList.remove("active");
+                songList.style.display = "none";
+                backBtn.style.display = "none";
+                playlistContainer.classList.add("active");
+                songslist.classList.add("sidebar-open");
+            }
+        }
+
+        function goBack() {
             showingSongs = false;
             currentPlaylistName.textContent = "Playlists";
             playlistList.style.display = "block";
@@ -373,28 +625,33 @@
             songList.style.display = "none";
             backBtn.style.display = "none";
             loadPlaylists();
-         }
+        }
 
-         progressContainer.addEventListener("click", seek);
-         volumeSlider.addEventListener("input", () => {
-            if (currentAudio) {
-               currentAudio.volume = volumeSlider.value;
+        // Lights toggle
+        function toggleLights() {
+            isLightsOn = !isLightsOn;
+            lightsBtn.textContent = isLightsOn ? '💡' : '🌙';
+            lightsBtn.style.color = isLightsOn ? '#ffd700' : '#b3b3b3';
+            if (!isLightsOn) {
+                songslist.style.backgroundColor = '';
+                songslist.style.backgroundImage = `url('https://i.scdn.co/image/ab67616d0000b273e8c0e8b2f1a2f1a2f1a2f1a2')`;
+                songslist.style.opacity = '0.8';
+            } else {
+                changeLights();
             }
-         });
-         previousBtn.addEventListener("click", playPreviousSong);
-         nextBtn.addEventListener("click", playNextSong);
-         shuffleBtn.addEventListener("click", toggleShuffle);
-         repeatBtn.addEventListener("click", toggleRepeat);
-         listBtn.addEventListener("click", togglePlaylistList);
-         backBtn.addEventListener("click", goBack);
-         lightsBtn.addEventListener("click", toggleLights);
-         playPauseBtn.addEventListener("click", togglePlayPause);
+        }
 
-         // Initial load for testing
-         initializePlaylists();
+        function changeLights() {
+            if (isLightsOn) {
+                colorIndex = (colorIndex + 1) % lightColors.length;
+                songslist.style.backgroundImage = 'none';
+                songslist.style.backgroundColor = lightColors[colorIndex];
+                songslist.style.opacity = '1';
+                songslist.style.transition = 'background-color 0.5s ease';
+            }
+        }
 
-
-         document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
     // Show custom menu on right-click
@@ -405,11 +662,77 @@
         customMenu.style.left = `${event.pageX}px`;
     });
 
-    // Hide the menu when clicking elsewhere
+    // Hide custom menu on click
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
+
+    // Update song icons on page load
+    updateAllSongIcons();
 });
-      </script>
-   </body>
+        progressContainer.addEventListener("click", seek);
+        volumeSlider.addEventListener("input", () => {
+            if (currentAudio) {
+                currentAudio.volume = volumeSlider.value;
+            }
+        });
+        previousBtn.addEventListener("click", playPreviousSong);
+        nextBtn.addEventListener("click", playNextSong);
+        shuffleBtn.addEventListener("click", toggleShuffle);
+        repeatBtn.addEventListener("click", toggleRepeat);
+        listBtn.addEventListener("click", togglePlaylistList);
+        backBtn.addEventListener("click", goBack);
+        lightsBtn.addEventListener("click", toggleLights);
+        playPauseBtn.addEventListener("click", togglePlayPause);
+
+        document.addEventListener("click", e => {
+            if (e.target.classList.contains("add-to-playlist")) {
+                const songElement = e.target.parentNode;
+                const songTitleElement = songElement.querySelector(".song-title");
+                const song = {
+                    title: songTitleElement ? songTitleElement.textContent : 'Unknown Title',
+                    src: songElement.getAttribute("data-src") || '',
+                    artist: songElement.getAttribute("data-artist") || '',
+                    album: songElement.getAttribute("data-album") || ''
+                };
+                openAddToPlaylistPopup(song);
+            }
+        });
+
+        // Popup resizing
+        const popup = document.getElementById('popupContainer');
+        const handle = document.getElementById('resizeHandle');
+        let isDragging = false;
+        let startX, startY, startScale = 1;
+
+        handle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            const matrix = window.getComputedStyle(popup).transform;
+            if (matrix !== 'none') {
+                const values = matrix.split('(')[1].split(')')[0].split(',');
+                startScale = parseFloat(values[0]);
+            }
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            const delta = Math.max(dx, dy);
+            let newScale = startScale + delta / -300;
+            newScale = Math.max(0.5, Math.min(2, newScale));
+            popup.style.transform = `translateY(0) scale(${newScale})`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                document.body.style.userSelect = '';
+            }
+        });
+    </script>
+</body>
 </html>
