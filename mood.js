@@ -953,7 +953,6 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
