@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (songTitle) {
                 songTitle.classList.toggle('highlighted', isCurrentSong);
                 playIcon.innerHTML = isCurrentSong && isPlaying
-                    ? '<span class="material-symbols-outlined">pause</span>'
+                    ? '<span class="material-symbols-outlined"></span>'
                     : '<i class="fa-solid fa-play"></i>';
                 playIcon.className = 'play-button';
             }
@@ -494,14 +494,14 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.querySelectorAll('.play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('span').textContent;
             btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying
-                ? '<span class="material-symbols-outlined">pause</span>'
+                ? '<span class="material-symbols-outlined"></span>'
                 : '<i class="fa-solid fa-play"></i>';
             btn.className = 'play-button';
         });
         document.querySelectorAll('#song-list .play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('.song-title').innerText;
             btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying
-                ? '<span class="material-symbols-outlined">pause</span>'
+                ? '<span class="material-symbols-outlined"></span>'
                 : '<i class="fa-solid fa-play"></i>';
             btn.className = 'play-button';
         });
@@ -953,7 +953,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // Show custom menu on right-click
+    Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
