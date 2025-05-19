@@ -464,11 +464,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function highlightCurrentSong() {
-        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
-        console.log('Highlighting - Current playing src:', currentSrc);
+    const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
+    console.log('Highlighting - Current playing src:', currentSrc);
 
-        const allSongItems = document.querySelectorAll('.page #song-list li');
-        console.log(`Found ${allSongItems.length} song items to check`);
+    // Select all song lists across all pages
+    const allSongLists = document.querySelectorAll('.page ul[id^="song-list"]');
+    console.log(`Found ${allSongLists.length} song lists to check`);
+
+    allSongLists.forEach(songList => {
+        const allSongItems = songList.querySelectorAll('li');
+        console.log(`Checking ${allSongItems.length} song items in list ${songList.id}`);
 
         allSongItems.forEach(item => {
             const songSrc = item.getAttribute('data-src');
@@ -480,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
 
             item.classList.toggle('playing', isCurrentSong);
-            if (songTitle) {
+            if (songTitle && playIcon) {
                 songTitle.classList.toggle('highlighted', isCurrentSong);
                 playIcon.innerHTML = isCurrentSong && isPlaying
                     ? '<span class="material-symbols-outlined"></span>'
@@ -488,7 +493,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 playIcon.className = 'play-button';
             }
         });
-    }
+    });
+}
 
     function updateAllPlayButtons() {
         popup.querySelectorAll('.play-button').forEach(btn => {
@@ -960,12 +966,10 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.left = `${event.pageX}px`;
     });
 
-    // Hide custom menu on click
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
 
-    // Update song icons on page load
     updateAllSongIcons();
 
     function updateAllSongIcons() {
