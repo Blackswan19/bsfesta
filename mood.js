@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let isPlaying = false;
     let isRepeating = false;
     let isShuffleMode = false;
-    let isMuted = false;
-    let previousVolume = parseFloat(localStorage.getItem('previousVolume')) || 0.2;
+    let isMuted = false; // Track mute state
+    let previousVolume = parseFloat(localStorage.getItem('previousVolume')) || 0.2; // Store volume before muting
     let currentSection = localStorage.getItem('currentSection') || 'allin';
     let currentSectionButtons = [];
     let shuffleQueue = [];
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastPlayedSong = localStorage.getItem('lastPlayedSong') || null;
     let songList = [];
     let originalSongList = [];
-    let attemptedSongs = new Set();
+    let attemptedSongs = new Set(); // Tracks songs that failed to play
     let playlists = JSON.parse(localStorage.getItem('playlists')) || { "Favorites": [] };
     console.log('Loaded playlists from localStorage:', playlists);
     let currentSongToAdd = null;
@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Song List Management
     const getAllSongs = () => {
-        const seen = new Set();
         const songs = Array.from(document.querySelectorAll('.page #song-list li'))
             .map(li => {
                 const titleElement = li.querySelector('.song-title');
@@ -98,14 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     section: li.closest('.page')?.id || currentSection
                 };
             })
-            .filter(song => {
-                const key = `${song.src}|${song.title}`;
-                if (song.src && !seen.has(key)) {
-                    seen.add(key);
-                    return true;
-                }
-                return false;
-            });
+            .filter(song => song.src);
         if (!originalSongList.length) {
             originalSongList = [...songs];
         }
@@ -118,23 +110,30 @@ document.addEventListener('DOMContentLoaded', function () {
         currentSectionButtons = Array.from(document.querySelectorAll(`#${sectionId} .play-button`));
         console.log(`Section set to ${sectionId} with ${currentSectionButtons.length} songs`);
         localStorage.setItem('currentSection', currentSection);
-        currentSongIndex = 0; // Reset index for new section
         resetShuffleQueue();
         if (isPlaying && audioPlayer.src) {
             highlightCurrentSong();
+        } else {
+            currentSongIndex = 0;
         }
         updatePlayButtonListeners();
         updateAddToPlaylistListeners();
-        preloadNextSong();
+        preloadNextSong(); // Preload the first song in the new section
     }
 
     function resetShuffleQueue() {
-        shuffleQueue = Array.from({ length: currentSectionButtons.length }, (_, i) => i)
-            .filter(i => !attemptedSongs.has(i) && i !== currentSongIndex);
+        shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i)
+            .filter(i => !attemptedSongs.has(i)); // Exclude failed songs
+        if (currentSongIndex >= 0 && currentSectionButtons.length > 0) {
+            shuffleQueue = shuffleQueue.filter(i => i !== currentSongIndex);
+        }
         playedSongs.clear();
         shuffleHistory = [];
         if (isShuffleMode) {
             shuffleArray(shuffleQueue);
+            if (currentSongIndex >= 0) {
+                shuffleQueue.unshift(currentSongIndex);
+            }
         }
     }
 
@@ -170,11 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sectionIndex === -1) return;
         const songSrc = currentSectionButtons[sectionIndex].parentElement.getAttribute('data-src');
         const songTitle = currentSectionButtons[sectionIndex].parentElement.querySelector('.song-title').innerText;
-
+        
         // Check if the clicked song is currently playing
         if (isPlaying && currentSongIndex === sectionIndex && newSectionId === currentSection) {
-            pauseAudio();
+            pauseAudio(); // Pause the song
         } else {
+            // Play the song (resume if same song, start new if different)
             currentSongIndex = sectionIndex;
             if (isShuffleMode) {
                 shuffleQueue = shuffleQueue.filter(i => i !== sectionIndex);
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (playedSongs.size >= currentSectionButtons.length - attemptedSongs.size) {
                     resetShuffleQueue();
                 } else {
-                    shuffleQueue = Array.from({ length: currentSectionButtons.length }, (_, i) => i)
+                    shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i)
                         .filter(i => !playedSongs.has(i) && i !== currentSongIndex && !attemptedSongs.has(i));
                     shuffleArray(shuffleQueue);
                 }
@@ -220,13 +220,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (nextIndex >= 0 && currentSectionButtons[nextIndex] && !attemptedSongs.has(nextIndex)) {
             const nextSongSrc = currentSectionButtons[nextIndex].parentElement.getAttribute('data-src');
-            if (nextSongSrc !== audioPlayer.src) {
-                preloadPlayer.src = nextSongSrc;
-                nextSongPreloaded = { index: nextIndex, src: nextSongSrc };
-                console.log(`Preloaded next song: ${nextSongSrc}`);
-            } else {
-                nextSongPreloaded = null;
-            }
+            preloadPlayer.src = nextSongSrc;
+            nextSongPreloaded = { index: nextIndex, src: nextSongSrc };
+            console.log(`Preloaded next song: ${nextSongSrc}`);
         } else {
             nextSongPreloaded = null;
         }
@@ -238,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updatePlaylistUI();
 
     if (lastPlayedSong && playbackPosition > 0) {
-        const songIndex = Array.from(currentSectionButtons).findIndex(button =>
+        const songIndex = Array.from(currentSectionButtons).findIndex(button => 
             button.parentElement.getAttribute('data-src') === lastPlayedSong
         );
         if (songIndex !== -1) {
@@ -300,11 +296,11 @@ document.addEventListener('DOMContentLoaded', function () {
             highlightCurrentSong();
             updateAllPlayButtons();
             localStorage.setItem('currentSongIndex', currentSongIndex);
-            attemptedSongs.delete(currentSongIndex);
+            attemptedSongs.delete(currentSongIndex); // Remove from attempted if successful
             if (isShuffleMode) {
                 playedSongs.add(currentSongIndex);
             }
-            preloadNextSong();
+            preloadNextSong(); // Preload the next song after starting playback
         } catch (error) {
             console.error(`Error playing song at index ${currentSongIndex}:`, error);
             showMessage('Song skipped due to error');
@@ -407,8 +403,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (playedSongs.size >= currentSectionButtons.length - attemptedSongs.size) {
                     resetShuffleQueue();
                 } else {
-                    shuffleQueue = Array.from({ length: currentSectionButtons.length }, (_, i) => i)
-                        .filter(i => !playedSongs.has(i) && !attemptedSongs.has(i) && i !== currentSongIndex);
+                    shuffleQueue = Array.from({length: currentSectionButtons.length}, (_, i) => i)
+                        .filter(i => !playedSongs.has(i) && i !== currentSongIndex && !attemptedSongs.has(i));
                     shuffleArray(shuffleQueue);
                 }
             }
@@ -464,20 +460,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function highlightCurrentSong() {
-    const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
-    console.log('Highlighting - Current playing src:', currentSrc);
+        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '<span class="material-symbols-outlined"></span>';
+        console.log('Highlighting - Current playing src:', currentSrc);
 
-    // Select all song lists across all pages
-    const allSongLists = document.querySelectorAll('.page ul[id^="song-list"]');
-    console.log(`Found ${allSongLists.length} song lists to check`);
-
-    allSongLists.forEach(songList => {
-        const allSongItems = songList.querySelectorAll('li');
-        console.log(`Checking ${allSongItems.length} song items in list ${songList.id}`);
+        const allSongItems = document.querySelectorAll('.page #song-list li');
+        console.log(`Found ${allSongItems.length} song items to check`);
 
         allSongItems.forEach(item => {
             const songSrc = item.getAttribute('data-src');
-            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '';
+            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '<span class="material-symbols-outlined"></span>';
             const songTitle = item.querySelector('.song-title');
             const playIcon = item.querySelector('.play-button');
             const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
@@ -485,42 +476,41 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
 
             item.classList.toggle('playing', isCurrentSong);
-            if (songTitle && playIcon) {
+            if (songTitle) {
                 songTitle.classList.toggle('highlighted', isCurrentSong);
-                playIcon.innerHTML = isCurrentSong && isPlaying
-                    ? '<span class="material-symbols-outlined"></span>'
+                playIcon.innerHTML = isCurrentSong && isPlaying 
+                    ? '<span class="material-symbols-outlined"></span>' 
                     : '<i class="fa-solid fa-play"></i>';
-                playIcon.className = 'play-button';
+                playIcon.className = 'play-button'; // Ensure consistent class
             }
         });
-    });
-}
+    }
 
     function updateAllPlayButtons() {
         popup.querySelectorAll('.play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('span').textContent;
-            btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying
-                ? '<span class="material-symbols-outlined"></span>'
+            btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying 
+                ? '<span class="material-symbols-outlined"></span>' 
                 : '<i class="fa-solid fa-play"></i>';
             btn.className = 'play-button';
         });
         document.querySelectorAll('#song-list .play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('.song-title').innerText;
-            btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying
-                ? '<span class="material-symbols-outlined"></span>'
+            btn.innerHTML = songTitle === currentSongDetails.textContent && isPlaying 
+                ? '<span class="material-symbols-outlined"></span>' 
                 : '<i class="fa-solid fa-play"></i>';
             btn.className = 'play-button';
         });
         if (playPauseBtn) {
-            playPauseBtn.innerHTML = isPlaying
-                ? '<i class="fa-solid fa-pause"></i>'
+            playPauseBtn.innerHTML = isPlaying 
+                ? '<i class="fa-solid fa-pause"></i>' 
                 : '<i class="fa-solid fa-play"></i>';
         }
     }
 
     function toggleRepeat() {
         isRepeating = !isRepeating;
-        resetShuffleQueue();
+        resetShuffleQueue(); // Rebuild queue to exclude attempted songs
         repeatBtn.classList.toggle('active', isRepeating);
         repeatBtn.setAttribute('title', isRepeating ? 'Repeat On' : 'Repeat Off');
         preloadNextSong();
@@ -528,7 +518,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setVolume(value) {
         if (isMuted && value > 0) {
-            toggleMute();
+            toggleMute(); // Unmute if slider is moved above 0
         }
         audioPlayer.volume = value / 100;
         previousVolume = value / 100;
@@ -578,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addToPlaylistOverlay.style.display = 'block';
     }
 
-    window.closeAddToPlaylistPopup = function () {
+    window.closeAddToPlaylistPopup = function() {
         addToPlaylistOverlay.style.display = 'none';
         currentSongToAdd = null;
     };
@@ -666,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function () {
         songsPopupOverlay.style.display = 'block';
     }
 
-    window.closeSongsPopup = function () {
+    window.closeSongsPopup = function() {
         songsPopupOverlay.style.display = 'none';
     };
 
@@ -851,7 +841,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Page Navigation
-    window.showPage = function (pageId) {
+    window.showPage = function(pageId) {
         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
         document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
@@ -912,7 +902,7 @@ document.addEventListener('DOMContentLoaded', function () {
             color: #1db954; 
         }
         #repeat-btn.active i {
-            color: rgb(0, 55, 255); 
+            color:rgb(0, 55, 255); 
         }
         .divert {
             text-align: center;
@@ -933,6 +923,7 @@ document.addEventListener('DOMContentLoaded', function () {
             border: none;
             transition: border 0.5s ease;
         }
+        
         .play-button {
             display: inline-flex;
             align-items: center;
@@ -959,6 +950,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
+    // Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
@@ -966,18 +958,8 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.left = `${event.pageX}px`;
     });
 
+    // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
-
-    updateAllSongIcons();
-
-    function updateAllSongIcons() {
-        document.querySelectorAll('#song-list li').forEach(item => {
-            const playIcon = item.querySelector('.play-button');
-            if (playIcon) {
-                playIcon.className = 'play-button';
-            }
-        });
-    }
 });
