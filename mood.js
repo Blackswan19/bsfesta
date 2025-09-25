@@ -349,16 +349,22 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('lastPlayedSong', lastPlayedSong);
 
         try {
-            const playPromise = audioPlayer.play();
-            const timeout = setTimeout(() => {
-                if (!audioPlayer.currentTime > 0 && !audioPlayer.paused) {
-                    console.error(`Song ${songTitle} failed to start playing`);
-                    throw new Error('Playback didn’t start');
-                }
-            }, 500);
+            // Only call play() if the audio is not already playing
+            if (!isPlaying) {
+                console.log(`Starting playback: ${songTitle} at position ${position}`);
+                const playPromise = audioPlayer.play();
+                const timeout = setTimeout(() => {
+                    if (!audioPlayer.currentTime > 0 && !audioPlayer.paused) {
+                        console.error(`Song ${songTitle} failed to start playing`);
+                        throw new Error('Playback didn’t start');
+                    }
+                }, 500);
 
-            await playPromise;
-            clearTimeout(timeout);
+                await playPromise;
+                clearTimeout(timeout);
+            } else {
+                console.log(`Audio already playing, updating position: ${songTitle} at ${position}`);
+            }
 
             isPlaying = true;
             playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
@@ -794,7 +800,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (songItem) {
                         songItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         songItem.classList.add('highlight');
-                        setTimeout(() => songItem.classList.remove('highlight'), 15000);
+                        setTimeout(() => songItem.classList.remove('highlight'), 15000000000);
                     } else {
                         console.error(`Song ${song.title} not found in #song-list`);
                         showMessage(`Song "${song.title}" not found in list`);
@@ -834,6 +840,11 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             playNextSong();
         }
+    });
+
+    // Debug play events to trace double playback
+    audioPlayer.addEventListener('play', () => {
+        console.log('Audio play event triggered:', audioPlayer.src, 'at', audioPlayer.currentTime);
     });
 
     if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
@@ -879,37 +890,80 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (progressBarContainer) {
-        progressBarContainer.addEventListener('click', e => {
-            const rect = progressBarContainer.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const width = rect.width;
-            audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
-        });
-
         let isDragging = false;
+        let lastUpdate = 0;
+        const debounceTime = 150; // Increased to 150ms to reduce rapid updates
+
+        // Shared function to update currentTime
+        function updateCurrentTime(x, rect) {
+            const width = rect.width;
+            const boundedX = Math.max(0, Math.min(x, width));
+            audioPlayer.currentTime = (boundedX / width) * audioPlayer.duration;
+            localStorage.setItem('playbackPosition', audioPlayer.currentTime);
+            console.log(`Updated currentTime to ${audioPlayer.currentTime}`);
+        }
+
+        // Handle mousedown to start dragging
         progressBarContainer.addEventListener('mousedown', e => {
+            e.preventDefault(); // Prevent text selection or other default behaviors
             isDragging = true;
+            console.log('Mousedown triggered');
             const rect = progressBarContainer.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
-            const width = rect.width;
-            audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
+            updateCurrentTime(clickX, rect);
         });
 
+        // Handle dragging with mousemove
         document.addEventListener('mousemove', e => {
             if (isDragging) {
+                const now = Date.now();
+                if (now - lastUpdate < debounceTime) return;
+                lastUpdate = now;
+                console.log('Mousemove triggered during drag');
                 const rect = progressBarContainer.getBoundingClientRect();
-                const moveX = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-                audioPlayer.currentTime = (moveX / rect.width) * audioPlayer.duration;
+                const moveX = e.clientX - rect.left;
+                updateCurrentTime(moveX, rect);
             }
         });
 
-        document.addEventListener('mouseup', () => isDragging = false);
+        // Stop dragging on mouseup
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                console.log('Mouseup triggered, stopping drag');
+                isDragging = false;
+            }
+        });
 
+        // Handle touchstart for touch devices
         progressBarContainer.addEventListener('touchstart', e => {
+            e.preventDefault(); // Prevent emulated mouse events
+            console.log('Touchstart triggered');
             const touch = e.touches[0];
             const rect = progressBarContainer.getBoundingClientRect();
             const touchX = touch.clientX - rect.left;
-            audioPlayer.currentTime = (touchX / rect.width) * audioPlayer.duration;
+            updateCurrentTime(touchX, rect);
+            isDragging = true; // Enable dragging for touch
+        });
+
+        // Handle touchmove for dragging on touch devices
+        progressBarContainer.addEventListener('touchmove', e => {
+            e.preventDefault(); // Prevent scrolling or other default behaviors
+            if (isDragging) {
+                const now = Date.now();
+                if (now - lastUpdate < debounceTime) return;
+                lastUpdate = now;
+                console.log('Touchmove triggered during drag');
+                const touch = e.touches[0];
+                const rect = progressBarContainer.getBoundingClientRect();
+                const touchX = touch.clientX - rect.left;
+                updateCurrentTime(touchX, rect);
+            }
+        });
+
+        // Stop dragging on touchend
+        progressBarContainer.addEventListener('touchend', () => {
+            console.log('Touchend triggered, stopping drag');
+            isDragging = false;
         });
     }
 
@@ -1058,21 +1112,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     `;
     document.head.appendChild(style);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    // Show custom menu on right-click
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        customMenu.style.display = "block";
-        customMenu.style.top = `${event.pageY}px`;
-        customMenu.style.left = `${event.pageX}px`;
-    });
-
-    // Hide the menu when clicking elsewhere
-    document.addEventListener("click", () => {
-        customMenu.style.display = "none";
-    });
 });
