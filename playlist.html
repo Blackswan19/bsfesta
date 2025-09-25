@@ -121,7 +121,7 @@
             li.classList.add("playlist-item");
             li.innerHTML = `
                 <img src="${playlistImages[name] || 'logo/playlist.png'}" alt="" style="width: 13%;
-    margin: 5px;
+    margin: 0px 11px;
     border-radius: 5px;
     background: #ffffff61;
     opacity: 80%;">
@@ -654,7 +654,6 @@
         document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
