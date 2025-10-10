@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (volumeSlider) {
         volumeSlider.value = initialVolume * 100;
         if (volumeToggleBtn) {
-            volumeToggleBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            volumeToggleBtn.innerHTML = '<svg class="fa-volume-high" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>';
         }
     }
 
@@ -606,12 +606,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isMuted) {
             audioPlayer.volume = 0;
             volumeSlider.value = 0;
-            volumeToggleBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            volumeToggleBtn.innerHTML = '<svg class="fa-volume-xmark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M792-56 671-177q-25 16-53 27.5T560-131v-82q14-5 27.5-10t25.5-12L480-368v208L280-360H120v-240h128L56-792l56-56 736 736-56 56Zm-8-232-58-58q17-31 25.5-65t8.5-70q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 53-14.5 102T784-288ZM650-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T650-422ZM480-592 376-696l104-104v208Zm-80 238v-94l-72-72H200v80h114l86 86Zm-36-130Z"/></svg>';
         } else {
             const restoreVolume = previousVolume > 0 ? previousVolume : initialVolume;
             audioPlayer.volume = restoreVolume;
             volumeSlider.value = restoreVolume * 100;
-            volumeToggleBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            volumeToggleBtn.innerHTML = '<svg class="fa-volume-high" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>';
         }
         localStorage.setItem('isMuted', isMuted);
         localStorage.setItem('previousVolume', previousVolume);
@@ -765,7 +765,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 songDiv.innerHTML = `
                     <span>${song.title}</span>
                     <i class="fa-solid fa-play play-button"></i>
-                    <i class="fa-brands fa-golang scroll-to-song"></i>
+                    <svg class="scroll-to-song" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M160-375 17-517l45-46.5 53.5 52.5q-5-24.5-7.25-49.75T106-612.5q0-80 29.5-152.5T214-901l46 46q-40 53.5-64.75 114.75T170.5-612.5q0 30.5 4.5 61t10.5 60l72.5-72 44.5 46.5L160-375Zm457.5 268q-22 7.5-45.5 6.5T527.5-111L237-253.5l-3.5-8.5q7.5-32.5 32.75-53.5t58.25-20l91-2.5L302-651.5q-5.5-15 1.25-29.25t22.25-19.75q14-5.5 29.5 1.5t21 21.5l147.5 406-143 4 180 87q7 3 15.25 3t16.75-3.5L810-259.5q36.5-13.5 52.25-47.25T864.5-377L795-566.5q-5-15.5 1.75-30.25T818-617q15.5-5.5 30.25 1.75T867.5-594l70 190.5q23.5 65.5-6.5 128T836-188l-218.5 81Zm-71-300.5-64.5-174q-5.5-14 1.25-29T505.5-631q14-4 29 2.5t20.5 21l63 175-71.5 25Zm135-49.5L632-593q-5.5-14.5 1.25-29.75t22.25-19.75q14-5.5 28.75 1.25t19.25 20.75L754-482l-72.5 25Zm-5 108.5Z"/></svg>
                 `;
                 popup.appendChild(songDiv);
 
@@ -1020,8 +1020,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const style = document.createElement('style');
     style.textContent = `
         .control-button.active { 
-            color: #007bff; 
-            opacity: 1; 
+            
         }
         .control-button { 
             opacity: 0.7; 
@@ -1059,8 +1058,10 @@ document.addEventListener('DOMContentLoaded', function () {
             font-weight: bold; 
             color: #1db954; 
         }
-        #repeat-btn.active i {
-            color:rgb(0, 55, 255); 
+        #repeat-btn.active{
+           background-color: #0048ff;
+    padding: 4px 6px;
+    border-radius: 38px;
         }
         .divert {
             text-align: center;
@@ -1090,17 +1091,16 @@ document.addEventListener('DOMContentLoaded', function () {
             height: 24px;
         }
         #volume-toggle-btn {
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-        #volume-toggle-btn:hover {
-            opacity: 0.8;
-        }
+               cursor: pointer;
+    display: inline-flex
+;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    margin-right: -10px;
+
+    }
+        
     `;
     document.head.appendChild(style);
 });
@@ -1108,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
-    // Show custom menu on right-click
+    Show custom menu on right-click
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
