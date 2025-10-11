@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     } else {
-        console.error('Search popup element (#search-popup) not found');
+        console.error('Search popup element (#search-popup, #searchboxcon) not found');
     }
 
     
@@ -1120,4 +1120,3 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.display = "none";
     });
 });
-
