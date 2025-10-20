@@ -1,5 +1,10 @@
 <!doctype html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>BsFesta | Mini Festa</title> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <style> @import url('https://fonts.googleapis.com/css2?family=Alata&family=Anton&family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Racing+Sans+One&family=Roboto+Slab:wght@100..900&family=Satisfy&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Racing+Sans+One&family=Roboto+Slab:wght@100..900&family=Satisfy&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Roboto+Slab:wght@100..900&family=Satisfy&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Orbitron:wght@400;700&family=Red+Hat+Display:wght@400;900&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Alata&family=Corinthia:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Geologica:wght@100..900&family=Lavishly+Yours&family=League+Spartan:wght@100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mrs+Saint+Delafield&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); * {scroll-behavior: smooth; font-family: "Prompt", sans-serif; } body { font-family: 'Verdana', 'Trebuchet MS', sans-serif; margin: 0; background: linear-gradient(180deg, #2e2e2e, #1c2526); color: #e0e0e0; display: flex; flex-direction: column; height: 100vh; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABBJREFUCB1jYGBg+M8ABf4DAAZMAj6vL7rKAAAAAElFTkSuQmCC'); background-repeat: repeat; -webkit-tap-highlight-color: transparent; scrollbar-color: rgb(109, 109, 109) rgba(0, 0, 0, 0); } body { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; background-color: #000000; } header { padding: 15px; text-align: center; background: linear-gradient(#4a4a4a, #2e2e2e); border-bottom: 3px solid #1a1a1a; font-size: 1.8em; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.6); color: #d9d9d9; box-shadow: 0 2px 5px rgba(0,0,0,0.4); display: flex; justify-content: space-between; align-items: center; } .menu-btn { display: none; font-size: 1.5em; background: none; border: none; color: #e0e0e0; cursor: pointer; padding: 10px; } main { display: flex; flex: 1; overflow: hidden; } .sidebar { width: 300px; background: linear-gradient(#3a3a3a, #2c2c2c); border-right: 3px solid #1a1a1a; padding: 20px; overflow-y: auto; box-shadow: inset 0 0 15px rgba(0,0,0,0.4); } .content { flex: 1; display: flex; flex-direction: column; padding: 20px; background: #252525; } .tracks { display: flex; flex-wrap: wrap; gap: 15px; padding: 10px 0; overflow-y: auto; } input{ margin: 10px 0px; } .track { flex: 0 0 200px; background: linear-gradient(#3c3c3c, #2e2e2e); border-radius: 10px; padding: 10px 10px; text-align: center; border: 1px solid #1a1a1a; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.15); transition: transform 0.2s, background 0.2s; margin: 10px; } .track.playing { background: linear-gradient(50deg, rgb(0 74 255), rgb(0 159 255)); border: 1px solid #ffffff; transform: scale(1.05); box-shadow: 0 4px 10px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.2); } .track:hover { transform: scale(1.03); background: linear-gradient(#4a4a4a, #3c3c3c); } button { background: linear-gradient(#5c5c5c, #3a3a3a); border: 1px solid #1a1a1a; color: #e0e0e0; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 3px 6px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.2); text-shadow: 0 1px 1px rgba(0,0,0,0.4); transition: all 0.1s; margin: 5px; touch-action: manipulation; } button:hover { background: linear-gradient(#6c6c6c, #4a4a4a); box-shadow: 0 2px 4px rgba(0,0,0,0.6); } button:active { background: linear-gradient(#3a3a3a, #5c5c5c); box-shadow: inset 0 3px 6px rgba(0,0,0,0.5); transform: translateY(2px); } button.delete-btn { background: linear-gradient(#ff4d4d, #cc3333); border: 1px solid #990000; } button.delete-btn:hover { background: linear-gradient(#ff6666, #e60000); } select, input[type=range], input[type=text] { padding: 6px; border-radius: 6px; border: 1px solid #1a1a1a; background: #2e2e2e; color: #e0e0e0; margin-top: 8px; width: 100%; box-shadow: inset 0 1px 4px rgba(0,0,0,0.4); font-size: 0.9em; touch-action: manipulation; } .playlist { background: linear-gradient(#3c3c3c, #2e2e2e); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid #1a1a1a; box-shadow: 0 3px 8px rgba(0,0,0,0.4); } .playlist h3 { margin: 0 0 12px; font-size: 1.2em; color: #d9d9d9; text-shadow: 0 1px 2px rgba(0,0,0,0.4); } .controls { display: none; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; } .controls.open { display: flex; } .audio-container { margin-top: auto; text-align: center; background: linear-gradient(#3a3a3a, #2c2c2c); border-radius: 10px; padding: 20px; border: 1px solid #1a1a1a; box-shadow: 0 3px 8px rgba(0,0,0,0.5); } .toggle-controls-btn { background: linear-gradient(#5c5c5c, #3a3a3a); border: 1px solid #1a1a1a; color: #e0e0e0; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; box-shadow: 0 3px 6px rgba(0,0,0,0.5); margin: 10px auto; display: block; } .progress-container { display: flex; align-items: center; gap: 12px; margin-top: 12px; } .progress-container input[type=range] { flex: 1; } .progress-container span { font-size: 0.9em; text-shadow: 0 1px 1px rgba(0,0,0,0.3); } .volume-container { display: flex; align-items: center; gap: 6px; margin-left: 12px; } .volume-container label { font-size: 0.9em; } .volume-container input[type=range] { width: 120px; } .info-btn { position: fixed; bottom: 0px; right: 20px; font-size: 1.3em; padding: 12px; width: 48px; height: 48px; display: flex ; justify-content: center; align-items: center; background: linear-gradient(#5c5c5c, #3a3a3a); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5); } .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; overflow-y: auto; } .modal-content { background: linear-gradient(#3c3c3c, #2e2e2e); border: 1px solid #1a1a1a; border-radius: 10px; padding: 25px; max-width: 450px; color: #e0e0e0; box-shadow: 0 5px 12px rgba(0,0,0,0.6); text-shadow: 0 1px 1px rgba(0,0,0,0.3); } .modal-content h3 { margin: 0 0 15px; font-size: 1.3em; } .modal-content p { margin: 0 0 15px; font-size: 0.9em; } .modal-content ul { margin: 0 0 20px; padding-left: 25px; font-size: 0.9em; } .modal-content button { width: 48%; margin: 0 1%; font-size: 1em; } footer { padding: 15px; text-align: center; background: linear-gradient(#4a4a4a, #2e2e2e); border-top: 3px solid #1a1a1a; color: #b3b3b3; text-shadow: 0 1px 1px rgba(0,0,0,0.3); box-shadow: 0 -2px 5px rgba(0,0,0,0.4); } hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, #ffffff, transparent); margin: 12px 0; } /* Mobile Responsive Styling */ @media (max-width: 768px) { .menu-btn { display: block; } .sidebar { display: none; position: fixed; top: 0; left: 0; width: 80%; max-width: 300px; height: 100%; z-index: 100; padding: 15px; box-sizing: border-box; } .sidebar.open { display: block; } .content { padding: 15px; flex: 1; overflow-y: auto; } .track { flex: 1 0 80%; padding: 12px; min-height: 100px; } .track div { font-size: 1em; word-break: break-word; } button { padding: 5px 12px; font-size: 1em; min-width: 80px; } select, input[type=range], input[type=text] { padding: 8px; font-size: 1em; height: 40px; width: 90%; } .controls { gap: 10px; flex-direction: row; justify-content: space-around; padding: 10px 0; } .audio-container { padding: 15px; position: sticky; bottom: 0; background: linear-gradient(#3a3a3a, #2c2c2c); z-index: 10; } .volume-container { margin-left: 0; justify-content: center; } .volume-container input[type=range] { width: 100px; } .progress-container { gap: 10px; padding: 0 10px; } .progress-container span { font-size: 0.9em; } .modal-content { max-width: 90%; padding: 20px; margin: 10px; } .modal-content button { width: 100%; margin: 8px 0; padding: 12px; } .info-btn { bottom: 0px; right: 10px; width: 50px; height: 50px; font-size: 1.4em; } header { font-size: 1.6em; padding: 12px; } footer { font-size: 0.9em; padding: 12px; } .playlist { padding: 12px; } .playlist h3 { font-size: 1.1em; } .toggle-controls-btn { padding: 12px; font-size: 1em; } } @media (max-width: 480px) { .track { padding: 10px; min-height: 90px; } button { padding: 5px 12px; font-size: 0.95em; min-width: 70px; } .controls { flex-direction: column; align-items: center; gap: 8px; } .volume-container { flex-direction: column; align-items: center; gap: 8px; } .volume-container input[type=range] { width: 100%; max-width: 200px; } .progress-container input[type=range] { width: 100%; } .modal-content { padding: 15px; } .modal-content ul { font-size: 0.85em; padding-left: 20px; } .modal-content h3 { font-size: 1.2em; } header { font-size: 1.4em; } .sidebar { padding: 10px; } .info-btn { width: 0px; height: 40px; font-size: 1.2em; } } @media (max-width: 360px) { header { font-size: 1.2em; } .track div { font-size: 0.9em; } button { font-size: 0.9em; padding: 8px 10px; } select, input[type=range], input[type=text] { font-size: 0.9em; height: 36px; } .modal-content { padding: 12px; } .modal-content h3 { font-size: 1.1em; } .modal-content p, .modal-content ul { font-size: 0.8em; } } </style> </head> <body> <header> BsFesta's - Mini Festa <button style=" padding: 5px 25px; font-size: 19px;"><a target="_blank" href="https://blackswan19.github.io/bsfesta/minfes_adhm" style="text-decoration: underline;color: #0075ff;">Get Offline</button></a> <button class="menu-btn" id="menuBtn">☰</button> </header> <main> <div class="sidebar" id="sidebar"> <button id="homeBtn"><span style="font-size:1.2em;">⌂</span> Home</button> <button id="uploadBtn"><span style="font-size:1.2em;">↑</span> Upload Songs</button> <input type="file" id="fileInput" accept="audio/*" multiple style="display:none; margin-top:10px;" /> <hr> <input type="text" id="playlistName" placeholder="New playlist name"> <button id="createPlaylist"><span style="font-size:1.2em;">+</span> Create Playlist</button> <hr> <input type="text" id="playlistSearch" placeholder="Search playlists"> <div id="playlists"></div> </div> <div class="content"> <h2 id="contentTitle" style=" margin: 5px 15px;">All Songs</h2> <input style=" margin: 0px 0px 10px 10px;" type="text" id="songSearch" placeholder="Search songs"> <div class="tracks" id="tracks"></div> <div class="audio-container"> <button class="toggle-controls-btn" id="toggleControlsBtn">Open Controls</button> <audio id="audio" style="display:none;"></audio> <div class="controls" id="controls"> <label style=" margin-right: 22px;">Bass <input type="range" id="bassRange" min="-15" max="15" value="0"></label> <button id="repeatBtn" title="Repeat">⟲</button> <button id="prevBtn" title="Previous"><<</button> <button id="playPauseBtn" title="Play/Pause">|></button> <button id="nextBtn" title="Next">>></button> <button id="shuffleBtn" title="Shuffle">~><~</button> <div class="volume-container"> <label>Vol <br><input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1"></label> </div> <label style=" display: flex ;margin-left: 10px; justify-content: center; align-items: baseline; gap: 15px; position: relative; top: 5px;">Speed <select id="speedSelect"> <option>0.25x</option> <option>0.5x</option> <option>0.75x</option> <option>0.8x</option> <option>0.9x</option> <option selected>1x</option> <option>1.1x</option> <option>1.25x</option> <option>1.5x</option> <option>1.75x</option> <option>2x</option> <option>2.5x</option> </select></label> </div> <div class="progress-container"> <span id="currentTime">0:00</span> <input type="range" id="seekBar" value="0" min="0" max="100" step="0.1"> <span id="duration">0:00</span> </div> </div> </div> </main> <footer>From Black Swan</footer> <button id="infoBtn" class="info-btn" title="Info">!</button> <a href="https://blackswan19.github.io/bsfesta/minifesta" style=" position: fixed; bottom: 1px; width: fit-content; white-space: nowrap;"><button id="infoBtn" class="info-btn2" title="Info" style="">Go Online</button></a> <div id="infoModal" class="modal"> <div class="modal-content" style="height: 500px; overflow-y: scroll;"> <h3>How to Use the Music Player</h3> <ul> <li><strong>Menu</strong>: On mobile, click the ☰ menu icon to show/hide playlists and upload options.</li><br> <li><strong>Upload Songs</strong>: Click the "↑ Upload Songs" button to select audio files. If duplicates are detected, choose to skip or add them.</li><br> <li><strong>Create Playlists</strong>: Enter a name in the "New playlist name" field and click "+ Create Playlist" to make a new playlist.</li><br> <li><strong>Add to Playlist</strong>: In the song list, use the dropdown next to each song to select a playlist and add the song to it.</li><br> <li><strong>View Playlists</strong>: Click "[>] Load" next to a playlist to view its songs. Click "X Delete" to remove a playlist.</li><br> <li><strong>Play Songs</strong>: Click "> Play" next to a song to start playback. The playing song is highlighted in green.</li><br> <li><strong>Controls</strong>: Click "Open Controls" to show/hide playback controls. Use "<<" (previous), ">" or "||" (play/pause), ">>" (next), "~" (shuffle), "⟲" (repeat current song), bass slider, speed dropdown, and volume slider.</li><br> <li><strong>Home</strong>: Click "⌂ Home" to view all uploaded songs.</li><br> <li><strong>Progress Bar</strong>: Drag the seek bar to jump to a specific part of the song. Current time and duration are shown.</li><br> <hr style="background: white"> <li><strong>Listen offline</strong>: You can listen to your music file by downloading the file and listen offline also.</li><br> <a href="https://blackswan19.github.io/bsfesta/minfes_adhm" style="text-decoration: underline;color: rgb(0, 183, 255);">Listen Offline</a> </ul> <button onclick="closeModal('infoModal')">Close</button> </div> </div> <div class="custom-menu"> <style> a { text-decoration: none; } .custom-menu { display: none; position: fixed; background-color: #6b6b6b; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 5px 15px 5px 5px; border-radius: 8px; z-index: 1000; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; } .custom-menu button:hover { background-color: #404040; } </style> <a href="https://blackswan19.github.io/bsfesta/playlist"> <button id="option1">Explore Playlists</button> </a><a href="https://blackswan19.github.io/bsfesta/music"> <button id="option1">Explore BsFesta</button> </a> <a href="https://blackswan19.github.io/bscrop/formbs"> <button id="option2">More From BS</button> </a> <a href="https://blackswan19.github.io/bsfesta/addhome"> <button id="option2" onclick="alert('Its for BsFesta but to add to home, Same process..')">Add to Home</button> </a> </div> <div id="errorModal" class="modal"> <div class="modal-content"> <h3>Error</h3> <p id="errorMessage"></p> <button onclick="closeModal('errorModal')">Close</button> </div> </div> <div id="duplicateModal" class="modal"> <div class="modal-content"> <h3>Duplicate Songs Detected</h3> <p>We found some duplicate songs:</p> <p id="duplicateList"></p> <p>Would you like to skip duplicates or add all songs?</p> <button onclick="skipDuplicates()">Skip Duplicates</button> <button onclick="addAllSongs()">Add All Songs</button> </div> </div>
 <script>
+    // Generate a unique identifier based on the pathname or a custom string
+    const pageId = window.location.pathname.split('/').pop() || 'default'; // e.g., 'minifesta' or 'minfes_adhm'
+    const storageKey = `playlists_${pageId}`; // Unique localStorage key
+    const dbName = `MusicDB_${pageId}`; // Unique IndexedDB database name
+
     const fileInput = document.getElementById('fileInput');
     const uploadBtn = document.getElementById('uploadBtn');
     const homeBtn = document.getElementById('homeBtn');
@@ -34,7 +39,7 @@
     const songSearch = document.getElementById('songSearch');
 
     let db;
-    let playlists = JSON.parse(localStorage.getItem('playlists') || '{}');
+    let playlists = JSON.parse(localStorage.getItem(storageKey) || '{}');
     let tracks = [];
     let currentTrack = -1;
     let isPlaying = false;
@@ -60,7 +65,7 @@
     }
 
     function initDB() {
-      const request = indexedDB.open('MusicDB', 1);
+      const request = indexedDB.open(dbName, 1); // Use unique dbName
       request.onupgradeneeded = e => {
         db = e.target.result;
         if (!db.objectStoreNames.contains('tracks')) {
@@ -190,7 +195,7 @@
       if (playlistName && playlists[playlistName]) {
         if (!playlists[playlistName].includes(tracks[trackIndex].id)) {
           playlists[playlistName].push(tracks[trackIndex].id);
-          localStorage.setItem('playlists', JSON.stringify(playlists));
+          localStorage.setItem(storageKey, JSON.stringify(playlists));
           renderPlaylists();
           if (currentPlaylist === playlistName) {
             renderTracks(playlistName);
@@ -209,7 +214,7 @@
 
     function deletePlaylist(name) {
       delete playlists[name];
-      localStorage.setItem('playlists', JSON.stringify(playlists));
+      localStorage.setItem(storageKey, JSON.stringify(playlists));
       if (currentPlaylist === name) {
         currentPlaylist = null;
         renderTracks();
@@ -221,7 +226,7 @@
       const name = playlistNameInput.value.trim();
       if (name && !playlists[name]) {
         playlists[name] = [];
-        localStorage.setItem('playlists', JSON.stringify(playlists));
+        localStorage.setItem(storageKey, JSON.stringify(playlists));
         playlistNameInput.value = '';
         renderPlaylists();
       } else if (playlists[name]) {
@@ -284,19 +289,18 @@
         playNext();
       }
     });
-     document.addEventListener("DOMContentLoaded", () => {
-    const customMenu = document.querySelector(".custom-menu");
-
-    document.addEventListener("contextmenu", (event) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const customMenu = document.querySelector(".custom-menu");
+      document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
         customMenu.style.display = "block";
         customMenu.style.top = `${event.pageY}px`;
         customMenu.style.left = `${event.pageX}px`;
-    });
-    document.addEventListener("click", () => {
+      });
+      document.addEventListener("click", () => {
         customMenu.style.display = "none";
+      });
     });
-});
     audio.addEventListener('timeupdate', () => {
       if (audio.duration) {
         seekBar.value = (audio.currentTime / audio.duration) * 100;
@@ -357,7 +361,7 @@
         for (let p in playlists) {
           playlists[p] = playlists[p].filter(id => id !== tracks[i].id);
         }
-        localStorage.setItem('playlists', JSON.stringify(playlists));
+        localStorage.setItem(storageKey, JSON.stringify(playlists));
         if (i === currentTrack) {
           audio.pause();
           isPlaying = false;
@@ -369,7 +373,26 @@
     }
 
     initDB();
-  </script>
+     document.addEventListener("DOMContentLoaded", () => {
+            const customMenu = document.querySelector(".custom-menu");
+
+            document.addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                if (customMenu) {
+                    customMenu.style.display = "block";
+                    customMenu.style.top = `${event.pageY}px`;
+                    customMenu.style.left = `${event.pageX}px`;
+                }
+            });
+
+            document.addEventListener("click", () => {
+                if (customMenu) {
+                    customMenu.style.display = "none";
+                }
+            });
+        });
+</script>
 </body>
 </html>
+
 
