@@ -533,32 +533,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function highlightCurrentSong() {
-        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '<span class="material-symbols-outlined"></span>';
-        console.log('Highlighting - Current playing src:', currentSrc);
+    const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
+    console.log('Highlighting - Current playing src:', currentSrc);
 
-        const allSongItems = document.querySelectorAll('.page #song-list li');
-        console.log(`Found ${allSongItems.length} song items to check`);
+    // Select all <li> elements within <ul> elements with class 'songssad'
+    const allSongItems = document.querySelectorAll('ul.songssad li');
+    console.log(`Found ${allSongItems.length} song items to check`);
 
-        allSongItems.forEach(item => {
-            const songSrc = item.getAttribute('data-src');
-            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '<span class="material-symbols-outlined"></span>';
-            const songTitle = item.querySelector('.song-title');
-            const playIcon = item.querySelector('.play-button');
-            const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
+    allSongItems.forEach(item => {
+        const songSrc = item.getAttribute('data-src');
+        const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '';
+        const songTitle = item.querySelector('.song-title');
+        const playIcon = item.querySelector('.play-button');
+        const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
 
-            console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
+        console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
 
-            item.classList.toggle('playing', isCurrentSong);
-            if (songTitle) {
-                songTitle.classList.toggle('highlighted', isCurrentSong);
-                playIcon.innerHTML = isCurrentSong && isPlaying 
-                    ? '<span class="material-symbols-outlined"></span>' 
-                    : '<i class="fa-solid fa-play"></i>';
-                playIcon.className = 'play-button'; // Ensure consistent class
-            }
-        });
-    }
-
+        item.classList.toggle('playing', isCurrentSong);
+        if (songTitle && playIcon) {
+            songTitle.classList.toggle('highlighted', isCurrentSong);
+            playIcon.innerHTML = isCurrentSong && isPlaying 
+                ? '<span class="material-symbols-outlined">pause</span>' 
+                : '<i class="fa-solid fa-play"></i>';
+            playIcon.className = 'play-button'; // Ensure consistent class
+        }
+    });
+}
     function updateAllPlayButtons() {
         popup.querySelectorAll('.play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('span').textContent;
@@ -736,83 +736,111 @@ document.addEventListener('DOMContentLoaded', function () {
         songsPopupOverlay.style.display = 'none';
     };
 
-    // Search Functionality
-    function performSearch() {
-        const searchTerm = searchBar.value.toLowerCase().trim();
-        console.log('Search term:', searchTerm);
-        songList = getAllSongs();
-        console.log('songList in performSearch:', songList);
-        popup.innerHTML = '';
+// Debounce utility
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
 
-        if (searchTerm === '') {
-            popup.classList.remove('active');
-            console.log('Search cleared, popup hidden');
-            return;
-        }
+// Cache songList if it doesn't change frequently
+let cachedSongList = null;
 
-        const matches = songList.filter(song => song.title.toLowerCase().includes(searchTerm));
-        console.log('Search matches:', matches);
+function performSearch() {
+    const searchTerm = searchBar.value.toLowerCase().trim();
+    console.log('Search term:', searchTerm);
 
-        const uniqueTitles = new Set();
-        const uniqueMatches = matches.filter(song => {
-            if (uniqueTitles.has(song.title)) return false;
+    // Use cached songList or fetch it
+    if (!cachedSongList) {
+        cachedSongList = getAllSongs().map(song => ({
+            ...song,
+            titleLower: song.title.toLowerCase() // Precompute lowercase title
+        }));
+    }
+    const songList = cachedSongList;
+    console.log('songList in performSearch:', songList);
+    popup.innerHTML = '';
+
+    if (searchTerm === '') {
+        popup.classList.remove('active');
+        console.log('Search cleared, popup hidden');
+        return;
+    }
+
+    // Filter unique matches in one pass
+    const uniqueTitles = new Set();
+    const matches = songList.reduce((acc, song) => {
+        if (song.titleLower.includes(searchTerm) && !uniqueTitles.has(song.title)) {
             uniqueTitles.add(song.title);
-            return true;
+            acc.push(song);
+        }
+        return acc;
+    }, []);
+
+    console.log('Search matches:', matches);
+
+    if (matches.length > 0) {
+        // Build HTML string for all results
+        const html = matches.map(song => `
+            <div class="popup-song" data-src="${song.src}" data-title="${song.title}" data-section="${song.section}">
+                <span>${song.title}</span>
+                <i class="fa-solid fa-play play-button"></i>
+                <svg class="scroll-to-song" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M160-375 17-517l45-46.5 53.5 52.5q-5-24.5-7.25-49.75T106-612.5q0-80 29.5-152.5T214-901l46 46q-40 53.5-64.75 114.75T170.5-612.5q0 30.5 4.5 61t10.5 60l72.5-72 44.5 46.5L160-375Zm457.5 268q-22 7.5-45.5 6.5T527.5-111L237-253.5l-3.5-8.5q7.5-32.5 32.75-53.5t58.25-20l91-2.5L302-651.5q-5.5-15 1.25-29.25t22.25-19.75q14-5.5 29.5 1.5t21 21.5l147.5 406-143 4 180 87q7 3 15.25 3t16.75-3.5L810-259.5q36.5-13.5 52.25-47.25T864.5-377L795-566.5q-5-15.5 1.75-30.25T818-617q15.5-5.5 30.25 1.75T867.5-594l70 190.5q23.5 65.5-6.5 128T836-188l-218.5 81Zm-71-300.5-64.5-174q-5.5-14 1.25-29T505.5-631q14-4 29 2.5t20.5 21l63 175-71.5 25Zm135-49.5L632-593q-5.5-14.5 1.25-29.75t22.25-19.75q14-5.5 28.75 1.25t19.25 20.75L754-482l-72.5 25Zm-5 108.5Z"/></svg>
+            </div>
+        `).join('');
+        popup.innerHTML = html;
+        popup.classList.add('active');
+        console.log('Popup shown with', matches.length, 'results');
+
+        // Event delegation for play and scroll buttons
+        popup.addEventListener('click', (e) => {
+            const songDiv = e.target.closest('.popup-song');
+            if (!songDiv) return;
+            const src = songDiv.dataset.src;
+            const title = songDiv.dataset.title;
+            const section = songDiv.dataset.section;
+
+            if (e.target.classList.contains('play-button')) {
+                console.log(`Clicked to play: ${title} from ${section}`);
+                updateSectionButtons(section);
+                const sectionSongs = songList.filter(s => s.section === section);
+                currentSongIndex = sectionSongs.findIndex(s => s.src === src && s.title === title);
+                if (currentSongIndex === -1) {
+                    console.error(`Song ${title} not found in section ${section}`);
+                    return;
+                }
+                const isSameSong = audioPlayer.src === new URL(src, window.location.href).href;
+                playAudio(src, title, section, isSameSong ? audioPlayer.currentTime : 0);
+            } else if (e.target.classList.contains('scroll-to-song')) {
+                console.log(`Scrolling to song: ${title} with src: ${src}`);
+                const songItem = Array.from(document.querySelectorAll('#song-list li')).find(li => {
+                    const liSrc = li.getAttribute('data-src');
+                    const liTitle = li.querySelector('.song-title')?.innerText.trim();
+                    return liSrc === src && liTitle === title;
+                });
+                if (songItem) {
+                    songItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    songItem.classList.add('highlight');
+                    setTimeout(() => songItem.classList.remove('highlight'), 1500); // Reduced highlight duration
+                } else {
+                    console.error(`Song ${title} not found in #song-list`);
+                    showMessage(`Song "${title}" not found in list`);
+                }
+            }
         });
 
-        if (uniqueMatches.length > 0) {
-            uniqueMatches.forEach(song => {
-                console.log('Processing search result:', song);
-                const songDiv = document.createElement('div');
-                songDiv.className = 'popup-song';
-                songDiv.innerHTML = `
-                    <span>${song.title}</span>
-                    <i class="fa-solid fa-play play-button"></i>
-                    <svg style="display: none;" class="scroll-to-song" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M160-375 17-517l45-46.5 53.5 52.5q-5-24.5-7.25-49.75T106-612.5q0-80 29.5-152.5T214-901l46 46q-40 53.5-64.75 114.75T170.5-612.5q0 30.5 4.5 61t10.5 60l72.5-72 44.5 46.5L160-375Zm457.5 268q-22 7.5-45.5 6.5T527.5-111L237-253.5l-3.5-8.5q7.5-32.5 32.75-53.5t58.25-20l91-2.5L302-651.5q-5.5-15 1.25-29.25t22.25-19.75q14-5.5 29.5 1.5t21 21.5l147.5 406-143 4 180 87q7 3 15.25 3t16.75-3.5L810-259.5q36.5-13.5 52.25-47.25T864.5-377L795-566.5q-5-15.5 1.75-30.25T818-617q15.5-5.5 30.25 1.75T867.5-594l70 190.5q23.5 65.5-6.5 128T836-188l-218.5 81Zm-71-300.5-64.5-174q-5.5-14 1.25-29T505.5-631q14-4 29 2.5t20.5 21l63 175-71.5 25Zm135-49.5L632-593q-5.5-14.5 1.25-29.75t22.25-19.75q14-5.5 28.75 1.25t19.25 20.75L754-482l-72.5 25Zm-5 108.5Z"/></svg>
-                `;
-                popup.appendChild(songDiv);
-
-                const playButton = songDiv.querySelector('.play-button');
-                playButton.addEventListener('click', () => {
-                    console.log(`Clicked to play: ${song.title} from ${song.section}`);
-                    updateSectionButtons(song.section);
-                    const sectionSongs = songList.filter(s => s.section === song.section);
-                    currentSongIndex = sectionSongs.findIndex(s => s.src === song.src && s.title === song.title);
-                    if (currentSongIndex === -1) {
-                        console.error(`Song ${song.title} not found in section ${song.section}`);
-                        return;
-                    }
-                    const isSameSong = audioPlayer.src === new URL(song.src, window.location.href).href;
-                    playAudio(song.src, song.title, song.section, isSameSong ? audioPlayer.currentTime : 0);
-                });
-
-                const scrollButton = songDiv.querySelector('.scroll-to-song');
-                scrollButton.addEventListener('click', () => {
-                    console.log(`Scrolling to song: ${song.title} with src: ${song.src}`);
-                    const songItem = Array.from(document.querySelectorAll('#song-list li')).find(li => {
-                        const liSrc = li.getAttribute('data-src');
-                        const liTitle = li.querySelector('.song-title')?.innerText.trim();
-                        return liSrc === song.src && liTitle === song.title;
-                    });
-                    if (songItem) {
-                        songItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        songItem.classList.add('highlight');
-                        setTimeout(() => songItem.classList.remove('highlight'), 15000);
-                    } else {
-                        console.error(`Song ${song.title} not found in #song-list`);
-                        showMessage(`Song "${song.title}" not found in list`);
-                    }
-                });
-            });
-            popup.classList.add('active');
-            console.log('Popup shown with', uniqueMatches.length, 'results');
-            updateAllPlayButtons();
-            highlightCurrentSong();
-        } else {
-            popup.classList.remove('active');
-            console.log('No matches found, popup hidden');
-        }
+        updateAllPlayButtons();
+        highlightCurrentSong();
+    } else {
+        popup.classList.remove('active');
+        console.log('No matches found, popup hidden');
     }
+}
+
+// Attach debounced search to input event
+searchBar.addEventListener('input', debounce(performSearch, 300));
 
     // Event Listeners
     audioPlayer.addEventListener('error', e => {
@@ -1117,8 +1145,6 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.top = `${event.pageY}px`;
         customMenu.style.left = `${event.pageX}px`;
     });
-
-    // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
