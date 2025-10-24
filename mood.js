@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (songTitle && playIcon) {
             songTitle.classList.toggle('highlighted', isCurrentSong);
             playIcon.innerHTML = isCurrentSong && isPlaying 
-                ? '<span class="material-symbols-outlined">pause</span>' 
+                ? '<span class="material-symbols-outlined"></span>' 
                 : '<i class="fa-solid fa-play"></i>';
             playIcon.className = 'play-button'; // Ensure consistent class
         }
