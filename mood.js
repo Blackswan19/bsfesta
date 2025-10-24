@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (volumeSlider) {
         volumeSlider.value = initialVolume * 100;
         if (volumeToggleBtn) {
-            volumeToggleBtn.innerHTML = '<svg class="fa-volume-high" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>';
+            volumeToggleBtn.innerHTML = '<svg height="24" class="fa-volume-high" viewBox="0 0 24 24" width="24"><path class="ytp-svg-fill ytp-svg-volume-animation-speaker" d="M 11.60 2.08 L 11.48 2.14 L 3.91 6.68 C 3.02 7.21 2.28 7.97 1.77 8.87 C 1.26 9.77 1.00 10.79 1 11.83 V 12.16 L 1.01 12.56 C 1.07 13.52 1.37 14.46 1.87 15.29 C 2.38 16.12 3.08 16.81 3.91 17.31 L 11.48 21.85 C 11.63 21.94 11.80 21.99 11.98 21.99 C 12.16 22.00 12.33 21.95 12.49 21.87 C 12.64 21.78 12.77 21.65 12.86 21.50 C 12.95 21.35 13 21.17 13 21 V 3 C 12.99 2.83 12.95 2.67 12.87 2.52 C 12.80 2.37 12.68 2.25 12.54 2.16 C 12.41 2.07 12.25 2.01 12.08 2.00 C 11.92 1.98 11.75 2.01 11.60 2.08 Z" fill="#fff"></path><path class="ytp-svg-volume-animation-small-ripple" d=" M 15.53 7.05 C 15.35 7.22 15.25 7.45 15.24 7.70 C 15.23 7.95 15.31 8.19 15.46 8.38 L 15.53 8.46 L 15.70 8.64 C 16.09 9.06 16.39 9.55 16.61 10.08 L 16.70 10.31 C 16.90 10.85 17 11.42 17 12 L 16.99 12.24 C 16.96 12.73 16.87 13.22 16.70 13.68 L 16.61 13.91 C 16.36 14.51 15.99 15.07 15.53 15.53 C 15.35 15.72 15.25 15.97 15.26 16.23 C 15.26 16.49 15.37 16.74 15.55 16.92 C 15.73 17.11 15.98 17.21 16.24 17.22 C 16.50 17.22 16.76 17.12 16.95 16.95 C 17.6 16.29 18.11 15.52 18.46 14.67 L 18.59 14.35 C 18.82 13.71 18.95 13.03 18.99 12.34 L 19 12 C 18.99 11.19 18.86 10.39 18.59 9.64 L 18.46 9.32 C 18.15 8.57 17.72 7.89 17.18 7.3 L 16.95 7.05 L 16.87 6.98 C 16.68 6.82 16.43 6.74 16.19 6.75 C 15.94 6.77 15.71 6.87 15.53 7.05" fill="#fff" transform="translate(18, 12) scale(1) translate(-18,-12)"></path><path class="ytp-svg-volume-animation-big-ripple" d="M18.36 4.22C18.18 4.39 18.08 4.62 18.07 4.87C18.05 5.12 18.13 5.36 18.29 5.56L18.36 5.63L18.66 5.95C19.36 6.72 19.91 7.60 20.31 8.55L20.47 8.96C20.82 9.94 21 10.96 21 11.99L20.98 12.44C20.94 13.32 20.77 14.19 20.47 15.03L20.31 15.44C19.86 16.53 19.19 17.52 18.36 18.36C18.17 18.55 18.07 18.80 18.07 19.07C18.07 19.33 18.17 19.59 18.36 19.77C18.55 19.96 18.80 20.07 19.07 20.07C19.33 20.07 19.59 19.96 19.77 19.77C20.79 18.75 21.61 17.54 22.16 16.20L22.35 15.70C22.72 14.68 22.93 13.62 22.98 12.54L23 12C22.99 10.73 22.78 9.48 22.35 8.29L22.16 7.79C21.67 6.62 20.99 5.54 20.15 4.61L19.77 4.22L19.70 4.15C19.51 3.99 19.26 3.91 19.02 3.93C18.77 3.94 18.53 4.04 18.36 4.22 Z" fill="#fff" transform="translate(22, 12) scale(1) translate(-22, -12)"></path></svg>'
         }
     }
 
@@ -533,32 +533,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function highlightCurrentSong() {
-        const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '<span class="material-symbols-outlined"></span>';
-        console.log('Highlighting - Current playing src:', currentSrc);
+    const currentSrc = audioPlayer.src ? new URL(audioPlayer.src, window.location.href).href : '';
+    console.log('Highlighting - Current playing src:', currentSrc);
 
-        const allSongItems = document.querySelectorAll('.page #song-list li');
-        console.log(`Found ${allSongItems.length} song items to check`);
+    // Select all <li> elements within <ul> elements with class 'songssad'
+    const allSongItems = document.querySelectorAll('ul.songssad li');
+    console.log(`Found ${allSongItems.length} song items to check`);
 
-        allSongItems.forEach(item => {
-            const songSrc = item.getAttribute('data-src');
-            const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '<span class="material-symbols-outlined"></span>';
-            const songTitle = item.querySelector('.song-title');
-            const playIcon = item.querySelector('.play-button');
-            const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
+    allSongItems.forEach(item => {
+        const songSrc = item.getAttribute('data-src');
+        const absoluteSongSrc = songSrc ? new URL(songSrc, window.location.href).href : '';
+        const songTitle = item.querySelector('.song-title');
+        const playIcon = item.querySelector('.play-button');
+        const isCurrentSong = currentSrc && absoluteSongSrc === currentSrc;
 
-            console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
+        console.log(`Checking: ${absoluteSongSrc} === ${currentSrc} -> ${isCurrentSong}`);
 
-            item.classList.toggle('playing', isCurrentSong);
-            if (songTitle) {
-                songTitle.classList.toggle('highlighted', isCurrentSong);
-                playIcon.innerHTML = isCurrentSong && isPlaying 
-                    ? '<span class="material-symbols-outlined"></span>' 
-                    : '<i class="fa-solid fa-play"></i>';
-                playIcon.className = 'play-button'; // Ensure consistent class
-            }
-        });
-    }
-
+        item.classList.toggle('playing', isCurrentSong);
+        if (songTitle && playIcon) {
+            songTitle.classList.toggle('highlighted', isCurrentSong);
+            playIcon.innerHTML = isCurrentSong && isPlaying 
+                ? '<span class="material-symbols-outlined">pause</span>' 
+                : '<i class="fa-solid fa-play"></i>';
+            playIcon.className = 'play-button'; // Ensure consistent class
+        }
+    });
+}
     function updateAllPlayButtons() {
         popup.querySelectorAll('.play-button').forEach(btn => {
             const songTitle = btn.parentElement.querySelector('span').textContent;
@@ -606,12 +606,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isMuted) {
             audioPlayer.volume = 0;
             volumeSlider.value = 0;
-            volumeToggleBtn.innerHTML = '<svg class="fa-volume-xmark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M792-56 671-177q-25 16-53 27.5T560-131v-82q14-5 27.5-10t25.5-12L480-368v208L280-360H120v-240h128L56-792l56-56 736 736-56 56Zm-8-232-58-58q17-31 25.5-65t8.5-70q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 53-14.5 102T784-288ZM650-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T650-422ZM480-592 376-696l104-104v208Zm-80 238v-94l-72-72H200v80h114l86 86Zm-36-130Z"/></svg>';
+            volumeToggleBtn.innerHTML = '<svg class="fa-volume-xmark" height="24" viewBox="0 0 24 24" width="24"><path d="M11.60 2.08L11.48 2.14L3.91 6.68C3.02 7.21 2.28 7.97 1.77 8.87C1.26 9.77 1.00 10.79 1 11.83V12.16L1.01 12.56C1.07 13.52 1.37 14.46 1.87 15.29C2.38 16.12 3.08 16.81 3.91 17.31L11.48 21.85C11.63 21.94 11.80 21.99 11.98 21.99C12.16 22.00 12.33 21.95 12.49 21.87C12.64 21.78 12.77 21.65 12.86 21.50C12.95 21.35 13 21.17 13 21V3C12.99 2.83 12.95 2.67 12.87 2.52C12.80 2.37 12.68 2.25 12.54 2.16C12.41 2.07 12.25 2.01 12.08 2.00C11.92 1.98 11.75 2.01 11.60 2.08ZM4.94 8.4V8.40L11 4.76V19.23L4.94 15.6C4.38 15.26 3.92 14.80 3.58 14.25C3.24 13.70 3.05 13.07 3.00 12.43L3 12.17V11.83C2.99 11.14 3.17 10.46 3.51 9.86C3.85 9.25 4.34 8.75 4.94 8.4ZM21.29 8.29L19 10.58L16.70 8.29L16.63 8.22C16.43 8.07 16.19 7.99 15.95 8.00C15.70 8.01 15.47 8.12 15.29 8.29C15.12 8.47 15.01 8.70 15.00 8.95C14.99 9.19 15.07 9.43 15.22 9.63L15.29 9.70L17.58 12L15.29 14.29C15.19 14.38 15.12 14.49 15.06 14.61C15.01 14.73 14.98 14.87 14.98 15.00C14.98 15.13 15.01 15.26 15.06 15.39C15.11 15.51 15.18 15.62 15.28 15.71C15.37 15.81 15.48 15.88 15.60 15.93C15.73 15.98 15.86 16.01 15.99 16.01C16.12 16.01 16.26 15.98 16.38 15.93C16.50 15.87 16.61 15.80 16.70 15.70L19 13.41L21.29 15.70L21.36 15.77C21.56 15.93 21.80 16.01 22.05 15.99C22.29 15.98 22.53 15.88 22.70 15.70C22.88 15.53 22.98 15.29 22.99 15.05C23.00 14.80 22.93 14.56 22.77 14.36L22.70 14.29L20.41 12L22.70 9.70C22.80 9.61 22.87 9.50 22.93 9.38C22.98 9.26 23.01 9.12 23.01 8.99C23.01 8.86 22.98 8.73 22.93 8.60C22.88 8.48 22.81 8.37 22.71 8.28C22.62 8.18 22.51 8.11 22.39 8.06C22.26 8.01 22.13 7.98 22.00 7.98C21.87 7.98 21.73 8.01 21.61 8.06C21.49 8.12 21.38 8.19 21.29 8.29Z" fill="white"></path></svg>'
+        
+        // <svg class="fa-volume-xmark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M792-56 671-177q-25 16-53 27.5T560-131v-82q14-5 27.5-10t25.5-12L480-368v208L280-360H120v-240h128L56-792l56-56 736 736-56 56Zm-8-232-58-58q17-31 25.5-65t8.5-70q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 53-14.5 102T784-288ZM650-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T650-422ZM480-592 376-696l104-104v208Zm-80 238v-94l-72-72H200v80h114l86 86Zm-36-130Z"/></svg>';
         } else {
             const restoreVolume = previousVolume > 0 ? previousVolume : initialVolume;
             audioPlayer.volume = restoreVolume;
             volumeSlider.value = restoreVolume * 100;
-            volumeToggleBtn.innerHTML = '<svg class="fa-volume-high" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>';
+            volumeToggleBtn.innerHTML = '<svg height="24" class="fa-volume-high" viewBox="0 0 24 24" width="24"><path class="ytp-svg-fill ytp-svg-volume-animation-speaker" d="M 11.60 2.08 L 11.48 2.14 L 3.91 6.68 C 3.02 7.21 2.28 7.97 1.77 8.87 C 1.26 9.77 1.00 10.79 1 11.83 V 12.16 L 1.01 12.56 C 1.07 13.52 1.37 14.46 1.87 15.29 C 2.38 16.12 3.08 16.81 3.91 17.31 L 11.48 21.85 C 11.63 21.94 11.80 21.99 11.98 21.99 C 12.16 22.00 12.33 21.95 12.49 21.87 C 12.64 21.78 12.77 21.65 12.86 21.50 C 12.95 21.35 13 21.17 13 21 V 3 C 12.99 2.83 12.95 2.67 12.87 2.52 C 12.80 2.37 12.68 2.25 12.54 2.16 C 12.41 2.07 12.25 2.01 12.08 2.00 C 11.92 1.98 11.75 2.01 11.60 2.08 Z" fill="#fff"></path><path class="ytp-svg-volume-animation-small-ripple" d=" M 15.53 7.05 C 15.35 7.22 15.25 7.45 15.24 7.70 C 15.23 7.95 15.31 8.19 15.46 8.38 L 15.53 8.46 L 15.70 8.64 C 16.09 9.06 16.39 9.55 16.61 10.08 L 16.70 10.31 C 16.90 10.85 17 11.42 17 12 L 16.99 12.24 C 16.96 12.73 16.87 13.22 16.70 13.68 L 16.61 13.91 C 16.36 14.51 15.99 15.07 15.53 15.53 C 15.35 15.72 15.25 15.97 15.26 16.23 C 15.26 16.49 15.37 16.74 15.55 16.92 C 15.73 17.11 15.98 17.21 16.24 17.22 C 16.50 17.22 16.76 17.12 16.95 16.95 C 17.6 16.29 18.11 15.52 18.46 14.67 L 18.59 14.35 C 18.82 13.71 18.95 13.03 18.99 12.34 L 19 12 C 18.99 11.19 18.86 10.39 18.59 9.64 L 18.46 9.32 C 18.15 8.57 17.72 7.89 17.18 7.3 L 16.95 7.05 L 16.87 6.98 C 16.68 6.82 16.43 6.74 16.19 6.75 C 15.94 6.77 15.71 6.87 15.53 7.05" fill="#fff" transform="translate(18, 12) scale(1) translate(-18,-12)"></path><path class="ytp-svg-volume-animation-big-ripple" d="M18.36 4.22C18.18 4.39 18.08 4.62 18.07 4.87C18.05 5.12 18.13 5.36 18.29 5.56L18.36 5.63L18.66 5.95C19.36 6.72 19.91 7.60 20.31 8.55L20.47 8.96C20.82 9.94 21 10.96 21 11.99L20.98 12.44C20.94 13.32 20.77 14.19 20.47 15.03L20.31 15.44C19.86 16.53 19.19 17.52 18.36 18.36C18.17 18.55 18.07 18.80 18.07 19.07C18.07 19.33 18.17 19.59 18.36 19.77C18.55 19.96 18.80 20.07 19.07 20.07C19.33 20.07 19.59 19.96 19.77 19.77C20.79 18.75 21.61 17.54 22.16 16.20L22.35 15.70C22.72 14.68 22.93 13.62 22.98 12.54L23 12C22.99 10.73 22.78 9.48 22.35 8.29L22.16 7.79C21.67 6.62 20.99 5.54 20.15 4.61L19.77 4.22L19.70 4.15C19.51 3.99 19.26 3.91 19.02 3.93C18.77 3.94 18.53 4.04 18.36 4.22 Z" fill="#fff" transform="translate(22, 12) scale(1) translate(-22, -12)"></path></svg>'
+        // <svg class="fa-volume-high" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>';
         }
         localStorage.setItem('isMuted', isMuted);
         localStorage.setItem('previousVolume', previousVolume);
@@ -733,83 +736,111 @@ document.addEventListener('DOMContentLoaded', function () {
         songsPopupOverlay.style.display = 'none';
     };
 
-    // Search Functionality
-    function performSearch() {
-        const searchTerm = searchBar.value.toLowerCase().trim();
-        console.log('Search term:', searchTerm);
-        songList = getAllSongs();
-        console.log('songList in performSearch:', songList);
-        popup.innerHTML = '';
+// Debounce utility
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
 
-        if (searchTerm === '') {
-            popup.classList.remove('active');
-            console.log('Search cleared, popup hidden');
-            return;
-        }
+// Cache songList if it doesn't change frequently
+let cachedSongList = null;
 
-        const matches = songList.filter(song => song.title.toLowerCase().includes(searchTerm));
-        console.log('Search matches:', matches);
+function performSearch() {
+    const searchTerm = searchBar.value.toLowerCase().trim();
+    console.log('Search term:', searchTerm);
 
-        const uniqueTitles = new Set();
-        const uniqueMatches = matches.filter(song => {
-            if (uniqueTitles.has(song.title)) return false;
+    // Use cached songList or fetch it
+    if (!cachedSongList) {
+        cachedSongList = getAllSongs().map(song => ({
+            ...song,
+            titleLower: song.title.toLowerCase() // Precompute lowercase title
+        }));
+    }
+    const songList = cachedSongList;
+    console.log('songList in performSearch:', songList);
+    popup.innerHTML = '';
+
+    if (searchTerm === '') {
+        popup.classList.remove('active');
+        console.log('Search cleared, popup hidden');
+        return;
+    }
+
+    // Filter unique matches in one pass
+    const uniqueTitles = new Set();
+    const matches = songList.reduce((acc, song) => {
+        if (song.titleLower.includes(searchTerm) && !uniqueTitles.has(song.title)) {
             uniqueTitles.add(song.title);
-            return true;
+            acc.push(song);
+        }
+        return acc;
+    }, []);
+
+    console.log('Search matches:', matches);
+
+    if (matches.length > 0) {
+        // Build HTML string for all results
+        const html = matches.map(song => `
+            <div class="popup-song" data-src="${song.src}" data-title="${song.title}" data-section="${song.section}">
+                <span>${song.title}</span>
+                <i class="fa-solid fa-play play-button"></i>
+                <svg class="scroll-to-song" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M160-375 17-517l45-46.5 53.5 52.5q-5-24.5-7.25-49.75T106-612.5q0-80 29.5-152.5T214-901l46 46q-40 53.5-64.75 114.75T170.5-612.5q0 30.5 4.5 61t10.5 60l72.5-72 44.5 46.5L160-375Zm457.5 268q-22 7.5-45.5 6.5T527.5-111L237-253.5l-3.5-8.5q7.5-32.5 32.75-53.5t58.25-20l91-2.5L302-651.5q-5.5-15 1.25-29.25t22.25-19.75q14-5.5 29.5 1.5t21 21.5l147.5 406-143 4 180 87q7 3 15.25 3t16.75-3.5L810-259.5q36.5-13.5 52.25-47.25T864.5-377L795-566.5q-5-15.5 1.75-30.25T818-617q15.5-5.5 30.25 1.75T867.5-594l70 190.5q23.5 65.5-6.5 128T836-188l-218.5 81Zm-71-300.5-64.5-174q-5.5-14 1.25-29T505.5-631q14-4 29 2.5t20.5 21l63 175-71.5 25Zm135-49.5L632-593q-5.5-14.5 1.25-29.75t22.25-19.75q14-5.5 28.75 1.25t19.25 20.75L754-482l-72.5 25Zm-5 108.5Z"/></svg>
+            </div>
+        `).join('');
+        popup.innerHTML = html;
+        popup.classList.add('active');
+        console.log('Popup shown with', matches.length, 'results');
+
+        // Event delegation for play and scroll buttons
+        popup.addEventListener('click', (e) => {
+            const songDiv = e.target.closest('.popup-song');
+            if (!songDiv) return;
+            const src = songDiv.dataset.src;
+            const title = songDiv.dataset.title;
+            const section = songDiv.dataset.section;
+
+            if (e.target.classList.contains('play-button')) {
+                console.log(`Clicked to play: ${title} from ${section}`);
+                updateSectionButtons(section);
+                const sectionSongs = songList.filter(s => s.section === section);
+                currentSongIndex = sectionSongs.findIndex(s => s.src === src && s.title === title);
+                if (currentSongIndex === -1) {
+                    console.error(`Song ${title} not found in section ${section}`);
+                    return;
+                }
+                const isSameSong = audioPlayer.src === new URL(src, window.location.href).href;
+                playAudio(src, title, section, isSameSong ? audioPlayer.currentTime : 0);
+            } else if (e.target.classList.contains('scroll-to-song')) {
+                console.log(`Scrolling to song: ${title} with src: ${src}`);
+                const songItem = Array.from(document.querySelectorAll('#song-list li')).find(li => {
+                    const liSrc = li.getAttribute('data-src');
+                    const liTitle = li.querySelector('.song-title')?.innerText.trim();
+                    return liSrc === src && liTitle === title;
+                });
+                if (songItem) {
+                    songItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    songItem.classList.add('highlight');
+                    setTimeout(() => songItem.classList.remove('highlight'), 1500); // Reduced highlight duration
+                } else {
+                    console.error(`Song ${title} not found in #song-list`);
+                    showMessage(`Song "${title}" not found in list`);
+                }
+            }
         });
 
-        if (uniqueMatches.length > 0) {
-            uniqueMatches.forEach(song => {
-                console.log('Processing search result:', song);
-                const songDiv = document.createElement('div');
-                songDiv.className = 'popup-song';
-                songDiv.innerHTML = `
-                    <span>${song.title}</span>
-                    <i class="fa-solid fa-play play-button"></i>
-                    <svg class="scroll-to-song" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M160-375 17-517l45-46.5 53.5 52.5q-5-24.5-7.25-49.75T106-612.5q0-80 29.5-152.5T214-901l46 46q-40 53.5-64.75 114.75T170.5-612.5q0 30.5 4.5 61t10.5 60l72.5-72 44.5 46.5L160-375Zm457.5 268q-22 7.5-45.5 6.5T527.5-111L237-253.5l-3.5-8.5q7.5-32.5 32.75-53.5t58.25-20l91-2.5L302-651.5q-5.5-15 1.25-29.25t22.25-19.75q14-5.5 29.5 1.5t21 21.5l147.5 406-143 4 180 87q7 3 15.25 3t16.75-3.5L810-259.5q36.5-13.5 52.25-47.25T864.5-377L795-566.5q-5-15.5 1.75-30.25T818-617q15.5-5.5 30.25 1.75T867.5-594l70 190.5q23.5 65.5-6.5 128T836-188l-218.5 81Zm-71-300.5-64.5-174q-5.5-14 1.25-29T505.5-631q14-4 29 2.5t20.5 21l63 175-71.5 25Zm135-49.5L632-593q-5.5-14.5 1.25-29.75t22.25-19.75q14-5.5 28.75 1.25t19.25 20.75L754-482l-72.5 25Zm-5 108.5Z"/></svg>
-                `;
-                popup.appendChild(songDiv);
-
-                const playButton = songDiv.querySelector('.play-button');
-                playButton.addEventListener('click', () => {
-                    console.log(`Clicked to play: ${song.title} from ${song.section}`);
-                    updateSectionButtons(song.section);
-                    const sectionSongs = songList.filter(s => s.section === song.section);
-                    currentSongIndex = sectionSongs.findIndex(s => s.src === song.src && s.title === song.title);
-                    if (currentSongIndex === -1) {
-                        console.error(`Song ${song.title} not found in section ${song.section}`);
-                        return;
-                    }
-                    const isSameSong = audioPlayer.src === new URL(song.src, window.location.href).href;
-                    playAudio(song.src, song.title, song.section, isSameSong ? audioPlayer.currentTime : 0);
-                });
-
-                const scrollButton = songDiv.querySelector('.scroll-to-song');
-                scrollButton.addEventListener('click', () => {
-                    console.log(`Scrolling to song: ${song.title} with src: ${song.src}`);
-                    const songItem = Array.from(document.querySelectorAll('#song-list li')).find(li => {
-                        const liSrc = li.getAttribute('data-src');
-                        const liTitle = li.querySelector('.song-title')?.innerText.trim();
-                        return liSrc === song.src && liTitle === song.title;
-                    });
-                    if (songItem) {
-                        songItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        songItem.classList.add('highlight');
-                        setTimeout(() => songItem.classList.remove('highlight'), 15000);
-                    } else {
-                        console.error(`Song ${song.title} not found in #song-list`);
-                        showMessage(`Song "${song.title}" not found in list`);
-                    }
-                });
-            });
-            popup.classList.add('active');
-            console.log('Popup shown with', uniqueMatches.length, 'results');
-            updateAllPlayButtons();
-            highlightCurrentSong();
-        } else {
-            popup.classList.remove('active');
-            console.log('No matches found, popup hidden');
-        }
+        updateAllPlayButtons();
+        highlightCurrentSong();
+    } else {
+        popup.classList.remove('active');
+        console.log('No matches found, popup hidden');
     }
+}
+
+// Attach debounced search to input event
+searchBar.addEventListener('input', debounce(performSearch, 300));
 
     // Event Listeners
     audioPlayer.addEventListener('error', e => {
@@ -1114,8 +1145,6 @@ document.addEventListener("DOMContentLoaded", () => {
         customMenu.style.top = `${event.pageY}px`;
         customMenu.style.left = `${event.pageX}px`;
     });
-
-    // Hide the menu when clicking elsewhere
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
