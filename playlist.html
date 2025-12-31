@@ -1,6 +1,5 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - My Playlist</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="playlistmix.css"> <style> /* Scrollbar Styles */ ::-webkit-scrollbar { width: 10px; position: fixed; left: -3%; } ::-webkit-scrollbar-track { background: #00000000; } ::-webkit-scrollbar-thumb { background: #484848; height: 15%; outline: none; } ::-webkit-scrollbar-thumb:hover { background: #9b9b9b; } .image-container { text-align: center; margin-bottom: 10px; } .image-container img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; } .popup-song-item { display: flex; align-items: center; padding: 5px; } #playlist-options li { padding: 10px; cursor: pointer; } #playlist-options li:hover { background: #333; } /* Custom Menu */ .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; color: white; } .custom-menu button:hover { background-color: #404040; } a { text-decoration: none; } </style> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> My Playlist <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div class="playlist-container" id="playlist-container"> <button class="back-btn" id="back-btn" style="position: fixed;"><i class="fa-solid fa-arrow-left"></i></button> <h3 id="current-playlist-name">Playlists</h3> <ul id="playlist-list"></ul> <ul id="song-list"></ul> </div> <div class="songslist"> <div class="album-art"> <div class="logolike"> <img style="width: 100%; border-radius: 25px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); background: #ffffff21; border: solid 1.5px #ffffff61;" src="logo/playing.jpg" alt=""> </div> </div> <div class="song-info"> Playing: <p class="title"></p> <p class="artist" style=" display: flex ; gap: 6px; position: fixed; left: 20px; align-items: center; "><img style="width: 4%" src="logo/brand.png" alt=""> My Playlist</p> <p class="album">BsFesta</p> </div> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <div class="controlss"> <button id="repeat-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button> <button id="previous-btn"><i class="fa-solid fa-backward-step"></i></button> <button class="play-pause-btn" id="playPauseBtn"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button> <button id="shuffle-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button> <button id="list-btn" title="Show Playlists"><i class="fa-solid fa-list"></i></button> <div class="volume-control"> <i class="fa-solid fa-volume-high"></i> <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"> </div> </div> <button id="lights-btn">🌙</button> </div> <div class="custom-menu"> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option1">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div> <!-- Popups -->
-    <script>
-        // Initialize variables
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>BsFesta - My Playlist</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link rel="icon" type="image/x-icon" href="logo/logo.png"> <link rel="stylesheet" href="playlistmix.css"> <style> /* Scrollbar Styles */ ::-webkit-scrollbar { width: 10px; position: fixed; left: -3%; } ::-webkit-scrollbar-track { background: #00000000; } ::-webkit-scrollbar-thumb { background: #484848; height: 15%; outline: none; } ::-webkit-scrollbar-thumb:hover { background: #9b9b9b; } .image-container { text-align: center; margin-bottom: 10px; } .image-container img { width: 100px; height: 100px; object-fit: cover; border-radius: 5px; } .popup-song-item { display: flex; align-items: center; padding: 5px; } #playlist-options li { padding: 10px; cursor: pointer; } #playlist-options li:hover { background: #333; } /* Custom Menu */ .custom-menu { display: none; position: fixed; background-color: #262626; border: 1px solid #242424; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px; border-radius: 5px; filter: drop-shadow(11px 12px 22px black); } .custom-menu button { display: block; width: 100%; border: none; background: none; text-align: left; padding: 12px; cursor: pointer; font-size: 18px; color: white; } .custom-menu button:hover { background-color: #404040; } a { text-decoration: none; } </style> </head> <body> <div class="loading-screen"> <img class="frombs" src="logo/frombs.png" alt=""> My Playlist <img src="logo/brand.png" class="img" alt="" width="5%"> <h1>BsFesta</h1> </div> <div class="playlist-container" id="playlist-container"> <button class="back-btn" id="back-btn" style="position: fixed;"><i class="fa-solid fa-arrow-left"></i></button> <h3 id="current-playlist-name">Playlists</h3> <ul id="playlist-list"></ul> <ul id="song-list"></ul> </div> <div class="songslist"> <div class="album-art"> <div class="logolike"> <img style="width: 100%; border-radius: 50px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); background: #ffffff21; border: solid 1.5px #ffffff61;" src="logo/playing.jpg" alt=""> </div> </div> <div class="song-info"> Playing: <p class="title"></p> <p class="artist" style=" display: flex ; gap: 6px; position: fixed; left: 20px; align-items: center; "><img style="width: 4%" src="logo/brand.png" alt=""> My Playlist</p> <p class="album">BsFesta</p> </div> <div class="progress-container"> <div class="progress" id="progress"></div> </div> <div class="controlss"> <button id="repeat-btn" title="Repeat"><i class="fa-solid fa-rotate-right fa-repeat"></i></button> <button id="previous-btn"><?xml class="fa-solid fa-backward-step" version="1.0" encoding="UTF-8"?><svg style="rotate: 180deg;" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M22.5,21c-.828,0-1.5-.671-1.5-1.5V4.5c0-.829,.672-1.5,1.5-1.5s1.5,.671,1.5,1.5v15c0,.829-.672,1.5-1.5,1.5Zm-5,0c-.828,0-1.5-.671-1.5-1.5V4.5c0-.829,.672-1.5,1.5-1.5s1.5,.671,1.5,1.5v15c0,.829-.672,1.5-1.5,1.5Zm-13.874-.421c-.559,0-1.12-.13-1.641-.394-1.225-.621-1.985-1.859-1.985-3.232V7.047c0-1.373,.761-2.611,1.985-3.231,1.209-.614,2.687-.494,3.781,.311l6.754,4.953c.94,.689,1.48,1.754,1.48,2.921s-.54,2.232-1.481,2.922l-6.754,4.953c-.635,.467-1.384,.705-2.139,.705Zm.003-14.161c-.096,0-.193,.024-.289,.073-.223,.113-.341,.305-.341,.556v9.906c0,.25,.118,.442,.341,.556,.224,.113,.448,.095,.649-.053l6.755-4.954c.167-.122,.254-.295,.254-.502s-.088-.38-.254-.502L3.991,6.544c-.115-.084-.236-.126-.361-.126Z"/></svg></button> <button class="play-pause-btn" id="playPauseBtn"><i class="fa-solid fa-play" id="playIcon"></i></button> <button id="next-btn"><?xml class="fa-solid fa-forward-step" version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M22.5,21c-.828,0-1.5-.671-1.5-1.5V4.5c0-.829,.672-1.5,1.5-1.5s1.5,.671,1.5,1.5v15c0,.829-.672,1.5-1.5,1.5Zm-5,0c-.828,0-1.5-.671-1.5-1.5V4.5c0-.829,.672-1.5,1.5-1.5s1.5,.671,1.5,1.5v15c0,.829-.672,1.5-1.5,1.5Zm-13.874-.421c-.559,0-1.12-.13-1.641-.394-1.225-.621-1.985-1.859-1.985-3.232V7.047c0-1.373,.761-2.611,1.985-3.231,1.209-.614,2.687-.494,3.781,.311l6.754,4.953c.94,.689,1.48,1.754,1.48,2.921s-.54,2.232-1.481,2.922l-6.754,4.953c-.635,.467-1.384,.705-2.139,.705Zm.003-14.161c-.096,0-.193,.024-.289,.073-.223,.113-.341,.305-.341,.556v9.906c0,.25,.118,.442,.341,.556,.224,.113,.448,.095,.649-.053l6.755-4.954c.167-.122,.254-.295,.254-.502s-.088-.38-.254-.502L3.991,6.544c-.115-.084-.236-.126-.361-.126Z"/></svg> </button> <button id="shuffle-btn" title="Shuffle"> <svg data-encore-id="icon" role="img" class="fa-shuffle" aria-hidden="true" class="e-91000-icon e-91000-baseline" viewBox="0 0 16 16" style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);"><path d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z"></path><path d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.938z"></path></svg></button> <button id="list-btn" title="Show Playlists"><?xml version="1.0" encoding="UTF-8"?><svg class="fa-solid fa-list" style=" width: 16px;fill: white;" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24"><path d="m23,0h-1c-2.757,0-5,2.243-5,5v9.261c-.952-.787-2.172-1.261-3.5-1.261-3.032,0-5.5,2.467-5.5,5.5s2.468,5.5,5.5,5.5,5.5-2.467,5.5-5.5V5c0-1.654,1.346-3,3-3h1c.553,0,1-.448,1-1s-.447-1-1-1ZM0,1C0,.448.447,0,1,0h11c.553,0,1,.448,1,1s-.447,1-1,1H1c-.553,0-1-.448-1-1Zm0,6c0-.552.447-1,1-1h11c.553,0,1,.448,1,1s-.447,1-1,1H1c-.553,0-1-.448-1-1Zm8,6c0,.552-.447,1-1,1H1c-.553,0-1-.448-1-1s.447-1,1-1h6c.553,0,1,.448,1,1Z"/></svg></button> <div class="volume-control"> <?xml version="1.0" encoding="UTF-8"?><svg style="width: 16px; fill: white; height: 16px;" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="512" height="512"><path d="M20.8,4.293A1,1,0,0,0,19.39,5.707a8.911,8.911,0,0,1,0,12.586A1,1,0,1,0,20.8,19.707,10.911,10.911,0,0,0,20.8,4.293Z"/><path d="M18.093,7.293a1,1,0,1,0-1.414,1.414,4.664,4.664,0,0,1,0,6.586,1,1,0,1,0,1.414,1.414A6.665,6.665,0,0,0,18.093,7.293Z"/><path d="M13.819.207A12.055,12.055,0,0,0,6.268,5H5a5.006,5.006,0,0,0-5,5v4a5.006,5.006,0,0,0,5,5H6.269a12.051,12.051,0,0,0,7.55,4.793A1,1,0,0,0,15,22.81V1.19A1,1,0,0,0,13.819.207Z"/></svg><input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"> </div> </div> <button id="lights-btn">🌙</button> </div> <div class="custom-menu"> <a href="https://blackswan19.github.io/bsfesta/music"><button id="option1">Go to BsFesta</button></a> <a href="https://blackswan19.github.io/bsfesta/likedlist"><button id="option2">Go to Liked one</button></a> <a href="https://blackswan19.github.io/bsfesta/minifesta"><button id="option2">Go to Mini Festa</button></a> <a href="https://blackswan19.github.io/bscrop/formbs"><button id="option2">More From BS</button></a> <a href="https://blackswan19.github.io/bsfesta/addhome"><button id="option2">Add to Home</button></a> </div>
+<script>
         const playlistList = document.getElementById("playlist-list");
         const songList = document.getElementById("song-list");
         const currentPlaylistName = document.getElementById("current-playlist-name");
@@ -52,8 +51,6 @@
             document.getElementById('player-interface').style.display = 'block';
             initializePlaylists();
         }, 1500);
-
-        // Initialize playlists and song images
         function initializePlaylists() {
             if (Object.keys(playlists).length === 0) {
                 playlists = {
@@ -78,8 +75,6 @@
             loadPlaylists();
             updateAllSongIcons();
         }
-
-        // Playlist management
         function openPopup() {
             popupPlaylistName.value = "";
             popupOverlay.style.display = "flex";
@@ -121,12 +116,12 @@
             li.classList.add("playlist-item");
             li.innerHTML = `
                 <img src="${playlistImages[name] || 'logo/playlist.png'}" alt="" style="width: 13%;
-    margin: 0px 11px;
-    border-radius: 5px;
+    margin: 0px 10px 0px -9px;
+    border-radius: 8px;
     background: #ffffff61;
-    opacity: 80%;">
+    opacity: 100%;">
                 <span style="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 800; font-size: 18px;">${name}</span>
-                <i class="fa-regular fa-square-minus delete-playlist" title="Delete Playlist"></i>
+                <i class="fa-regular fa-trash-can delete-playlist" title="Delete Playlist"></i>
             `;
             const deleteBtn = li.querySelector(".delete-playlist");
             deleteBtn.addEventListener("click", (e) => {
@@ -141,8 +136,6 @@
             });
             playlistList.appendChild(li);
         }
-
-        // Song display and playback
         function displaySongsInList(playlistName) {
             songList.innerHTML = "";
             if (!playlists[playlistName]) {
@@ -200,8 +193,8 @@
             changeLights();
             currentAudio.onended = playNextSong;
             updateProgressBar();
-            previousBtn.style.opacity = "1";
-            nextBtn.style.opacity = "1";
+            // previousBtn.style.opacity = "1";
+            // nextBtn.style.opacity = "1";
             if (showingSongs && playlistContainer.classList.contains("active")) {
                 displaySongsInList(playlistName);
             }
@@ -214,8 +207,6 @@
             const albumArtImg = document.querySelector('.album-art .logolike img');
             albumArtImg.src = songImages[title] || 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/refs/heads/main/Objects/Musical%20Notes.webp';
         }
-
-        // Popup song display
         function displaySongsInPopup(playlistName) {
             songsPopupTitle.textContent = `Playlist - ${playlistName}`;
             songsPopupList.innerHTML = "";
@@ -356,8 +347,6 @@
             isPlaying = false;
             updatePopupPlayIcons(null);
         }
-
-        // Add to playlist
         function openAddToPlaylistPopup(song) {
             currentSong = song;
             playlistOptions.innerHTML = "";
@@ -419,8 +408,6 @@
                 updateSongIcon(songElement, isInPlaylist);
             });
         }
-
-        // Image cropping
         function cropImageToSquare(file, callback) {
             const reader = new FileReader();
             reader.onload = (event) => {
@@ -441,8 +428,6 @@
             };
             reader.readAsDataURL(file);
         }
-
-        // Player controls
         function togglePlayPause() {
             if (currentAudio) {
                 if (currentAudio.paused) {
@@ -626,11 +611,9 @@
             backBtn.style.display = "none";
             loadPlaylists();
         }
-
-        // Lights toggle
         function toggleLights() {
             isLightsOn = !isLightsOn;
-            lightsBtn.textContent = isLightsOn ? '💡' : '🌙';
+            lightsBtn.textContent = isLightsOn ? '🔆' : '🌙';
             lightsBtn.style.color = isLightsOn ? '#ffd700' : '#b3b3b3';
             if (!isLightsOn) {
                 songslist.style.backgroundColor = '';
@@ -660,13 +643,9 @@
         customMenu.style.top = `${event.pageY}px`;
         customMenu.style.left = `${event.pageX}px`;
     });
-
-    // Hide custom menu on click
     document.addEventListener("click", () => {
         customMenu.style.display = "none";
     });
-
-    // Update song icons on page load
     updateAllSongIcons();
 });
         progressContainer.addEventListener("click", seek);
