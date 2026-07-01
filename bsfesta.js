@@ -1,5 +1,4 @@
-// document.addEventListener('contextmenu', e => e.preventDefault());
-        let songs = [
+let songs = [
     { id: 36, title: "In My Bed", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://files.vistanaij.com/wp-content/uploads/2024/09/Rotimi_-_In_My_Bed_feat_Wale__Vistanaij.com.ng.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e5/d8/ba/e5d8ba4cd3db402fcc8314073fd8cc48.gif" },
     { id: 43, title: "Pocket locket", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/pocket locket.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 49, title: "Marry You", artist: "Bruno Mars", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Marry You.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/d8/e4/09/d8e4090a10c4d02bd4f8137e0b7dde56.gif" },
@@ -421,7 +420,7 @@
             const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.style.display = 'block';
-            setTimeout(() => toast.style.display = 'none', 22000000);
+            setTimeout(() => toast.style.display = 'none', 3000);
         }
         
         function playSong(index) {
