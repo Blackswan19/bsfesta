@@ -619,14 +619,16 @@ let songs = [
     }
     
     // Close button
-    const closeBtn = document.createElement('button');
-    closeBtn.textContent = 'Cancel';
-    closeBtn.style.marginTop = '15px';
-    closeBtn.onclick = closeModals;
-    content.appendChild(closeBtn);
-    
-    modal.appendChild(content);
-    document.body.appendChild(modal);
+   const closeBtn = document.createElement('button');
+closeBtn.id = 'modal-close-btn';           // ← Added ID
+closeBtn.textContent = 'Cancel';
+closeBtn.style.marginTop = '15px';
+closeBtn.onclick = closeModals;
+
+content.appendChild(closeBtn);
+
+modal.appendChild(content);
+document.body.appendChild(modal);
 }
         
         function addSongToPlaylist(playlistIdx) {
