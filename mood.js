@@ -408,7 +408,7 @@ let songs = [
                 isPlaying = true;
                 updateNowPlaying();
                 updatePlayerUI();
-                renderCurrentView(); // This ensures the playing highlight updates
+                renderCurrentView();
                 setTimeout(() => { isAdvancing = false; }, 600);
             }).catch(() => {
                 isPlaying = false;
@@ -541,7 +541,61 @@ let songs = [
             navigator.clipboard.writeText(url).then(() => showToast("Link copied"));
             closeModals();
         }
+        function scrollToSong() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const songId = urlParams.get('song');
+    
+    if (!songId) return;
+
+    console.log(`🔍 Trying to scroll to song: ${songId}`); 
+    const possibleSelectors = [
+        `#song-${songId}`,
+        `#song${songId}`,
+        `[data-song-id="${songId}"]`,
+        `[data-id="${songId}"]`
+    ];
+
+    let songElement = null;
+
+    for (const selector of possibleSelectors) {
+        songElement = document.querySelector(selector);
+        if (songElement) break;
+    }
+
+    if (songElement) {
+        const headerOffset = 100;
+        const elementPosition = songElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        songElement.classList.add('highlight-song');
+        setTimeout(() => songElement.classList.remove('highlight-song'), 2500);
+
+        console.log('Scrolled to song:', songElement);
+    } else {
+        console.warn('Song not found for ID:', songId);
         
+        const songsContainer = document.getElementById('songs-section') || 
+                             document.querySelector('.songs, .song-list, .playlist');
+        if (songsContainer) {
+            songsContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+function initSongScroll() {
+    scrollToSong();
+    
+    setTimeout(scrollToSong, 600);
+    setTimeout(scrollToSong, 1200);
+}
+
+window.addEventListener('load', initSongScroll);
+document.addEventListener('DOMContentLoaded', initSongScroll);
+window.addEventListener('popstate', scrollToSong);
         function removeFromCurrentPlaylist() {
             if (currentPlaylistIndex === null || !selectedSongId) return;
             const pl = playlists[currentPlaylistIndex];
@@ -579,16 +633,13 @@ let songs = [
             option.textContent = pl.name;
             option.onclick = () => {
                 addSongToPlaylist(i);
-                // Auto close after adding
                 setTimeout(() => closeModals(), 300);
             };
             content.appendChild(option);
         });
     }
-    
-    // Close button
    const closeBtn = document.createElement('button');
-closeBtn.id = 'modal-close-btn';           // ← Added ID
+closeBtn.id = 'modal-close-btn'; 
 closeBtn.textContent = 'Cancel';
 closeBtn.style.marginTop = '15px';
 closeBtn.onclick = closeModals;
@@ -745,24 +796,52 @@ document.body.appendChild(modal);
             renderSongList(filtered);
         }
         
-        function handleSharedLink() {
-            const params = new URLSearchParams(window.location.search);
-            const songId = parseInt(params.get('song'));
-            if (songId) {
-                sharedSongIndex = songs.findIndex(s => s.id === songId);
-                if (sharedSongIndex !== -1) {
-                    playSong(sharedSongIndex);
-                }
-            }
+        function handleSharedSong() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const songId = urlParams.get('song');
+    
+    if (!songId) return;
+
+    const id = parseInt(songId);
+    const songIndex = songs.findIndex(s => s.id === id);
+
+    if (songIndex === -1) return;
+
+    setTimeout(() => {
+        const songElement = document.querySelector(`.song-item:nth-child(${songIndex + 1})`) ||
+                            document.getElementById(`song-${id}`) ||
+                            document.querySelector(`[data-song-id="${id}"]`);
+
+        if (songElement) {
+            songElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            songElement.classList.add('highlight-song');
+            setTimeout(() => {
+                songElement.classList.remove('highlight-song');
+            }, 3000);
         }
+    }, 400);
+
+    setTimeout(() => {
+        playSong(songIndex);
+    }, 800);
+}
+
+function initSharedSong() {
+    handleSharedSong();
+}
+
+window.addEventListener('load', initSharedSong);
+document.addEventListener('DOMContentLoaded', initSharedSong);
         
         function switchView(view) {
             currentView = view;
             currentPlaylistIndex = null;
             renderCurrentView();
         }
-        
-        // ==================== AUDIO EVENTS ====================
         audio.addEventListener('timeupdate', updateProgress);
         audio.addEventListener('ended', playNextInQueue);
         audio.addEventListener('play', () => { 
