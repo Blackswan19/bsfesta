@@ -525,21 +525,32 @@ window.addEventListener('popstate', scrollToSong);
             renderCurrentView();
         }
         
-        function showAddToPlaylistModal() {
+// 2. Improved showAddToPlaylistModal
+function showAddToPlaylistModal() {
     closeModals();
-    
+
+    // Safety: if somehow no song is selected, try the currently playing one
+    if (!selectedSongId && typeof currentSongId !== 'undefined') {
+        selectedSongId = currentSongId;
+    }
+
+    if (!selectedSongId) {
+        showToast("No song selected");
+        return;
+    }
+
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.id = 'add-playlist-modal';
     modal.style.display = 'flex';
-    
+
     const content = document.createElement('div');
     content.className = 'modal-content';
-    
+
     const title = document.createElement('h3');
     title.textContent = 'Add to Playlist';
     content.appendChild(title);
-    
+
     if (playlists.length === 0) {
         const empty = document.createElement('p');
         empty.textContent = 'No playlists yet. Create one first!';
@@ -552,21 +563,20 @@ window.addEventListener('popstate', scrollToSong);
             option.textContent = pl.name;
             option.onclick = () => {
                 addSongToPlaylist(i);
-                setTimeout(() => closeModals(), 300);
             };
             content.appendChild(option);
         });
     }
-   const closeBtn = document.createElement('button');
-closeBtn.id = 'modal-close-btn'; 
-closeBtn.textContent = 'Cancel';
-closeBtn.style.marginTop = '15px';
-closeBtn.onclick = closeModals;
 
-content.appendChild(closeBtn);
+    const closeBtn = document.createElement('button');
+    closeBtn.id = 'modal-close-btn';
+    closeBtn.textContent = 'Cancel';
+    closeBtn.style.marginTop = '15px';
+    closeBtn.onclick = closeModals;
+    content.appendChild(closeBtn);
 
-modal.appendChild(content);
-document.body.appendChild(modal);
+    modal.appendChild(content);
+    document.body.appendChild(modal);
 }
         
         function addSongToPlaylist(playlistIdx) {
