@@ -664,15 +664,28 @@ function showAddToPlaylistModal() {
             audio.currentTime = pos * audio.duration;
         }
         
-        function setVolume() { 
-            audio.volume = parseFloat(document.getElementById('volume-slider').value); 
-        }
-        
-        function toggleMute() { 
-            audio.volume = audio.volume > 0 ? 0 : 0.8; 
-            document.getElementById('volume-slider').value = audio.volume; 
-        }
-        
+        function setVolume(fromFullscreen = false) {
+    const slider = document.getElementById(fromFullscreen ? 'fullscreen-volume-slider' : 'volume-slider');
+    const otherSlider = document.getElementById(fromFullscreen ? 'volume-slider' : 'fullscreen-volume-slider');
+    
+    const vol = parseFloat(slider.value);
+    audio.volume = vol;
+    otherSlider.value = vol;   // keep the other slider in sync
+}
+
+function toggleMute() {
+    // Toggle between 0 and the previous volume (or 0.8 as fallback)
+    if (audio.volume > 0) {
+        audio.dataset.prevVolume = audio.volume;  // remember current volume
+        audio.volume = 0;
+    } else {
+        audio.volume = parseFloat(audio.dataset.prevVolume) || 0.8;
+    }
+
+    // Update both sliders
+    document.getElementById('volume-slider').value = audio.volume;
+    document.getElementById('fullscreen-volume-slider').value = audio.volume;
+}
         function toggleShuffle() {
             isShuffle = !isShuffle;
             const btns = [document.getElementById('shuffle-btn'), document.getElementById('fs-shuffle')];
