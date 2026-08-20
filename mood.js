@@ -1,7 +1,7 @@
 let songs = [
     { id: 349, title: "2018", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Rod Wave - 2018 (Official Audio) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/16/51/a4/1651a4e6639d1926afd2604881df8741.gif" },
     { id: 353, title: "24K Magic", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Bruno Mars - 24K Magic - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/16/51/a4/1651a4e6639d1926afd2604881df8741.gif" },
-    { id: 347, title: "Alcohol", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "english/Joeboy - Alcohol (Lyrics) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/2a/d1/e4/2ad1e460e5074b42416ead57f2519acb.gif" },
+    { id: 347, title: "Alcohol", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Joeboy - Alcohol (Lyrics) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/2a/d1/e4/2ad1e460e5074b42416ead57f2519acb.gif" },
     { id: 3, title: "A Bar Song", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Shaboozey - A Bar Song (Tipsy) [Official Visualizer] - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/44/bc/c3/44bcc38ddc7994a8a5276e6a61c5136c.gif" },
     { id: 342, title: "Angel Numbers", artist: "Coldplay", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Angel Numbers _ Ten Toes.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/38/70/d1/3870d1fcd484fb466bffc0b80300afc7.gif" },
     { id: 4, title: "A Sky Full Of Stars", artist: "Coldplay", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/A Sky Full Of Stars.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/b9/74/5c/b9745cef3985fdc9061a22edfd3b71d9.gif" },
@@ -21,7 +21,7 @@ let songs = [
     { id: 33, title: "Billie Jean", artist: "Michael Jackson", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Billie Jean.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e4/49/ae/e449ae59cdb2894f996bd5d6198d2889.gif" },
     { id: 36, title: "Blinding Lights", artist: "The Weeknd", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/The Weeknd - Blinding Lights (Lyrics).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/a6/a5/f9/a6a5f9425f553b6b4526d2bf41334f55.gif" },
     { id: 43, title: "Brother Louie Mix 98", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Brother Louie Mix 98 (Radio Edit).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e4/49/ae/e449ae59cdb2894f996bd5d6198d2889.gif" },
-   { id: 47, title: "Bye Bye Bye", artist: "NSYNC", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/NSYNC - Bye Bye Bye (Lyrics) (Deadpool 3 Soundtrack).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/d8/e4/09/d8e4090a10c4d02bd4f8137e0b7dde56.gif" },
+    { id: 47, title: "Bye Bye Bye", artist: "NSYNC", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/NSYNC - Bye Bye Bye (Lyrics) (Deadpool 3 Soundtrack).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/d8/e4/09/d8e4090a10c4d02bd4f8137e0b7dde56.gif" },
     { id: 48, title: "BTBT", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/B.I, Soulja Boy BTBT Lyrics (feat. DeVita) (HanRomEng가사) Color Coded Lyrics.mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 350, title: "CHANEL", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Tyla - CHANEL (Lyrics) - 7clouds.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/bd/a2/3a/bda23ae128ae414b1d73c664e0a2e8c5.gif" },
     { id: 344, title: "Circles", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Post Malone - Circles (Clean - Lyrics) - Polar Records (128k).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/b9/74/5c/b9745cef3985fdc9061a22edfd3b71d9.gif" },
@@ -43,7 +43,7 @@ let songs = [
     { id: 63, title: "Danza Kuduro", artist: "Don Omar", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Danza Kuduro.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e4/49/ae/e449ae59cdb2894f996bd5d6198d2889.gif" },
     { id: 65, title: "Die With A Smile", artist: "Lady Gaga, Bruno Mars", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Lady Gaga, Bruno Mars - Die With A Smile.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/51/9b/76/519b76a147dfafe8244d574e3895c97f.gif" },
     { id: 66, title: "Diet Pepsi", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Addison Rae - Diet Pepsi (Lyrics) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e5/d8/ba/e5d8ba4cd3db402fcc8314073fd8cc48.gif" },
-   { id: 71, title: "Do It Like That", artist: "TXT Jonas Brothers", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/TXT Jonas Brothers Do It Like That Official Audio.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/75/26/44/752644448464bfda591650cbead1f084.gif" },
+    { id: 71, title: "Do It Like That", artist: "TXT Jonas Brothers", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/TXT Jonas Brothers Do It Like That Official Audio.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/75/26/44/752644448464bfda591650cbead1f084.gif" },
     { id: 72, title: "Done for Me", artist: "Charlie Puth ft Kehlani", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Done for Me (feat. Kehlani).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/75/26/44/752644448464bfda591650cbead1f084.gif" },
     { id: 73, title: "Don't Worry Be Happy", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Bobby McFerrin - Don't Worry Be Happy (Official Music Video) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/3a/49/63/3a4963ce7cd31ab7f008844a259dd9ef.gif" },
     { id: 74, title: "Don’t Matter To Me", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Drake - Don’t Matter To Me (feat. Michael Jackson) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/e5/d8/ba/e5d8ba4cd3db402fcc8314073fd8cc48.gif" },
@@ -53,10 +53,9 @@ let songs = [
     { id: 81, title: "Eenie Meenie", artist: "Justin Bieber", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Eenie Meenie.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/d8/e4/09/d8e4090a10c4d02bd4f8137e0b7dde56.gif" },
     { id: 85, title: "Espresso", artist: "Sabrina Carpenter", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Sabrina Carpenter - Espresso.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/d8/e4/09/d8e4090a10c4d02bd4f8137e0b7dde56.gif" },
     { id: 86, title: "Euphoria", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/JUNGKOOK (정국) Euphoria (Color Coded Lyrics HanRomEng가사).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
-     { id: 312, title: "FREEDOM", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Pharrell Williams - Freedom (Audio).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/ac/dc/cf/acdccf67a15bf7f6dde039f961f5bc1b.gif" },
+    { id: 312, title: "FREEDOM", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Pharrell Williams - Freedom (Audio).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/ac/dc/cf/acdccf67a15bf7f6dde039f961f5bc1b.gif" },
     { id: 357, title: "First Person Shooter", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Drake - First Person Shooter (Audio) ft. J. Cole - (320 Kbps).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/ac/dc/cf/acdccf67a15bf7f6dde039f961f5bc1b.gif" },
     { id: 89, title: "FE!N", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/fein.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/3c/ba/55/3cba5535b7052934d8b08ea6d20d4c21.gif" },
-   { id: 91, title: "FANCY", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/korea/FANCY.mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 92, title: "Family Affair", artist: "Mary J. Blige", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Family Affair.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/42/b6/6c/42b66caa3f11e5b14e42be3f137f4011.gif" },
     { id: 93, title: "Fat Juicy & Wet", artist: "Unknown", cover: "songnameicon.png", url: "https://www8.hiphopkit.com/music/download/47377/", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 94, title: "Favorite", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/favorite.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/15/6c/b2/156cb2371ce1b7f22709baf91c690eed.gif" },
@@ -124,7 +123,7 @@ let songs = [
     { id: 160, title: "Lose My Mind", artist: "Don Toliver Ft Doja Cat", cover: "songnameicon.png", url: "https://offblogmedia.com/wp-content/uploads/2025/04/Don_Toliver_Ft_Doja_Cat_-_Lose_My_Mind_Offblogmedia.com.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 161, title: "Lose Yourself", artist: "Eminem", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Lose Yourself.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 163, title: "Louder than bombs", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/korea/Louder than bombs.mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
-   { id: 166, title: "Love Me Back", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Love Me Back.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
+    { id: 166, title: "Love Me Back", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Love Me Back.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 167, title: "Love Me Like You Do", artist: "Ellie Goulding", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Love Me Like You Do.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 168, title: "Love Story", artist: "Taylor Swift", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Love Story.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 169, title: "Love The Way You Lie", artist: "Eminem ft Rihanna", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Love The Way You Lie.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
@@ -191,7 +190,7 @@ let songs = [
     { id: 307, title: "SWIM", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/BTS - SWIM - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/80/9e/02/809e0200d6d56972fed9c96e0a6083c3.gif" },
     { id: 244, title: "Someone You Loved", artist: "Lewis Capaldi", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Lewis Capaldi - Someone You Loved (Lyrics).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 245, title: "Songi Songi", artist: "Rotimi ft Wale", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Salima Chica - Songi Songi (Official Video) - (320 Kbps).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/26/86/46/268646032cde46546e0b17c570a181f0.gif" },
-   { id: 249, title: "Still D.R.E.", artist: "Dr. Dre ft Snoop Dogg", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Dr. Dre - Still D.R.E. (Lyrics) ft. Snoop Dogg.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/42/b6/6c/42b66caa3f11e5b14e42be3f137f4011.gif" },
+    { id: 249, title: "Still D.R.E.", artist: "Dr. Dre ft Snoop Dogg", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Dr. Dre - Still D.R.E. (Lyrics) ft. Snoop Dogg.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/42/b6/6c/42b66caa3f11e5b14e42be3f137f4011.gif" },
     { id: 250, title: "Sugar", artist: "Maroon 5", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Maroon 5 - Sugar (Lyrics).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 251, title: "Sunflower", artist: "Post Malone ft Swae Lee", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Post Malone - Sunflower (Lyrics) ft. Swae Lee.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/bd/a2/3a/bda23ae128ae414b1d73c664e0a2e8c5.gif" },
     { id: 252, title: "Super", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/SEVENTEEN Super Lyrics (세븐틴 손오공 가사) (Color Coded Lyrics).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
@@ -225,7 +224,7 @@ let songs = [
     { id: 284, title: "What It Is", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/What It Is.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 286, title: "What Do You Mean", artist: "Justin Bieber", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/What Do You Mean.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 287, title: "Where are you now", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Where are you now.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
-     { id: 289, title: "Who - Jimin", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Jimin (지민) Who Lyrics (Color Coded Lyrics).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
+    { id: 289, title: "Who - Jimin", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/Jimin (지민) Who Lyrics (Color Coded Lyrics).mp3", duration: "0:00", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 292, title: "Without Me", artist: "Halsey", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Halsey - Without Me (Lyrics).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/15/6c/b2/156cb2371ce1b7f22709baf91c690eed.gif" },
     { id: 301, title: "Warrior", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/warrior.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/a6/a5/f9/a6a5f9425f553b6b4526d2bf41334f55.gif" },
     { id: 294, title: "Wolves", artist: "Selena Gomez", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/Wolves.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
@@ -235,251 +234,402 @@ let songs = [
     { id: 296, title: "YOUTHISENDING", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/english/YOUTHISENDING.mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
     { id: 297, title: "YAD eng ver", artist: "Unknown", cover: "songnameicon.png", url: "https://blackswan19.github.io/bsfesta/newadd/YAD (Яд) ENGLISH VERSION (lyric video).mp3", duration: "3:20", bg: "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif" },
 ];
-        let playlists = [];
-        let currentSongIndex = -1;
-        let isPlaying = false;
-        let isShuffle = false;
-        let repeatMode = false;
-        let playNextQueue = [];
-        let selectedSongId = null;
-        let sharedSongIndex = -1;
-        let currentView = 'home';
-        let currentPlaylistIndex = null;
-        
-        const audio = document.getElementById('audio');
 
-        let isAdvancing = false;
-        let advanceCooldown = 0;
+let playlists = [];
+let currentSongIndex = -1;
+let isPlaying = false;
+let isShuffle = false;
+let repeatMode = false;
+let playNextQueue = [];
+let selectedSongId = null;
+let sharedSongIndex = -1;
+let currentView = 'home';
+let currentPlaylistIndex = null;
 
-        function loadData() {
-            const saved = localStorage.getItem('muse_playlists');
-            if (saved) playlists = JSON.parse(saved);
-        }
-        
-        function savePlaylists() {
-            localStorage.setItem('muse_playlists', JSON.stringify(playlists));
-        }
+const audio = document.getElementById('audio');
 
-        function updateNowPlaying() {
-            if (currentSongIndex === -1) return;
-            const song = songs[currentSongIndex];
-            
-            // Bottom player
-            document.getElementById('player-cover').src = song.cover || "songnameicon.png";
-            document.getElementById('player-title').textContent = song.title || "Unknown";
-            const artistEl = document.getElementById('player-artist');
-            if (artistEl) artistEl.textContent = song.artist || "—";
-            
-            // Fullscreen
-            const fsCover = document.getElementById('fs-cover');
-            const fsTitle = document.getElementById('fs-title');
-            const fsArtist = document.getElementById('fs-artist');
-            const fsBg = document.getElementById('fs-background');
-            
-            if (fsCover) fsCover.src = song.cover || "songnameicon.png";
-            if (fsTitle) fsTitle.textContent = song.title || "Unknown";
-            if (fsArtist) fsArtist.textContent = song.artist || "—";
-            if (fsBg) fsBg.style.backgroundImage = `url('${song.bg || "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif"}')`;
-        }
-        
-        function renderSongList(displaySongs) {
-            const container = document.getElementById('song-list');
-            container.innerHTML = '';
-            
-            displaySongs.forEach(song => {
-                const globalIndex = songs.findIndex(s => s.id === song.id);
-                const div = document.createElement('div');
-                div.className = `song-item ${globalIndex === currentSongIndex ? 'playing' : ''}`;
-                div.innerHTML = `
-                    <div class="songsectionmainhub">
-                        <img src="${song.cover}" class="cover">
-                        <div>
-                            <div style="font-weight:500;">${song.title}</div>
-                            <div style="color:#999;display:none">${song.artist || ''}</div>
-                        </div>
-                    </div>
-                    <button class="menu-btn" onclick="showSongMenu(${song.id}); event.stopImmediatePropagation()">⋯</button>
-                `;
-                div.onclick = () => playSong(globalIndex);
-                container.appendChild(div);
-            });
-        }
-        
-        function showSongMenu(id) {
-            selectedSongId = id;
-            const removeOption = document.getElementById('remove-option');
-            removeOption.style.display = (currentView === 'playlist' && currentPlaylistIndex !== null) ? 'block' : 'none';
-            document.getElementById('song-menu').style.display = 'flex';
-        }
-        
-        function closeModals() {
-            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-        }
-        
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.style.display = 'block';
-            setTimeout(() => toast.style.display = 'none', 3000);
-        }
-        
-        function playSong(index) {
-            if (index < 0 || index >= songs.length) return;
-            
-            audio.pause();
-            isAdvancing = true;
-            advanceCooldown = Date.now();
-            
-            currentSongIndex = index;
-            playNextQueue = [];
-            
-            const song = songs[index];
-            audio.src = song.url;
-            
-            audio.play().then(() => {
-                isPlaying = true;
-                updateNowPlaying();
-                updatePlayerUI();
-                renderCurrentView();
-                setTimeout(() => { isAdvancing = false; }, 600);
-            }).catch(() => {
-                isPlaying = false;
-                updatePlayerUI();
-                renderCurrentView();
-                isAdvancing = false;
-            });
-        }
-        
-        function updatePlayerUI() {
-            const playIcon = document.getElementById('play-icon');
-            const pauseIcon = document.getElementById('pause-icon');
-            const fsPlayIcon = document.getElementById('fs-play-icon');
-            const fsPauseIcon = document.getElementById('fs-pause-icon');
+let isAdvancing = false;
+let advanceCooldown = 0;
+const SUGGESTION_COLORS = [
+    '#1db954', '#ff6b6b', '#4ecdc4', '#ffe66d',
+    '#a29bfe', '#fd79a8', '#00b894', '#e17055',
+    '#74b9ff', '#fdcb6e', '#e84393', '#00cec9',
+    '#6c5ce7', '#fd79a8'
+];
 
-            if (isPlaying) {
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'inline';
-                if (fsPlayIcon) fsPlayIcon.style.display = 'none';
-                if (fsPauseIcon) fsPauseIcon.style.display = 'inline';
-            } else {
-                playIcon.style.display = 'inline';
-                pauseIcon.style.display = 'none';
-                if (fsPlayIcon) fsPlayIcon.style.display = 'inline';
-                if (fsPauseIcon) fsPauseIcon.style.display = 'none';
-            }
+function getTodaySeed() {
+    const d = new Date();
+    return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
+function getTodaySuggestions() {
+    const seed = getTodaySeed();
+    let s = seed;
+    s = (s * 9301 + 49297) % 233280;
+    const count = 6 + Math.floor((s / 233280) * 11);
+
+    const indices = [];
+    const used = new Set();
+    s = seed;
+
+    while (indices.length < Math.min(count, songs.length)) {
+        s = (s * 9301 + 49297) % 233280;
+        const idx = Math.floor((s / 233280) * songs.length);
+        if (!used.has(idx)) {
+            used.add(idx);
+            indices.push(idx);
         }
-        
-        function togglePlay() {
-            if (currentSongIndex === -1) {
-                playSong(0);
-                return;
-            }
-            if (isPlaying) {
-                audio.pause();
-            } else {
-                audio.play();
-            }
+    }
+    return indices.map(i => songs[i]);
+}
+
+function renderSuggestions() {
+    const suggestions = getTodaySuggestions();
+    if (suggestions.length === 0) return '';
+
+    let html = `
+        <div class="suggestions-header" style="
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 0px 7px;
+            font-size: 15px;
+            font-weight: 500;
+            color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        ">
+            <span style="font-size:1.3rem;"></span> Today's Suggestion
+        </div>
+        <div class="suggestions-grid" style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+            gap: 12px;
+            padding: 10px;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            background: rgb(255 255 255 / 7%);
+            margin-bottom: 10px;
+        ">
+    `;
+
+    suggestions.forEach((song, i) => {
+        const color = SUGGESTION_COLORS[i % SUGGESTION_COLORS.length];
+        const globalIndex = songs.findIndex(s => s.id === song.id);
+
+        html += `
+            <div class="suggestion-card"
+                 onclick="playSong(${globalIndex})"
+                 style="
+                    background: linear-gradient(145deg, ${color}28, ${color}0c);
+                    border: 1.5px solid ${color}66;
+                    border-radius: 15px;
+                    padding: 10px;
+                    cursor: pointer;
+                    background: ${color};
+                    transition: transform 0.22s, box-shadow 0.22s;
+                    position: relative;
+                    overflow: hidden;
+                    box-shadow: none;
+                    transform: scale(1);
+                    text-align: center;
+                 ">
+
+                <div style="
+                    width: 100%;
+                    aspect-ratio: 1;
+                    display: flex;
+                    filter: grayscale(1);
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 10px;
+                    overflow: hidden;
+                ">
+                    <img src="${song.cover || 'songnameicon.png'}"
+                         style="width:100%;height:100%;object-fit:cover;"
+                         onerror="this.style.display='none'">
+                </div>
+
+                <div style="
+                    font-weight: 600;
+                    font-size: 0.88rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #fff;
+                    background: #3a3a3a;
+                    border-radius: 10px;
+                    width: 100%;
+                ">
+                    ${song.title}
+                </div>
+                <div style="display: none;font-size:0.72rem;color:#bbb;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                    ${song.artist || 'Unknown'}
+                </div>
+
+                <div style="
+                    position:absolute;
+                    top:11px; right:11px;
+                    width:11px; height:11px;
+                    border-radius:50%;
+                    background:${color};
+                    box-shadow:0 0 10px ${color};
+                "></div>
+            </div>
+        `;
+    });
+
+    html += `</div>
+             <div style="
+                 width: 100%;
+                 margin-bottom: 10px;
+                 padding: 0px 7px;
+                 font-size: 15px;
+                 font-weight: 500;
+                 color: gray;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+             ">
+                 All Songs
+             </div>`;
+    return html;
+}
+
+function loadData() {
+    const saved = localStorage.getItem('muse_playlists');
+    if (saved) playlists = JSON.parse(saved);
+}
+
+function savePlaylists() {
+    localStorage.setItem('muse_playlists', JSON.stringify(playlists));
+}
+
+function updateNowPlaying() {
+    if (currentSongIndex === -1) return;
+    const song = songs[currentSongIndex];
+
+    document.getElementById('player-cover').src = song.cover || "songnameicon.png";
+    document.getElementById('player-title').textContent = song.title || "Unknown";
+    const artistEl = document.getElementById('player-artist');
+    if (artistEl) artistEl.textContent = song.artist || "—";
+
+    const fsCover = document.getElementById('fs-cover');
+    const fsTitle = document.getElementById('fs-title');
+    const fsArtist = document.getElementById('fs-artist');
+    const fsBg = document.getElementById('fs-background');
+
+    if (fsCover) fsCover.src = song.cover || "songnameicon.png";
+    if (fsTitle) fsTitle.textContent = song.title || "Unknown";
+    if (fsArtist) fsArtist.textContent = song.artist || "—";
+    if (fsBg) fsBg.style.backgroundImage = `url('${song.bg || "https://i.pinimg.com/originals/0f/d7/7c/0fd77c78e7dae4751eb19cf7ba3f9902.gif"}')`;
+}
+
+/* ===================== RENDER SONG LIST ===================== */
+function renderSongList(displaySongs) {
+    const container = document.getElementById('song-list');
+    container.innerHTML = '';
+
+    // Show Today's Suggestion only on home view
+    if (currentView !== 'playlist' || currentPlaylistIndex === null) {
+        container.innerHTML = renderSuggestions();
+    }
+
+    displaySongs.forEach(song => {
+        const globalIndex = songs.findIndex(s => s.id === song.id);
+        const div = document.createElement('div');
+        div.className = `song-item ${globalIndex === currentSongIndex ? 'playing' : ''}`;
+        div.innerHTML = `
+            <div class="songsectionmainhub">
+                <img src="${song.cover}" class="cover">
+                <div>
+                    <div style="font-weight:500;">${song.title}</div>
+                    <div style="color:#999;display:none">${song.artist || ''}</div>
+                </div>
+            </div>
+            <button class="menu-btn" onclick="showSongMenu(${song.id}); event.stopImmediatePropagation()">⋯</button>
+        `;
+        div.onclick = () => playSong(globalIndex);
+        container.appendChild(div);
+    });
+}
+
+function showSongMenu(id) {
+    selectedSongId = id;
+    const removeOption = document.getElementById('remove-option');
+    removeOption.style.display = (currentView === 'playlist' && currentPlaylistIndex !== null) ? 'block' : 'none';
+    document.getElementById('song-menu').style.display = 'flex';
+}
+
+function closeModals() {
+    document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+}
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 3000);
+}
+
+function playSong(index) {
+    if (index < 0 || index >= songs.length) return;
+
+    audio.pause();
+    isAdvancing = true;
+    advanceCooldown = Date.now();
+
+    currentSongIndex = index;
+    playNextQueue = [];
+
+    const song = songs[index];
+    audio.src = song.url;
+
+    audio.play().then(() => {
+        isPlaying = true;
+        updateNowPlaying();
+        updatePlayerUI();
+        renderCurrentView();
+        setTimeout(() => { isAdvancing = false; }, 600);
+    }).catch(() => {
+        isPlaying = false;
+        updatePlayerUI();
+        renderCurrentView();
+        isAdvancing = false;
+    });
+}
+
+function updatePlayerUI() {
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    const fsPlayIcon = document.getElementById('fs-play-icon');
+    const fsPauseIcon = document.getElementById('fs-pause-icon');
+
+    if (isPlaying) {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'inline';
+        if (fsPlayIcon) fsPlayIcon.style.display = 'none';
+        if (fsPauseIcon) fsPauseIcon.style.display = 'inline';
+    } else {
+        playIcon.style.display = 'inline';
+        pauseIcon.style.display = 'none';
+        if (fsPlayIcon) fsPlayIcon.style.display = 'inline';
+        if (fsPauseIcon) fsPauseIcon.style.display = 'none';
+    }
+}
+
+function togglePlay() {
+    if (currentSongIndex === -1) {
+        playSong(0);
+        return;
+    }
+    if (isPlaying) {
+        audio.pause();
+    } else {
+        audio.play();
+    }
+}
+
+function playNextInQueue() {
+    const now = Date.now();
+    if (isAdvancing || (now - advanceCooldown < 800)) return;
+
+    isAdvancing = true;
+    advanceCooldown = now;
+
+    if (playNextQueue.length > 0) {
+        const nextId = playNextQueue.shift();
+        const index = songs.findIndex(s => s.id === nextId);
+        if (index !== -1) {
+            playSong(index);
+            return;
         }
-        
-        function playNextInQueue() {
-            const now = Date.now();
-            if (isAdvancing || (now - advanceCooldown < 800)) return;
-            
-            isAdvancing = true;
-            advanceCooldown = now;
-            
-            if (playNextQueue.length > 0) {
-                const nextId = playNextQueue.shift();
-                const index = songs.findIndex(s => s.id === nextId);
-                if (index !== -1) {
-                    playSong(index);
-                    return;
+    }
+
+    if (repeatMode) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        isAdvancing = false;
+        return;
+    }
+
+    if (isShuffle) {
+        let available = songs;
+        if (currentView === 'playlist' && currentPlaylistIndex !== null) {
+            const pl = playlists[currentPlaylistIndex];
+            available = songs.filter(s => (pl.songs || []).includes(s.id));
+        }
+        if (available.length > 0) {
+            let randomIndex = Math.floor(Math.random() * available.length);
+            if (available.length > 1 && currentSongIndex !== -1) {
+                if (available[randomIndex].id === songs[currentSongIndex].id) {
+                    randomIndex = (randomIndex + 1) % available.length;
                 }
             }
-        
-            if (repeatMode) {
-                audio.currentTime = 0;
-                audio.play().catch(() => {});
-                isAdvancing = false;
-                return;
-            }
-        
-            if (isShuffle) {
-                let available = songs;
-                if (currentView === 'playlist' && currentPlaylistIndex !== null) {
-                    const pl = playlists[currentPlaylistIndex];
-                    available = songs.filter(s => (pl.songs || []).includes(s.id));
-                }
-                if (available.length > 0) {
-                    let randomIndex = Math.floor(Math.random() * available.length);
-                    if (available.length > 1 && currentSongIndex !== -1) {
-                        if (available[randomIndex].id === songs[currentSongIndex].id) {
-                            randomIndex = (randomIndex + 1) % available.length;
-                        }
-                    }
-                    const randomSong = available[randomIndex];
-                    const globalIndex = songs.findIndex(s => s.id === randomSong.id);
-                    if (globalIndex !== -1) playSong(globalIndex);
-                }
-                return;
-            }
-        
-            if (currentView === 'playlist' && currentPlaylistIndex !== null) {
-                const pl = playlists[currentPlaylistIndex];
-                const playlistSongIds = pl.songs || [];
-                if (playlistSongIds.length === 0) {
-                    isAdvancing = false;
-                    return;
-                }
-                
-                const currentId = songs[currentSongIndex].id;
-                let currentPos = playlistSongIds.indexOf(currentId);
-                if (currentPos === -1) currentPos = 0;
-                
-                const nextPos = (currentPos + 1) % playlistSongIds.length;
-                const nextId = playlistSongIds[nextPos];
-                const nextIndex = songs.findIndex(s => s.id === nextId);
-                
-                if (nextIndex !== -1) playSong(nextIndex);
-                return;
-            }
-        
-            const nextIndex = (currentSongIndex + 1) % songs.length;
-            playSong(nextIndex);
+            const randomSong = available[randomIndex];
+            const globalIndex = songs.findIndex(s => s.id === randomSong.id);
+            if (globalIndex !== -1) playSong(globalIndex);
         }
-        
-        function nextSong() { 
-            playNextInQueue(); 
+        return;
+    }
+
+    if (currentView === 'playlist' && currentPlaylistIndex !== null) {
+        const pl = playlists[currentPlaylistIndex];
+        const playlistSongIds = pl.songs || [];
+        if (playlistSongIds.length === 0) {
+            isAdvancing = false;
+            return;
         }
-        
-        function prevSong() {
-            if (currentSongIndex === -1) return;
-            let prev = currentSongIndex - 1;
-            if (prev < 0) prev = songs.length - 1;
-            playSong(prev);
-        }
-        
-        function playSongNext() {
-            if (!selectedSongId) return;
-            playNextQueue.unshift(selectedSongId);
-            showToast("Added to play next");
-            closeModals();
-        }
-        
-        function copySongLink() {
-            const song = songs.find(s => s.id === selectedSongId);
-            if (!song) return;
-            const url = `${window.location.origin}${window.location.pathname}?song=${song.id}`;
-            navigator.clipboard.writeText(url).then(() => showToast("Link copied"));
-            closeModals();
-        }
-        function scrollToSong() {
+
+        const currentId = songs[currentSongIndex].id;
+        let currentPos = playlistSongIds.indexOf(currentId);
+        if (currentPos === -1) currentPos = 0;
+
+        const nextPos = (currentPos + 1) % playlistSongIds.length;
+        const nextId = playlistSongIds[nextPos];
+        const nextIndex = songs.findIndex(s => s.id === nextId);
+
+        if (nextIndex !== -1) playSong(nextIndex);
+        return;
+    }
+
+    const nextIndex = (currentSongIndex + 1) % songs.length;
+    playSong(nextIndex);
+}
+
+function nextSong() {
+    playNextInQueue();
+}
+
+function prevSong() {
+    if (currentSongIndex === -1) return;
+    let prev = currentSongIndex - 1;
+    if (prev < 0) prev = songs.length - 1;
+    playSong(prev);
+}
+
+function playSongNext() {
+    if (!selectedSongId) return;
+    playNextQueue.unshift(selectedSongId);
+    showToast("Added to play next");
+    closeModals();
+}
+
+function copySongLink() {
+    const song = songs.find(s => s.id === selectedSongId);
+    if (!song) return;
+    const url = `${window.location.origin}${window.location.pathname}?song=${song.id}`;
+    navigator.clipboard.writeText(url).then(() => showToast("Link copied"));
+    closeModals();
+}
+
+function scrollToSong() {
     const urlParams = new URLSearchParams(window.location.search);
     const songId = urlParams.get('song');
-    
+
     if (!songId) return;
 
-    console.log(`🔍 Trying to scroll to song: ${songId}`); 
+    console.log(`🔍 Trying to scroll to song: ${songId}`);
     const possibleSelectors = [
         `#song-${songId}`,
         `#song${songId}`,
@@ -510,17 +660,17 @@ let songs = [
         console.log('Scrolled to song:', songElement);
     } else {
         console.warn('Song not found for ID:', songId);
-        
-        const songsContainer = document.getElementById('songs-section') || 
-                             document.querySelector('.songs, .song-list, .playlist');
+
+        const songsContainer = document.getElementById('songs-section') ||
+            document.querySelector('.songs, .song-list, .playlist');
         if (songsContainer) {
             songsContainer.scrollIntoView({ behavior: 'smooth' });
         }
     }
 }
+
 function initSongScroll() {
     scrollToSong();
-    
     setTimeout(scrollToSong, 600);
     setTimeout(scrollToSong, 1200);
 }
@@ -528,21 +678,21 @@ function initSongScroll() {
 window.addEventListener('load', initSongScroll);
 document.addEventListener('DOMContentLoaded', initSongScroll);
 window.addEventListener('popstate', scrollToSong);
-        function removeFromCurrentPlaylist() {
-            if (currentPlaylistIndex === null || !selectedSongId) return;
-            const pl = playlists[currentPlaylistIndex];
-            pl.songs = pl.songs.filter(id => id !== selectedSongId);
-            savePlaylists();
-            showToast("Song removed from playlist");
-            closeModals();
-            renderCurrentView();
-        }
-        
-// 2. Improved showAddToPlaylistModal
+
+function removeFromCurrentPlaylist() {
+    if (currentPlaylistIndex === null || !selectedSongId) return;
+    const pl = playlists[currentPlaylistIndex];
+    pl.songs = pl.songs.filter(id => id !== selectedSongId);
+    savePlaylists();
+    showToast("Song removed from playlist");
+    closeModals();
+    renderCurrentView();
+}
+
+/* ===================== PLAYLIST MODALS ===================== */
 function showAddToPlaylistModal() {
     closeModals();
 
-    // Safety: if somehow no song is selected, try the currently playing one
     if (!selectedSongId && typeof currentSongId !== 'undefined') {
         selectedSongId = currentSongId;
     }
@@ -591,170 +741,173 @@ function showAddToPlaylistModal() {
     modal.appendChild(content);
     document.body.appendChild(modal);
 }
-        
-        function addSongToPlaylist(playlistIdx) {
-            const song = songs.find(s => s.id === selectedSongId);
-            if (!song || !playlists[playlistIdx]) return;
-            if (!playlists[playlistIdx].songs) playlists[playlistIdx].songs = [];
-            if (!playlists[playlistIdx].songs.includes(song.id)) {
-                playlists[playlistIdx].songs.push(song.id);
+
+function addSongToPlaylist(playlistIdx) {
+    const song = songs.find(s => s.id === selectedSongId);
+    if (!song || !playlists[playlistIdx]) return;
+    if (!playlists[playlistIdx].songs) playlists[playlistIdx].songs = [];
+    if (!playlists[playlistIdx].songs.includes(song.id)) {
+        playlists[playlistIdx].songs.push(song.id);
+    }
+    savePlaylists();
+    showToast(`Added to "${playlists[playlistIdx].name}"`);
+    closeModals();
+}
+
+function deletePlaylist(index) {
+    if (confirm("Delete this playlist?")) {
+        playlists.splice(index, 1);
+        savePlaylists();
+        renderPlaylists();
+        if (currentPlaylistIndex === index) switchView('home');
+        else if (currentPlaylistIndex > index) currentPlaylistIndex--;
+        showToast("Playlist deleted");
+    }
+}
+
+/* ===================== VIEWS ===================== */
+function renderCurrentView() {
+    if (currentView === 'playlist' && currentPlaylistIndex !== null) {
+        const pl = playlists[currentPlaylistIndex];
+        const playlistSongs = songs.filter(s => (pl.songs || []).includes(s.id));
+        renderSongList(playlistSongs);
+        document.getElementById('page-title').textContent = pl.name;
+    } else {
+        currentView = 'home';
+        renderSongList(songs);
+        document.getElementById('page-title').textContent = "For You";
+    }
+}
+
+function renderPlaylists() {
+    const container = document.getElementById('playlists-list');
+    container.innerHTML = '';
+    playlists.forEach((pl, i) => {
+        const div = document.createElement('div');
+        div.className = 'playlist';
+        div.innerHTML = `${pl.name} <span style="display: contents;" onclick="deletePlaylist(${i}); event.stopImmediatePropagation()"><svg style="fill: red;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/></svg></span>`;
+        div.onclick = (e) => {
+            if (e.target.tagName !== 'SPAN') {
+                currentView = 'playlist';
+                currentPlaylistIndex = i;
+                renderCurrentView();
             }
-            savePlaylists();
-            showToast(`Added to "${playlists[playlistIdx].name}"`);
-            closeModals();
-        }
-        
-        function deletePlaylist(index) {
-            if (confirm("Delete this playlist?")) {
-                playlists.splice(index, 1);
-                savePlaylists();
-                renderPlaylists();
-                if (currentPlaylistIndex === index) switchView('home');
-                else if (currentPlaylistIndex > index) currentPlaylistIndex--;
-                showToast("Playlist deleted");
-            }
-        }
-        
-        function renderCurrentView() {
-            if (currentView === 'playlist' && currentPlaylistIndex !== null) {
-                const pl = playlists[currentPlaylistIndex];
-                const playlistSongs = songs.filter(s => (pl.songs || []).includes(s.id));
-                renderSongList(playlistSongs);
-                document.getElementById('page-title').textContent = pl.name;
-            } else {
-                renderSongList(songs);
-                document.getElementById('page-title').textContent = "For You";
-            }
-        }
-        
-        function renderPlaylists() {
-            const container = document.getElementById('playlists-list');
-            container.innerHTML = '';
-            playlists.forEach((pl, i) => {
-                const div = document.createElement('div');
-                div.className = 'playlist';
-                div.innerHTML = `${pl.name} <span style="display: contents;" onclick="deletePlaylist(${i}); event.stopImmediatePropagation()"><svg style="fill: red;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-437.85 277.08-234.92q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L437.85-480 234.92-682.92q-8.3-8.31-8.5-20.89-.19-12.57 8.5-21.27 8.7-8.69 21.08-8.69 12.38 0 21.08 8.69L480-522.15l202.92-202.93q8.31-8.3 20.89-8.5 12.57-.19 21.27 8.5 8.69 8.7 8.69 21.08 0 12.38-8.69 21.08L522.15-480l202.93 202.92q8.3 8.31 8.5 20.89.19 12.57-8.5 21.27-8.7 8.69-21.08 8.69-12.38 0-21.08-8.69L480-437.85Z"/></svg></span>`;
-                div.onclick = (e) => {
-                    if (e.target.tagName !== 'SPAN') {
-                        currentView = 'playlist';
-                        currentPlaylistIndex = i;
-                        renderCurrentView();
-                    }
-                };
-                container.appendChild(div);
-            });
-        }
-        
-        function createPlaylist() {
-            const name = prompt("New playlist name:");
-            if (name) {
-                playlists.push({ name: name.trim(), songs: [] });
-                savePlaylists();
-                renderPlaylists();
-                showToast(`Playlist "${name}" created`);
-            }
-        }
-        
-        function updateProgress() {
-            if (!audio.duration) return;
-            const percent = (audio.currentTime / audio.duration) * 100;
-            document.getElementById('progress').style.width = percent + '%';
-            const fsProgress = document.getElementById('fs-progress');
-            if (fsProgress) fsProgress.style.width = percent + '%';
-        }
-        
-        function seek(e) {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / rect.width;
-            audio.currentTime = pos * audio.duration;
-        }
-        
-        function setVolume(fromFullscreen = false) {
+        };
+        container.appendChild(div);
+    });
+}
+
+function createPlaylist() {
+    const name = prompt("New playlist name:");
+    if (name) {
+        playlists.push({ name: name.trim(), songs: [] });
+        savePlaylists();
+        renderPlaylists();
+        showToast(`Playlist "${name}" created`);
+    }
+}
+
+/* ===================== PROGRESS / VOLUME ===================== */
+function updateProgress() {
+    if (!audio.duration) return;
+    const percent = (audio.currentTime / audio.duration) * 100;
+    document.getElementById('progress').style.width = percent + '%';
+    const fsProgress = document.getElementById('fs-progress');
+    if (fsProgress) fsProgress.style.width = percent + '%';
+}
+
+function seek(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
+}
+
+function setVolume(fromFullscreen = false) {
     const slider = document.getElementById(fromFullscreen ? 'fullscreen-volume-slider' : 'volume-slider');
     const otherSlider = document.getElementById(fromFullscreen ? 'volume-slider' : 'fullscreen-volume-slider');
-    
+
     const vol = parseFloat(slider.value);
     audio.volume = vol;
-    otherSlider.value = vol;   // keep the other slider in sync
+    otherSlider.value = vol;
 }
 
 function toggleMute() {
-    // Toggle between 0 and the previous volume (or 0.8 as fallback)
     if (audio.volume > 0) {
-        audio.dataset.prevVolume = audio.volume;  // remember current volume
+        audio.dataset.prevVolume = audio.volume;
         audio.volume = 0;
     } else {
         audio.volume = parseFloat(audio.dataset.prevVolume) || 0.8;
     }
 
-    // Update both sliders
     document.getElementById('volume-slider').value = audio.volume;
     document.getElementById('fullscreen-volume-slider').value = audio.volume;
 }
-        function toggleShuffle() {
-            isShuffle = !isShuffle;
-            const btns = [document.getElementById('shuffle-btn'), document.getElementById('fs-shuffle')];
-            btns.forEach(btn => {
-                if (btn) {
-                    if (isShuffle) {
-                        btn.style.color = '#1db954';
-                        btn.style.backgroundColor = '#1e3a5f';
-                        btn.style.borderRadius = '50%';
-                        btn.style.padding = '8px';
-                    } else {
-                        btn.style.color = '#ccc';
-                        btn.style.backgroundColor = 'transparent';
-                    }
-                }
-            });
-            showToast(isShuffle ? "Shuffle ON" : "Shuffle OFF");
-        }
-        
-        function toggleRepeat() {
-            repeatMode = !repeatMode;
-            const btns = [document.getElementById('repeat-btn'), document.getElementById('fs-repeat')];
-            btns.forEach(btn => {
-                if (btn) {
-                    if (repeatMode) {
-                        btn.style.color = 'white';
-                        btn.style.backgroundColor = 'blue';
-                        btn.style.borderRadius = '999px';
-                        btn.style.padding = '8px';
-                    } else {
-                        btn.style.color = '#ccc';
-                        btn.style.backgroundColor = 'transparent';
-                    }
-                }
-            });
-            showToast(repeatMode ? "Repeat ONE" : "Repeat OFF");
-        }
-        
-        function toggleFullscreen() {
-            const fs = document.getElementById('fullscreen-player');
-            const wasHidden = fs.style.display !== 'flex';
-            fs.style.display = wasHidden ? 'flex' : 'none';
-            if (wasHidden && currentSongIndex !== -1) {
-                updateNowPlaying();
+
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    const btns = [document.getElementById('shuffle-btn'), document.getElementById('fs-shuffle')];
+    btns.forEach(btn => {
+        if (btn) {
+            if (isShuffle) {
+                btn.style.color = '#1db954';
+                btn.style.backgroundColor = '#1e3a5f';
+                btn.style.borderRadius = '50%';
+                btn.style.padding = '8px';
+            } else {
+                btn.style.color = '#ccc';
+                btn.style.backgroundColor = 'transparent';
             }
         }
-        
-        function searchSongs() {
-            const q = document.getElementById('search-input').value.toLowerCase();
-            let filtered = songs;
-            if (currentView === 'playlist' && currentPlaylistIndex !== null) {
-                const pl = playlists[currentPlaylistIndex];
-                filtered = songs.filter(s => (pl.songs || []).includes(s.id));
+    });
+    showToast(isShuffle ? "Shuffle ON" : "Shuffle OFF");
+}
+
+function toggleRepeat() {
+    repeatMode = !repeatMode;
+    const btns = [document.getElementById('repeat-btn'), document.getElementById('fs-repeat')];
+    btns.forEach(btn => {
+        if (btn) {
+            if (repeatMode) {
+                btn.style.color = 'white';
+                btn.style.backgroundColor = 'blue';
+                btn.style.borderRadius = '999px';
+                btn.style.padding = '8px';
+            } else {
+                btn.style.color = '#ccc';
+                btn.style.backgroundColor = 'transparent';
             }
-            if (q) filtered = filtered.filter(s => 
-                s.title.toLowerCase().includes(q) || (s.artist || "").toLowerCase().includes(q)
-            );
-            renderSongList(filtered);
         }
-        
-        function handleSharedSong() {
+    });
+    showToast(repeatMode ? "Repeat ONE" : "Repeat OFF");
+}
+
+function toggleFullscreen() {
+    const fs = document.getElementById('fullscreen-player');
+    const wasHidden = fs.style.display !== 'flex';
+    fs.style.display = wasHidden ? 'flex' : 'none';
+    if (wasHidden && currentSongIndex !== -1) {
+        updateNowPlaying();
+    }
+}
+
+function searchSongs() {
+    const q = document.getElementById('search-input').value.toLowerCase();
+    let filtered = songs;
+    if (currentView === 'playlist' && currentPlaylistIndex !== null) {
+        const pl = playlists[currentPlaylistIndex];
+        filtered = songs.filter(s => (pl.songs || []).includes(s.id));
+    }
+    if (q) filtered = filtered.filter(s =>
+        s.title.toLowerCase().includes(q) || (s.artist || "").toLowerCase().includes(q)
+    );
+    renderSongList(filtered);
+}
+
+/* ===================== SHARED SONG ===================== */
+function handleSharedSong() {
     const urlParams = new URLSearchParams(window.location.search);
     const songId = urlParams.get('song');
-    
+
     if (!songId) return;
 
     const id = parseInt(songId);
@@ -764,8 +917,8 @@ function toggleMute() {
 
     setTimeout(() => {
         const songElement = document.querySelector(`.song-item:nth-child(${songIndex + 1})`) ||
-                            document.getElementById(`song-${id}`) ||
-                            document.querySelector(`[data-song-id="${id}"]`);
+            document.getElementById(`song-${id}`) ||
+            document.querySelector(`[data-song-id="${id}"]`);
 
         if (songElement) {
             songElement.scrollIntoView({
@@ -791,38 +944,40 @@ function initSharedSong() {
 
 window.addEventListener('load', initSharedSong);
 document.addEventListener('DOMContentLoaded', initSharedSong);
-        
-        function switchView(view) {
-            currentView = view;
-            currentPlaylistIndex = null;
-            renderCurrentView();
-        }
-        audio.addEventListener('timeupdate', updateProgress);
-        audio.addEventListener('ended', playNextInQueue);
-        audio.addEventListener('play', () => { 
-            isPlaying = true; 
-            updatePlayerUI(); 
-        });
-        audio.addEventListener('pause', () => { 
-            isPlaying = false; 
-            updatePlayerUI(); 
-        });
 
-        window.onload = () => {
-            loadData();
-            renderSongList(songs);
-            renderPlaylists();
-            handleSharedLink();
-            updatePlayerUI();
-            audio.volume = 0.8;
-        };
+function switchView(view) {
+    currentView = view;
+    currentPlaylistIndex = null;
+    renderCurrentView();
+}
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
+/* ===================== EVENT LISTENERS ===================== */
+audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('ended', playNextInQueue);
+audio.addEventListener('play', () => {
+    isPlaying = true;
+    updatePlayerUI();
+});
+audio.addEventListener('pause', () => {
+    isPlaying = false;
+    updatePlayerUI();
+});
 
-        
+window.onload = () => {
+    loadData();
+    renderSongList(songs);
+    renderPlaylists();
+    handleSharedSong();
+    updatePlayerUI();
+    audio.volume = 0.8;
+};
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const customMenu = document.querySelector(".custom-menu");
 
