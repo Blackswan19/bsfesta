@@ -247,9 +247,9 @@ let currentView = 'home';
 let currentPlaylistIndex = null;
 
 const audio = document.getElementById('audio');
-
 let isAdvancing = false;
 let advanceCooldown = 0;
+
 const SUGGESTION_COLORS = [
     '#1db954', '#ff6b6b', '#4ecdc4', '#ffe66d',
     '#a29bfe', '#fd79a8', '#00b894', '#e17055',
@@ -262,30 +262,59 @@ function getTodaySeed() {
     return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
 }
 
+// Simple seeded random (same seed → same sequence)
+function seededRandom(seed) {
+    let s = seed;
+    return function () {
+        s = (s * 9301 + 49297) % 233280;
+        return s / 233280;
+    };
+}
+
 function getTodaySuggestions() {
     const seed = getTodaySeed();
-    let s = seed;
-    s = (s * 9301 + 49297) % 233280;
-    const count = 6 + Math.floor((s / 233280) * 11);
+    const rand = seededRandom(seed);
 
+    // Vary count: 6 to min(14, songs.length)
+    const maxCount = Math.min(14, songs.length);
+    const minCount = Math.min(6, maxCount);
+    const count = minCount + Math.floor(rand() * (maxCount - minCount + 1));
+
+    // Pick unique random indices
     const indices = [];
     const used = new Set();
-    s = seed;
 
-    while (indices.length < Math.min(count, songs.length)) {
-        s = (s * 9301 + 49297) % 233280;
-        const idx = Math.floor((s / 233280) * songs.length);
+    while (indices.length < count) {
+        const idx = Math.floor(rand() * songs.length);
         if (!used.has(idx)) {
             used.add(idx);
             indices.push(idx);
         }
     }
+
     return indices.map(i => songs[i]);
+}
+
+function getTodayColors(count) {
+    const seed = getTodaySeed() + 999; // offset so color shuffle is independent
+    const rand = seededRandom(seed);
+
+    // Shuffle a copy of the colors
+    const colors = [...SUGGESTION_COLORS];
+    for (let i = colors.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [colors[i], colors[j]] = [colors[j], colors[i]];
+    }
+
+    // Return the first `count` colors (already randomized)
+    return colors.slice(0, count);
 }
 
 function renderSuggestions() {
     const suggestions = getTodaySuggestions();
     if (suggestions.length === 0) return '';
+
+    const colors = getTodayColors(suggestions.length);
 
     let html = `
         <div class="suggestions-header" style="
@@ -314,7 +343,7 @@ function renderSuggestions() {
     `;
 
     suggestions.forEach((song, i) => {
-        const color = SUGGESTION_COLORS[i % SUGGESTION_COLORS.length];
+        const color = colors[i];
         const globalIndex = songs.findIndex(s => s.id === song.id);
 
         html += `
@@ -395,7 +424,6 @@ function renderSuggestions() {
              </div>`;
     return html;
 }
-
 function loadData() {
     const saved = localStorage.getItem('muse_playlists');
     if (saved) playlists = JSON.parse(saved);
