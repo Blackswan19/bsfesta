@@ -271,17 +271,20 @@ function seededRandom(seed) {
 }
 
 function getTodaySuggestions() {
-    // Completely random every time (not fixed per day)
+    const seed = getTodaySeed();
+    const rand = seededRandom(seed);
+
+    // Random count every day: 5 → min(14, songs.length)
     const maxCount = Math.min(14, songs.length);
     const minCount = Math.min(5, maxCount);
-    const count = minCount + Math.floor(Math.random() * (maxCount - minCount + 1));
+    const count = minCount + Math.floor(rand() * (maxCount - minCount + 1));
 
     // Pick unique random indices
     const indices = [];
     const used = new Set();
 
     while (indices.length < count) {
-        const idx = Math.floor(Math.random() * songs.length);
+        const idx = Math.floor(rand() * songs.length);
         if (!used.has(idx)) {
             used.add(idx);
             indices.push(idx);
@@ -290,6 +293,7 @@ function getTodaySuggestions() {
 
     return indices.map(i => songs[i]);
 }
+
 function getTodayColors(count) {
     const seed = getTodaySeed() + 999; // offset so color shuffle is independent
     const rand = seededRandom(seed);
