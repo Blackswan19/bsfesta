@@ -249,7 +249,6 @@ let currentPlaylistIndex = null;
 const audio = document.getElementById('audio');
 let isAdvancing = false;
 let advanceCooldown = 0;
-
 const SUGGESTION_COLORS = [
     '#1db954', '#ff6b6b', '#4ecdc4', '#ffe66d',
     '#a29bfe', '#fd79a8', '#00b894', '#e17055',
@@ -272,20 +271,17 @@ function seededRandom(seed) {
 }
 
 function getTodaySuggestions() {
-    const seed = getTodaySeed();
-    const rand = seededRandom(seed);
-
-    // Vary count: 6 to min(14, songs.length)
+    // Completely random every time (not fixed per day)
     const maxCount = Math.min(14, songs.length);
-    const minCount = Math.min(6, maxCount);
-    const count = minCount + Math.floor(rand() * (maxCount - minCount + 1));
+    const minCount = Math.min(5, maxCount);
+    const count = minCount + Math.floor(Math.random() * (maxCount - minCount + 1));
 
     // Pick unique random indices
     const indices = [];
     const used = new Set();
 
     while (indices.length < count) {
-        const idx = Math.floor(rand() * songs.length);
+        const idx = Math.floor(Math.random() * songs.length);
         if (!used.has(idx)) {
             used.add(idx);
             indices.push(idx);
@@ -294,7 +290,6 @@ function getTodaySuggestions() {
 
     return indices.map(i => songs[i]);
 }
-
 function getTodayColors(count) {
     const seed = getTodaySeed() + 999; // offset so color shuffle is independent
     const rand = seededRandom(seed);
