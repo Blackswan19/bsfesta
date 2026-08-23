@@ -274,10 +274,8 @@ function getTodaySuggestions() {
     const seed = getTodaySeed();
     const rand = seededRandom(seed);
 
-    // Random count every day: 5 → min(14, songs.length)
-    const maxCount = Math.min(14, songs.length);
-    const minCount = Math.min(5, maxCount);
-    const count = minCount + Math.floor(rand() * (maxCount - minCount + 1));
+    // Fixed number of songs every day
+    const count = Math.min(8, songs.length);   // ← change 8 to whatever number you want
 
     // Pick unique random indices
     const indices = [];
