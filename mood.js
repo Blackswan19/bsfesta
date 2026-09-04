@@ -367,7 +367,23 @@ function renderSuggestions() {
                     transform: scale(1);
                     text-align: center;
                  ">
-
+<button style="    position: absolute;
+    top: 0;
+    right: 0;
+    background: #00000078;
+    color: white;
+    border: none;
+    font-size: 24px;
+    z-index: 100000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+" onclick="showSongMenu(${song.id}); event.stopImmediatePropagation()">⋯</button>
                 <div style="
                     width: 100%;
                     aspect-ratio: 1;
@@ -383,16 +399,15 @@ function renderSuggestions() {
                          onerror="this.style.display='none'">
                 </div>
 
-                <div style="
-                    font-weight: 600;
-                    font-size: 0.88rem;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    color: #fff;
-                    background: #3a3a3a;
-                    border-radius: 10px;
-                    width: 100%;
+                <div style="font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    border-radius: 9999px;
+    width: 100%;
+    background: #00000078;
+    backdrop-filter: blur(10px);
                 ">
                     ${song.title}
                 </div>
