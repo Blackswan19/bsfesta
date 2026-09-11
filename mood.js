@@ -405,15 +405,15 @@ function renderSuggestions() {
                          onerror="this.style.display='none'">
                 </div>
 
-                <div style="font-weight: 600;
+                <div style="    font-weight: 500;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: scroll;
     color: #fff;
-    border-radius: 9999px;
-    width: 100%;
+    border-radius: 19px;
     background: #00000078;
     backdrop-filter: blur(10px);
+    padding: 2px 10px;
+    scrollbar-width: none;
                 ">
                     ${song.title}
                 </div>
