@@ -327,29 +327,10 @@ function renderSuggestions() {
     const colors = getTodayColors(suggestions.length);
 
     let html = `
-        <div class="suggestions-header" style="
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 0px 7px;
-            font-size: 15px;
-            font-weight: 500;
-            color: gray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        ">
+        <div class="suggestions-header">
             <span style="font-size:1.3rem;"></span> Today's Suggestion
         </div>
-        <div class="suggestions-grid" style="
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-            gap: 12px;
-            padding: 10px;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            background: rgb(255 255 255 / 7%);
-            margin-bottom: 10px;
-        ">
+        <div class="suggestions-grid">
     `;
 
     suggestions.forEach((song, i) => {
@@ -357,78 +338,30 @@ function renderSuggestions() {
         const globalIndex = songs.findIndex(s => s.id === song.id);
 
         html += `
-            <div class="suggestion-card"
-                 onclick="playSong(${globalIndex})"
-                 style="
+            <div class="suggestion-card" 
+                 onclick="playSong(${globalIndex})" 
+                  style="
                     background: linear-gradient(145deg, ${color}28, ${color}0c);
-                    border: 1.5px solid ${color}66;
-                    border-radius: 15px;
-                    padding: 10px;
-                    cursor: pointer;
-                    background: ${color};
-                    transition: transform 0.22s, box-shadow 0.22s;
-                    position: relative;
-                    overflow: hidden;
-                    box-shadow: none;
-                    transform: scale(1);
-                    text-align: center;
+                    border: 2px solid ${color}66;
                  ">
-<button style="    position: absolute;
-    top: 0;
-    right: 0;
-    background: #00000078;
-    color: white;
+<button style='background: transparent;
     border: none;
-    font-size: 24px;
-    z-index: 100000;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-" onclick="showSongMenu(${song.id}); event.stopImmediatePropagation()">⋯</button>
-                <div style="
-                    width: 100%;
-                    aspect-ratio: 1;
-                    display: flex;
-                    filter: grayscale(1);
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 10px;
-                    overflow: hidden;
-                ">
-                    <img src="${song.cover || 'songnameicon.png'}"
-                         style="width:100%;height:100%;object-fit:cover;"
+    color: white;
+    font-size: 20px;
+    cursor: pointer;' onclick="showSongMenu(${song.id}); event.stopImmediatePropagation()">⋯</button>
+                <div style='display: contents;'>
+                    <img  src="${song.cover || 'songnameicon.png'}"
                          onerror="this.style.display='none'">
                 </div>
 
-                <div style="    font-weight: 500;
-    white-space: nowrap;
-    overflow: scroll;
-    color: #fff;
-    border-radius: 19px;
-    background: #00000078;
-    backdrop-filter: blur(10px);
-    padding: 2px 10px;
-    scrollbar-width: none;
-                ">
+                <div style='    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;'>
                     ${song.title}
                 </div>
                 <div style="display: none;font-size:0.72rem;color:#bbb;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
                     ${song.artist || 'Unknown'}
                 </div>
-
-                <div style="
-                    position:absolute;
-                    top:11px; right:11px;
-                    width:11px; height:11px;
-                    border-radius:50%;
-                    background:${color};
-                    box-shadow:0 0 10px ${color};
-                "></div>
             </div>
         `;
     });
@@ -496,7 +429,7 @@ function renderSongList(displaySongs) {
             <div class="songsectionmainhub">
                 <img src="${song.cover}" class="cover">
                 <div>
-                    <div style="font-weight:500;">${song.title}</div>
+                    <div style="font-weight:500;font-size: 16px;opacity: 80%;">${song.title}</div>
                     <div style="color:#999;display:none">${song.artist || ''}</div>
                 </div>
             </div>
@@ -787,7 +720,6 @@ function showAddToPlaylistModal() {
     const closeBtn = document.createElement('button');
     closeBtn.id = 'modal-close-btn';
     closeBtn.textContent = 'Cancel';
-    closeBtn.style.marginTop = '15px';
     closeBtn.onclick = closeModals;
     content.appendChild(closeBtn);
 
@@ -902,8 +834,8 @@ function toggleShuffle() {
     btns.forEach(btn => {
         if (btn) {
             if (isShuffle) {
-                btn.style.color = '#1db954';
-                btn.style.backgroundColor = '#1e3a5f';
+                btn.style.color = 'white';
+                btn.style.backgroundColor = 'blue';
                 btn.style.borderRadius = '50%';
                 btn.style.padding = '8px';
             } else {
